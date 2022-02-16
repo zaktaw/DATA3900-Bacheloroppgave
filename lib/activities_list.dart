@@ -18,7 +18,7 @@ class ActivitiesList extends StatelessWidget {
       body: ListView.builder(
         itemCount: aktiviteter.length,
         itemBuilder: (context, index) {
-          return ActivityCard();
+          return ActivityCard(aktiviteter[index]);
         },
       ),
     );
