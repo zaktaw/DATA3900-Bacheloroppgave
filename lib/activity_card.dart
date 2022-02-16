@@ -7,16 +7,19 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisSize: 
-    MainAxisSize.min,
-    children: [
-      Text('GRUDIG',
-          style: TextStyle(
-              fontSize: 20, color: Color.fromARGB(255, 114, 114, 182))),
-      IconButton(onPressed: null, icon: Icon(Icons.remove_circle_outline)),
-      TextField(),
-      IconButton(onPressed: null, icon: Icon(Icons.add_circle_outline))
-    ]);
+    return Card(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+        Text('GRUDIG',
+            style: TextStyle(
+                fontSize: 20, color: Color.fromARGB(255, 114, 114, 182))),
+        IconButton(onPressed: null, icon: Icon(Icons.remove_circle_outline)),
+        TextField(),
+        IconButton(onPressed: null, icon: Icon(Icons.add_circle_outline))
+        ]
+      ),
+    );
   }
 }
 
