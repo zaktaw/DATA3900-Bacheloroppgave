@@ -15,8 +15,8 @@ class ActivityBottombar extends StatelessWidget {
               padding: EdgeInsets.only(top: 8.0),
               child: Column(
                 children: <Widget>[
-                  Text('Neste sone'),
-                ],
+                  Text('Fullfør sone'),
+                  ],
               ),
             ),
           ),
