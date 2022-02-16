@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class ActivityCard extends StatelessWidget {
-  ActivityCard(this.zone_name, {Key? key}) : super(key: key);
+class ZoneCard extends StatelessWidget {
+  ZoneCard(this.zone_name, {Key? key}) : super(key: key);
 
   String zone_name;
 
