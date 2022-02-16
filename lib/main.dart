@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './activities_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Hei gutter!'),
+          title: Text('Hello world!'),
+        ),
+        body: Container(
+          child: ActivitiesList(),
         ),
       ),
     );
