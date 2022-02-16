@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
 import 'activities_list.dart';
+import './zones_list.dart';
 
 void main() {
   runApp(const MyApp());
