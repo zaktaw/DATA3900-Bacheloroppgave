@@ -18,12 +18,7 @@ class ActivitiesList extends StatelessWidget {
       body: ListView.builder(
         itemCount: aktiviteter.length,
         itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              onTap: () {},
-              title: Text(aktiviteter[index]),
-            ),
-          );
+          return ActivityCard();
         },
       ),
     );
