@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:flutter/material.dart';
-import './activity_card.dart';
+import './activities_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Hei gutter!'),
+          title: Text('Hello world!'),
         ),
-        body: Column(children: [
-          ActivityCard()
-        ],),
+        body: Container(
+          child: ActivitiesList(),
+        ),       
       ),
     );
   }
