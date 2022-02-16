@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import './activities_list.dart';
+import './zones_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
           title: Text('Hello world!'),
         ),
         body: Container(
-          child: ActivitiesList(),
+          child: ZonesList(),
         ),       
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import './zone_card.dart';
 
-class ActivitiesList extends StatelessWidget {
-  ActivitiesList({Key? key}) : super(key: key);
+class ZonesList extends StatelessWidget {
+  ZonesList({Key? key}) : super(key: key);
 
   final List<String> aktiviteter = <String>[
     'Sone 1',

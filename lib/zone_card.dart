@@ -19,7 +19,9 @@ class ZoneCard extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 20,
                         color: Color.fromARGB(255, 114, 114, 182))),
-              onTap: () => print('tap inkwell'),))
+                onTap: () => print('tap'),
+                onLongPress: () => print('long tap'),
+              ))
         ],
       ),
     );
