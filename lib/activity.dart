@@ -8,20 +8,14 @@ import './zones_list.dart';
 final soner = [
   {'sone': 'Sone 1', 'rekkefølgenummer': 0},
   {'sone': 'Sone 2', 'rekkefølgenummer': 1},
-  {'sone': 'Sone 3', 'rekkefølgenummer': 2}
+  {'sone': 'Sone 3', 'rekkefølgenummer': 2},
+  {'sone': 'Sone 4', 'rekkefølgenummer': 3}
 ];
 
-final tellinger = [
-  {
+final lastZone = soner.length;
 
-  }
-  {
-    'zoneIndex': 'sone 1',
-    'observasjoner': [
-      {'aktivitet': 'GRUDIG', 'antall': 4},
-      {'aktivitet': 'ALPERS', 'antall': 2}
-    ]
-  },
+final tellinger = [
+  {'zoneIndex': 0, 'observasjoner': []}
 ];
 
 class Activity extends StatefulWidget {
@@ -37,8 +31,13 @@ class _ActivityState extends State<Activity> {
   void incrementZoneIndex() {
     setState(() {
       print("Update zoneindex");
-      zoneIndex++;
-      print(zoneIndex);
+      if (zoneIndex < lastZone-1) {
+        zoneIndex++;
+        print(zoneIndex);
+      } else {
+        //TODO route til soneoversikt
+        print("Route til soneoversikt");
+      }
     });
   }
 
