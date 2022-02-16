@@ -7,7 +7,9 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisSize: MainAxisSize.min, children: [
+    return Row(mainAxisSize: 
+    MainAxisSize.min,
+    children: [
       Text('GRUDIG',
           style: TextStyle(
               fontSize: 20, color: Color.fromARGB(255, 114, 114, 182))),
