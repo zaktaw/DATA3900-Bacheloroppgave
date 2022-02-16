@@ -5,6 +5,7 @@ import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
 import 'activities_list.dart';
 import './zones_list.dart';
+import './activity.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,11 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: ActivityTopbar(),
         body: Container(
-          child: ActivitiesList(),
+          child: Activity(),
         ),
-        bottomNavigationBar: ActivityBottombar(),
       ),
     );
   }
