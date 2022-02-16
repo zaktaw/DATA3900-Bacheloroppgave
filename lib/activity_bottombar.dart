@@ -5,8 +5,7 @@ class ActivityBottombar extends StatelessWidget {
 
   @override
  Widget build(BuildContext context) {
-   return Scaffold(
-      bottomNavigationBar: Container(
+   return Container(
           height: 60,
           color: Colors.black12,
           child: InkWell(
@@ -20,8 +19,7 @@ class ActivityBottombar extends StatelessWidget {
               ),
             ),
           ),
-      ),
-   );
+      );
  }
 }
 
