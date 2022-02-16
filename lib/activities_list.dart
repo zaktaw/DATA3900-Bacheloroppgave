@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import './activity_card.dart';
 
 class ActivitiesList extends StatelessWidget {
   ActivitiesList({Key? key}) : super(key: key);
 
-  final List<String> aktiviteter = <String>['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG'];
+  final List<String> aktiviteter = <String>[
+    'GRUDIG',
+    'ALPERS',
+    'ALLAP',
+    'DIV',
+    'ALLUDIG'
+  ];
 
   @override
   Widget build(BuildContext context) {
