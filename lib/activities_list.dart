@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import './activity_card.dart';
 
 class ActivitiesList extends StatelessWidget {
-  ActivitiesList({Key? key}) : super(key: key);
+
+  final void Function(String) incrementTelling;
+
+  ActivitiesList(this.incrementTelling, {Key? key}) : super(key: key);
 
   final List<String> aktiviteter = <String>[
     'GRUDIG',
@@ -18,7 +21,7 @@ class ActivitiesList extends StatelessWidget {
       body: ListView.builder(
         itemCount: aktiviteter.length,
         itemBuilder: (context, index) {
-          return ActivityCard(aktiviteter[index]);
+          return ActivityCard(aktiviteter[index], incrementTelling);
         },
       ),
     );

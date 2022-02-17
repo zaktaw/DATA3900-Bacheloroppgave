@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ActivityCard extends StatelessWidget {
-  ActivityCard(this.activity_name, {Key? key}) : super(key: key);
+  ActivityCard(this.activity_name, this.incrementTelling, {Key? key}) : super(key: key);
 
   String activity_name;
+  final void Function(String) incrementTelling;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 2,
           child: IconButton(
-              onPressed: null, icon: Icon(Icons.remove_circle_outline)),
+              onPressed: () => incrementTelling(activity_name), icon: Icon(Icons.remove_circle_outline)),
         ),
         Expanded(
           flex: 1,

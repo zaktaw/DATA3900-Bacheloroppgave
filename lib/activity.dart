@@ -4,6 +4,7 @@ import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
 import 'activities_list.dart';
 import './zones_list.dart';
+import 'models/tellinger.dart';
 
 final soner = [
   {'sone': 'Sone 1', 'rekkefølgenummer': 0},
@@ -15,7 +16,28 @@ final soner = [
 final lastZone = soner.length;
 
 final tellinger = [
-  {'zoneIndex': 0, 'observasjoner': []}
+  {
+    'zoneIndex': 0,
+    'observasjoner': [
+      {'aktivitet': 'GRUDIG', 'antall': 2},
+      {'aktivitet': 'DIV', 'antall': 3},
+      {'aktivitet': 'ALPERS', 'antall': 4},
+    ]
+  },
+  {
+    'zoneIndex': 1,
+    'observasjoner': [
+      {'GRUDIG': 2}
+    ]
+  }
+];
+
+var a = [
+  {
+    1: [
+      {'aktivitet': 'GRUDIG', 'antall': 2}
+    ]
+  }
 ];
 
 class Activity extends StatefulWidget {
@@ -26,12 +48,13 @@ class Activity extends StatefulWidget {
 }
 
 class _ActivityState extends State<Activity> {
+  Tellinger tellinger = Tellinger();
   var zoneIndex = 0;
 
   void incrementZoneIndex() {
     setState(() {
       print("Update zoneindex");
-      if (zoneIndex < lastZone-1) {
+      if (zoneIndex < lastZone - 1) {
         zoneIndex++;
         print(zoneIndex);
       } else {
@@ -41,8 +64,37 @@ class _ActivityState extends State<Activity> {
     });
   }
 
-  void incrementTelling(activity) {
-    tellinger[zoneIndex];
+  void incrementTelling(String activity) {
+    print("Increment telling for activity " + activity);
+    tellinger.showTellinger();
+    tellinger.addTelling(zoneIndex, activity);
+    tellinger.showTellinger();
+    /* var zoneExists = false;
+
+    tellinger.forEach((telling) {
+      if (telling['zoneIndex'] == zoneIndex) {
+        zoneExists = true;
+
+        print('observations');
+        var activityExists = false;
+        List observations =
+            telling['observasjoner'] as List<Map<String, Object>>;
+        observations.forEach((element) {
+          if (element['aktivitet'] == activity) {
+            activityExists = true;
+            element['antall']++;
+          }
+        });
+      }
+    });
+//someMap["c"] = 3;
+    // zone does not exist in map and needs to be added
+    if (!zoneExists) {
+      
+    }
+
+    print('map after changes:');
+    print(tellinger); */
   }
 
   @override
@@ -51,7 +103,7 @@ class _ActivityState extends State<Activity> {
       home: Scaffold(
         appBar: ActivityTopbar(soner[zoneIndex]['sone'].toString()),
         body: Container(
-          child: ActivitiesList(),
+          child: ActivitiesList(incrementTelling),
         ),
         bottomNavigationBar: ActivityBottombar(incrementZoneIndex),
       ),
