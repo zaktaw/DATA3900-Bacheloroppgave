@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import './activity_card.dart';
 
 class ActivitiesList extends StatelessWidget {
+  final void Function(int, String, int) count;
+  final int zoneIndex;
 
-  final void Function(String) incrementTelling;
-
-  ActivitiesList(this.incrementTelling, {Key? key}) : super(key: key);
+  ActivitiesList(this.count, this.zoneIndex, {Key? key}) : super(key: key);
 
   final List<String> aktiviteter = <String>[
     'GRUDIG',
@@ -23,13 +23,14 @@ class ActivitiesList extends StatelessWidget {
     'Person alene uten digitale hjelpemidler'
   ];
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
         itemCount: aktiviteter.length,
         itemBuilder: (context, index) {
-          return ActivityCard(aktiviteter[index], aktivitetsInfo[index]);
+          return ActivityCard(aktiviteter[index], aktivitetsInfo[index], count, zoneIndex);
         },
       ),
     );

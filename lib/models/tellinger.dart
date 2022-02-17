@@ -23,7 +23,6 @@ class Tellinger {
   }
 
   void count(int zoneIndex, String activity, int count) {
-
     // Check if zone exsists. Set new value for count of actitivty if in the list. If not, create new entry for count/activity
     bool zoneFound = tellinger.containsKey(zoneIndex);
     if (zoneFound) {
@@ -32,17 +31,20 @@ class Tellinger {
         var telling = element as Telling;
         if (telling.activity == activity) {
           telling.count = count;
+          showTellinger();
           return;
         }
       }
       var newTelling = Telling(activity, count);
       counts.add(newTelling);
-      
-      //Added new zone with data from count to the list. Occurs the first time a count is reported in the zone.  
+      showTellinger();
+
+      //Added new zone with data from count to the list. Occurs the first time a count is reported in the zone.
     } else {
       List newZone = [];
       newZone.add(Telling(activity, count));
       tellinger[zoneIndex] = newZone;
+      showTellinger();
     }
   }
 }

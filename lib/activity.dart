@@ -103,7 +103,7 @@ class _ActivityState extends State<Activity> {
       home: Scaffold(
         appBar: ActivityTopbar(soner[zoneIndex]['sone'].toString()),
         body: Container(
-          child: ActivitiesList(incrementTelling),
+          child: ActivitiesList(tellinger.count, zoneIndex),
         ),
         bottomNavigationBar: ActivityBottombar(incrementZoneIndex),
       ),

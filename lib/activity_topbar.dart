@@ -26,7 +26,7 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
       centerTitle: true,
       title: InkWell(
         onTap: () => print("SONEINFO"),
-        child: Text("SONE 2"),
+        child: Text(zone),
       ),
       actions: <Widget>[
         ActivitiesPopButton('Dummy text :)', 'dummy top', key: key)

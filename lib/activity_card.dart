@@ -8,8 +8,14 @@ import 'activity_pop_button.dart';
 const String _heroActivityPop = "activity-pop-hero";
 
 class ActivityCard extends StatelessWidget {
-  ActivityCard(this.activity_name, this.activity_info, {Key? key}) : super(key: key);
+  ActivityCard(
+      this.activity_name, this.activity_info, this.count, this.zoneIndex,
+      {Key? key})
+      : super(key: key);
 
+  final void Function(int, String, int) count;
+
+  int zoneIndex;
   String activity_name;
   String activity_info;
   var txt = TextEditingController(text: "0");
@@ -18,7 +24,9 @@ class ActivityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Row(children: <Widget>[
-        Expanded(flex: 5, child: ActivityPopButton(activity_name, activity_info, key: key)),
+        Expanded(
+            flex: 5,
+            child: ActivityPopButton(activity_name, activity_info, key: key)),
         Expanded(
           flex: 2,
           child: IconButton(
@@ -55,17 +63,19 @@ class ActivityCard extends StatelessWidget {
       ]),
     );
   }
-}
 
-String increment(String value) {
-  int intValue = int.parse(value);
-  return (intValue + 1).toString();
-}
-
-String decrement(String value) {
-  int intValue = int.parse(value);
-  if ((intValue - 1) >= 0) {
-    return (intValue - 1).toString();
+  String increment(String value) {
+    int intValue = int.parse(value);
+    count(zoneIndex, activity_name, (intValue + 1));
+    return (intValue + 1).toString();
   }
-  return intValue.toString();
+
+  String decrement(String value) {
+    int intValue = int.parse(value);
+    if ((intValue - 1) >= 0) {
+      count(zoneIndex, activity_name, (intValue -1));
+      return (intValue - 1).toString();
+    }
+    return intValue.toString();
+  }
 }
