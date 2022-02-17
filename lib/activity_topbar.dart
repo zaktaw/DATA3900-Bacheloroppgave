@@ -5,8 +5,10 @@ const String _heroActivitiesPop = 'hero-activities-pop';
 
 class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
+  final String zone;
 
-  ActivityTopbar({
+  ActivityTopbar(
+    this.zone,{
     Key? key,
   })  : preferredSize = Size.fromHeight(50.0),
         super(key: key);
@@ -27,7 +29,7 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
         child: Text("SONE 2"),
       ),
       actions: <Widget>[
-        ActivitiesPopButton('Dummy text :)','dummy top', key: key)
+        ActivitiesPopButton('Dummy text :)', 'dummy top', key: key)
       ],
     );
   }

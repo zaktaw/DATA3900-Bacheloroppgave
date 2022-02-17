@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ActivityBottombar extends StatelessWidget {
-  const ActivityBottombar({Key? key}) : super(key: key);
+  ActivityBottombar(this.incrementZoneIndex, {Key? key}) : super(key: key);
+
+  late final VoidCallback incrementZoneIndex;
 
   @override
  Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class ActivityBottombar extends StatelessWidget {
           height: 60,
           color: Colors.black12,
           child: InkWell(
-            onTap: () => print('sonemann'),
+            onTap: incrementZoneIndex,
             child: Padding(
               padding: EdgeInsets.only(top: 8.0),
               child: Column(
