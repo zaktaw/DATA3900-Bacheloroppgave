@@ -67,7 +67,7 @@ class _ActivityState extends State<Activity> {
   void incrementTelling(String activity) {
     print("Increment telling for activity " + activity);
     tellinger.showTellinger();
-    tellinger.addTelling(zoneIndex, activity);
+    tellinger.count(zoneIndex, activity, 2);
     tellinger.showTellinger();
     /* var zoneExists = false;
 
