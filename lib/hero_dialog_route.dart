@@ -1,10 +1,12 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-class ActivityPop<T> extends PageRoute<T> {
-  ActivityPop({
+//Kode hentet fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
+class HeroDialogRoute<T> extends PageRoute<T> {
+  HeroDialogRoute({
     required WidgetBuilder builder,
-    required RouteSettings settings,
+    RouteSettings? settings,
     bool fullscreenDialog = false,
   })  : _builder = builder,
         super(settings: settings, fullscreenDialog: fullscreenDialog);
@@ -15,7 +17,7 @@ class ActivityPop<T> extends PageRoute<T> {
   bool get opaque => false;
 
   @override
-  bool get barrierDismissable => true;
+  bool get barrierDismissible => true;
 
   @override
   Duration get transitionDuration => const Duration(milliseconds: 300);
@@ -37,4 +39,7 @@ class ActivityPop<T> extends PageRoute<T> {
       Animation<double> secondaryAnimation) {
     return _builder(context);
   }
+
+  @override
+  String get barrierLabel => 'Popup dialog open';
 }

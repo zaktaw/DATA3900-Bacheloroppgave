@@ -12,13 +12,21 @@ class ActivitiesList extends StatelessWidget {
     'ALLUDIG'
   ];
 
+  final List<String> aktivitetsInfo = <String>[
+    'Personer i gruppe uten digitale hjelpemidler',
+    'Person alene i kontakt med personal',
+    'Person alene med laptop',
+    'Diverse aktiviteter',
+    'Person alene uten digitale hjelpemidler'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
         itemCount: aktiviteter.length,
         itemBuilder: (context, index) {
-          return ActivityCard(aktiviteter[index]);
+          return ActivityCard(aktiviteter[index], aktivitetsInfo[index]);
         },
       ),
     );
