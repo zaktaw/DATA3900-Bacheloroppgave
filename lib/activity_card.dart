@@ -9,16 +9,19 @@ const String _heroActivityPop = "activity-pop-hero";
 
 class ActivityCard extends StatelessWidget {
   ActivityCard(
-      this.activity_name, this.activity_info, this.count, this.zoneIndex,
+      this.activity_name, this.activity_info, this.count, this.zoneIndex, this.tellingActivity,
       {Key? key})
-      : super(key: key);
+      : super(key: key) {
+      txt.text = tellingActivity;
+  }
 
+  late String tellingActivity;
   final void Function(int, String, int) count;
 
   int zoneIndex;
   String activity_name;
   String activity_info;
-  var txt = TextEditingController(text: "0");
+  var txt = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,7 @@ class ActivityCard extends StatelessWidget {
   String decrement(String value) {
     int intValue = int.parse(value);
     if ((intValue - 1) >= 0) {
-      count(zoneIndex, activity_name, (intValue -1));
+      count(zoneIndex, activity_name, (intValue - 1));
       return (intValue - 1).toString();
     }
     return intValue.toString();
