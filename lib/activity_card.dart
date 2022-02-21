@@ -38,12 +38,16 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 1,
           child: TextFormField(
-              controller: txt,
-              textAlign: TextAlign.center,
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ]),
+            controller: txt,
+            onChanged: (Text) => {
+              if (txt.text.isNotEmpty) {manualInput(txt.text)}
+            },
+            textAlign: TextAlign.center,
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ],
+          ),
         ),
         Expanded(
           flex: 2,
@@ -73,9 +77,16 @@ class ActivityCard extends StatelessWidget {
   String decrement(String value) {
     int intValue = int.parse(value);
     if ((intValue - 1) >= 0) {
-      count(zoneIndex, activity_name, (intValue -1));
+      count(zoneIndex, activity_name, (intValue - 1));
       return (intValue - 1).toString();
     }
     return intValue.toString();
+  }
+
+  String manualInput(String? value) {
+    String stringValue = value.toString();
+    int intValue = int.parse(stringValue);
+    count(zoneIndex, activity_name, intValue);
+    return stringValue;
   }
 }
