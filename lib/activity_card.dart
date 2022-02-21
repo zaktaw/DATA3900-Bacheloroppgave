@@ -38,7 +38,7 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 1,
           child: TextFormField(
-              controller: txt,
+              controller: txt, 
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
