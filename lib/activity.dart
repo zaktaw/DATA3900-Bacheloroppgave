@@ -4,6 +4,7 @@ import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
 import 'activities_list.dart';
 import './zones_list.dart';
+import 'models/telling.dart';
 import 'models/tellinger.dart';
 
 final soner = [
@@ -14,31 +15,6 @@ final soner = [
 ];
 
 final lastZone = soner.length;
-
-final tellinger = [
-  {
-    'zoneIndex': 0,
-    'observasjoner': [
-      {'aktivitet': 'GRUDIG', 'antall': 2},
-      {'aktivitet': 'DIV', 'antall': 3},
-      {'aktivitet': 'ALPERS', 'antall': 4},
-    ]
-  },
-  {
-    'zoneIndex': 1,
-    'observasjoner': [
-      {'GRUDIG': 2}
-    ]
-  }
-];
-
-var a = [
-  {
-    1: [
-      {'aktivitet': 'GRUDIG', 'antall': 2}
-    ]
-  }
-];
 
 class Activity extends StatefulWidget {
   Activity({Key? key}) : super(key: key);
@@ -64,48 +40,35 @@ class _ActivityState extends State<Activity> {
     });
   }
 
-  void incrementTelling(String activity) {
-    print("Increment telling for activity " + activity);
-    tellinger.showTellinger();
-    tellinger.count(zoneIndex, activity, 2);
-    tellinger.showTellinger();
-    /* var zoneExists = false;
-
-    tellinger.forEach((telling) {
-      if (telling['zoneIndex'] == zoneIndex) {
-        zoneExists = true;
-
-        print('observations');
-        var activityExists = false;
-        List observations =
-            telling['observasjoner'] as List<Map<String, Object>>;
-        observations.forEach((element) {
-          if (element['aktivitet'] == activity) {
-            activityExists = true;
-            element['antall']++;
-          }
-        });
+  void decrementZoneIndex() {
+    setState(() {
+      if (zoneIndex > 0) {
+        zoneIndex--;
+        print(zoneIndex);
       }
     });
-//someMap["c"] = 3;
-    // zone does not exist in map and needs to be added
-    if (!zoneExists) {
-      
-    }
+  }
 
-    print('map after changes:');
-    print(tellinger); */
+  
+
+  void nextZone() {
+    incrementZoneIndex();
+  }
+
+  void previousZone() {
+    decrementZoneIndex();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: ActivityTopbar(soner[zoneIndex]['sone'].toString()),
+        appBar:
+            ActivityTopbar(soner[zoneIndex]['sone'].toString(), previousZone),
         body: Container(
-          child: ActivitiesList(tellinger.count, zoneIndex),
+          child: ActivitiesList(tellinger.count, zoneIndex, tellinger),
         ),
-        bottomNavigationBar: ActivityBottombar(incrementZoneIndex),
+        bottomNavigationBar: ActivityBottombar(nextZone),
       ),
     );
   }
