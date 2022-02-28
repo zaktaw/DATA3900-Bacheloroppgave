@@ -1,5 +1,4 @@
 class Telling {
-
   late String activity;
   late int count;
 
@@ -8,4 +7,10 @@ class Telling {
   int get getCount {
     return count;
   }
+
+   String toString() {
+    return activity + ", " + count.toString();
+  }
+
+ 
 }

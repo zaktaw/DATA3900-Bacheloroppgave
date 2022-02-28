@@ -86,7 +86,7 @@ class ActivityCard extends StatelessWidget {
     return intValue.toString();
   }
 
-  String manualInput(String? value) {
+  String manualInput(String? value) { 
     String stringValue = value.toString();
     int intValue = int.parse(stringValue);
     count(zoneIndex, activity_name, intValue);
