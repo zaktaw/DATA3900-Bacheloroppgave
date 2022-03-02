@@ -16,15 +16,24 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('0'), findsNWidgets(5));
+    expect(find.text('Sone 1'), findsOneWidget);
+
+    await tester.tap(find.text('Sone 1'));
+    await tester.pump();
+    expect(find.text('dummy text'), findsOneWidget);
+
+    //expect(find.text('1'), findsNothing);
 
     // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    
+    //await tester.tap(find.byIcon(Icons.add));
+    //await tester.tap(find.byIcon(Icons.add_circle_outline));
+    //*await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    //Verify that our counter has incremented.
+    //expect(find.text('1'), findsNWidgets(5));
+    //expect(find.text('0'), findsNothing);
+    //expect(find.text('1'), findsOneWidget);
   });
 }
