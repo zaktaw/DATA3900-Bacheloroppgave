@@ -15,13 +15,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        //TODO: freestylah
         child: Center(
           child: Column(
-            children: [
+            children: const [
               Text("Main menu placeholder"), 
-              const HomeScreenButton(btnName: "Ny telling", route: "/activity"),
-              const HomeScreenButton(btnName: "Innstillinger", route: "/zones"),
-              const HomeScreenButton(btnName: "Hjelp", route: "/help"),
+              HomeScreenButton(btnName: "Ny telling", route: "/activity"),
+              HomeScreenButton(btnName: "Innstillinger", route: "/zones"),
+              HomeScreenButton(btnName: "Hjelp", route: "/help"),
               ],
           )
         )
