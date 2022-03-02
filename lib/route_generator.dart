@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/main.dart';
 import 'package:bacheloroppgave/activity.dart';
@@ -6,7 +7,6 @@ import 'package:bacheloroppgave/main_menu.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-
     final args = settings.arguments;
 
     switch (settings.name) {
@@ -15,7 +15,9 @@ class RouteGenerator {
       case '/activity':
         return MaterialPageRoute(builder: (_) => Activity());
       case '/zones':
-        return MaterialPageRoute(builder: (_) => ZonesList());
+        if (args is Tellinger) {
+          return MaterialPageRoute(builder: (_) => ZonesList(args));
+        }
     }
 
     return _errorRoute();

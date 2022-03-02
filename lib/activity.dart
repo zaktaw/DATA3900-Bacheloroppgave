@@ -34,18 +34,11 @@ class _ActivityState extends State<Activity> {
         zoneIndex++;
         print(zoneIndex);
       } else {
-        //TODO route til soneoversikt
         print("Route til soneoversikt");
-        Navigator.of(context).pushNamed('/zones');
-      }
-    });
-  }
-
-  void decrementZoneIndex() {
-    setState(() {
-      if (zoneIndex > 0) {
-        zoneIndex--;
-        print(zoneIndex);
+        Navigator.of(context).pushNamed(
+          '/zones',
+          arguments: tellinger,
+        );
       }
     });
   }
@@ -54,16 +47,18 @@ class _ActivityState extends State<Activity> {
     incrementZoneIndex();
   }
 
-  void previousZone() {
-    decrementZoneIndex();
+  void goToZones() {
+    Navigator.of(context).pushNamed(
+      '/zones',
+      arguments: tellinger,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar:
-            ActivityTopbar(soner[zoneIndex]['sone'].toString(), previousZone),
+        appBar: ActivityTopbar(soner[zoneIndex]['sone'].toString(), goToZones),
         body: Container(
           child: ActivitiesList(tellinger.count, zoneIndex, tellinger),
         ),

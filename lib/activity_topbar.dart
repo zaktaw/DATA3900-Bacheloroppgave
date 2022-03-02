@@ -7,11 +7,11 @@ const String _heroActivitiesPop = 'hero-activities-pop';
 class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final String zone;
-  late final VoidCallback previousZone;
+  late final VoidCallback goToZones;
 
   ActivityTopbar(
     this.zone,
-    this.previousZone,
+    this.goToZones,
     {
     Key? key,
   })  : preferredSize = Size.fromHeight(50.0),
@@ -25,7 +25,7 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: () => previousZone()),
+          onPressed: () => goToZones()),
       backgroundColor: Color.fromARGB(255, 189, 190, 187),
       centerTitle: true,
       title: ZoneInActivitiesPopButton("dummy text", zone, key:key),

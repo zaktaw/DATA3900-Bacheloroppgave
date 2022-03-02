@@ -1,8 +1,11 @@
+import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:flutter/material.dart';
 import './zone_card.dart';
 
 class ZonesList extends StatelessWidget {
-  ZonesList({Key? key}) : super(key: key);
+  final Tellinger data;
+
+  ZonesList(this.data, {Key? key}) : super(key: key);
 
   final List<String> zones = <String>[
     'Sone 1',
@@ -18,7 +21,7 @@ class ZonesList extends StatelessWidget {
       body: ListView.builder(
         itemCount: zones.length,
         itemBuilder: (context, index) {
-          return ZoneCard(zones[index], index);
+          return ZoneCard(zones[index], index, data);
         },
       ),
     );
