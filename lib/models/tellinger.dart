@@ -26,6 +26,13 @@ class Tellinger {
     return tellinger[zone] ?? []; // return empty list if no tellinger is stored
   }
 
+  bool checkTellingKey(int zone) {
+    if (tellinger.containsKey(zone)) {
+      return true;
+    }
+    return false;
+  }
+
   void count(int zoneIndex, String activity, int count) {
     // Check if zone exsists. Set new value for count of actitivty if in the list. If not, create new entry for count/activity
     bool zoneFound = tellinger.containsKey(zoneIndex);

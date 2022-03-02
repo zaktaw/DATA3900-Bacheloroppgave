@@ -4,7 +4,7 @@ import './zone_card.dart';
 class ZonesList extends StatelessWidget {
   ZonesList({Key? key}) : super(key: key);
 
-  final List<String> aktiviteter = <String>[
+  final List<String> zones = <String>[
     'Sone 1',
     'Sone 2',
     'Sone 3',
@@ -16,9 +16,9 @@ class ZonesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: aktiviteter.length,
+        itemCount: zones.length,
         itemBuilder: (context, index) {
-          return ZoneCard(aktiviteter[index]);
+          return ZoneCard(zones[index], index);
         },
       ),
     );

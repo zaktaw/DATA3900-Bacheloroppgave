@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          child: Activity(),
+          child: ZonesList(),
         ),
       ),
     );
