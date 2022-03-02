@@ -36,6 +36,7 @@ class _ActivityState extends State<Activity> {
       } else {
         //TODO route til soneoversikt
         print("Route til soneoversikt");
+        Navigator.of(context).pushNamed('/zones');
       }
     });
   }
@@ -48,8 +49,6 @@ class _ActivityState extends State<Activity> {
       }
     });
   }
-
-  
 
   void nextZone() {
     incrementZoneIndex();
