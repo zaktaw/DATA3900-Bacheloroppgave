@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: const [
               Text("Main menu placeholder"), 
               HomeScreenButton(btnName: "Ny telling", route: "/activity"),
-              HomeScreenButton(btnName: "Innstillinger", route: "/zones"),
+              HomeScreenButton(btnName: "Innstillinger", route: "/settings"),
               HomeScreenButton(btnName: "Hjelp", route: "/help"),
               ],
           )
