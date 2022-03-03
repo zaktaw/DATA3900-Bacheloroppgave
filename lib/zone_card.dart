@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 import 'models/tellinger.dart';
 
 class ZoneCard extends StatelessWidget {
-  ZoneCard(this.zone_name, this.zone_index, this.tellinger, {Key? key}) : super(key: key);
+  ZoneCard(this.zone_name, this.zone_index, this.tellinger, {Key? key})
+      : super(key: key);
 
   String zone_name;
   int zone_index;
   Tellinger tellinger;
 
   void navigateToActivityPage(BuildContext context) {
-    Navigator.of(context).pushNamed(
-          '/activity',
-          arguments: [tellinger, zone_index]
-        );
+    Navigator.of(context)
+        .pushNamed('/activity', arguments: [tellinger, zone_index]);
   }
 
   @override
@@ -48,6 +47,4 @@ class ZoneCard extends StatelessWidget {
     }
     return false;
   }
-  
-  
 }

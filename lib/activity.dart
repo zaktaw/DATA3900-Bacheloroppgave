@@ -78,7 +78,7 @@ class _ActivityState extends State<Activity> {
         body: Container(
           child: ActivitiesList(tellinger.count, zoneIndex, tellinger),
         ),
-        bottomNavigationBar: ActivityBottombar(nextZone),
+        bottomNavigationBar: ActivityBottombar(nextZone, 'Fullfør sone', tellinger, -1),
       ),
     );
   }
