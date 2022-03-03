@@ -26,6 +26,10 @@ class Tellinger {
     return tellinger[zone] ?? []; // return empty list if no tellinger is stored
   }
 
+  int getNumberOfZone() {
+    return tellinger.length;
+  }
+
   bool checkTellingKey(int zone) {
     if (tellinger.containsKey(zone)) {
       return true;
