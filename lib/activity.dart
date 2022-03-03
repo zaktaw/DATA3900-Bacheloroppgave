@@ -17,15 +17,30 @@ final soner = [
 final lastZone = soner.length;
 
 class Activity extends StatefulWidget {
-  Activity({Key? key}) : super(key: key);
+  Tellinger tellinger;
+  int zoneIndex;
+
+  Activity(this.tellinger, this.zoneIndex, {Key? key}) : super(key: key) {
+    /* print("ZONE INDEX");
+    print(zoneIndex);
+
+    tellinger.showTellinger(); */
+  }
 
   @override
   _ActivityState createState() => _ActivityState();
 }
 
 class _ActivityState extends State<Activity> {
-  Tellinger tellinger = Tellinger();
-  var zoneIndex = 0;
+  late Tellinger tellinger;
+  late int zoneIndex;
+
+  @override
+  void initState() {
+    zoneIndex = widget.zoneIndex;
+    tellinger = widget.tellinger;
+    super.initState();
+  }
 
   void incrementZoneIndex() {
     setState(() {
@@ -34,18 +49,11 @@ class _ActivityState extends State<Activity> {
         zoneIndex++;
         print(zoneIndex);
       } else {
-        //TODO route til soneoversikt
         print("Route til soneoversikt");
-        Navigator.of(context).pushNamed('/zones');
-      }
-    });
-  }
-
-  void decrementZoneIndex() {
-    setState(() {
-      if (zoneIndex > 0) {
-        zoneIndex--;
-        print(zoneIndex);
+        Navigator.of(context).pushNamed(
+          '/zones',
+          arguments: tellinger,
+        );
       }
     });
   }
@@ -54,16 +62,18 @@ class _ActivityState extends State<Activity> {
     incrementZoneIndex();
   }
 
-  void previousZone() {
-    decrementZoneIndex();
+  void goToZones() {
+    Navigator.of(context).pushNamed(
+      '/zones',
+      arguments: tellinger,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar:
-            ActivityTopbar(soner[zoneIndex]['sone'].toString(), previousZone),
+        appBar: ActivityTopbar(soner[zoneIndex]['sone'].toString(), goToZones),
         body: Container(
           child: ActivitiesList(tellinger.count, zoneIndex, tellinger),
         ),

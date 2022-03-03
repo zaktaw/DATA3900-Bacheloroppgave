@@ -5,11 +5,18 @@ import 'package:flutter/material.dart';
 import 'models/tellinger.dart';
 
 class ZoneCard extends StatelessWidget {
-  ZoneCard(this.zone_name, this.zone_index, {Key? key}) : super(key: key);
+  ZoneCard(this.zone_name, this.zone_index, this.tellinger, {Key? key}) : super(key: key);
 
   String zone_name;
   int zone_index;
-  Tellinger tellinger = Tellinger();
+  Tellinger tellinger;
+
+  void navigateToActivityPage(BuildContext context) {
+    Navigator.of(context).pushNamed(
+          '/activity',
+          arguments: [tellinger, zone_index]
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class ZoneCard extends StatelessWidget {
                           ? Colors.green
                           : Color.fromARGB(255, 114, 114, 182)),
                 ),
-                onTap: () => print('tap'),
+                onTap: () => navigateToActivityPage(context),
                 onLongPress: () => print('long tap'),
               ))
         ],
@@ -36,11 +43,11 @@ class ZoneCard extends StatelessWidget {
   }
 
   bool checkIfCounted(int index) {
-    tellinger.count(1, 'GRUDIG', 2);
-    tellinger.count(3, 'GRUDIG', 1);
     if (tellinger.checkTellingKey(index)) {
       return true;
     }
     return false;
   }
+  
+  
 }
