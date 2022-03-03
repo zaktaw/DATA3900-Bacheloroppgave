@@ -30,6 +30,16 @@ class Tellinger {
     return tellinger.length;
   }
 
+  int getNumberOfCountsInZone(int index) {
+    int numberOfEntries = 0;
+    List counts = tellinger[index];
+    for (var element in counts) {
+      Telling obj = element;
+      numberOfEntries += obj.count;
+    }
+    return numberOfEntries;
+  }
+
   bool checkTellingKey(int zone) {
     if (tellinger.containsKey(zone)) {
       return true;

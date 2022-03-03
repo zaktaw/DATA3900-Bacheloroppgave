@@ -7,8 +7,8 @@ class DropdownNames extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: DropdownButton<String>(
+    return Expanded(
+        child: DropdownButton<String>(
       items: names.map((String value) {
         return DropdownMenuItem<String>(
           value: value,

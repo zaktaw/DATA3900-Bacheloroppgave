@@ -2,27 +2,24 @@ import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmReviewList extends StatelessWidget {
-  final Tellinger data;
+  late Tellinger data;
   late String list;
 
   final List<String> zones = <String>[
     'Sone 1',
-    'Sone 2',
-    'Sone 3',
-    'Sone 4',
-    'Sone 5'
   ];
 
-  ConfirmReviewList(this.data, {Key? key}) : super(key: key);
+  ConfirmReviewList(this.data, {Key? key}) : super(key: key) {
+    data = this.data;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-          body: ListView.builder(
-        itemCount: zones.length,
-        itemBuilder: (context, index) {
-          return Text(zones[index]);
-        }
-    ));
+    return Expanded(
+        child: ListView.builder(
+            itemCount: zones.length,
+            itemBuilder: (context, index) {
+              return Text(zones[index] + ": " + data.getNumberOfCountsInZone(index).toString());
+            }));
   }
 }

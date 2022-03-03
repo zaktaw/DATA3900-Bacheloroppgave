@@ -33,16 +33,18 @@ class _ConfirmCountState extends State<ConfirmCount> {
         home: Scaffold(
       appBar: SettingsHelpTopBar("Bekreft telling"),
       body: Container(
-          child: Stack(
-        children: [
-          DropdownNames(),
-          Text("Du har telt " +
-              numberOfZones +
-              " av " +
-              numberOfZones +
-              " soner"),
-        ConfirmReviewList(data)],
-      )),
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+                Text("Du har telt " +
+                  numberOfZones +
+                  " av " +
+                  numberOfZones +
+                  " soner")
+                  , ConfirmReviewList(data),
+              DropdownNames(),
+            ],
+        )),
       bottomNavigationBar: null,
     ));
   }
