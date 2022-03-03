@@ -59,6 +59,7 @@ class _ActivityState extends State<Activity> {
   }
 
   void nextZone() {
+    tellinger.addZoneKey(zoneIndex);
     incrementZoneIndex();
   }
 
