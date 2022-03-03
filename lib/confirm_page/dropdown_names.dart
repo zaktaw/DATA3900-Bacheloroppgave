@@ -9,7 +9,7 @@ class DropdownNames extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: DropdownButton<String>(
-      items: <String>['A', 'B', 'C', 'D'].map((String value) {
+      items: names.map((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
