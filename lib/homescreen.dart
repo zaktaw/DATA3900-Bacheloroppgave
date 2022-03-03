@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/homescreen_button.dart';
+import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:bacheloroppgave/zone_card.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  Tellinger tellinger = Tellinger();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,11 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
         //TODO: freestylah
         child: Center(
           child: Column(
-            children: const [
+            children: [
               Text("Main menu placeholder"), 
-              HomeScreenButton(btnName: "Ny telling", route: "/activity"),
-              HomeScreenButton(btnName: "Innstillinger", route: "/settings"),
-              HomeScreenButton(btnName: "Hjelp", route: "/help"),
+              HomeScreenButton(btnName: "Ny telling", route: "/activity", args: [tellinger, 0]),
+              HomeScreenButton(btnName: "Innstillinger", route: "/settings", args: null),
+              HomeScreenButton(btnName: "Hjelp", route: "/help", args: null),
+              HomeScreenButton(btnName: "Bekreft", route: "/bekreft", args: tellinger),
               ],
           )
         )

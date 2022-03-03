@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
 import 'package:bacheloroppgave/help.dart';
 import 'package:bacheloroppgave/homescreen.dart';
 import 'package:bacheloroppgave/settings.dart';
@@ -31,6 +32,11 @@ class RouteGenerator {
         
       case '/help':
         return MaterialPageRoute(builder: (_) => Help());
+
+      case '/bekreft':
+        if (args is Tellinger) {
+          return MaterialPageRoute(builder: (_) => ConfirmCount(args));
+        }
     }
 
     return _errorRoute();

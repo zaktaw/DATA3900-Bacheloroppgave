@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/models/tellinger.dart';
+import 'package:bacheloroppgave/confirm_page/dropdown_names.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmCount extends StatefulWidget {
@@ -15,7 +16,11 @@ class _ConfirmCountState extends State<ConfirmCount> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Container(),
+        body: Container(
+          child: Column(
+            children: [DropdownNames()],
+          ),
+        ),
         bottomNavigationBar: null,
       ),
     );
