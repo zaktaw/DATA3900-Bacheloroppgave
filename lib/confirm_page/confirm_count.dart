@@ -35,13 +35,14 @@ class _ConfirmCountState extends State<ConfirmCount> {
       body: Container(
           child: Stack(
         children: [
-          DropdownNames(),
           Text("Du har telt " +
               numberOfZones +
               " av " +
               numberOfZones +
               " soner"),
-        ConfirmReviewList(data)],
+        ConfirmReviewList(data),
+        DropdownNames()
+        ]
       )),
       bottomNavigationBar: null,
     ));
