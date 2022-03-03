@@ -13,7 +13,9 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (_) => MainMenu());
       case '/activity':
-        return MaterialPageRoute(builder: (_) => Activity());
+        List<dynamic> argsList = args as List<dynamic>;
+        return MaterialPageRoute(
+            builder: (_) => Activity(argsList[0], argsList[1]));
       case '/zones':
         if (args is Tellinger) {
           return MaterialPageRoute(builder: (_) => ZonesList(args));

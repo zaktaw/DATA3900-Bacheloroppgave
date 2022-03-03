@@ -17,15 +17,30 @@ final soner = [
 final lastZone = soner.length;
 
 class Activity extends StatefulWidget {
-  Activity({Key? key}) : super(key: key);
+  Tellinger tellinger;
+  int zoneIndex;
+
+  Activity(this.tellinger, this.zoneIndex, {Key? key}) : super(key: key) {
+    /* print("ZONE INDEX");
+    print(zoneIndex);
+
+    tellinger.showTellinger(); */
+  }
 
   @override
   _ActivityState createState() => _ActivityState();
 }
 
 class _ActivityState extends State<Activity> {
-  Tellinger tellinger = Tellinger();
-  var zoneIndex = 0;
+  late Tellinger tellinger;
+  late int zoneIndex;
+
+  @override
+  void initState() {
+    zoneIndex = widget.zoneIndex;
+    tellinger = widget.tellinger;
+    super.initState();
+  }
 
   void incrementZoneIndex() {
     setState(() {
