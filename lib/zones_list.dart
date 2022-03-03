@@ -1,6 +1,7 @@
 import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:flutter/material.dart';
 import './zone_card.dart';
+import 'activity_bottombar.dart';
 
 class ZonesList extends StatelessWidget {
   final Tellinger data;
@@ -11,8 +12,7 @@ class ZonesList extends StatelessWidget {
     'Sone 1',
     'Sone 2',
     'Sone 3',
-    'Sone 4',
-    'Sone 5'
+    'Sone 4'
   ];
 
   @override
@@ -24,6 +24,7 @@ class ZonesList extends StatelessWidget {
           return ZoneCard(zones[index], index, data);
         },
       ),
+      bottomNavigationBar: ActivityBottombar((){}, 'Fullfør telling', data, zones.length),
     );
   }
 }
