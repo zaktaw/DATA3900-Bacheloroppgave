@@ -55,4 +55,10 @@ class Tellinger {
       tellinger[zoneIndex] = newZone;
     }
   }
+
+  // adds current zone index as key in the map when going to the next zone page, even if no counts was registered
+  void addZoneKey(int zoneIndex) {
+    bool zoneFound = tellinger.containsKey(zoneIndex);
+    if (!zoneFound) tellinger[zoneIndex] = [];
+  }
 }
