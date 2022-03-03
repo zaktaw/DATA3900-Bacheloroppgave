@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/activity_bottombar.dart';
+import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
 import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:bacheloroppgave/confirm_page/dropdown_names.dart';
 import 'package:bacheloroppgave/settings_help_topbar.dart';
@@ -40,7 +41,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
               " av " +
               numberOfZones +
               " soner"),
-        ],
+        ConfirmReviewList(data)],
       )),
       bottomNavigationBar: null,
     ));
