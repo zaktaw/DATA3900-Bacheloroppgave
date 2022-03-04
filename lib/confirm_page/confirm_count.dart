@@ -19,11 +19,14 @@ class ConfirmCount extends StatefulWidget {
 class _ConfirmCountState extends State<ConfirmCount> {
   late Tellinger data;
   late String numberOfZones;
+  bool observerSelected = false;
 
   @override
   void initState() {
     data = widget.data;
     numberOfZones = data.getNumberOfZone().toString();
+    //data.makeCompleteCountsObject('Alfred');
+    data.showTellinger();
     super.initState();
   }
 
@@ -34,20 +37,26 @@ class _ConfirmCountState extends State<ConfirmCount> {
       appBar: SettingsHelpTopBar("Bekreft telling"),
       body: Container(
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-                Text("Du har telt " +
-                  numberOfZones +
-                  " av " +
-                  numberOfZones +
-                  " soner")
-                  , ConfirmReviewList(data),
-              DropdownNames(),
-            ],
-        )),
-      bottomNavigationBar: ConfirmBottombar(),
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text("Du har telt " +
+              numberOfZones +
+              " av " +
+              numberOfZones +
+              " soner"),
+          ConfirmReviewList(data),
+          DropdownNames(setIsObserverSelected),
+        ],
+      )),
+      bottomNavigationBar: ConfirmBottombar(getIsObserverSelected),
     ));
   }
 
+  void setIsObserverSelected() {
+    observerSelected = true;
+  }
 
+  bool getIsObserverSelected() {
+    return observerSelected;
+  }
 }
