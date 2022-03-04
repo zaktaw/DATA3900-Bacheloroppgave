@@ -27,12 +27,6 @@ class _ConfirmCountState extends State<ConfirmCount> {
   void initState() {
     data = widget.data;
     numberOfZones = data.getNumberOfZone().toString();
-
-    TttObject tttObject = TttObject(
-        data.tellinger, 'Alf', ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
-    tttObject.showTellinger();
-    print(tttObject.name);
-
     super.initState();
   }
 
