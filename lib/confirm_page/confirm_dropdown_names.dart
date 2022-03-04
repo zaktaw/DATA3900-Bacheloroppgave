@@ -1,7 +1,12 @@
+import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
 import 'package:flutter/material.dart';
 
 class DropdownNames extends StatefulWidget {
-  const DropdownNames({Key? key}) : super(key: key);
+  Function setIsObserverSelected;
+
+  DropdownNames(this.setIsObserverSelected, {Key? key}) : super(key: key) {
+    setIsObserverSelected = this.setIsObserverSelected;
+  }
 
   @override
   State<DropdownNames> createState() => _DropdownNamesState();
@@ -10,6 +15,12 @@ class DropdownNames extends StatefulWidget {
 class _DropdownNamesState extends State<DropdownNames> {
   final List<String> names = <String>['Alf', 'Eva', 'Nils', 'Bob', 'Ida'];
   var selectedValue;
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +37,7 @@ class _DropdownNamesState extends State<DropdownNames> {
       }).toList(),
       onChanged: (value) {
         setState(() {
+          widget.setIsObserverSelected();
           selectedValue = value as String;
         });
       },
