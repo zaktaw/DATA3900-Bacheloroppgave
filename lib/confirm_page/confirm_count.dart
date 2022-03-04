@@ -68,11 +68,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
     // if good return good
     // else return not good
     tttObject.showTellinger();
-    print("Navn i object:");
-    print(tttObject.name);
-    print("Navn i state:");
-    print(observerName);
-    return false;
+    return true;
   }
 
   void setObserverName(String selectedDropdownName) {
