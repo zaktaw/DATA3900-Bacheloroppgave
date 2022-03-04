@@ -54,7 +54,6 @@ class _ConfirmCountState extends State<ConfirmCount> {
               numberOfZones +
               " soner"),
           ConfirmReviewList(data),
-<<<<<<< HEAD
           DropdownNames(setIsObserverSelected),
         ],
       )),
@@ -69,12 +68,4 @@ class _ConfirmCountState extends State<ConfirmCount> {
   bool getIsObserverSelected() {
     return observerSelected;
   }
-=======
-          DropdownNames(),
-        ],
-      )),
-      bottomNavigationBar: ConfirmBottombar(),
-    ));
-  }
->>>>>>> make-complete-counts-object
 }
