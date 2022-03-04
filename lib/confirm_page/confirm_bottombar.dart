@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class ConfirmBottombar extends StatefulWidget {
   Function getIsObserverSelected;
-  String sendTTT;
+  Function sendTTT;
 
   ConfirmBottombar(this.getIsObserverSelected, this.sendTTT, {Key? key})
       : super(key: key) {
@@ -16,8 +16,10 @@ class ConfirmBottombar extends StatefulWidget {
 }
 
 class _ConfirmBottombarState extends State<ConfirmBottombar> {
+  late bool response;
+
   @override
-  void initState() {
+  void initState() {;
     super.initState();
   }
 
@@ -27,19 +29,36 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
       height: 60,
       color: Colors.black12,
       child: InkWell(
-        onTap: () => widget.getIsObserverSelected()
-            ? Fluttertoast.showToast(
-                msg: widget.sendTTT, // message
-                toastLength: Toast.LENGTH_SHORT, // length
-                gravity: ToastGravity.CENTER, // location
-                timeInSecForIosWeb: 3) // duration,
-
-            : Fluttertoast.showToast(
-                msg: widget.sendTTT, // message
+        onTap: () => {
+          if(widget.getIsObserverSelected()) {
+            response = widget.sendTTT(),
+            
+            if(response) {
+              Fluttertoast.showToast(
+                msg: "Telling sendt", // message
                 toastLength: Toast.LENGTH_SHORT, // length
                 gravity: ToastGravity.CENTER, // location
                 timeInSecForIosWeb: 3 // duration,
                 ),
+            } else {
+              Fluttertoast.showToast(
+                msg: "Sending feilet", // message
+                toastLength: Toast.LENGTH_SHORT, // length
+                gravity: ToastGravity.CENTER, // location
+                timeInSecForIosWeb: 3 // duration,
+                ),
+            }
+          } 
+          else {
+            Fluttertoast.showToast(
+                msg: "Velg navn", // message
+                toastLength: Toast.LENGTH_SHORT, // length
+                gravity: ToastGravity.CENTER, // location
+                timeInSecForIosWeb: 3 // duration,
+                ),
+          }
+          
+        },
         child: Padding(
           padding: EdgeInsets.only(top: 8.0),
           child: Column(

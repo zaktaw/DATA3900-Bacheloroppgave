@@ -48,7 +48,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
           DropdownNames(setIsObserverSelected, setObserverName),
         ],
       )),
-      bottomNavigationBar: ConfirmBottombar(getIsObserverSelected, sendTTT()),
+      bottomNavigationBar: ConfirmBottombar(getIsObserverSelected, sendTTT),
     ));
   }
 
@@ -60,12 +60,19 @@ class _ConfirmCountState extends State<ConfirmCount> {
     return observerSelected;
   }
 
-  String sendTTT() {
-    TttObject tttObject = TttObject(
-        data.tellinger, 'Alf', ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
+  bool sendTTT() {
+    TttObject tttObject = TttObject(data.tellinger, observerName,
+        ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
+
+    // kall på backend
+    // if good return good
+    // else return not good
     tttObject.showTellinger();
+    print("Navn i object:");
     print(tttObject.name);
-    return "feil";
+    print("Navn i state:");
+    print(observerName);
+    return false;
   }
 
   void setObserverName(String selectedDropdownName) {

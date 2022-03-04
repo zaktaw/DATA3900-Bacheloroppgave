@@ -38,9 +38,10 @@ class _DropdownNamesState extends State<DropdownNames> {
       }).toList(),
       onChanged: (value) {
         setState(() {
+          selectedValue = value as String;
+          print(value);
           widget.setIsObserverSelected();
           widget.setObserverName(value);
-          selectedValue = value as String;
         });
       },
     ));
