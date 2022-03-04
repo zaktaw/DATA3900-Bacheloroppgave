@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ConfirmBottombar extends StatefulWidget {
   Function getIsObserverSelected;
+  String sendTTT;
 
-  ConfirmBottombar(this.getIsObserverSelected, {Key? key}) : super(key: key) {
+  ConfirmBottombar(this.getIsObserverSelected, this.sendTTT, {Key? key})
+      : super(key: key) {
     getIsObserverSelected = this.getIsObserverSelected;
+    sendTTT = this.sendTTT;
   }
 
   @override
@@ -23,7 +27,19 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
       height: 60,
       color: Colors.black12,
       child: InkWell(
-        onTap: () => null,
+        onTap: () => widget.getIsObserverSelected()
+            ? Fluttertoast.showToast(
+                msg: widget.sendTTT, // message
+                toastLength: Toast.LENGTH_SHORT, // length
+                gravity: ToastGravity.CENTER, // location
+                timeInSecForIosWeb: 3) // duration,
+
+            : Fluttertoast.showToast(
+                msg: widget.sendTTT, // message
+                toastLength: Toast.LENGTH_SHORT, // length
+                gravity: ToastGravity.CENTER, // location
+                timeInSecForIosWeb: 3 // duration,
+                ),
         child: Padding(
           padding: EdgeInsets.only(top: 8.0),
           child: Column(

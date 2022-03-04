@@ -26,13 +26,9 @@ class _ConfirmCountState extends State<ConfirmCount> {
   void initState() {
     data = widget.data;
     numberOfZones = data.getNumberOfZone().toString();
-    
-    TttObject tttObject = TttObject(data.tellinger, 'Alf', 
-    ['GRUDIG',
-    'ALPERS',
-    'ALLAP',
-    'DIV',
-    'ALLUDIG']);
+
+    TttObject tttObject = TttObject(
+        data.tellinger, 'Alf', ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
     tttObject.showTellinger();
     print(tttObject.name);
 
@@ -57,7 +53,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
           DropdownNames(setIsObserverSelected),
         ],
       )),
-      bottomNavigationBar: ConfirmBottombar(getIsObserverSelected),
+      bottomNavigationBar: ConfirmBottombar(getIsObserverSelected, sendTTT()),
     ));
   }
 
@@ -67,5 +63,13 @@ class _ConfirmCountState extends State<ConfirmCount> {
 
   bool getIsObserverSelected() {
     return observerSelected;
+  }
+
+  String sendTTT() {
+    TttObject tttObject = TttObject(
+        data.tellinger, 'Alf', ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
+    tttObject.showTellinger();
+    print(tttObject.name);
+    return "feil";
   }
 }
