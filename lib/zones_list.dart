@@ -2,6 +2,7 @@ import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:flutter/material.dart';
 import './zone_card.dart';
 import 'activity_bottombar.dart';
+import 'zones_topbar.dart';
 
 class ZonesList extends StatelessWidget {
   final Tellinger data;
@@ -24,6 +25,7 @@ class ZonesList extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: ZonesTopbar(key: key),
       body: ListView.builder(
         itemCount: zones.length,
         itemBuilder: (context, index) {
