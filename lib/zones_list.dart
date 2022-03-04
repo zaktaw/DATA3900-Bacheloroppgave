@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './zone_card.dart';
 import 'activity_bottombar.dart';
 import 'zones_topbar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ZonesList extends StatelessWidget {
   final Tellinger data;
@@ -20,7 +21,12 @@ class ZonesList extends StatelessWidget {
           arguments: data,
         );
       } else {
-        print("Not all zones are completed");
+        Fluttertoast.showToast(
+        msg: "This is a Toast message",  // message
+        toastLength: Toast.LENGTH_SHORT, // length
+        gravity: ToastGravity.CENTER,    // location
+        timeInSecForIosWeb: 3            // duration
+    );
       }
     }
 
