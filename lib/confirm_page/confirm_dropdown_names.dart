@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 class DropdownNames extends StatefulWidget {
   Function setIsObserverSelected;
+  Function setObserverName;
 
-  DropdownNames(this.setIsObserverSelected, {Key? key}) : super(key: key) {
+  DropdownNames(this.setIsObserverSelected, this.setObserverName, {Key? key})
+      : super(key: key) {
     setIsObserverSelected = this.setIsObserverSelected;
   }
 
@@ -15,7 +17,6 @@ class DropdownNames extends StatefulWidget {
 class _DropdownNamesState extends State<DropdownNames> {
   final List<String> names = <String>['Alf', 'Eva', 'Nils', 'Bob', 'Ida'];
   var selectedValue;
-
 
   @override
   void initState() {
@@ -38,6 +39,7 @@ class _DropdownNamesState extends State<DropdownNames> {
       onChanged: (value) {
         setState(() {
           widget.setIsObserverSelected();
+          widget.setObserverName(value);
           selectedValue = value as String;
         });
       },
