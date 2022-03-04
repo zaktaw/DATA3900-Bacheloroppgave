@@ -1,7 +1,7 @@
-import 'package:bacheloroppgave/activity_bottombar.dart';
+import 'package:bacheloroppgave/confirm_page/confirm_bottombar.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
 import 'package:bacheloroppgave/models/tellinger.dart';
-import 'package:bacheloroppgave/confirm_page/dropdown_names.dart';
+import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
 import 'package:bacheloroppgave/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +45,9 @@ class _ConfirmCountState extends State<ConfirmCount> {
               DropdownNames(),
             ],
         )),
-      bottomNavigationBar: null,
+      bottomNavigationBar: ConfirmBottombar(),
     ));
   }
+
+
 }
