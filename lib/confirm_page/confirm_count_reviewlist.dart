@@ -15,11 +15,16 @@ class ConfirmReviewList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: ListView.builder(
-            itemCount: zones.length,
-            itemBuilder: (context, index) {
-              return Text(zones[index] + ": " + data.getNumberOfCountsInZone(index).toString());
-            }));
+      return Expanded(
+          child: data.getNumberOfZone() != 0 ? 
+          ListView.builder(
+              itemCount: zones.length,
+              itemBuilder: (context, index) {
+                return Text(zones[index] +
+                    ": " +
+                    data.getNumberOfCountsInZone(index).toString());
+              }) 
+              : Text("Feil i listen, prøv igjen senere"));
+    }
   }
-}
+
