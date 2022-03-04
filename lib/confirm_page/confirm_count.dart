@@ -21,6 +21,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   late Tellinger data;
   late String numberOfZones;
   bool observerSelected = false;
+  String observerName = '';
 
   @override
   void initState() {
@@ -50,7 +51,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
               numberOfZones +
               " soner"),
           ConfirmReviewList(data),
-          DropdownNames(setIsObserverSelected),
+          DropdownNames(setIsObserverSelected, setObserverName),
         ],
       )),
       bottomNavigationBar: ConfirmBottombar(getIsObserverSelected, sendTTT()),
@@ -71,5 +72,9 @@ class _ConfirmCountState extends State<ConfirmCount> {
     tttObject.showTellinger();
     print(tttObject.name);
     return "feil";
+  }
+
+  void setObserverName(String selectedDropdownName) {
+    observerName = selectedDropdownName;
   }
 }
