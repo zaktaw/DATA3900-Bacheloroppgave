@@ -14,12 +14,15 @@ class Tellinger {
 
   void showTellinger() {
     tellinger.forEach((key, value) {
-      List test = value;
-      print(key);
-      test.forEach((element) {
-        Telling test1 = element;
-        print("Act:" + test1.activity + "   Count: " + test1.count.toString());
-      });
+      if (value is List) {
+        List test = value;
+        print(key);
+        test.forEach((element) {
+          Telling test1 = element;
+          print(
+              "Act:" + test1.activity + "   Count: " + test1.count.toString());
+        });
+      }
     });
   }
 
@@ -76,4 +79,6 @@ class Tellinger {
     bool zoneFound = tellinger.containsKey(zoneIndex);
     if (!zoneFound) tellinger[zoneIndex] = [];
   }
+
+  
 }

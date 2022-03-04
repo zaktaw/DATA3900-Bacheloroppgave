@@ -1,5 +1,6 @@
 import 'package:bacheloroppgave/confirm_page/confirm_bottombar.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
+import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
 import 'package:bacheloroppgave/settings_help_topbar.dart';
@@ -24,6 +25,16 @@ class _ConfirmCountState extends State<ConfirmCount> {
   void initState() {
     data = widget.data;
     numberOfZones = data.getNumberOfZone().toString();
+
+    TttObject tttObject = TttObject(data.tellinger, 'Alf', 
+    ['GRUDIG',
+    'ALPERS',
+    'ALLAP',
+    'DIV',
+    'ALLUDIG']);
+    tttObject.showTellinger();
+    print(tttObject.name);
+
     super.initState();
   }
 
@@ -34,20 +45,18 @@ class _ConfirmCountState extends State<ConfirmCount> {
       appBar: SettingsHelpTopBar("Bekreft telling"),
       body: Container(
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-                Text("Du har telt " +
-                  numberOfZones +
-                  " av " +
-                  numberOfZones +
-                  " soner")
-                  , ConfirmReviewList(data),
-              DropdownNames(),
-            ],
-        )),
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text("Du har telt " +
+              numberOfZones +
+              " av " +
+              numberOfZones +
+              " soner"),
+          ConfirmReviewList(data),
+          DropdownNames(),
+        ],
+      )),
       bottomNavigationBar: ConfirmBottombar(),
     ));
   }
-
-
 }
