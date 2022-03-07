@@ -1,5 +1,5 @@
 import 'package:bacheloroppgave/home_screen/homescreen_button.dart';
-import 'package:bacheloroppgave/models/tellinger.dart';
+import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/zone_page/zone_card.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  Tellinger tellinger = Tellinger();
+  TttEntries tellinger = TttEntries();
 
   @override
   Widget build(BuildContext context) {

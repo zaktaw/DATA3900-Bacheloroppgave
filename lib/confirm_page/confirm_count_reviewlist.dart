@@ -1,8 +1,8 @@
-import 'package:bacheloroppgave/models/tellinger.dart';
+import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmReviewList extends StatelessWidget {
-  late Tellinger data;
+  late TttEntries data;
   late String list;
 
   final List<String> zones = <String>[
@@ -16,7 +16,7 @@ class ConfirmReviewList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return Expanded(
-          child: data.getNumberOfZone() != 0 ? 
+          child: data.getNumberOfZones() != 0 ? 
           ListView.builder(
               itemCount: zones.length,
               itemBuilder: (context, index) {

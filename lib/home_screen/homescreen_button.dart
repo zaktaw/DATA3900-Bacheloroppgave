@@ -1,4 +1,4 @@
-import 'package:bacheloroppgave/models/tellinger.dart';
+import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/zone_page/zone_card.dart';
 import 'package:flutter/material.dart';
 

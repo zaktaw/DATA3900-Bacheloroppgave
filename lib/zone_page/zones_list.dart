@@ -1,4 +1,4 @@
-import 'package:bacheloroppgave/models/tellinger.dart';
+import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:flutter/material.dart';
 import 'zone_card.dart';
 import '../activity_page/activity_bottombar.dart';
@@ -6,7 +6,7 @@ import 'zones_topbar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ZonesList extends StatelessWidget {
-  final Tellinger data;
+  final TttEntries data;
 
   ZonesList(this.data, {Key? key}) : super(key: key);
 
@@ -15,7 +15,7 @@ class ZonesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void navigateToConfirmPage() {
-      if (data.getNumberOfZone() == zones.length) {
+      if (data.getNumberOfZones() == zones.length) {
         Navigator.of(context).pushNamed(
           '/bekreft',
           arguments: data,

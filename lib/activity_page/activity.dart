@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
 import 'activities_list.dart';
-import '../zone_page/zones_list.dart';
-import '../models/telling.dart';
-import '../models/tellinger.dart';
+import '../models/TttEntries.dart';
 
 final soner = [
   {'sone': 'Sone 1', 'rekkefølgenummer': 0},
@@ -17,28 +14,23 @@ final soner = [
 final lastZone = soner.length;
 
 class Activity extends StatefulWidget {
-  Tellinger tellinger;
+  TttEntries entries;
   int zoneIndex;
 
-  Activity(this.tellinger, this.zoneIndex, {Key? key}) : super(key: key) {
-    /* print("ZONE INDEX");
-    print(zoneIndex);
-
-    tellinger.showTellinger(); */
-  }
+  Activity(this.entries, this.zoneIndex, {Key? key}) : super(key: key) {}
 
   @override
   _ActivityState createState() => _ActivityState();
 }
 
 class _ActivityState extends State<Activity> {
-  late Tellinger tellinger;
+  late TttEntries entries;
   late int zoneIndex;
 
   @override
   void initState() {
     zoneIndex = widget.zoneIndex;
-    tellinger = widget.tellinger;
+    entries = widget.entries;
     super.initState();
   }
 
@@ -52,21 +44,21 @@ class _ActivityState extends State<Activity> {
         print("Route til soneoversikt");
         Navigator.of(context).pushNamed(
           '/zones',
-          arguments: tellinger,
+          arguments: entries,
         );
       }
     });
   }
 
   void nextZone() {
-    tellinger.addZoneKey(zoneIndex);
+    entries.addZoneKey(zoneIndex);
     incrementZoneIndex();
   }
 
   void goToZones() {
     Navigator.of(context).pushNamed(
       '/zones',
-      arguments: tellinger,
+      arguments: entries,
     );
   }
 
@@ -76,9 +68,9 @@ class _ActivityState extends State<Activity> {
       home: Scaffold(
         appBar: ActivityTopbar(soner[zoneIndex]['sone'].toString(), goToZones),
         body: Container(
-          child: ActivitiesList(tellinger.count, zoneIndex, tellinger),
+          child: ActivitiesList(entries.addTttEntry, zoneIndex, entries),
         ),
-        bottomNavigationBar: ActivityBottombar(nextZone, 'Fullfør sone', tellinger, -1),
+        bottomNavigationBar: ActivityBottombar(nextZone, 'Fullfør sone', entries, -1),
       ),
     );
   }

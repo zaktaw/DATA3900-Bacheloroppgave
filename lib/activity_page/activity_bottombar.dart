@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import '../models/tellinger.dart';
+import '../models/TttEntries.dart';
 
 class ActivityBottombar extends StatelessWidget {
   ActivityBottombar(
-      this.function, this.buttonText, this.tellinger, this.zoneCount,
+      this.function, this.buttonText, this.entries, this.zoneCount,
       {Key? key})
       : super(key: key);
 
   late final VoidCallback function;
   final String buttonText;
-  Tellinger tellinger;
+  TttEntries entries;
   int zoneCount;
 
   @override
@@ -40,7 +40,7 @@ class ActivityBottombar extends StatelessWidget {
   bool checkStuff() {
     if (zoneCount == -1) {
       return false;
-    } else if (tellinger.tellinger.length == zoneCount) {
+    } else if (entries.tttEntries.length == zoneCount) {
       return true;
     }
     return false;
