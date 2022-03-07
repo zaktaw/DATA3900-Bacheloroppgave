@@ -32,9 +32,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      appBar: SettingsHelpTopBar("Bekreft telling"),
+    return Scaffold(
+      appBar: SettingsHelpTopBar("Bekreft telling", '/zones'),
       body: Container(
           child: Column(
         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -49,7 +48,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
         ],
       )),
       bottomNavigationBar: ConfirmBottombar(getIsObserverSelected, sendTTT),
-    ));
+    );
   }
 
   void setIsObserverSelected() {
@@ -63,7 +62,6 @@ class _ConfirmCountState extends State<ConfirmCount> {
   bool sendTTT() {
     TttObject tttObject = TttObject(data.tellinger, observerName,
         ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
-
     // kall på backend
     // if good return good
     // else return not good

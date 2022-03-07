@@ -13,7 +13,7 @@ class _HelpState extends State<Help> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SettingsHelpTopBar("Hjelp"),
+      appBar: SettingsHelpTopBar("Hjelp", '/'),
       body: Container(
         child: const Text("Help placeholder")
       ) 
