@@ -1,4 +1,4 @@
-import 'package:bacheloroppgave/settings_help_topbar.dart';
+import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
 
 class Help extends StatefulWidget {

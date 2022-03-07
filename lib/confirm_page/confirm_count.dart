@@ -1,13 +1,13 @@
 import 'package:bacheloroppgave/confirm_page/confirm_bottombar.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
-import 'package:bacheloroppgave/models/tellinger.dart';
+import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
-import 'package:bacheloroppgave/settings_help_topbar.dart';
+import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmCount extends StatefulWidget {
-  late Tellinger data;
+  late TttEntries data;
 
   ConfirmCount(this.data, {Key? key}) : super(key: key) {
     data = this.data;
@@ -18,7 +18,7 @@ class ConfirmCount extends StatefulWidget {
 }
 
 class _ConfirmCountState extends State<ConfirmCount> {
-  late Tellinger data;
+  late TttEntries data;
   late String numberOfZones;
   bool observerSelected = false;
   String observerName = '';
@@ -26,7 +26,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   @override
   void initState() {
     data = widget.data;
-    numberOfZones = data.getNumberOfZone().toString();
+    numberOfZones = data.getNumberOfZones().toString();
     super.initState();
   }
 
@@ -60,7 +60,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   }
 
   bool sendTTT() {
-    TttObject tttObject = TttObject(data.tellinger, observerName,
+    TttObject tttObject = TttObject(data.tttEntries, observerName,
         ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
     // kall på backend
     // if good return good

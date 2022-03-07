@@ -1,4 +1,4 @@
-import 'package:bacheloroppgave/models/telling.dart';
+import 'package:bacheloroppgave/models/TttEntry.dart';
 
 class TttObject {
   late Map counts;
@@ -14,12 +14,12 @@ class TttObject {
         bool activityInCounts = false;
 
         countsList.forEach((count) {
-          Telling telling = count as Telling;
+          TttEntry telling = count as TttEntry;
           if (telling.activity == activity) activityInCounts = true;
         });
 
         if (!activityInCounts) {
-          Telling newCount = new Telling(activity, 0);
+          TttEntry newCount = new TttEntry(activity, 0);
           countsList.add(newCount);
         }
       });
@@ -32,7 +32,7 @@ class TttObject {
         List test = value;
         print(key);
         test.forEach((element) {
-          Telling test1 = element;
+          TttEntry test1 = element;
           print(
               "Act:" + test1.activity + "   Count: " + test1.count.toString());
         });

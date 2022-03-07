@@ -1,8 +1,8 @@
-class Telling {
+class TttEntry {
   late String activity;
   late int count;
 
-  Telling(this.activity, this.count);
+  TttEntry(this.activity, this.count);
 
   int get getCount {
     return count;

@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
-import 'package:bacheloroppgave/models/telling.dart';
+import 'package:bacheloroppgave/models/TttEntry.dart';
 import 'package:flutter/material.dart';
-import 'models/tellinger.dart';
+import '../models/TttEntries.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ZoneCard extends StatelessWidget {
@@ -11,7 +11,7 @@ class ZoneCard extends StatelessWidget {
 
   String zone_name;
   int zone_index;
-  Tellinger tellinger;
+  TttEntries tellinger;
 
   void navigateToActivityPage(BuildContext context) {
     Navigator.of(context)
@@ -48,7 +48,7 @@ class ZoneCard extends StatelessWidget {
   }
 
   bool checkIfCounted(int index) {
-    if (tellinger.checkTellingKey(index)) {
+    if (tellinger.checkTttEntryKey(index)) {
       return true;
     }
     return false;
