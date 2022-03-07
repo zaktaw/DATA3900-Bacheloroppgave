@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -19,7 +21,7 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
   late bool response;
 
   @override
-  void initState() {;
+  void initState() {
     super.initState();
   }
 
@@ -29,7 +31,7 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
       height: 60,
       color: Colors.black12,
       child: InkWell(
-        onTap: () => {
+        onTap: () async => {
           if(widget.getIsObserverSelected()) {
             response = widget.sendTTT(),
             
@@ -40,6 +42,8 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                 gravity: ToastGravity.CENTER, // location
                 timeInSecForIosWeb: 3 // duration,
                 ),
+                //Give the user time to see confirmation message before redirecting to homescreen
+                await Future.delayed(const Duration(seconds: 2)), (Navigator.of(context).pushNamed('/'))
             } else {
               Fluttertoast.showToast(
                 msg: "Sending feilet", // message
