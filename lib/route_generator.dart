@@ -1,12 +1,12 @@
 import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
 import 'package:bacheloroppgave/help.dart';
-import 'package:bacheloroppgave/homescreen.dart';
-import 'package:bacheloroppgave/settings.dart';
+import 'package:bacheloroppgave/home_screen/homescreen.dart';
+import 'package:bacheloroppgave/settings_page/settings.dart';
 import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/main.dart';
-import 'package:bacheloroppgave/activity.dart';
-import 'package:bacheloroppgave/zones_list.dart';
+import 'package:bacheloroppgave/activity_page/activity.dart';
+import 'package:bacheloroppgave/zone_page/zones_list.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

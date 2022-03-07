@@ -3,7 +3,7 @@ import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
-import 'package:bacheloroppgave/settings_help_topbar.dart';
+import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmCount extends StatefulWidget {

@@ -2,7 +2,7 @@
 
 import 'package:bacheloroppgave/models/telling.dart';
 import 'package:flutter/material.dart';
-import 'models/tellinger.dart';
+import '../models/tellinger.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ZoneCard extends StatelessWidget {

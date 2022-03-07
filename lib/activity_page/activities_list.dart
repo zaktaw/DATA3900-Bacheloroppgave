@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './activity_card.dart';
-import 'models/telling.dart';
-import 'models/tellinger.dart';
+import 'activity_card.dart';
+import '../models/telling.dart';
+import '../models/tellinger.dart';
 
 class ActivitiesList extends StatelessWidget {
   final void Function(int, String, int) count;

@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
-import 'package:bacheloroppgave/activity_card.dart';
+import 'package:bacheloroppgave/activity_page/activity_card.dart';
 import 'package:bacheloroppgave/models/telling.dart';
 import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:flutter_test/flutter_test.dart';

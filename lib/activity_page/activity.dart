@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
 import 'activities_list.dart';
-import './zones_list.dart';
-import 'models/telling.dart';
-import 'models/tellinger.dart';
+import '../zone_page/zones_list.dart';
+import '../models/telling.dart';
+import '../models/tellinger.dart';
 
 final soner = [
   {'sone': 'Sone 1', 'rekkefølgenummer': 0},

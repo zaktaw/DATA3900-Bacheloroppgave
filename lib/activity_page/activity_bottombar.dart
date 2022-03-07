@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'models/tellinger.dart';
+import '../models/tellinger.dart';
 
 class ActivityBottombar extends StatelessWidget {
   ActivityBottombar(

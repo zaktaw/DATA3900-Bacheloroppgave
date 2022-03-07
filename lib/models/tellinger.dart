@@ -1,5 +1,5 @@
 import 'package:bacheloroppgave/models/telling.dart';
-import '../zones_list.dart';
+import '../zone_page/zones_list.dart';
 
 class Tellinger {
   late Map tellinger;

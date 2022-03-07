@@ -1,7 +1,7 @@
 import 'package:bacheloroppgave/models/tellinger.dart';
 import 'package:flutter/material.dart';
-import './zone_card.dart';
-import 'activity_bottombar.dart';
+import 'zone_card.dart';
+import '../activity_page/activity_bottombar.dart';
 import 'zones_topbar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
