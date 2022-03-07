@@ -9,14 +9,14 @@ const String _heroActivityPop = "activity-pop-hero";
 
 class ActivityCard extends StatelessWidget {
   ActivityCard(
-      this.activity_name, this.activity_info, this.count, this.zoneIndex, this.tellingActivity,
+      this.activity_name, this.activity_info, this.addTttEntry, this.zoneIndex, this.tellingActivity,
       {Key? key})
       : super(key: key) {
       txt.text = tellingActivity;
   }
 
   late String tellingActivity;
-  final void Function(int, String, int) count;
+  final void Function(int, String, int) addTttEntry;
 
   int zoneIndex;
   String activity_name;
@@ -73,14 +73,14 @@ class ActivityCard extends StatelessWidget {
 
   String increment(String value) {
     int intValue = int.parse(value);
-    count(zoneIndex, activity_name, (intValue + 1));
+    addTttEntry(zoneIndex, activity_name, (intValue + 1));
     return (intValue + 1).toString();
   }
 
   String decrement(String value) {
     int intValue = int.parse(value);
     if ((intValue - 1) >= 0) {
-      count(zoneIndex, activity_name, (intValue - 1));
+      addTttEntry(zoneIndex, activity_name, (intValue - 1));
       return (intValue - 1).toString();
     }
     return intValue.toString();
@@ -89,7 +89,7 @@ class ActivityCard extends StatelessWidget {
   String manualInput(String? value) { 
     String stringValue = value.toString();
     int intValue = int.parse(stringValue);
-    count(zoneIndex, activity_name, intValue);
+    addTttEntry(zoneIndex, activity_name, intValue);
     return stringValue;
   }
 }
