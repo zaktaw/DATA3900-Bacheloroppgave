@@ -33,7 +33,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SettingsHelpTopBar("Bekreft telling", '/zones'),
+      appBar: SettingsHelpTopBar("Bekreft telling", '/zones', data),
       body: Container(
           child: Column(
         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,

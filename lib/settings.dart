@@ -13,7 +13,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SettingsHelpTopBar("Innstillinger", '/'),
+      appBar: SettingsHelpTopBar("Innstillinger", '/', null),
       body: Container(
         child: const Text("Settings placeholder")
       ) 
