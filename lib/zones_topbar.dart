@@ -13,8 +13,8 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget{
     return AppBar(
         leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => print('object')
-        ),
+            onPressed: () => Navigator.of(context).pushNamed('/')
+   ),
         backgroundColor: Color.fromARGB(255, 189, 190, 187),
         centerTitle: true,
         title: const Text('Soner'),
