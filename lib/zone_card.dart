@@ -3,6 +3,7 @@
 import 'package:bacheloroppgave/models/telling.dart';
 import 'package:flutter/material.dart';
 import 'models/tellinger.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ZoneCard extends StatelessWidget {
   ZoneCard(this.zone_name, this.zone_index, this.tellinger, {Key? key})
@@ -34,7 +35,12 @@ class ZoneCard extends StatelessWidget {
                           : Color.fromARGB(255, 114, 114, 182)),
                 ),
                 onTap: () => navigateToActivityPage(context),
-                onLongPress: () => print('long tap'),
+                onLongPress: () => Fluttertoast.showToast(
+                  msg: zone_name + ': ' + "Sone info her :)", // message
+                  toastLength: Toast.LENGTH_SHORT, // length
+                  gravity: ToastGravity.CENTER, // location
+                  timeInSecForIosWeb: 5 // duration,
+                ),
               ))
         ],
       ),
