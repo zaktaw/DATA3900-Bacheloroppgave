@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:flutter/material.dart';
 import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
@@ -31,7 +32,6 @@ class _ActivityState extends State<Activity> {
   @override
   void dispose() {
     Hive.box('tttEntries').close();
-
     super.dispose();
   }
 
@@ -59,6 +59,8 @@ class _ActivityState extends State<Activity> {
   }
 
   void nextZone() {
+    final tttEntriesBox = TttEntriesBox.getTttEntries();
+    tttEntriesBox.put('tttEntriesMap', entries);
     entries.addZoneKey(zoneIndex);
     incrementZoneIndex();
   }
@@ -78,7 +80,8 @@ class _ActivityState extends State<Activity> {
         body: Container(
           child: ActivitiesList(entries.addTttEntry, zoneIndex, entries),
         ),
-        bottomNavigationBar: ActivityBottombar(nextZone, 'Fullfør sone', entries, -1),
+        bottomNavigationBar:
+            ActivityBottombar(nextZone, 'Fullfør sone', entries, -1),
       ),
     );
   }

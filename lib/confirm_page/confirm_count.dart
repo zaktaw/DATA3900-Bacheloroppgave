@@ -1,5 +1,6 @@
 import 'package:bacheloroppgave/confirm_page/confirm_bottombar.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
+import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
@@ -64,8 +65,14 @@ class _ConfirmCountState extends State<ConfirmCount> {
         ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
     // kall på backend
     // if good return good
+     TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
+    print("1: Her er riktig print ellernoe sånt.. YES! ");
+    test.showTellinger();
+    TttEntriesBox.getTttEntries().delete('tttEntriesMap');
     // else return not good
-    tttObject.showTellinger();
+    //Not good
+   
+    //tttObject.showTellinger();
     return true;
   }
 

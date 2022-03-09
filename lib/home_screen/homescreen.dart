@@ -17,8 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     tttEntries = TttEntries();
-    final box = TttEntriesBox.getTransactions();
-    box.put('tttEntriesMap', tttEntries);
+    final tttEntriesBox = TttEntriesBox.getTttEntries();
+    tttEntriesBox.put('tttEntriesMap', tttEntries);
   }
 
   @override
