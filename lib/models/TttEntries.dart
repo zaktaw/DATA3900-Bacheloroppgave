@@ -1,7 +1,14 @@
 import 'package:bacheloroppgave/models/TttEntry.dart';
 import '../zone_page/zones_list.dart';
+import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 
-class TttEntries {
+import 'package:hive/hive.dart';
+
+part 'TttEntries.g.dart';
+
+@HiveType(typeId: 1)
+class TttEntries extends HiveObject {
+  @HiveField(0)
   late Map tttEntries;
 
   TttEntries() {
@@ -27,7 +34,8 @@ class TttEntries {
   }
 
   List getTttEntries(int zone) {
-    return tttEntries[zone] ?? []; // return empty list if no tellinger is stored
+    return tttEntries[zone] ??
+        []; // return empty list if no tellinger is stored
   }
 
   int getNumberOfZones() {
@@ -79,6 +87,4 @@ class TttEntries {
     bool zoneFound = tttEntries.containsKey(zoneIndex);
     if (!zoneFound) tttEntries[zoneIndex] = [];
   }
-
-  
 }

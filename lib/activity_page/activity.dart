@@ -3,6 +3,7 @@ import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
 import 'activities_list.dart';
 import '../models/TttEntries.dart';
+import 'package:hive/hive.dart';
 
 final soner = [
   {'sone': 'Sone 1', 'rekkefølgenummer': 0},
@@ -26,6 +27,13 @@ class Activity extends StatefulWidget {
 class _ActivityState extends State<Activity> {
   late TttEntries entries;
   late int zoneIndex;
+
+  @override
+  void dispose() {
+    Hive.box('tttEntries').close();
+
+    super.dispose();
+  }
 
   @override
   void initState() {

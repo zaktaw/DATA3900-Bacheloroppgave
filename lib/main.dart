@@ -1,16 +1,19 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
-import 'package:bacheloroppgave/home_screen/homescreen.dart';
-import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/route_generator.dart';
-import 'activity_page/activity_bottombar.dart';
-import 'activity_page/activity_topbar.dart';
-import 'activity_page/activities_list.dart';
-import 'zone_page/zones_list.dart';
-import 'activity_page/activity.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+import 'models/TttEntries.dart';
+import 'models/TttEntry.dart';
+
+Future<void> main() async {
+  
+  Hive.registerAdapter(TttEntriesAdapter());
+  Hive.registerAdapter(TttEntryAdapter());
+  await Hive.openBox<TttEntries>('tttEntries');
+
   runApp(const MyApp());
 }
 
