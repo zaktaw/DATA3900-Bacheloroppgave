@@ -1,4 +1,7 @@
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
+import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
+import 'package:bacheloroppgave/models/ActivityObject.dart';
+import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:flutter/material.dart';
 import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
@@ -19,7 +22,7 @@ class Activity extends StatefulWidget {
   TttEntries entries;
   int zoneIndex;
 
-  Activity(this.entries, this.zoneIndex, {Key? key}) : super(key: key) {}
+  Activity(this.entries, this.zoneIndex, {Key? key}) : super(key: key);
 
   @override
   _ActivityState createState() => _ActivityState();
@@ -28,10 +31,12 @@ class Activity extends StatefulWidget {
 class _ActivityState extends State<Activity> {
   late TttEntries entries;
   late int zoneIndex;
+  late List<ActivityObject> activityList;
 
   @override
   void dispose() {
     Hive.box('tttEntries').close();
+    Hive.box('tttProjectInfo').close();
     super.dispose();
   }
 
@@ -39,6 +44,9 @@ class _ActivityState extends State<Activity> {
   void initState() {
     zoneIndex = widget.zoneIndex;
     entries = widget.entries;
+    TttProjectInfo projectInfo =
+        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+    activityList = projectInfo.activities;
     super.initState();
   }
 
@@ -78,7 +86,7 @@ class _ActivityState extends State<Activity> {
       home: Scaffold(
         appBar: ActivityTopbar(soner[zoneIndex]['sone'].toString(), goToZones),
         body: Container(
-          child: ActivitiesList(entries.addTttEntry, zoneIndex, entries),
+          child: ActivitiesList(zoneIndex, entries, activityList),
         ),
         bottomNavigationBar:
             ActivityBottombar(nextZone, 'Fullfør sone', entries, -1),

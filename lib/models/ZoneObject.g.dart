@@ -1,41 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'TttProjectInfo.dart';
+part of 'ZoneObject.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TttProjectInfoAdapter extends TypeAdapter<TttProjectInfo> {
+class ZoneObjectAdapter extends TypeAdapter<ZoneObject> {
   @override
-  final int typeId = 2;
+  final int typeId = 4;
 
   @override
-  TttProjectInfo read(BinaryReader reader) {
+  ZoneObject read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return TttProjectInfo(
-      (fields[0] as List).cast<ActivityObject>(),
-      (fields[1] as List).cast<ZoneObject>(),
-      (fields[2] as List).cast<String>(),
-      fields[3] as String,
+    return ZoneObject(
+      fields[0] as int,
+      fields[1] as String,
+      fields[2] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, TttProjectInfo obj) {
+  void write(BinaryWriter writer, ZoneObject obj) {
     writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.activities)
-      ..writeByte(1)
-      ..write(obj.zones)
-      ..writeByte(2)
-      ..write(obj.observers)
       ..writeByte(3)
-      ..write(obj.project_name);
+      ..writeByte(0)
+      ..write(obj.order_number)
+      ..writeByte(1)
+      ..write(obj.zone_name)
+      ..writeByte(2)
+      ..write(obj.zone_info);
   }
 
   @override
@@ -44,7 +41,7 @@ class TttProjectInfoAdapter extends TypeAdapter<TttProjectInfo> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TttProjectInfoAdapter &&
+      other is ZoneObjectAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

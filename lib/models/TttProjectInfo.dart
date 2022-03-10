@@ -18,4 +18,7 @@ class TttProjectInfo extends HiveObject {
 
   @HiveField(3)
   late String project_name;
+
+  TttProjectInfo(
+      this.activities, this.zones, this.observers, this.project_name);
 }
