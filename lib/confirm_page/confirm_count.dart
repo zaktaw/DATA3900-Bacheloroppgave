@@ -6,12 +6,16 @@ import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
 import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+
+import '../local_storage_hive/TttProjectInfoBox.dart';
+import '../models/TttProjectInfo.dart';
 
 class ConfirmCount extends StatefulWidget {
-  late TttEntries data;
+  late TttEntries entries;
 
-  ConfirmCount(this.data, {Key? key}) : super(key: key) {
-    data = this.data;
+  ConfirmCount(this.entries, {Key? key}) : super(key: key) {
+    entries = this.entries;
   }
 
   @override
@@ -19,33 +23,42 @@ class ConfirmCount extends StatefulWidget {
 }
 
 class _ConfirmCountState extends State<ConfirmCount> {
-  late TttEntries data;
-  late String numberOfZones;
+  late TttEntries entries;
+  late int numberOfZones;
+  late TttProjectInfo projectInfo;
   bool observerSelected = false;
   String observerName = '';
 
   @override
+  void dispose() {
+    Hive.box('tttProjectInfo').close();
+    super.dispose();
+  }
+
+  @override
   void initState() {
-    data = widget.data;
-    numberOfZones = data.getNumberOfZones().toString();
+    entries = widget.entries;
+    projectInfo = TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+    numberOfZones = projectInfo.zones.length;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SettingsHelpTopBar("Bekreft telling", '/zones', data),
+      appBar: SettingsHelpTopBar("Bekreft telling", '/zones', entries),
       body: Container(
           child: Column(
         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text("Du har telt " +
-              numberOfZones +
+              numberOfZones.toString() +
               " av " +
-              numberOfZones +
+              numberOfZones.toString() +
               " soner"),
-          ConfirmReviewList(data),
-          DropdownNames(setIsObserverSelected, setObserverName),
+          ConfirmReviewList(entries, projectInfo.zones),
+          DropdownNames(setIsObserverSelected, setObserverName, projectInfo.observers
+          ),
         ],
       )),
       bottomNavigationBar: ConfirmBottombar(getIsObserverSelected, sendTTT),
@@ -61,17 +74,17 @@ class _ConfirmCountState extends State<ConfirmCount> {
   }
 
   bool sendTTT() {
-    TttObject tttObject = TttObject(data.tttEntries, observerName,
+    TttObject tttObject = TttObject(entries.tttEntries, observerName,
         ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
     // kall på backend
     // if good return good
-     TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
+    TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
     print("1: Her er riktig print ellernoe sånt.. YES! ");
     test.showTellinger();
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
     // else return not good
     //Not good
-   
+
     //tttObject.showTellinger();
     return true;
   }
