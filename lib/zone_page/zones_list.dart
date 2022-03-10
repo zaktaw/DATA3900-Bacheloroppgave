@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/models/TttEntries.dart';
+import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:flutter/material.dart';
 import 'zone_card.dart';
 import '../activity_page/activity_bottombar.dart';
@@ -6,40 +7,35 @@ import 'zones_topbar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ZonesList extends StatelessWidget {
-  final TttEntries data;
+  final TttEntries entries;
+  final List<ZoneObject> zoneList;
 
-  ZonesList(this.data, {Key? key}) : super(key: key);
-
-  final List<String> zones = <String>['Sone 1', 'Sone 2', 'Sone 3', 'Sone 4'];
+  ZonesList(this.entries, this.zoneList, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     void navigateToConfirmPage() {
-      if (data.getNumberOfZones() == zones.length) {
+      if (entries.getNumberOfZones() == zoneList.length) {
         Navigator.of(context).pushNamed(
           '/bekreft',
-          arguments: data,
+          arguments: entries,
         );
       } else {
         Fluttertoast.showToast(
-        msg: "This is a Toast message",  // message
-        toastLength: Toast.LENGTH_SHORT, // length
-        gravity: ToastGravity.CENTER,    // location
-        timeInSecForIosWeb: 3            // duration
-    );
+            msg: "This is a Toast message", // message
+            toastLength: Toast.LENGTH_SHORT, // length
+            gravity: ToastGravity.CENTER, // location
+            timeInSecForIosWeb: 3 // duration
+            );
       }
     }
 
     return Scaffold(
-      appBar: ZonesTopbar(key: key),
       body: ListView.builder(
-        itemCount: zones.length,
-        itemBuilder: (context, index) {
-          return ZoneCard(zones[index], index, data);
-        },
-      ),
-      bottomNavigationBar: ActivityBottombar(
-          navigateToConfirmPage, 'Fullfør telling', data, zones.length),
+          itemCount: zoneList.length,
+          itemBuilder: (context, index) {
+            return ZoneCard(zoneList[index].zone_name, zoneList[index].zone_info, index, entries);
+          }),
     );
   }
 }

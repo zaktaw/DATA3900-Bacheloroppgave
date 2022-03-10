@@ -35,7 +35,7 @@ class ZonesInfoPop extends StatelessWidget {
 const String _heroZonesPop = 'hero-zones-pop';
 
 class _ZonesInfoPop extends StatelessWidget {
-  const _ZonesInfoPop(this.zones_info, {Key? key})
+  _ZonesInfoPop(this.zones_info, {Key? key})
       : super(key: key);
 
   final String zones_info;

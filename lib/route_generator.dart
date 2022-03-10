@@ -3,6 +3,7 @@ import 'package:bacheloroppgave/help.dart';
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
 import 'package:bacheloroppgave/settings_page/settings.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
+import 'package:bacheloroppgave/zone_page/zone.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/activity_page/activity.dart';
 import 'package:bacheloroppgave/zone_page/zones_list.dart';
@@ -22,7 +23,7 @@ class RouteGenerator {
 
       case '/zones':
         if (args is TttEntries) {
-          return MaterialPageRoute(builder: (_) => ZonesList(args));
+          return MaterialPageRoute(builder: (_) => Zone(args));
         }
         break;
 
