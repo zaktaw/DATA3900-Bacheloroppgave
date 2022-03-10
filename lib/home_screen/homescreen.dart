@@ -13,12 +13,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late TttEntries tttEntries;
+  late TttEntries activeTttEntries;
+  late bool activeTtt;
 
   @override
   void initState() {
     tttEntries = TttEntries();
     final tttEntriesBox = TttEntriesBox.getTttEntries();
-    tttEntriesBox.put('tttEntriesMap', tttEntries);
+    if (tttEntriesBox.containsKey('tttEntriesMap')) {
+      activeTttEntries = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
+      activeTtt = true;
+    } else {
+      tttEntriesBox.put('tttEntriesMap', tttEntries);
+      activeTtt = false;
+    }
   }
 
   @override
@@ -29,12 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Center(
                 child: Column(
       children: [
-        Text("Main menu placeholder"),
+        const Text("Main menu placeholder"),
         HomeScreenButton(
             btnName: "Ny telling", route: "/activity", args: [tttEntries, 0]),
-        HomeScreenButton(
+        activeTtt
+        ? HomeScreenButton(btnName: 'Gjenoppta telling', route: '/zones', args: activeTttEntries)
+        : const SizedBox.shrink(),
+        const HomeScreenButton(
             btnName: "Innstillinger", route: "/settings", args: null),
-        HomeScreenButton(btnName: "Hjelp", route: "/help", args: null),
+        const HomeScreenButton(btnName: "Hjelp", route: "/help", args: null),
         HomeScreenButton(
             btnName: "Bekreft", route: "/bekreft", args: tttEntries),
       ],
