@@ -7,6 +7,7 @@ import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/zone_page/zone_card.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
+import 'package:hive/hive.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,16 +20,16 @@ class _HomeScreenState extends State<HomeScreen> {
   late TttEntries tttEntries;
   late TttEntries activeTttEntries;
   late bool activeTtt;
+  late Box tttEntriesBox;
 
   @override
   void initState() {
     tttEntries = TttEntries();
-    final tttEntriesBox = TttEntriesBox.getTttEntries();
+    tttEntriesBox = TttEntriesBox.getTttEntries();
     if (tttEntriesBox.containsKey('tttEntriesMap')) {
       activeTttEntries = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
       activeTtt = true;
     } else {
-      tttEntriesBox.put('tttEntriesMap', tttEntries);
       activeTtt = false;
     }
 
@@ -62,6 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
     tttProjectInfoBox.add(projectInfo);
   }
 
+  void initTttHiveBox() {
+      tttEntriesBox.put('tttEntriesMap', tttEntries);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,18 +77,19 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         const Text("Main menu placeholder"),
         HomeScreenButton(
-            btnName: "Ny telling", route: "/activity", args: [tttEntries, 0]),
+            btnName: "Ny telling", route: "/activity", args: [tttEntries, 0], onClick: () => {}),
         activeTtt
             ? HomeScreenButton(
                 btnName: 'Gjenoppta telling',
                 route: '/zones',
-                args: activeTttEntries)
+                args: activeTttEntries,
+                onClick: () => {})
             : const SizedBox.shrink(),
-        const HomeScreenButton(
-            btnName: "Innstillinger", route: "/settings", args: null),
-        const HomeScreenButton(btnName: "Hjelp", route: "/help", args: null),
         HomeScreenButton(
-            btnName: "Bekreft", route: "/bekreft", args: tttEntries),
+            btnName: "Innstillinger", route: "/settings", args: null, onClick: () => {}),
+        HomeScreenButton(btnName: "Hjelp", route: "/help", args: null, onClick: () => {},),
+        HomeScreenButton(
+            btnName: "Bekreft", route: "/bekreft", args: tttEntries, onClick: () => {}),
       ],
     ))));
   }
