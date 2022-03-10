@@ -87,9 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
             : const SizedBox.shrink(),
         HomeScreenButton(
             btnName: "Innstillinger", route: "/settings", args: null, onClick: () => {}),
-        HomeScreenButton(btnName: "Hjelp", route: "/help", args: null, onClick: () => {},),
-        HomeScreenButton(
-            btnName: "Bekreft", route: "/bekreft", args: tttEntries, onClick: () => {}),
+        HomeScreenButton(btnName: "Hjelp", route: "/help", args: null, onClick: () => {})
       ],
     ))));
   }
