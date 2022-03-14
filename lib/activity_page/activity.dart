@@ -1,23 +1,20 @@
+import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
+import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
+import 'package:bacheloroppgave/models/ActivityObject.dart';
+import 'package:bacheloroppgave/models/TttProjectInfo.dart';
+import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:flutter/material.dart';
 import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
 import 'activities_list.dart';
 import '../models/TttEntries.dart';
-
-final soner = [
-  {'sone': 'Sone 1', 'rekkefølgenummer': 0},
-  {'sone': 'Sone 2', 'rekkefølgenummer': 1},
-  {'sone': 'Sone 3', 'rekkefølgenummer': 2},
-  {'sone': 'Sone 4', 'rekkefølgenummer': 3}
-];
-
-final lastZone = soner.length;
+import 'package:hive/hive.dart';
 
 class Activity extends StatefulWidget {
   TttEntries entries;
   int zoneIndex;
 
-  Activity(this.entries, this.zoneIndex, {Key? key}) : super(key: key) {}
+  Activity(this.entries, this.zoneIndex, {Key? key}) : super(key: key);
 
   @override
   _ActivityState createState() => _ActivityState();
@@ -26,18 +23,33 @@ class Activity extends StatefulWidget {
 class _ActivityState extends State<Activity> {
   late TttEntries entries;
   late int zoneIndex;
+  late List<ActivityObject> activityList;
+  late List<ZoneObject> zoneList;
+
+  @override
+  void dispose() {
+    Hive.box('tttEntries').close();
+    Hive.box('tttProjectInfo').close();
+    super.dispose();
+  }
 
   @override
   void initState() {
     zoneIndex = widget.zoneIndex;
     entries = widget.entries;
+
+    TttProjectInfo projectInfo =
+        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+    activityList = projectInfo.activities;
+    zoneList = projectInfo.zones;
+
     super.initState();
   }
 
   void incrementZoneIndex() {
     setState(() {
       print("Update zoneindex");
-      if (zoneIndex < lastZone - 1) {
+      if (zoneIndex < zoneList.length - 1) {
         zoneIndex++;
         print(zoneIndex);
       } else {
@@ -51,6 +63,8 @@ class _ActivityState extends State<Activity> {
   }
 
   void nextZone() {
+    final tttEntriesBox = TttEntriesBox.getTttEntries();
+    tttEntriesBox.put('tttEntriesMap', entries);
     entries.addZoneKey(zoneIndex);
     incrementZoneIndex();
   }
@@ -66,11 +80,12 @@ class _ActivityState extends State<Activity> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: ActivityTopbar(soner[zoneIndex]['sone'].toString(), goToZones),
+        appBar: ActivityTopbar(zoneList[zoneIndex].zone_name, zoneList[zoneIndex].zone_info, goToZones, activityList),
         body: Container(
-          child: ActivitiesList(entries.addTttEntry, zoneIndex, entries),
+          child: ActivitiesList(zoneIndex, entries, activityList),
         ),
-        bottomNavigationBar: ActivityBottombar(nextZone, 'Fullfør sone', entries, -1),
+        bottomNavigationBar:
+            ActivityBottombar(nextZone, 'Fullfør sone', entries, -1),
       ),
     );
   }

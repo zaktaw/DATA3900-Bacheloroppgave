@@ -6,10 +6,11 @@ import '../models/TttEntries.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ZoneCard extends StatelessWidget {
-  ZoneCard(this.zone_name, this.zone_index, this.tellinger, {Key? key})
+  ZoneCard(this.zone_name, this.zone_info, this.zone_index, this.tellinger, {Key? key})
       : super(key: key);
 
   String zone_name;
+  String zone_info;
   int zone_index;
   TttEntries tellinger;
 
@@ -36,7 +37,7 @@ class ZoneCard extends StatelessWidget {
                 ),
                 onTap: () => navigateToActivityPage(context),
                 onLongPress: () => Fluttertoast.showToast(
-                  msg: zone_name + ': ' + "Sone info her :)", // message
+                  msg: zone_name + ': ' + zone_info, // message
                   toastLength: Toast.LENGTH_SHORT, // length
                   gravity: ToastGravity.CENTER, // location
                   timeInSecForIosWeb: 5 // duration,
