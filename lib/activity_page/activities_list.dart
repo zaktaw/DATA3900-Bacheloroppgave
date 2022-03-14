@@ -28,8 +28,8 @@ class ActivitiesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
+    return Expanded(
+      child: ListView.builder(
         itemCount: activityList.length,
         itemBuilder: (context, index) {
           return ActivityCard(activityList[index].activity_name, activityList[index].activity_info, entries.addTttEntry, zoneIndex, setValuesForPreviousCount(activityList[index].activity_name));
