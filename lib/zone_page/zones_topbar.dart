@@ -2,6 +2,8 @@ import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:flutter/material.dart';
 import 'zones_info_pop.dart';
 
+const String name = 'Soner';
+
 class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final List<ZoneObject> zoneList;
@@ -31,7 +33,7 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () => Navigator.of(context).pushNamed('/')),
       backgroundColor: Color.fromARGB(255, 189, 190, 187),
       centerTitle: true,
-      title: const Text('Soner'),
+      title: const Text(name),
       actions: <Widget>[ZonesInfoPop(generateInfoText())],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/activity_page/activity.dart';
 import 'package:bacheloroppgave/activity_page/activity_bottombar.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
@@ -9,6 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../models/TttEntries.dart';
 import 'package:hive/hive.dart';
+
+const String zone_toast = 'This is a toast!';
+const String zone_confirm = 'Fullfør telling';
 
 class Zone extends StatefulWidget {
   late TttEntries entries;
@@ -48,7 +52,7 @@ class _ZoneState extends State<Zone> {
       );
     } else {
       Fluttertoast.showToast(
-          msg: "This is a Toast message", // message
+          msg: zone_toast, // message
           toastLength: Toast.LENGTH_SHORT, // length
           gravity: ToastGravity.CENTER, // location
           timeInSecForIosWeb: 3 // duration
@@ -64,7 +68,7 @@ class _ZoneState extends State<Zone> {
         child: ZonesList(entries, zoneList),
       ),
       bottomNavigationBar: ActivityBottombar(
-          navigateToConfirmPage, 'Fullfør telling', entries, zoneList.length),
+          navigateToConfirmPage, zone_confirm, entries, zoneList.length),
     );
   }
 }

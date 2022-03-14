@@ -6,6 +6,8 @@ import '../activity_page/activity_bottombar.dart';
 import 'zones_topbar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+const String zone_toast = "This is a toast!";
+
 class ZonesList extends StatelessWidget {
   final TttEntries entries;
   final List<ZoneObject> zoneList;
@@ -22,7 +24,7 @@ class ZonesList extends StatelessWidget {
         );
       } else {
         Fluttertoast.showToast(
-            msg: "This is a Toast message", // message
+            msg: zone_toast, // message
             toastLength: Toast.LENGTH_SHORT, // length
             gravity: ToastGravity.CENTER, // location
             timeInSecForIosWeb: 3 // duration

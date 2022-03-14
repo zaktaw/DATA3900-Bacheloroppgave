@@ -3,6 +3,8 @@ import 'package:bacheloroppgave/hero_dialog_route.dart';
 
 //Koden er basert på kildekode fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
+const String info_zones = 'Informasjon om soner';
+
 class ZonesInfoPop extends StatelessWidget {
   const ZonesInfoPop(this.zones_info, {Key? key}) : super(key: key);
 
@@ -35,8 +37,7 @@ class ZonesInfoPop extends StatelessWidget {
 const String _heroZonesPop = 'hero-zones-pop';
 
 class _ZonesInfoPop extends StatelessWidget {
-  _ZonesInfoPop(this.zones_info, {Key? key})
-      : super(key: key);
+  _ZonesInfoPop(this.zones_info, {Key? key}) : super(key: key);
 
   final String zones_info;
 
@@ -58,7 +59,7 @@ class _ZonesInfoPop extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text('Informasjon om soner',
+                    const Text(info_zones,
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20, color: Colors.white)),
                     Container(
