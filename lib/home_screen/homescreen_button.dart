@@ -8,13 +8,12 @@ class HomeScreenButton extends StatefulWidget {
       required this.btnName,
       required this.route,
       required this.args,
-      required this.onClick})
+      })
       : super(key: key);
 
   final String btnName;
   final String route;
   final args;
-  Function onClick;
 
   @override
   _HomeScreenButtonState createState() => _HomeScreenButtonState();
@@ -26,7 +25,6 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
     return ElevatedButton(
         child: Text(widget.btnName),
         onPressed: () {
-          widget.onClick;
           Navigator.of(context).pushNamed(widget.route, arguments: widget.args);
         });
   }
