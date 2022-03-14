@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/TttEntries.dart';
 
+const String fullfoer_sone = "Fullfør sone";
+
 class ActivityBottombar extends StatelessWidget {
   ActivityBottombar(
       this.function, this.buttonText, this.entries, this.zoneCount,
@@ -23,7 +25,7 @@ class ActivityBottombar extends StatelessWidget {
           padding: EdgeInsets.only(top: 8.0),
           child: Column(
             children: <Widget>[
-              Text('Fullfør sone',
+              Text(fullfoer_sone,
                   style: TextStyle(
                       color: checkStuff() ? Colors.green : Color.fromARGB(255, 114, 114, 182))),
             ],

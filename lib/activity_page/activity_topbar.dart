@@ -4,6 +4,7 @@ import 'activities_info_pop.dart';
 import 'zone_info_in_activities.dart';
 
 const String _heroActivitiesPop = 'hero-activities-pop';
+const String info_act = 'Informasjon om aktiviteter';
 
 class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
@@ -47,7 +48,8 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
       centerTitle: true,
       title: ZoneInActivitiesPopButton(zoneInfo, zoneName, key: key),
       actions: <Widget>[
-        ActivitiesPopButton(generateInfoText(), 'Informasjon om aktiviteter', key: key)
+        ActivitiesPopButton(generateInfoText(), info_act,
+            key: key)
       ],
     );
   }

@@ -10,6 +10,8 @@ import 'activities_list.dart';
 import '../models/TttEntries.dart';
 import 'package:hive/hive.dart';
 
+const String finish_zone = 'Fullfør sone';
+
 class Activity extends StatefulWidget {
   TttEntries entries;
   int zoneIndex;
@@ -80,12 +82,13 @@ class _ActivityState extends State<Activity> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: ActivityTopbar(zoneList[zoneIndex].zone_name, zoneList[zoneIndex].zone_info, goToZones, activityList),
+        appBar: ActivityTopbar(zoneList[zoneIndex].zone_name,
+            zoneList[zoneIndex].zone_info, goToZones, activityList),
         body: Container(
           child: ActivitiesList(zoneIndex, entries, activityList),
         ),
         bottomNavigationBar:
-            ActivityBottombar(nextZone, 'Fullfør sone', entries, -1),
+            ActivityBottombar(nextZone, finish_zone, entries, -1),
       ),
     );
   }
