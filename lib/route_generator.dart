@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/activity_page/activity.dart';
 import 'package:bacheloroppgave/zone_page/zones_list.dart';
 
+const String error = "Error";
+
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -29,7 +31,7 @@ class RouteGenerator {
 
       case '/settings':
         return MaterialPageRoute(builder: (_) => Settings());
-        
+
       case '/help':
         return MaterialPageRoute(builder: (_) => Help());
 
@@ -46,10 +48,10 @@ class RouteGenerator {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Error'),
+          title: const Text(error),
         ),
-        body: Center(
-          child: Text('ERROR'),
+        body: const Center(
+          child: Text(error),
         ),
       );
     });
