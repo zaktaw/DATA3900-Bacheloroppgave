@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
@@ -85,7 +87,23 @@ class _ActivityState extends State<Activity> {
         appBar: ActivityTopbar(zoneList[zoneIndex].zone_name,
             zoneList[zoneIndex].zone_info, goToZones, activityList),
         body: Container(
-          child: ActivitiesList(zoneIndex, entries, activityList),
+          child: Column(children: [
+            ActivitiesList(zoneIndex, entries, activityList),
+            Stack(
+              children: [
+              LinearProgressIndicator(
+              value: entries.getNumberOfZones() / zoneList.length,
+              minHeight: 20,
+              backgroundColor: Colors.grey,
+              color: Colors.green,
+              ),
+              Center(
+              child: Text("Fullført " + entries.getNumberOfZones().toString() + " / " + zoneList.length.toString(), textAlign: TextAlign.center,),
+              )
+              ],
+            )
+            
+          ],)
         ),
         bottomNavigationBar:
             ActivityBottombar(nextZone, finish_zone, entries, -1),
