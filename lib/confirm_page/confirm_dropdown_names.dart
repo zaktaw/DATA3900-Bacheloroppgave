@@ -1,6 +1,8 @@
 import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
 import 'package:flutter/material.dart';
 
+const String pick_name = 'Velg navn';
+
 class DropdownNames extends StatefulWidget {
   Function setIsObserverSelected;
   Function setObserverName;
@@ -32,7 +34,7 @@ class _DropdownNamesState extends State<DropdownNames> {
     return Expanded(
         child: DropdownButton<String>(
       isExpanded: true,
-      hint: Text('Choose a name'),
+      hint: const Text(pick_name),
       value: selectedValue,
       items: observerNames.map((String value) {
         return DropdownMenuItem<String>(

@@ -2,6 +2,8 @@ import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:flutter/material.dart';
 
+const String error_list = "Feil i listen, prøv igjen senere";
+
 class ConfirmReviewList extends StatelessWidget {
   late TttEntries entries;
   late List<ZoneObject> zoneList;
@@ -19,6 +21,6 @@ class ConfirmReviewList extends StatelessWidget {
                       ": " +
                       entries.getNumberOfCountsInZone(index).toString());
                 })
-            : Text("Feil i listen, prøv igjen senere"));
+            : const Text(error_list));
   }
 }
