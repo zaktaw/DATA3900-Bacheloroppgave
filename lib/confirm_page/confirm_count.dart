@@ -75,7 +75,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   }
 
   bool sendTTT() {
-    TttObject tttObject = TttObject(entries.tttEntries, observerName,
+    TttObject tttObject = TttObject(entries.tttEntries, observerName, entries.timestamp,
         ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
     // kall på backend
     // if good return good

@@ -3,10 +3,10 @@ import 'package:bacheloroppgave/models/TttEntry.dart';
 class TttObject {
   late Map counts;
   late String name;
+  late DateTime timestamp;
   late List<String> activities;
 
-  TttObject(this.counts, this.name, this.activities) {
-
+  TttObject(this.counts, this.name, this.timestamp, this.activities) {
     counts.forEach((key, value) {
       List countsList = value as List;
 
