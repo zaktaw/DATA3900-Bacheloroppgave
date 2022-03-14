@@ -10,9 +10,12 @@ part 'TttEntries.g.dart';
 class TttEntries extends HiveObject {
   @HiveField(0)
   late Map tttEntries;
+  @HiveField(1)
+  late DateTime timestamp;
 
   TttEntries() {
     tttEntries = {};
+    timestamp = DateTime.now();
   }
 
   void addTelling(int zoneIndex, String activity) {

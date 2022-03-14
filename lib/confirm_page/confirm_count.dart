@@ -38,7 +38,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
   @override
   void initState() {
     entries = widget.entries;
-    projectInfo = TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+    projectInfo =
+        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
     numberOfZones = projectInfo.zones.length;
     super.initState();
   }
@@ -57,8 +58,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
               numberOfZones.toString() +
               " soner"),
           ConfirmReviewList(entries, projectInfo.zones),
-          DropdownNames(setIsObserverSelected, setObserverName, projectInfo.observers
-          ),
+          DropdownNames(
+              setIsObserverSelected, setObserverName, projectInfo.observers),
         ],
       )),
       bottomNavigationBar: ConfirmBottombar(getIsObserverSelected, sendTTT),
@@ -81,6 +82,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
     TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
     print("1: Her er riktig print ellernoe sånt.. YES! ");
     test.showTellinger();
+    print("Timestamp for tellinger:");
+    print(test.timestamp);
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
     // else return not good
     //Not good

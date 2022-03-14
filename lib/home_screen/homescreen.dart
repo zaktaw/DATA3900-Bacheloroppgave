@@ -63,10 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
     tttProjectInfoBox.add(projectInfo);
   }
 
-  void initTttHiveBox() {
-      tttEntriesBox.put('tttEntriesMap', tttEntries);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,17 +73,17 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         const Text("Main menu placeholder"),
         HomeScreenButton(
-            btnName: "Ny telling", route: "/activity", args: [tttEntries, 0], onClick: () => {}),
+            btnName: "Ny telling", route: "/activity", args: [tttEntries, 0]),
         activeTtt
             ? HomeScreenButton(
                 btnName: 'Gjenoppta telling',
                 route: '/zones',
                 args: activeTttEntries,
-                onClick: () => {})
+                )
             : const SizedBox.shrink(),
         HomeScreenButton(
-            btnName: "Innstillinger", route: "/settings", args: null, onClick: () => {}),
-        HomeScreenButton(btnName: "Hjelp", route: "/help", args: null, onClick: () => {})
+            btnName: "Innstillinger", route: "/settings", args: null),
+        HomeScreenButton(btnName: "Hjelp", route: "/help", args: null)
       ],
     ))));
   }
