@@ -9,6 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:hive/hive.dart';
 
+const String menu_title = "Main menu placeholder";
+const String new_count = 'Ny telling';
+const String continue_count = 'Gjenoppta telling';
+const String settings = 'Innstilinger';
+const String help = 'Hjelp';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -71,19 +77,19 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Center(
                 child: Column(
       children: [
-        const Text("Main menu placeholder"),
+        const Text(menu_title),
         HomeScreenButton(
-            btnName: "Ny telling", route: "/activity", args: [tttEntries, 0]),
+            btnName: new_count, route: "/activity", args: [tttEntries, 0]),
         activeTtt
             ? HomeScreenButton(
-                btnName: 'Gjenoppta telling',
+                btnName: continue_count,
                 route: '/zones',
                 args: activeTttEntries,
-                )
+              )
             : const SizedBox.shrink(),
         HomeScreenButton(
-            btnName: "Innstillinger", route: "/settings", args: null),
-        HomeScreenButton(btnName: "Hjelp", route: "/help", args: null)
+            btnName: settings, route: "/settings", args: null),
+        HomeScreenButton(btnName: help, route: "/help", args: null)
       ],
     ))));
   }

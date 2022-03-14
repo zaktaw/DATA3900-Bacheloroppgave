@@ -34,7 +34,7 @@ class _DropdownNamesState extends State<DropdownNames> {
     return Expanded(
         child: DropdownButton<String>(
       isExpanded: true,
-      hint: const Text(pick_name),
+      hint: const  Text(pick_name),
       value: selectedValue,
       items: observerNames.map((String value) {
         return DropdownMenuItem<String>(
