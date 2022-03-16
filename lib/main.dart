@@ -11,6 +11,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'models/TttEntries.dart';
 import 'models/TttEntry.dart';
 
+import 'resources/app_theme.dart';
+
 Future<void> main() async {
   Hive.registerAdapter(TttEntriesAdapter());
   Hive.registerAdapter(TttEntryAdapter());

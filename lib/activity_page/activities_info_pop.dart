@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
@@ -22,7 +23,7 @@ class ActivitiesPopButton extends StatelessWidget {
         child: const Hero(
           tag: _heroActivitiesPop,
           child: Material(
-              color: Color.fromARGB(255, 110, 107, 107),
+              color: BUTTON_COLOR,
               elevation: 2,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(32.0))),
@@ -50,7 +51,7 @@ class _ActivitiesPopCard extends StatelessWidget {
         child: Hero(
           tag: _heroActivitiesPop,
           child: Material(
-            color: Color.fromARGB(255, 82, 82, 82),
+            color: PRIMARY_COLOR,
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
@@ -62,16 +63,16 @@ class _ActivitiesPopCard extends StatelessWidget {
                   children: [
                     Text(activities,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.white)),
+                        style: TextStyle(fontSize: 20, color: TEXT_COLOR_BLACK)),
                     Container(
                       margin: const EdgeInsets.only(
                           top: 5, bottom: 10, left: 20, right: 20),
-                      child: const Divider(color: Colors.white, height: 5),
+                      child: const Divider(color: TEXT_COLOR_BLACK, height: 5),
                     ),
                     Text(
                       activities_info,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 15, color: Colors.white),
+                      style: TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),
                     )
                   ],
                 ),

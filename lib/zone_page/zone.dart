@@ -4,6 +4,7 @@ import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:bacheloroppgave/zone_page/zones_list.dart';
 import 'package:bacheloroppgave/zone_page/zones_topbar.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class _ZoneState extends State<Zone> {
         child: ZonesList(entries, zoneList),
       ),
       bottomNavigationBar: ActivityBottombar(
-          navigateToConfirmPage, zone_confirm, entries, zoneList.length),
+          navigateToConfirmPage, zone_confirm, entries, zoneList.length, TEXT_COLOR_DISABLED),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'activity_bottombar.dart';
 import 'activity_topbar.dart';
@@ -138,7 +139,7 @@ class _ActivityState extends State<Activity>
               ],
             )),
         bottomNavigationBar:
-            ActivityBottombar(nextZone, finish_zone, entries, -1),
+            ActivityBottombar(nextZone, finish_zone, entries, -1, TEXT_COLOR_BLACK),
       ),
     );
   }

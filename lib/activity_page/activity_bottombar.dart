@@ -1,11 +1,12 @@
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import '../models/TttEntries.dart';
 
-const String fullfoer_sone = "Fullfør sone";
+const String FINISH_ZONE = "Fullfør sone";
 
 class ActivityBottombar extends StatelessWidget {
   ActivityBottombar(
-      this.function, this.buttonText, this.entries, this.zoneCount,
+      this.function, this.buttonText, this.entries, this.zoneCount, this.color,
       {Key? key})
       : super(key: key);
 
@@ -14,20 +15,22 @@ class ActivityBottombar extends StatelessWidget {
   TttEntries entries;
   int zoneCount;
 
+  late Color color;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: Colors.black12,
+      color: SECONDARY_COLOR,
       child: InkWell(
         onTap: function,
         child: Padding(
           padding: EdgeInsets.only(top: 8.0),
           child: Column(
             children: <Widget>[
-              Text(fullfoer_sone,
+              Text(FINISH_ZONE,
                   style: TextStyle(
-                      color: checkStuff() ? Colors.green : Color.fromARGB(255, 114, 114, 182))),
+                      color: checkIfAllZonesAreCounted() ? TEXT_COLOR_BLACK : color)),
             ],
           ),
         ),
@@ -39,10 +42,8 @@ class ActivityBottombar extends StatelessWidget {
   and we want to return false every time.
   if all zones are counted return true, else return false
   if this method returns true, the bottombar in zones will change to green text*/
-  bool checkStuff() {
-    if (zoneCount == -1) {
-      return false;
-    } else if (entries.tttEntries.length == zoneCount) {
+  bool checkIfAllZonesAreCounted() {
+    if (entries.tttEntries.length == zoneCount) {
       return true;
     }
     return false;
