@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class HelpApp extends StatelessWidget {
-  const HelpApp({ Key? key }) : super(key: key);
+  const HelpApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("appen er spennende")
-    );
+    return Column(children: [
+      const Align(
+          alignment: Alignment.topCenter, child: Text("Informasjon om appen")),
+      const Align(alignment: Alignment.center, child: Text("Appen er bra"))
+    ]);
   }
 }

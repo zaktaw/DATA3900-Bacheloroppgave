@@ -4,24 +4,43 @@ import 'package:bacheloroppgave/help_page/help_about_app.dart';
 import 'package:bacheloroppgave/help_page/help_about_zones.dart';
 import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+
+import '../local_storage_hive/TttProjectInfoBox.dart';
+import '../models/TttProjectInfo.dart';
 
 class Help extends StatefulWidget {
-  const Help({Key? key}) : super(key: key);
-
+  Help({Key? key}) : super(key: key);
 
   @override
   _HelpState createState() => _HelpState();
 }
 
-  class _HelpState extends State<Help> {
+class _HelpState extends State<Help> {
   int _selectedIndex = 0;
-  
-  static const List<Widget> _helpOptions = <Widget>[
-    HelpTTT(),
-    HelpApp(),
-    HelpZones(),
-    HelpActivites(),
-  ];
+  late TttProjectInfo projectInfo =
+      TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+  late List<Widget> _helpOptions;
+
+  @override
+  void dispose() {
+    Hive.box('tttProjectInfo').close();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    projectInfo =
+        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+
+  _helpOptions = <Widget>[
+      const HelpTTT(),
+      const HelpApp(),
+      HelpZones(projectInfo),
+      HelpActivites(projectInfo),
+    ];
+    super.initState();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -33,7 +52,7 @@ class Help extends StatefulWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SettingsHelpTopBar("Hjelp", '/', null),
-       body: Center(
+      body: Center(
         child: _helpOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
