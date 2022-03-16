@@ -24,11 +24,16 @@ class Activity extends StatefulWidget {
   _ActivityState createState() => _ActivityState();
 }
 
-class _ActivityState extends State<Activity> {
+class _ActivityState extends State<Activity>
+    with SingleTickerProviderStateMixin {
   late TttEntries entries;
   late int zoneIndex;
   late List<ActivityObject> activityList;
   late List<ZoneObject> zoneList;
+
+  late AnimationController controller;
+  late Animation colorAnimation;
+  late Animation sizeAnimation;
 
   @override
   void dispose() {
@@ -47,6 +52,26 @@ class _ActivityState extends State<Activity> {
     activityList = projectInfo.activities;
     zoneList = projectInfo.zones;
 
+    // animation controller
+    controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 100),
+        reverseDuration: Duration(milliseconds: 300));
+    colorAnimation =
+        ColorTween(begin: Colors.white, end: Colors.black).animate(controller);
+
+    // reset state for widgets after animation is completed
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    // this is needed for reversing the animation after it is completed
+    controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        controller.reverse();
+      }
+    });
+
     super.initState();
   }
 
@@ -54,6 +79,7 @@ class _ActivityState extends State<Activity> {
     setState(() {
       print("Update zoneindex");
       if (zoneIndex < zoneList.length - 1) {
+        controller.forward();
         zoneIndex++;
         print(zoneIndex);
       } else {
@@ -85,26 +111,32 @@ class _ActivityState extends State<Activity> {
     return MaterialApp(
       home: Scaffold(
         appBar: ActivityTopbar(zoneList[zoneIndex].zone_name,
-            zoneList[zoneIndex].zone_info, goToZones, activityList),
+            zoneList[zoneIndex].zone_info, goToZones, activityList, colorAnimation),
         body: Container(
-          child: Column(children: [
-            ActivitiesList(zoneIndex, entries, activityList),
-            Stack(
+            child: Column(
               children: [
-              LinearProgressIndicator(
-              value: entries.getNumberOfZones() / zoneList.length,
-              minHeight: 20,
-              backgroundColor: Colors.grey,
-              color: Colors.green,
-              ),
-              Center(
-              child: Text("Fullført " + entries.getNumberOfZones().toString() + " / " + zoneList.length.toString(), textAlign: TextAlign.center,),
-              )
+                ActivitiesList(zoneIndex, entries, activityList),
+                Stack(
+                  children: [
+                    LinearProgressIndicator(
+                      value: entries.getNumberOfZones() / zoneList.length,
+                      minHeight: 20,
+                      backgroundColor: Colors.grey,
+                      color: Colors.green,
+                    ),
+                    Center(
+                      child: Text(
+                        "Fullført " +
+                            entries.getNumberOfZones().toString() +
+                            " / " +
+                            zoneList.length.toString(),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ],
+                )
               ],
-            )
-            
-          ],)
-        ),
+            )),
         bottomNavigationBar:
             ActivityBottombar(nextZone, finish_zone, entries, -1),
       ),

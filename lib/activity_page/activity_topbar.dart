@@ -12,12 +12,15 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
   final String zoneInfo;
   late final VoidCallback goToZones;
   final List<ActivityObject> activityList;
+  final Animation<dynamic> colorAnimation;
 
   ActivityTopbar(
     this.zoneName,
     this.zoneInfo,
     this.goToZones,
-    this.activityList, {
+    this.activityList, 
+    this.colorAnimation,
+    {
     Key? key,
   })  : preferredSize = Size.fromHeight(50.0),
         super(key: key);
@@ -46,10 +49,9 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () => goToZones()),
       backgroundColor: Color.fromARGB(255, 189, 190, 187),
       centerTitle: true,
-      title: ZoneInActivitiesPopButton(zoneInfo, zoneName, key: key),
+      title: ZoneInActivitiesPopButton(zoneInfo, zoneName, colorAnimation, key: key),
       actions: <Widget>[
-        ActivitiesPopButton(generateInfoText(), info_act,
-            key: key)
+        ActivitiesPopButton(generateInfoText(), info_act, key: key)
       ],
     );
   }
