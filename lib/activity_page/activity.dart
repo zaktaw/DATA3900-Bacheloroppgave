@@ -79,7 +79,7 @@ class _ActivityState extends State<Activity>
   void incrementZoneIndex() {
     setState(() {
       print("Update zoneindex");
-      if (zoneIndex < zoneList.length - 1) {
+      if (zoneIndex < zoneList.length-1) {
         controller.forward();
         zoneIndex++;
         print(zoneIndex);
@@ -94,9 +94,9 @@ class _ActivityState extends State<Activity>
   }
 
   void nextZone() {
-    final tttEntriesBox = TttEntriesBox.getTttEntries();
-    tttEntriesBox.put('tttEntriesMap', entries);
+    final tttEntriesBox = TttEntriesBox.getTttEntries(); 
     entries.addZoneKey(zoneIndex);
+    tttEntriesBox.put('tttEntriesMap', entries);
     incrementZoneIndex();
   }
 
