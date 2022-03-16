@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
@@ -22,13 +23,13 @@ class ActivityPopButton extends StatelessWidget {
         child: Hero(
           tag: _heroActivityPop,
           child: Material(
-            color: Color.fromARGB(255, 82, 82, 82),
+            color: SECONDARY_COLOR,
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
             child: Text(activity_name,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 30, color: Colors.white)),
+            style: TextStyle(fontSize: 30, color: TEXT_COLOR_BLACK)),
           ),
         ),
       ),
@@ -53,7 +54,7 @@ class _ActivityPopCard extends StatelessWidget {
         child: Hero(
           tag: _heroActivityPop,
           child: Material(
-            color: Color.fromARGB(255, 82, 82, 82),
+            color: PRIMARY_COLOR,
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
@@ -65,18 +66,18 @@ class _ActivityPopCard extends StatelessWidget {
                   children: [Text(
                     activity_name,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, color: Colors.white)
+                    style: TextStyle(fontSize: 20, color: TEXT_COLOR_BLACK)
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 5, bottom: 10, left: 20, right: 20),
                     child: const Divider(
-                      color: Colors.white,
+                      color: TEXT_COLOR_BLACK,
                       height: 5
                     ),
                   ),
                   Text(activity_info,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 15, color: Colors.white),)
+                  style: TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),)
                   ],
                 ),
               ),

@@ -59,7 +59,7 @@ class _ActivityState extends State<Activity>
         duration: Duration(milliseconds: 100),
         reverseDuration: Duration(milliseconds: 300));
     colorAnimation =
-        ColorTween(begin: Colors.white, end: Colors.black).animate(controller);
+        ColorTween(begin: ANIMATION_BEGIN_COLOR, end: ANIMATION_END_COLOR).animate(controller);
 
     // reset state for widgets after animation is completed
     controller.addListener(() {

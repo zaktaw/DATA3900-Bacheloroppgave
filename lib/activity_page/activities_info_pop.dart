@@ -27,7 +27,7 @@ class ActivitiesPopButton extends StatelessWidget {
               elevation: 2,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(32.0))),
-              child: Icon(Icons.info_outline_rounded)),
+              child: Icon(Icons.info_outline)),
         ),
       ),
     );

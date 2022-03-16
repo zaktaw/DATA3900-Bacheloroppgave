@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -34,7 +35,7 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: Colors.black12,
+      color: SECONDARY_COLOR,
       child: InkWell(
         onTap: () async => {
           if (widget.getIsObserverSelected())
@@ -76,7 +77,7 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
           padding: const EdgeInsets.only(top: 8.0),
           child: Column(
             children: const <Widget>[
-              Text(send_count, style: TextStyle(color: Colors.black)),
+              Text(send_count, style: TextStyle(color: TEXT_COLOR_BLACK)),
             ],
           ),
         ),

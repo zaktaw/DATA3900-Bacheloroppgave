@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/models/ActivityObject.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'activities_info_pop.dart';
 import 'zone_info_in_activities.dart';
@@ -44,10 +45,10 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
       leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: BUTTON_COLOR,
           ),
           onPressed: () => goToZones()),
-      backgroundColor: Color.fromARGB(255, 189, 190, 187),
+      backgroundColor: SECONDARY_COLOR,
       centerTitle: true,
       title: ZoneInActivitiesPopButton(zoneInfo, zoneName, colorAnimation, key: key),
       actions: <Widget>[

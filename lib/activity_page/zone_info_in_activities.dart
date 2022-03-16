@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
@@ -54,7 +55,7 @@ class _ZoneInfoPopCard extends StatelessWidget {
         child: Hero(
           tag: _heroZoneInActivitiesPop,
           child: Material(
-            color: const Color.fromARGB(255, 82, 82, 82),
+            color: PRIMARY_COLOR,
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
@@ -67,16 +68,16 @@ class _ZoneInfoPopCard extends StatelessWidget {
                     Text(zone,
                         textAlign: TextAlign.center,
                         style:
-                            const TextStyle(fontSize: 20, color: Colors.white)),
+                            const TextStyle(fontSize: 20, color: TEXT_COLOR_BLACK)),
                     Container(
                       margin: const EdgeInsets.only(
                           top: 5, bottom: 10, left: 20, right: 20),
-                      child: const Divider(color: Colors.white, height: 5),
+                      child: const Divider(color: TEXT_COLOR_BLACK, height: 5),
                     ),
                     Text(
                       zone_info,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                      style: const TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),
                     )
                   ],
                 ),

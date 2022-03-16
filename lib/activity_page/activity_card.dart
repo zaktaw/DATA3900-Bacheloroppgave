@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -25,7 +26,7 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Card(color: PRIMARY_COLOR,
       child: Row(children: <Widget>[
         Expanded(
             flex: 5,
@@ -33,6 +34,7 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 2,
           child: IconButton(
+            color: BUTTON_COLOR,
               onPressed: () {
                 txt.text = decrement(txt.text);
               },
@@ -55,6 +57,7 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 2,
           child: IconButton(
+            color: BUTTON_COLOR,
               onPressed: () {
                 txt.text = increment(txt.text);
               },
