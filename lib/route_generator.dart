@@ -1,5 +1,5 @@
 import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
-import 'package:bacheloroppgave/help.dart';
+import 'package:bacheloroppgave/help_page/help.dart';
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
 import 'package:bacheloroppgave/settings_page/settings.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
