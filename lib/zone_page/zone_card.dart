@@ -6,17 +6,17 @@ import '../models/TttEntries.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ZoneCard extends StatelessWidget {
-  ZoneCard(this.zone_name, this.zone_info, this.zone_index, this.tellinger, {Key? key})
+  ZoneCard(this.zone_name, this.zone_info, this.zone_index, this.entries, {Key? key})
       : super(key: key);
 
   String zone_name;
   String zone_info;
   int zone_index;
-  TttEntries tellinger;
+  TttEntries entries;
 
   void navigateToActivityPage(BuildContext context) {
     Navigator.of(context)
-        .pushNamed('/activity', arguments: [tellinger, zone_index]);
+        .pushNamed('/activity', arguments: [entries, zone_index]);
   }
 
   @override
@@ -49,7 +49,7 @@ class ZoneCard extends StatelessWidget {
   }
 
   bool checkIfCounted(int index) {
-    if (tellinger.checkTttEntryKey(index)) {
+    if (entries.checkTttEntryKey(index)) {
       return true;
     }
     return false;
