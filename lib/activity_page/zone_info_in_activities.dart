@@ -6,10 +6,12 @@ import 'package:bacheloroppgave/hero_dialog_route.dart';
 //Koden er basert på kildekode fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
 class ZoneInActivitiesPopButton extends StatelessWidget {
-  const ZoneInActivitiesPopButton(this.zone_info, this.zone, {Key? key}) : super(key: key);
+  const ZoneInActivitiesPopButton(this.zone_info, this.zone, this.colorAnimation, {Key? key})
+      : super(key: key);
 
   final String zone;
   final String zone_info;
+  final Animation<dynamic> colorAnimation;
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +26,11 @@ class ZoneInActivitiesPopButton extends StatelessWidget {
         child: Hero(
           tag: _heroZoneInActivitiesPop,
           child: Material(
-              color: Color.fromARGB(255, 156, 92, 92),
+              color: colorAnimation.value, // Color.fromARGB(255, 156, 92, 92)
               elevation: 3,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30.0))),
-              child: Text(zone)
-              ),
+              child: Text(zone)),
         ),
       ),
     );
@@ -65,7 +66,8 @@ class _ZoneInfoPopCard extends StatelessWidget {
                   children: [
                     Text(zone,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 20, color: Colors.white)),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.white)),
                     Container(
                       margin: const EdgeInsets.only(
                           top: 5, bottom: 10, left: 20, right: 20),
