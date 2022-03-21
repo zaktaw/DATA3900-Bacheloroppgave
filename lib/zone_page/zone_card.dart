@@ -1,12 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
+import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/models/TttEntry.dart';
 import 'package:flutter/material.dart';
 import '../models/TttEntries.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ZoneCard extends StatelessWidget {
-  ZoneCard(this.zone_name, this.zone_info, this.zone_index, this.entries, {Key? key})
+  ZoneCard(this.zone_name, this.zone_info, this.zone_index, this.entries,
+      {Key? key})
       : super(key: key);
 
   String zone_name;
@@ -37,11 +39,11 @@ class ZoneCard extends StatelessWidget {
                 ),
                 onTap: () => navigateToActivityPage(context),
                 onLongPress: () => Fluttertoast.showToast(
-                  msg: zone_name + ': ' + zone_info, // message
-                  toastLength: Toast.LENGTH_SHORT, // length
-                  gravity: ToastGravity.CENTER, // location
-                  timeInSecForIosWeb: 5 // duration,
-                ),
+                    msg: zone_name + ': ' + zone_info, // message
+                    toastLength: Toast.LENGTH_SHORT, // length
+                    gravity: ToastGravity.CENTER, // location
+                    timeInSecForIosWeb: 5 // duration,
+                    ),
               ))
         ],
       ),
@@ -49,6 +51,11 @@ class ZoneCard extends StatelessWidget {
   }
 
   bool checkIfCounted(int index) {
+
+    if (TttEntriesBox.getTttEntries().isEmpty) return false;
+
+    TttEntries entries = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
+
     if (entries.checkTttEntryKey(index)) {
       return true;
     }
