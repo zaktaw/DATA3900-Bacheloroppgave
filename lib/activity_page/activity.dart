@@ -114,6 +114,7 @@ class _ActivityState extends State<Activity>
         appBar: ActivityTopbar(zoneList[zoneIndex].zone_name,
             zoneList[zoneIndex].zone_info, goToZones, activityList, colorAnimation),
         body: Container(
+            decoration: new BoxDecoration(color: BACKGROUND_COLOR),
             child: Column(
               children: [
                 ActivitiesList(zoneIndex, entries, activityList),
