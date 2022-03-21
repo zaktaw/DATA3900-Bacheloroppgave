@@ -1,6 +1,9 @@
 import 'package:bacheloroppgave/models/TttEntries.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:bacheloroppgave/zone_page/zone_card.dart';
 import 'package:flutter/material.dart';
+
+const double buttonWidth = 175;
 
 class HomeScreenButton extends StatefulWidget {
   HomeScreenButton({
@@ -23,11 +26,22 @@ class HomeScreenButton extends StatefulWidget {
 class _HomeScreenButtonState extends State<HomeScreenButton> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        child: Text(widget.btnName),
-        onPressed: () {
-          widget.onPressed();
-          Navigator.of(context).pushNamed(widget.route, arguments: widget.args);
-        });
+    return Container(
+        margin: const EdgeInsets.only(top: 10.0),
+        child: ElevatedButton(
+            child: Text(
+              widget.btnName,
+              style: const TextStyle(color: TEXT_COLOR_BLACK),
+            ),
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(SECONDARY_COLOR),
+                padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
+                fixedSize: MaterialStateProperty.all(
+                    const Size.fromWidth(buttonWidth))),
+            onPressed: () {
+              widget.onPressed();
+              Navigator.of(context)
+                  .pushNamed(widget.route, arguments: widget.args);
+            }));
   }
 }
