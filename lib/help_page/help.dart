@@ -2,6 +2,7 @@ import 'package:bacheloroppgave/help_page/help_about_TTT.dart';
 import 'package:bacheloroppgave/help_page/help_about_activities.dart';
 import 'package:bacheloroppgave/help_page/help_about_app.dart';
 import 'package:bacheloroppgave/help_page/help_about_zones.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -57,6 +58,7 @@ class _HelpState extends State<Help> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        backgroundColor: SECONDARY_COLOR,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.find_in_page),
@@ -76,7 +78,7 @@ class _HelpState extends State<Help> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 236, 7, 168),
+        selectedItemColor: TEXT_COLOR_BLACK,
         onTap: _onItemTapped,
       ),
     );

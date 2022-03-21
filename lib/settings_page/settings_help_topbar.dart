@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class SettingsHelpTopBar extends StatelessWidget with PreferredSizeWidget {
@@ -20,12 +21,13 @@ class SettingsHelpTopBar extends StatelessWidget with PreferredSizeWidget {
           leading: IconButton(
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.black,
+                color: TEXT_COLOR_BLACK,
               ),
               onPressed: () => Navigator.of(context).pushNamed(route, arguments: args)),
-          backgroundColor: Color.fromARGB(255, 189, 190, 187),
+          backgroundColor: SECONDARY_COLOR,
           centerTitle: true,
-          title: Text(topbarTitle),
+          title: Text(topbarTitle,
+            style: const TextStyle(color: TEXT_COLOR_BLACK),),
         ),
         preferredSize: preferredSize);
   }
