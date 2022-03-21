@@ -78,7 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("TTT"), 
+      appBar: AppBar(title: Text("TTT"),
+      centerTitle: true, 
       backgroundColor: SECONDARY_COLOR, 
       titleTextStyle: const TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_TITLE_FONTSIZE), 
       toolbarHeight: (MediaQuery.of(context).size.height * HOMESCREEN_TOPBAR_HEIGHT_FACTOR),
