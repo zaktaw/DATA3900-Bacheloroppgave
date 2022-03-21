@@ -69,6 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
     tttProjectInfoBox.add(projectInfo);
   }
 
+  void newCount() {
+    TttEntriesBox.getTttEntries().delete('tttEntriesMap');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,17 +83,18 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         const Text(menu_title),
         HomeScreenButton(
-            btnName: new_count, route: "/activity", args: [tttEntries, 0]),
+            btnName: new_count, route: "/activity", args: [tttEntries, 0], onPressed: newCount),
         activeTtt
             ? HomeScreenButton(
                 btnName: continue_count,
                 route: '/zones',
                 args: activeTttEntries,
+                onPressed: () => {},
               )
             : const SizedBox.shrink(),
         HomeScreenButton(
-            btnName: settings, route: "/settings", args: null),
-        HomeScreenButton(btnName: help, route: "/help", args: null)
+            btnName: settings, route: "/settings", args: null, onPressed: () => {}),
+        HomeScreenButton(btnName: help, route: "/help", args: null, onPressed: () => {})
       ],
     ))));
   }

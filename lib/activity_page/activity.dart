@@ -36,6 +36,8 @@ class _ActivityState extends State<Activity>
   late Animation colorAnimation;
   late Animation sizeAnimation;
 
+  final tttEntriesBox = TttEntriesBox.getTttEntries();
+
   @override
   void dispose() {
     Hive.box('tttEntries').close();
@@ -59,7 +61,8 @@ class _ActivityState extends State<Activity>
         duration: Duration(milliseconds: 100),
         reverseDuration: Duration(milliseconds: 300));
     colorAnimation =
-        ColorTween(begin: ANIMATION_BEGIN_COLOR, end: ANIMATION_END_COLOR).animate(controller);
+        ColorTween(begin: ANIMATION_BEGIN_COLOR, end: ANIMATION_END_COLOR)
+            .animate(controller);
 
     // reset state for widgets after animation is completed
     controller.addListener(() {
@@ -79,7 +82,7 @@ class _ActivityState extends State<Activity>
   void incrementZoneIndex() {
     setState(() {
       print("Update zoneindex");
-      if (zoneIndex < zoneList.length-1) {
+      if (zoneIndex < zoneList.length - 1) {
         controller.forward();
         zoneIndex++;
         print(zoneIndex);
@@ -94,7 +97,6 @@ class _ActivityState extends State<Activity>
   }
 
   void nextZone() {
-    final tttEntriesBox = TttEntriesBox.getTttEntries(); 
     entries.addZoneKey(zoneIndex);
     tttEntriesBox.put('tttEntriesMap', entries);
     incrementZoneIndex();
@@ -107,39 +109,49 @@ class _ActivityState extends State<Activity>
     );
   }
 
+  int getNumberOfCompletedZones() {
+    if (TttEntriesBox.getTttEntries().isEmpty) return 0;
+    TttEntries entries = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
+    return entries.tttEntries.length;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: ActivityTopbar(zoneList[zoneIndex].zone_name,
-            zoneList[zoneIndex].zone_info, goToZones, activityList, colorAnimation),
+        appBar: ActivityTopbar(
+            zoneList[zoneIndex].zone_name,
+            zoneList[zoneIndex].zone_info,
+            goToZones,
+            activityList,
+            colorAnimation),
         body: Container(
             child: Column(
+          children: [
+            ActivitiesList(zoneIndex, entries, activityList),
+            Stack(
               children: [
-                ActivitiesList(zoneIndex, entries, activityList),
-                Stack(
-                  children: [
-                    LinearProgressIndicator(
-                      value: entries.getNumberOfZones() / zoneList.length,
-                      minHeight: 20,
-                      backgroundColor: Colors.grey,
-                      color: Colors.green,
-                    ),
-                    Center(
-                      child: Text(
-                        "Fullført " +
-                            entries.getNumberOfZones().toString() +
-                            " / " +
-                            zoneList.length.toString(),
-                        textAlign: TextAlign.center,
-                      ),
-                    )
-                  ],
+                LinearProgressIndicator(
+                  value: getNumberOfCompletedZones() / zoneList.length,
+                  minHeight: 20,
+                  backgroundColor: Colors.grey,
+                  color: Colors.green,
+                ),
+                Center(
+                  child: Text(
+                    "Fullført " +
+                        getNumberOfCompletedZones().toString() +
+                        " / " +
+                        zoneList.length.toString(),
+                    textAlign: TextAlign.center,
+                  ),
                 )
               ],
-            )),
-        bottomNavigationBar:
-            ActivityBottombar(nextZone, finish_zone, entries, -1, TEXT_COLOR_BLACK),
+            )
+          ],
+        )),
+        bottomNavigationBar: ActivityBottombar(
+            nextZone, finish_zone, entries, -1, TEXT_COLOR_BLACK),
       ),
     );
   }
