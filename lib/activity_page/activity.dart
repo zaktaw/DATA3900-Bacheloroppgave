@@ -126,6 +126,7 @@ class _ActivityState extends State<Activity>
             activityList,
             colorAnimation),
         body: Container(
+            decoration: new BoxDecoration(color: BACKGROUND_COLOR),
             child: Column(
           children: [
             ActivitiesList(zoneIndex, entries, activityList),
