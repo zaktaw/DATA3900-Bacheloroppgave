@@ -27,6 +27,7 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(100)),
         margin: EdgeInsets.only(top: widget.margin),
         child: ElevatedButton(
             child: Text(
