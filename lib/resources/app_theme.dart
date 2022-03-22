@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 // colors
 const Color PRIMARY_COLOR = Colors.grey;
-const Color SECONDARY_COLOR = Colors.yellow;
+const Color SECONDARY_COLOR = Color.fromARGB(255, 231, 231, 200);
+
 
 const Color ACCENT_COLOR = Colors.black;
 
@@ -19,6 +20,11 @@ const Color TEXT_COLOR_DISABLED = Color.fromARGB(100, 0, 0, 0);
 const Color TEXT_COLOR_WHITE = Colors.white;
 
 const Color PROGRESSBAR_BAR_COLOR = Colors.green;
+
+const Color CARD_BACKGROUND_COLOR =Color.fromARGB(255, 136, 136, 136);
+const Color CARD_BORDER_COLOR = Color.fromARGB(255, 136, 136, 136);
+const Color CARD_ACT_BTN_COLOR = Color.fromARGB(255, 212, 150, 150);
+const Color CARD_ACT_BTN_BORDER_COLOR = Color.fromARGB(255, 54, 182, 82);
 
 const Color DROPDOWN_COLOR = Colors.white;
 const Color CONFIRM_REVIEW_LIST_COLOR = Colors.white;
@@ -39,12 +45,17 @@ const double HOMESCREEN_BTN_WIDTH_FACTOR = 0.7;
 const double HOMESCREEN_BTN_HEIGHT_FACTOR = 0.1;
 const double HOMESCREEN_TOPBAR_HEIGHT_FACTOR = 0.1;
 
+const double ACTIVITY_INC_DEC_BUTTONS_FACTOR = 0.07;
+
 //fonts
 
 const double HOMESCREEN_TITLE_FONTSIZE = 25;
-const double HOMESCREEN_BTN_FONTSIZE = 15;
+const double HOMESCREEN_BTN_FONTSIZE = 17;
 const double CONFIRM_PAGE_REWIEWLIST_FONTSIZE = 17;
 const double CONFIRM_PAGE_REWIEWLIST_HEADER_FONTSIZE = 22;
+const double ACTIVITY_TOP_TITLE_FONTSIZE = 20;
+const double ACTIVITY_MANUAL_INPUT_FONTSIZE = 18;
+const double ACTIVITY_BOTTOMBAR_FONTSIZE = 18;
 
 //paddings
 

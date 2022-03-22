@@ -23,10 +23,10 @@ class ActivityPopButton extends StatelessWidget {
         child: Hero(
           tag: _heroActivityPop,
           child: Material(
-            color: SECONDARY_COLOR,
+            color: CARD_ACT_BTN_COLOR,
             elevation: 2,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(32), side: const BorderSide(color: CARD_ACT_BTN_BORDER_COLOR, width: 1)),
             child: Text(activity_name,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 30, color: TEXT_COLOR_BLACK)),

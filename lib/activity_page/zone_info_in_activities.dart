@@ -31,7 +31,7 @@ class ZoneInActivitiesPopButton extends StatelessWidget {
               elevation: 3,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30.0))),
-              child: Text(zone)),
+              child: Padding(padding: const EdgeInsets.fromLTRB(17,5,17,5), child: Text(zone, style: const TextStyle(fontSize: ACTIVITY_TOP_TITLE_FONTSIZE)),)),
         ),
       ),
     );

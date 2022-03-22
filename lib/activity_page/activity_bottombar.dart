@@ -29,7 +29,7 @@ class ActivityBottombar extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(FINISH_ZONE,
-                  style: TextStyle(
+                  style: TextStyle(fontSize: ACTIVITY_BOTTOMBAR_FONTSIZE,
                       color: checkIfAllZonesAreCounted() ? TEXT_COLOR_BLACK : color)),
             ],
           ),

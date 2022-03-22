@@ -26,7 +26,8 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(color: PRIMARY_COLOR,
+    return Card(color: CARD_BACKGROUND_COLOR,
+      shape: RoundedRectangleBorder(side: BorderSide(color: CARD_BORDER_COLOR, width: 1), borderRadius: BorderRadius.circular(10)),
       child: Row(children: <Widget>[
         Expanded(
             flex: 5,
@@ -34,6 +35,7 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 2,
           child: IconButton(
+            iconSize: MediaQuery.of(context).size.width * ACTIVITY_INC_DEC_BUTTONS_FACTOR,
             color: BUTTON_COLOR,
               onPressed: () {
                 txt.text = decrement(txt.text);
@@ -43,11 +45,14 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 1,
           child: TextFormField(
+            decoration: InputDecoration(fillColor: Colors.white, filled: true),
             controller: txt,
             onChanged: (Text) => {
               if (txt.text.isNotEmpty) {manualInput(txt.text)}
             },
             textAlign: TextAlign.center,
+            textAlignVertical: TextAlignVertical.bottom,
+            style: TextStyle(fontSize: ACTIVITY_MANUAL_INPUT_FONTSIZE),
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
@@ -57,6 +62,7 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 2,
           child: IconButton(
+            iconSize: MediaQuery.of(context).size.width * ACTIVITY_INC_DEC_BUTTONS_FACTOR,
             color: BUTTON_COLOR,
               onPressed: () {
                 txt.text = increment(txt.text);

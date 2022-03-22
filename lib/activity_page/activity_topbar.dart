@@ -48,7 +48,7 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
             color: BUTTON_COLOR,
           ),
           onPressed: () => goToZones()),
-      backgroundColor: SECONDARY_COLOR,
+      backgroundColor: PRIMARY_COLOR,
       centerTitle: true,
       title: ZoneInActivitiesPopButton(zoneInfo, zoneName, colorAnimation, key: key),
       actions: <Widget>[
