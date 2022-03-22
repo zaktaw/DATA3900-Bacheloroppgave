@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     //MOCK Projectinfo init init
     ZoneObject zoneobj =
-        new ZoneObject(1, "Sone 1 Lesesal", "Lesesalen ved inngangen");
+        new ZoneObject(1, "Sone 1 Lesesal Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen", "Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen");
     ZoneObject zoneobj1 =
         new ZoneObject(2, "Sone 2 Lesekrok", "Hjørnet ved potteplantene");
     ZoneObject zoneobj2 =
@@ -71,10 +71,15 @@ class _HomeScreenState extends State<HomeScreen> {
     tttProjectInfoBox.add(projectInfo);
   }
 
+  void newCount() {
+    TttEntriesBox.getTttEntries().delete('tttEntriesMap');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("TTT"), 
+      appBar: AppBar(title: Text("TTT"),
+      centerTitle: true, 
       backgroundColor: SECONDARY_COLOR, 
       titleTextStyle: const TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_TITLE_FONTSIZE), 
       toolbarHeight: (MediaQuery.of(context).size.height * HOMESCREEN_TOPBAR_HEIGHT_FACTOR),
@@ -85,18 +90,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
       children: [
         HomeScreenButton(
-            btnName: new_count, margin: HOMESCREEN_COUNT_BTN_MARGIN, route: "/activity", args: [tttEntries, 0]),
+            btnName: new_count, margin: HOMESCREEN_COUNT_BTN_MARGIN, route: "/activity", args: [tttEntries, 0], onPressed: newCount),
         activeTtt
             ? HomeScreenButton(
                 btnName: continue_count,
                 margin: HOMESCREEN_RESUME_COUNT_BTN_MARGIN,
                 route: '/zones',
                 args: activeTttEntries,
+                onPressed: () => {},
               )
             : const SizedBox.shrink(),
         HomeScreenButton(
-            btnName: settings, margin: HOMESCREEN_SETTINGS_BTN_MARGIN, route: "/settings", args: null),
-        HomeScreenButton(btnName: help, margin: HOMESCREEN_HELP_BTN_MARGIN, route: "/help", args: null)
+            btnName: settings, margin: HOMESCREEN_SETTINGS_BTN_MARGIN, route: "/settings", args: null, onPressed: () => {}),
+        HomeScreenButton(btnName: help, margin: HOMESCREEN_HELP_BTN_MARGIN, route: "/help", args: null, onPressed: () => {})
       ],
     ))));
   }

@@ -12,12 +12,14 @@ class HomeScreenButton extends StatefulWidget {
     required this.route,
     required this.margin,
     required this.args,
+    required this.onPressed,
   }) : super(key: key);
 
   final String btnName;
   final String route;
   final double margin;
   final args;
+  Function onPressed;
 
   @override
   _HomeScreenButtonState createState() => _HomeScreenButtonState();
@@ -42,6 +44,7 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
                     Size((MediaQuery.of(context).size.width * HOMESCREEN_BTN_WIDTH_FACTOR), (MediaQuery.of(context).size.height * HOMESCREEN_BTN_HEIGHT_FACTOR)),
                 )),
             onPressed: () {
+              widget.onPressed();
               Navigator.of(context)
                   .pushNamed(widget.route, arguments: widget.args);
             }));
