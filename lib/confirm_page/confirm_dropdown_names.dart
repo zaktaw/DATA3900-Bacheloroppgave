@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
 const String pick_name = 'Velg navn';
@@ -31,24 +32,41 @@ class _DropdownNamesState extends State<DropdownNames> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS),
+            color: DROPDOWN_COLOR),
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height *
+                CONFIRM_PAGE_DROPDOWN_MARGIN_FACTOR,
+            left: MediaQuery.of(context).size.width *
+                CONFIRM_PAGE_MARGIN_WIDTH_FACTOR,
+            right: MediaQuery.of(context).size.width *
+                CONFIRM_PAGE_MARGIN_WIDTH_FACTOR),
         child: DropdownButton<String>(
-      isExpanded: true,
-      hint: const  Text(pick_name),
-      value: selectedValue,
-      items: observerNames.map((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-      onChanged: (value) {
-        setState(() {
-          selectedValue = value as String;
-          widget.setIsObserverSelected();
-          widget.setObserverName(value);
-        });
-      },
-    ));
+          underline: SizedBox(),
+          isExpanded: true,
+          hint: Padding(
+            child: Text(pick_name),
+            padding: EdgeInsets.only(left: 20),
+          ),
+          value: selectedValue,
+          items: observerNames.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Padding(
+                child: Text(value),
+                padding: EdgeInsets.only(left: 20),
+              ),
+            );
+          }).toList(),
+          onChanged: (value) {
+            setState(() {
+              selectedValue = value as String;
+              widget.setIsObserverSelected();
+              widget.setObserverName(value);
+            });
+          },
+        ));
   }
 }

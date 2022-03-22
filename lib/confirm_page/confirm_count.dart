@@ -48,17 +48,30 @@ class _ConfirmCountState extends State<ConfirmCount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: PRIMARY_COLOR,
+      backgroundColor: BACKGROUND_COLOR,
       appBar: SettingsHelpTopBar("Bekreft telling", '/zones', entries),
       body: Container(
           child: Column(
         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text("Du har telt " +
-              numberOfZones.toString() +
-              " av " +
-              numberOfZones.toString() +
-              " soner"),
+          Container(
+            child: Padding(
+                child: Text(
+              "Du har telt " +
+                  numberOfZones.toString() +
+                  " av " +
+                  numberOfZones.toString() +
+                  " soner",
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: CONFIRM_PAGE_REWIEWLIST_FONTSIZE),
+            ),
+            padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height *
+                    CONFIRM_PAGE_HEADER_PADDING_TOP_FACTOR,
+                bottom: MediaQuery.of(context).size.height *
+                    CONFIRM_PAGE_HEADER_PADDING_BOTTOM_FACTOR),
+          )),
           ConfirmReviewList(entries, projectInfo.zones),
           DropdownNames(
               setIsObserverSelected, setObserverName, projectInfo.observers),
@@ -77,8 +90,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
   }
 
   bool sendTTT() {
-    TttObject tttObject = TttObject(entries.tttEntries, observerName, entries.timestamp,
-        ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
+    TttObject tttObject = TttObject(entries.tttEntries, observerName,
+        entries.timestamp, ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
     // kall på backend
     // if good return good
     TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;

@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     //MOCK Projectinfo init init
     ZoneObject zoneobj =
-        new ZoneObject(1, "Sone 1 Lesesal", "Lesesalen ved inngangen");
+        new ZoneObject(1, "Sone 1 Lesesal Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen", "Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen Lesesalen ved inngangen");
     ZoneObject zoneobj1 =
         new ZoneObject(2, "Sone 2 Lesekrok", "Hjørnet ved potteplantene");
     ZoneObject zoneobj2 =
