@@ -53,9 +53,9 @@ class _HelpState extends State<Help> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SettingsHelpTopBar("Hjelp", '/', null),
-      body: Center(
+      body: Container(color: BACKGROUND_COLOR, child: Center(
         child: _helpOptions.elementAt(_selectedIndex),
-      ),
+      )),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: SECONDARY_COLOR,

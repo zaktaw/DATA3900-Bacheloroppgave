@@ -77,7 +77,7 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
           padding: const EdgeInsets.only(top: 8.0),
           child: Column(
             children: const <Widget>[
-              Text(send_count, style: TextStyle(color: TEXT_COLOR_BLACK)),
+              Text(send_count, style: TextStyle(color: TEXT_COLOR_BLACK, fontSize: COUNT_BOTTOMBAR_FONTSIZE)),
             ],
           ),
         ),

@@ -43,7 +43,7 @@ class ZoneCard extends StatelessWidget {
                             fontSize: 23,
                             color: checkIfCounted(zone_index)
                                 ? Colors.green
-                                : Color.fromARGB(255, 114, 114, 182)),
+                                : TEXT_COLOR_BLACK),
                       )),
                   onTap: () => navigateToActivityPage(context),
                   onLongPress: () => Fluttertoast.showToast(

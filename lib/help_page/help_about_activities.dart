@@ -1,5 +1,6 @@
 import 'dart:html';
 
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../models/ActivityObject.dart';
@@ -17,18 +18,24 @@ class HelpActivites extends StatelessWidget {
     activityList.forEach((element) {
       activityListString += element.activity_name.toString() +
           ": " +
-          element.activity_info.toString() + "\n";
+          element.activity_info.toString() +
+          "\n";
     });
     return activityListString;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      const Align(
-          alignment: Alignment.topCenter,
-          child: Text("Informasjon om aktiviteter")),
-      Align(alignment: Alignment.center, child: Text(showActivites()))
-    ]);
+      return Container(height: MediaQuery.of(context).size.height * HELP_BOX_MARGIN_FACTOR, width: MediaQuery.of(context).size.width * HELP_BOX_MARGIN_FACTOR,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)),
+        child: ListView(
+          children: [
+            Padding(padding: EdgeInsets.all(15), child: Text("Tittel")),
+            Padding(padding: EdgeInsets.all(15), child: Text(showActivites())),
+          ],
+        ),
+      );
   }
 }

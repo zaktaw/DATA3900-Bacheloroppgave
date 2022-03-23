@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,18 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: SettingsHelpTopBar(settings, '/', null),
-        body: Container(child: const Text(settings_text)));
+        body: Container(color: BACKGROUND_COLOR, child: Center(child: Container(
+        height: MediaQuery.of(context).size.height * HELP_BOX_MARGIN_FACTOR, 
+        width: MediaQuery.of(context).size.width * HELP_BOX_MARGIN_FACTOR,
+       decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)),
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.all(15), child: Text("Tittel")),
+          ],
+        ),
+      ),),)
+      );
   }
 }

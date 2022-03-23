@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../local_storage_hive/TttProjectInfoBox.dart';
@@ -24,13 +25,16 @@ class HelpZones extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Align(
-            alignment: Alignment.topCenter,
-            child: Text("Informasjon om soner")),
-        Align(alignment: Alignment.center, child: Text(showZones()))
-      ],
-    );
+    return Container(height: MediaQuery.of(context).size.height * HELP_BOX_MARGIN_FACTOR, width: MediaQuery.of(context).size.width * HELP_BOX_MARGIN_FACTOR,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)),
+        child: ListView(
+          children: [
+            Padding(padding: EdgeInsets.all(15), child: Text("Tittel")),
+            Padding(padding: EdgeInsets.all(15), child: Text(showZones())),
+          ],
+        ),
+      );
   }
 }
