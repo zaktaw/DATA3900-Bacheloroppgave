@@ -12,7 +12,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../models/TttEntries.dart';
 import 'package:hive/hive.dart';
 
-const String zone_toast = 'This is a toast!';
+const String zone_toast = 'Du må fullføre alle soner før du sender inn telling!';
 const String zone_confirm = 'Fullfør telling';
 
 class Zone extends StatefulWidget {

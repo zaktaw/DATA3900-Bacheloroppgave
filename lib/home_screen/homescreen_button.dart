@@ -39,7 +39,7 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS))),
                 backgroundColor: MaterialStateProperty.all(SECONDARY_COLOR),
                 padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
-                fixedSize: MaterialStateProperty.all(
+                fixedSize: MaterialStateProperty.all( 
                     Size((MediaQuery.of(context).size.width * HOMESCREEN_BTN_WIDTH_FACTOR), (MediaQuery.of(context).size.height * HOMESCREEN_BTN_HEIGHT_FACTOR)),
                 )),
             onPressed: () {

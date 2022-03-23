@@ -2,8 +2,6 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import '../models/TttEntries.dart';
 
-const String FINISH_ZONE = "Fullfør sone";
-
 class ActivityBottombar extends StatelessWidget {
   ActivityBottombar(
       this.function, this.buttonText, this.entries, this.zoneCount, this.color,
@@ -28,7 +26,7 @@ class ActivityBottombar extends StatelessWidget {
           padding: EdgeInsets.only(top: 8.0),
           child: Column(
             children: <Widget>[
-              Text(FINISH_ZONE,
+              Text(buttonText,
                   style: TextStyle(fontSize: ACTIVITY_BOTTOMBAR_FONTSIZE,
                       color: checkIfAllZonesAreCounted() ? TEXT_COLOR_BLACK : color)),
             ],
