@@ -35,7 +35,7 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: SECONDARY_COLOR,
+      color: BOTTOMBAR_COLOR,
       child: InkWell(
         onTap: () async => {
           if (widget.getIsObserverSelected())

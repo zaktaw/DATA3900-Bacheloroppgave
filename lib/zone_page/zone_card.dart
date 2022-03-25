@@ -25,8 +25,10 @@ class ZoneCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: SHADOW_ZONELIST_BTN,
       margin: EdgeInsets.fromLTRB(10, 2, 10, 2),
       child:Card(
+        color: BACKGROUND_TEXT_COLOR,
         child: Row(
           children: [
             Expanded(

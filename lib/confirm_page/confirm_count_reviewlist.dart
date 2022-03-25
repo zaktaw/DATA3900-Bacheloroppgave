@@ -18,7 +18,7 @@ class ConfirmReviewList extends StatelessWidget {
           padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS),
-              color: CONFIRM_REVIEW_LIST_COLOR,
+              color: BACKGROUND_TEXT_COLOR,
             ),
             margin: EdgeInsets.only(
                 left: CONFIRM_PAGE_MARGIN_WIDTH_FACTOR *

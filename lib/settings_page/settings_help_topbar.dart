@@ -24,7 +24,7 @@ class SettingsHelpTopBar extends StatelessWidget with PreferredSizeWidget {
                 color: TEXT_COLOR_BLACK,
               ),
               onPressed: () => Navigator.of(context).pushNamed(route, arguments: args)),
-          backgroundColor: SECONDARY_COLOR,
+          backgroundColor: TOPBAR_COLOR,
           centerTitle: true,
           title: Text(topbarTitle,
             style: const TextStyle(color: TEXT_COLOR_BLACK),),

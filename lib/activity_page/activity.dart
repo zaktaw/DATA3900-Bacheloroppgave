@@ -135,8 +135,8 @@ class _ActivityState extends State<Activity>
                 LinearProgressIndicator(
                   value: getNumberOfCompletedZones() / zoneList.length,
                   minHeight: 20,
-                  backgroundColor: Colors.grey,
-                  color: Colors.green,
+                  backgroundColor: PROGRESSBAR_BAR_BACKGROUND_COLOR,
+                  color: PROGRESSBAR_BAR_COLOR,
                 ),
                 Center(
                   child: Text(

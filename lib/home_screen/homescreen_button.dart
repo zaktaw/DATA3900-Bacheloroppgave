@@ -29,6 +29,7 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: SHADOW_HOMESCREEN_BTN,
         margin: EdgeInsets.only(top: widget.margin),
         child: ElevatedButton(
             child: Text(
@@ -37,7 +38,7 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
             ),
             style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS))),
-                backgroundColor: MaterialStateProperty.all(SECONDARY_COLOR),
+                backgroundColor: MaterialStateProperty.all(HOMESCREEN_BUTTONS_COLOR),
                 padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
                 fixedSize: MaterialStateProperty.all( 
                     Size((MediaQuery.of(context).size.width * HOMESCREEN_BTN_WIDTH_FACTOR), (MediaQuery.of(context).size.height * HOMESCREEN_BTN_HEIGHT_FACTOR)),

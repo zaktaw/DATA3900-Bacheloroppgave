@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
@@ -23,7 +24,7 @@ class ZonesInfoPop extends StatelessWidget {
         child: const Hero(
           tag: _heroZonesPop,
           child: Material(
-              color: Color.fromARGB(255, 110, 107, 107),
+              color: BUTTON_COLOR,
               elevation: 2,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(32.0))),

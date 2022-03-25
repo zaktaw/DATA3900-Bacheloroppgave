@@ -51,7 +51,7 @@ class _ActivitiesPopCard extends StatelessWidget {
         child: Hero(
           tag: _heroActivitiesPop,
           child: Material(
-            color: PRIMARY_COLOR,
+            color: BACKGROUND_TEXT_COLOR,
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),

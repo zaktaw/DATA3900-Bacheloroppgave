@@ -26,8 +26,9 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(color: CARD_BACKGROUND_COLOR,
-      shape: RoundedRectangleBorder(side: BorderSide(color: CARD_BORDER_COLOR, width: 1), borderRadius: BorderRadius.circular(10)),
+    return Container(margin: EdgeInsets.fromLTRB(5, 5, 5, 5), child: 
+    Card(color: CARD_BACKGROUND_COLOR,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Row(children: <Widget>[
         Expanded(
             flex: 5,
@@ -77,7 +78,7 @@ class ActivityCard extends StatelessWidget {
         TextField(),
         IconButton(onPressed: null, icon: Icon(Icons.add_circle_outline))*/
       ]),
-    );
+    ), decoration: SHADOW_ACT_CARD,);
   }
 
   String increment(String value) {

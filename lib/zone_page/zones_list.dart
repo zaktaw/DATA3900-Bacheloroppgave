@@ -1,5 +1,6 @@
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'zone_card.dart';
 import '../activity_page/activity_bottombar.dart';
@@ -33,6 +34,7 @@ class ZonesList extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: BACKGROUND_COLOR,
       body: ListView.builder(
           itemCount: zoneList.length,
           itemBuilder: (context, index) {

@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/models/ZoneObject.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'zones_info_pop.dart';
 
@@ -29,9 +30,9 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: BUTTON_COLOR),
           onPressed: () => Navigator.of(context).pushNamed('/')),
-      backgroundColor: Color.fromARGB(255, 189, 190, 187),
+      backgroundColor: TOPBAR_COLOR,
       centerTitle: true,
       title: const Text(name),
       actions: <Widget>[ZonesInfoPop(generateInfoText())],

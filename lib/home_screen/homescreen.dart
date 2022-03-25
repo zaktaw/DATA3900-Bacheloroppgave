@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(title: Text("TTT"),
       centerTitle: true, 
-      backgroundColor: SECONDARY_COLOR, 
+      backgroundColor: TOPBAR_COLOR, 
       titleTextStyle: const TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_TITLE_FONTSIZE), 
       toolbarHeight: (MediaQuery.of(context).size.height * HOMESCREEN_TOPBAR_HEIGHT_FACTOR),
       automaticallyImplyLeading: false,),

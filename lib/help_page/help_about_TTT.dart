@@ -8,7 +8,8 @@ class HelpTTT extends StatelessWidget {
   Widget build(BuildContext context) {
    return Container(height: MediaQuery.of(context).size.height * HELP_BOX_MARGIN_FACTOR, width: MediaQuery.of(context).size.width * HELP_BOX_MARGIN_FACTOR,
       decoration: BoxDecoration(
-          color: Colors.white,
+          boxShadow: SHADOW_HELPSETTINGS_CONTAINER,
+          color: BACKGROUND_TEXT_COLOR,
           borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)),
         child: ListView(
           children: [

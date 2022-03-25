@@ -27,7 +27,7 @@ class ZoneInActivitiesPopButton extends StatelessWidget {
         child: Hero(
           tag: _heroZoneInActivitiesPop,
           child: Material(
-              color: colorAnimation.value, // Color.fromARGB(255, 156, 92, 92)
+              color: colorAnimation.value,
               elevation: 3,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30.0))),
@@ -55,7 +55,7 @@ class _ZoneInfoPopCard extends StatelessWidget {
         child: Hero(
           tag: _heroZoneInActivitiesPop,
           child: Material(
-            color: PRIMARY_COLOR,
+            color: BACKGROUND_TEXT_COLOR,
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),

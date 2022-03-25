@@ -58,7 +58,7 @@ class _HelpState extends State<Help> {
       )),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: SECONDARY_COLOR,
+        backgroundColor: BOTTOMBAR_HELP_OUTLINE_COLOR,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.find_in_page),

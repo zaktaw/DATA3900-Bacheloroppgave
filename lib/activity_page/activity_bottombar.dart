@@ -19,7 +19,7 @@ class ActivityBottombar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: SECONDARY_COLOR,
+      color: BOTTOMBAR_COLOR,
       child: InkWell(
         onTap: function,
         child: Padding(
