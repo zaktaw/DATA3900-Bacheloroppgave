@@ -19,7 +19,7 @@ const Color BOTTOMBAR_HELP_OUTLINE_COLOR = Color.fromARGB(255, 130, 150, 140);
 const Color TEXT_COLOR_BLACK = Colors.black;
 const Color TEXT_COLOR_DISABLED = Color.fromARGB(94, 0, 0, 0);
 const Color TEXT_COLOR_WHITE = Colors.white;
-const Color TEXT_COLOR_ZONE_FINISHED =  Color.fromARGB(255, 130, 150, 140);
+const Color TEXT_COLOR_ZONE_FINISHED = Color.fromARGB(255, 96, 167, 98);
 
 const Color ANIMATION_BEGIN_COLOR = Color.fromARGB(255, 244, 255, 244);
 const Color ANIMATION_END_COLOR = Colors.black12;
