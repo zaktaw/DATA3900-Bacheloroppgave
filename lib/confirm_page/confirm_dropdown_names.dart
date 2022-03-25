@@ -34,6 +34,7 @@ class _DropdownNamesState extends State<DropdownNames> {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
+            boxShadow: SHADOW_CONFIRM_DROPDOWN,
             borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS),
             color: DROPDOWN_COLOR),
         margin: EdgeInsets.only(

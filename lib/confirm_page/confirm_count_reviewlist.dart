@@ -17,6 +17,7 @@ class ConfirmReviewList extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
+              boxShadow: SHADOW_CONFIRM_REVIEWLIST,
               borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS),
               color: BACKGROUND_TEXT_COLOR,
             ),

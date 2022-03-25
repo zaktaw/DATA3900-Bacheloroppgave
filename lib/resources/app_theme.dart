@@ -6,9 +6,9 @@ const Color BACKGROUND_TEXT_COLOR = Color.fromARGB(255, 255, 255, 255);
 
 const Color BACKGROUND_COLOR = Color.fromARGB(255, 233, 240, 237);
 
-const Color TOPBAR_COLOR = Color.fromARGB(255, 130, 150, 140);
+const Color TOPBAR_COLOR = Color.fromARGB(255, 147, 163, 155);
 
-const Color BOTTOMBAR_COLOR = Color.fromARGB(255, 130, 150, 140);
+const Color BOTTOMBAR_COLOR = Color.fromARGB(255, 143, 160, 152);
 
 const Color BUTTON_COLOR = Colors.black;
 
@@ -17,15 +17,16 @@ const Color HOMESCREEN_BUTTONS_COLOR = Color.fromARGB(255, 209, 223, 218);
 const Color BOTTOMBAR_HELP_OUTLINE_COLOR = Color.fromARGB(255, 130, 150, 140);
 
 const Color TEXT_COLOR_BLACK = Colors.black;
-const Color TEXT_COLOR_DISABLED = Color.fromARGB(100, 0, 0, 0);
+const Color TEXT_COLOR_DISABLED = Color.fromARGB(94, 0, 0, 0);
 const Color TEXT_COLOR_WHITE = Colors.white;
+const Color TEXT_COLOR_ZONE_FINISHED =  Color.fromARGB(255, 130, 150, 140);
 
 const Color ANIMATION_BEGIN_COLOR = Color.fromARGB(255, 244, 255, 244);
 const Color ANIMATION_END_COLOR = Colors.black12;
 
-const Color PROGRESSBAR_BAR_COLOR = Color.fromARGB(255, 23, 102, 25);
+const Color PROGRESSBAR_BAR_COLOR = Color.fromARGB(255, 96, 167, 98);
 const Color PROGRESSBAR_BAR_BACKGROUND_COLOR =
-    Color.fromARGB(255, 210, 243, 211);
+    Color.fromARGB(255, 203, 223, 203);
 
 const Color CARD_BACKGROUND_COLOR = Color.fromARGB(255, 242, 243, 243);
 const Color CARD_BORDER_COLOR = Color.fromARGB(255, 136, 136, 136);
@@ -115,6 +116,24 @@ final SHADOW_ZONELIST_BTN =
     spreadRadius: 0.2,
   )
 ]);
+
+final SHADOW_CONFIRM_REVIEWLIST = [
+  BoxShadow(
+    color: Colors.grey.withOpacity(0.25),
+    offset: Offset(0, 3),
+    blurRadius: 2,
+    spreadRadius: 1,
+  )
+];
+
+final SHADOW_CONFIRM_DROPDOWN = [
+  BoxShadow(
+    color: Colors.grey.withOpacity(0.25),
+    offset: Offset(0, 3),
+    blurRadius: 2,
+    spreadRadius: 1,
+  )
+];
 
 //toast
 
