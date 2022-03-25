@@ -34,7 +34,7 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () => Navigator.of(context).pushNamed('/')),
       backgroundColor: TOPBAR_COLOR,
       centerTitle: true,
-      title: const Text(name),
+      title: const Text(name, style: TextStyle(color: TEXT_COLOR_BLACK)),
       actions: <Widget>[ZonesInfoPop(generateInfoText())],
     );
   }
