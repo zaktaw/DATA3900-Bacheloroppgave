@@ -17,22 +17,6 @@ class ZonesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void navigateToConfirmPage() {
-      if (entries.getNumberOfZones() == zoneList.length) {
-        Navigator.of(context).pushNamed(
-          '/bekreft',
-          arguments: entries,
-        );
-      } else {
-        Fluttertoast.showToast(
-            msg: zone_toast, // message
-            toastLength: Toast.LENGTH_SHORT, // length
-            gravity: ToastGravity.CENTER, // location
-            timeInSecForIosWeb: 3 // duration
-            );
-      }
-    }
-
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
       body: ListView.builder(
