@@ -44,7 +44,7 @@ class ZoneCard extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 23,
                             color: checkIfCounted(zone_index)
-                                ? Colors.green
+                                ? TEXT_COLOR_ZONE_FINISHED
                                 : TEXT_COLOR_BLACK),
                       )),
                   onTap: () => navigateToActivityPage(context),
