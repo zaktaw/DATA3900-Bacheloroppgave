@@ -23,7 +23,6 @@ const Color TEXT_COLOR_WHITE = Colors.white;
 const Color ANIMATION_BEGIN_COLOR = Color.fromARGB(255, 244, 255, 244);
 const Color ANIMATION_END_COLOR = Colors.black12;
 
-
 const Color PROGRESSBAR_BAR_COLOR = Color.fromARGB(255, 23, 102, 25);
 const Color PROGRESSBAR_BAR_BACKGROUND_COLOR =
     Color.fromARGB(255, 210, 243, 211);
@@ -76,42 +75,49 @@ const double CONFIRM_PAGE_HEADER_PADDING_TOP_FACTOR = 0.03;
 
 const double BOX_BORDER_RADIUS = 20;
 
-
 //shadows
 
+final SHADOW_ACT_CARD =
+    BoxDecoration(borderRadius: BorderRadius.circular(10), boxShadow: [
+  BoxShadow(
+    color: Colors.grey.withOpacity(0.25),
+    offset: Offset(0, 3),
+    blurRadius: 1.5,
+    spreadRadius: 0.2,
+  )
+]);
 
-final SHADOW_ACT_CARD = BoxDecoration(borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-           BoxShadow(
-            color: Colors.grey.withOpacity(0.25),
-            offset: Offset(0,3),
-            blurRadius: 1.5,
-            spreadRadius: 0.2,
-          )]);
-
-final SHADOW_HOMESCREEN_BTN = BoxDecoration(borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-           BoxShadow(
-            color: Colors.grey.withOpacity(0.25),
-            offset: Offset(0,3),
-            blurRadius: 1.5,
-            spreadRadius: 0.5,
-          )]);
-
+final SHADOW_HOMESCREEN_BTN =
+    BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: [
+  BoxShadow(
+    color: Colors.grey.withOpacity(0.25),
+    offset: Offset(0, 3),
+    blurRadius: 1.5,
+    spreadRadius: 0.5,
+  )
+]);
 
 final SHADOW_HELPSETTINGS_CONTAINER = [
-            BoxShadow(
-            color: Colors.grey.withOpacity(0.25),
-            offset: Offset(0,3),
-            blurRadius: 2,
-            spreadRadius: 1,
-            )];
+  BoxShadow(
+    color: Colors.grey.withOpacity(0.25),
+    offset: Offset(0, 3),
+    blurRadius: 2,
+    spreadRadius: 1,
+  )
+];
 
-final SHADOW_ZONELIST_BTN = BoxDecoration(borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-           BoxShadow(
-            color: Colors.grey.withOpacity(0.25),
-            offset: Offset(0,3),
-            blurRadius: 1,
-            spreadRadius: 0.2,
-          )]);
+final SHADOW_ZONELIST_BTN =
+    BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: [
+  BoxShadow(
+    color: Colors.grey.withOpacity(0.25),
+    offset: Offset(0, 3),
+    blurRadius: 1,
+    spreadRadius: 0.2,
+  )
+]);
+
+//toast
+
+const Color TOAST_BACKGROUND_COLOR = Colors.pink;
+const Color TOAST_TEXT_COLOR = Colors.green;
+const double TOAST_FONT_SIZE = 15;

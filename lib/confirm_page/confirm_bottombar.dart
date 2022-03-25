@@ -47,7 +47,10 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                       msg: send_confirmed, // message
                       toastLength: Toast.LENGTH_SHORT, // length
                       gravity: ToastGravity.CENTER, // location
-                      timeInSecForIosWeb: 3 // duration,
+                      timeInSecForIosWeb: 3, // duration,
+                      backgroundColor: TOAST_BACKGROUND_COLOR,
+                      textColor: TOAST_TEXT_COLOR,
+                      fontSize: TOAST_FONT_SIZE,
                       ),
                   //Give the user time to see confirmation message before redirecting to homescreen
                   await Future.delayed(const Duration(seconds: 2)),
