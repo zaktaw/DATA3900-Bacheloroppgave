@@ -108,11 +108,11 @@ final SHADOW_HELPSETTINGS_CONTAINER = [
 ];
 
 final SHADOW_ZONELIST_BTN =
-    BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: [
+    BoxDecoration(borderRadius: BorderRadius.circular(5), boxShadow: [
   BoxShadow(
     color: Colors.grey.withOpacity(0.25),
     offset: Offset(0, 3),
-    blurRadius: 1,
+    blurRadius: 0.5,
     spreadRadius: 0.2,
   )
 ]);
