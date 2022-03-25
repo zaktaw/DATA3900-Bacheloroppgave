@@ -3,28 +3,43 @@
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/route_generator.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'package:path_provider/path_provider.dart';
 
 import 'models/TttEntries.dart';
 import 'models/TttEntry.dart';
 
 import 'resources/app_theme.dart';
 
+Future<Box> openEntriesBox(String boxName) async {
+  if (!kIsWeb && !Hive.isBoxOpen(boxName)) Hive.init((await getApplicationDocumentsDirectory()).path);
+
+  return await Hive.openBox<TttEntries>(boxName);
+}
+
+Future<Box> openProjectBox(String boxName) async {
+  if (!kIsWeb && !Hive.isBoxOpen(boxName)) Hive.init((await getApplicationDocumentsDirectory()).path);
+
+  return await Hive.openBox<TttProjectInfo>(boxName);
+}
+
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(TttEntriesAdapter());
   Hive.registerAdapter(TttEntryAdapter());
   Hive.registerAdapter(TttProjectInfoAdapter());
   Hive.registerAdapter(ZoneObjectAdapter());
   Hive.registerAdapter(ActivityObjectAdapter());
-  await Hive.openBox<TttEntries>('tttEntries');
-  await Hive.openBox<TttProjectInfo>('tttProjectInfo');
+  await openEntriesBox('tttEntries');
+  await openProjectBox('tttProjectInfo');
 
   runApp(const MyApp());
 }
-
 
 
 class MyApp extends StatelessWidget {
