@@ -62,7 +62,10 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                       msg: send_failed, // message
                       toastLength: Toast.LENGTH_SHORT, // length
                       gravity: ToastGravity.CENTER, // location
-                      timeInSecForIosWeb: 3 // duration,
+                      timeInSecForIosWeb: 3, // duration,
+                      backgroundColor: TOAST_BACKGROUND_COLOR,
+                      textColor: TOAST_TEXT_COLOR,
+                      fontSize: TOAST_FONT_SIZE,
                       ),
                 }
             }
@@ -72,7 +75,10 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                   msg: pick_name, // message
                   toastLength: Toast.LENGTH_SHORT, // length
                   gravity: ToastGravity.CENTER, // location
-                  timeInSecForIosWeb: 3 // duration,
+                  timeInSecForIosWeb: 3, // duration
+                  backgroundColor: TOAST_BACKGROUND_COLOR,
+                  textColor: TOAST_TEXT_COLOR,
+                  fontSize: TOAST_FONT_SIZE,
                   ),
             }
         },

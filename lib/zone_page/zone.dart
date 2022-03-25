@@ -56,7 +56,10 @@ class _ZoneState extends State<Zone> {
           msg: zone_toast, // message
           toastLength: Toast.LENGTH_SHORT, // length
           gravity: ToastGravity.CENTER, // location
-          timeInSecForIosWeb: 3 // duration
+          timeInSecForIosWeb: 3, // duration
+          backgroundColor: TOAST_BACKGROUND_COLOR,
+          textColor: TOAST_TEXT_COLOR,
+          fontSize: TOAST_FONT_SIZE,
           );
     }
   }
