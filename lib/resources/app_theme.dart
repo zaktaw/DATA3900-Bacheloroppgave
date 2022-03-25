@@ -118,6 +118,6 @@ final SHADOW_ZONELIST_BTN =
 
 //toast
 
-const Color TOAST_BACKGROUND_COLOR = Colors.pink;
-const Color TOAST_TEXT_COLOR = Colors.green;
+const Color TOAST_BACKGROUND_COLOR = Color.fromARGB(255, 233, 240, 237);
+const Color TOAST_TEXT_COLOR = Colors.black;
 const double TOAST_FONT_SIZE = 15;
