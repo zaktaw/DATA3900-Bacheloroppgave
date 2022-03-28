@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
@@ -31,7 +32,8 @@ class ZoneInActivitiesPopButton extends StatelessWidget {
               elevation: 3,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30.0))),
-              child: Padding(padding: const EdgeInsets.fromLTRB(17,5,17,5), child: Text(zone, style: const TextStyle(fontSize: ACTIVITY_TOP_TITLE_FONTSIZE)),)),
+              child: Padding(padding: const EdgeInsets.fromLTRB(17,5,17,5), 
+              child: AutoSizeText(zone, maxLines: 1, style: const TextStyle(fontSize: ACTIVITY_TOP_TITLE_FONTSIZE)),)),
         ),
       ),
     );
@@ -65,7 +67,8 @@ class _ZoneInfoPopCard extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(zone,
+                    AutoSizeText(zone,
+                        maxLines: 1,
                         textAlign: TextAlign.center,
                         style:
                             const TextStyle(fontSize: 20, color: TEXT_COLOR_BLACK)),
@@ -74,8 +77,9 @@ class _ZoneInfoPopCard extends StatelessWidget {
                           top: 5, bottom: 10, left: 20, right: 20),
                       child: const Divider(color: TEXT_COLOR_BLACK, height: 5),
                     ),
-                    Text(
+                    AutoSizeText(
                       zone_info,
+                      maxLines: 2,
                       textAlign: TextAlign.center,
                       style: const TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),
                     )

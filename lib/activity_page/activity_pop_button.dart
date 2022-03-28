@@ -1,6 +1,7 @@
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 //Koden er basert på kildekode fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
@@ -27,10 +28,11 @@ class ActivityPopButton extends StatelessWidget {
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(32), side: const BorderSide(color: CARD_ACT_BTN_BORDER_COLOR, width: 1)),
-            child: Text(activity_name,
+            child: Padding(padding: const EdgeInsets.all(6), child: AutoSizeText(activity_name,
+            maxLines: 1,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 30, color: TEXT_COLOR_BLACK)),
-          ),
+            style: const TextStyle(fontSize: 24, color: TEXT_COLOR_BLACK)),
+          )),
         ),
       ),
     );
@@ -63,9 +65,10 @@ class _ActivityPopCard extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: [Text(
+                  children: [AutoSizeText(
                     activity_name,
                     textAlign: TextAlign.center,
+                    maxLines: 1,
                     style: TextStyle(fontSize: 20, color: TEXT_COLOR_BLACK)
                   ),
                   Container(
@@ -75,8 +78,9 @@ class _ActivityPopCard extends StatelessWidget {
                       height: 5
                     ),
                   ),
-                  Text(activity_info,
+                  AutoSizeText(activity_info,
                   textAlign: TextAlign.center,
+                  maxLines: 2,
                   style: TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),)
                   ],
                 ),

@@ -38,6 +38,8 @@ Future<void> main() async {
   await openEntriesBox('tttEntries');
   await openProjectBox('tttProjectInfo');
 
+   
+
   runApp(const MyApp());
 }
 

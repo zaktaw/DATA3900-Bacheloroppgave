@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/models/TttEntry.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
@@ -39,8 +40,9 @@ class ZoneCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)
                     ),
                     margin: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                      child: Text(  
+                      child: AutoSizeText(  
                         zone_name,
+                        maxLines: 1,
                         style: TextStyle(
                             fontSize: 23,
                             color: checkIfCounted(zone_index)
