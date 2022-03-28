@@ -46,13 +46,12 @@ class ActivityCard extends StatelessWidget {
         Expanded(
           flex: 1,
           child: TextFormField(
-            decoration: InputDecoration(fillColor: Colors.white, filled: true),
+            decoration: InputDecoration(fillColor: Colors.white, filled: true, contentPadding: EdgeInsets.symmetric(horizontal: 2)),
             controller: txt,
             onChanged: (Text) => {
               if (txt.text.isNotEmpty) {manualInput(txt.text)}
             },
             textAlign: TextAlign.center,
-            textAlignVertical: TextAlignVertical.bottom,
             style: TextStyle(fontSize: ACTIVITY_MANUAL_INPUT_FONTSIZE),
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
@@ -35,17 +36,19 @@ class ConfirmReviewList extends StatelessWidget {
                       return Padding(
                         child: Row(children: [
                           Flexible(
-                            child: Text(
+                            child: AutoSizeText(
                               zoneList[index].zone_name + ": ",
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold, fontSize: CONFIRM_PAGE_REWIEWLIST_FONTSIZE),
+                                  maxLines: 1,
                             ),
                           ),
                           Flexible(
-                            child: Text(entries
+                            child: AutoSizeText(entries
                                 .getNumberOfCountsInZone(index)
                                 .toString() + " observasjoner", 
-                                style: const TextStyle(fontSize: CONFIRM_PAGE_REWIEWLIST_FONTSIZE)),
+                                style: const TextStyle(fontSize: CONFIRM_PAGE_REWIEWLIST_FONTSIZE),
+                                maxLines: 1,),
                           )
                         ]),
                         padding: EdgeInsets.only(top: 10),
