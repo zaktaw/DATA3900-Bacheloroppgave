@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
+import 'package:bacheloroppgave/resources/app_string.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class HelpZones extends StatelessWidget {
     String zoneListString = "";
     zoneList.forEach((element) {
       zoneListString += element.zone_name.toString() +
-          ": " +
+          ":  " +
           element.zone_info.toString() +
           "\n";
     });
@@ -32,8 +33,8 @@ class HelpZones extends StatelessWidget {
           borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)),
         child: ListView(
           children: [
-            Padding(padding: EdgeInsets.all(15), child: Text("Tittel")),
-            Padding(padding: EdgeInsets.all(15), child: Text(showZones())),
+            Text(HELP_ZONE_TITLE, textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Padding(padding: EdgeInsets.all(20), child: Text(showZones())),
           ],
         ),
       );

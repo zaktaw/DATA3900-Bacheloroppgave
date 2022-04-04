@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/resources/app_string.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class HelpActivites extends StatelessWidget {
     String activityListString = "";
     activityList.forEach((element) {
       activityListString += element.activity_name.toString() +
-          ": " +
+          ":  " +
           element.activity_info.toString() +
           "\n";
     });
@@ -31,10 +32,10 @@ class HelpActivites extends StatelessWidget {
           borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)),
         child: ListView(
           children: [
-            Padding(padding: EdgeInsets.all(15), child: Text("Tittel")),
+            Text(HELP_ACTIVITES_TITLE, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             Padding(padding: EdgeInsets.all(15), child: Text(showActivites())),
           ],
-        ),
+        )
       );
   }
 }
