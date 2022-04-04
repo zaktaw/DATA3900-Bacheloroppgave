@@ -60,6 +60,9 @@ const double HOMESCREEN_TOPBAR_HEIGHT_FACTOR = 0.1;
 
 const double ACTIVITY_INC_DEC_BUTTONS_FACTOR = 0.07;
 
+const double HELP_DOTS_HEIGHT = 0.03;
+const double HELP_DOTS_WIDTH = 0.3;
+
 //fonts
 
 const double HOMESCREEN_TITLE_FONTSIZE = 25;

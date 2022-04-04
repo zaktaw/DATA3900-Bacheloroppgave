@@ -38,23 +38,15 @@ class _HelpAppState extends State<HelpApp> {
         height: MediaQuery.of(context).size.height * PAGEVIEW_MARGIN_FACTOR_HEIGHT, 
         width: MediaQuery.of(context).size.width * PAGEVIEW_MARGIN_FACTOR_WIDTH, 
         child: AboutTheApp(pageController)),
-        DotsIndicator(
+        SizedBox(
+          height:MediaQuery.of(context).size.height * HELP_DOTS_HEIGHT,
+          width: MediaQuery.of(context).size.width * HELP_DOTS_WIDTH,
+          child: DotsIndicator(
           dotsCount: 4,
           position: currentPage,
           decorator: const DotsDecorator(activeColor: TEXT_COLOR_BLACK, color: BOTTOMBAR_COLOR),
         )
-      ]),
-
-      /*ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          children: [
-            Padding(padding: EdgeInsets.all(15), child: Text("Tittel")),
-            Padding(padding: EdgeInsets.all(15), child: Text("Lorem ipsum dolor Nunc sit ameus.")),
-            MyStatelessWidget(),
-            //Padding(padding: EdgeInsets.all(15), child: Image.asset("images/count_example.gif", width: MediaQuery.of(context).size.width * 0.5, height: MediaQuery.of(context).size.height * 0.5),), 
-          ],*/
-      //  ),
+      )]),
     );
   }
 }
