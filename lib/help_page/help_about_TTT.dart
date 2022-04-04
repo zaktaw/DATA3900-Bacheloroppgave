@@ -14,7 +14,10 @@ class HelpTTT extends StatelessWidget {
         child: ListView(
           children: [
             Padding(padding: EdgeInsets.all(15), child: Text("Tittel")),
-            Padding(padding: EdgeInsets.all(15), child: Text("Lorem ipsum dolor Nunc sit ameus.")),
+            Padding(padding: EdgeInsets.all(15), child: new InkWell(
+              child: new Text("Tittel"),
+              onTap: () => "link",
+            )),
           ],
         ),
       );
