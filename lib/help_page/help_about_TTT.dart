@@ -1,5 +1,8 @@
+import 'package:bacheloroppgave/resources/app_string.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HelpTTT extends StatelessWidget {
   const HelpTTT({ Key? key }) : super(key: key);
@@ -13,10 +16,11 @@ class HelpTTT extends StatelessWidget {
           borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)),
         child: ListView(
           children: [
-            Padding(padding: EdgeInsets.all(15), child: Text("Tittel")),
+            Text(HELP_TTT_TITLE, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Padding(padding: EdgeInsets.all(15), child: Text(HELP_TTT_CONTENT)),
             Padding(padding: EdgeInsets.all(15), child: new InkWell(
-              child: new Text("Tittel"),
-              onTap: () => "link",
+              child: new Text(HELP_TTT_LINK_TEXT, style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline)),
+              onTap: () => launch(HELP_TTT_LINK),
             )),
           ],
         ),

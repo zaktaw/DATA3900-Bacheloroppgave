@@ -25,3 +25,14 @@ String THIRD_PAGEVIEW_STRING =
 String FOURTH_PAGEVIEW_STRING_TITLE = "\nBekreft telling";
 String FOURTH_PAGEVIEW_STRING =
     "\nPå denne siden kan du se igjennom antallet du har lagt inn i tellingen. Bekreft med ditt navn og send inn tellingen når du er klar\n";
+
+// About TTT
+
+String HELP_TTT_TITLE = "\nOm TTT";
+String HELP_TTT_CONTENT =
+    "Tverrgående trafikktelling (TTT) er et standardisert verktøy for kartlegging av " +
+        "hvordan brukere utnytter et biblioteks ressurser og rom. Dette gjøres ved at ansatte på biblioteket periodevis går rundt i biblioteklokalet og registrerer brukernes aktiviteter." +
+        "\n\nTellingen skal kartlegge antall brukere, hva de gjør fordelt på forhåndsinndelte soner i biblioteket og hvilket tidspunkt det skjer på. \n\nMetoden ble utviklet av Tord Høivik i 2005.";
+String HELP_TTT_LINK_TEXT = "Trykk her for å lese mer informasjon på Nasjonalbibliotekets nettside";
+String HELP_TTT_LINK =
+    "https://bibliotekutvikling.no/kartleggingsmetoder/kartleggingsmetoder/ttt-forsteside/";
