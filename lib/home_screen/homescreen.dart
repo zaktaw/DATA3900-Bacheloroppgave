@@ -43,28 +43,109 @@ class _HomeScreenState extends State<HomeScreen> {
 
     //MOCK Projectinfo init init
     ZoneObject zoneobj =
-        new ZoneObject(1, "Sone 1 Lesesal", "Lesesalen ved inngangen");
+        new ZoneObject(1, "Skranke", "Sone 1");
     ZoneObject zoneobj1 =
-        new ZoneObject(2, "Sone 2 Lesekrok", "Hjørnet ved potteplantene");
+        new ZoneObject(2, "Selvbetjening", "Sone 2, utlån og innlevering");
     ZoneObject zoneobj2 =
-        new ZoneObject(3, "Sone 3 Faglitteratur", "Området for faglitteratur");
+        new ZoneObject(3, "Søkemaskiner", "Sone 3");
+
+    ZoneObject zoneobj3 =
+        new ZoneObject(4, "Kopimaskin", "Sone 4");
+
+    ZoneObject zoneobj4 =
+        new ZoneObject(5, "Bokskanner", "Sone 5");
+
+    ZoneObject zoneobj5 =
+        new ZoneObject(6, "Bokreoler", "Sone 6");
+
+     ZoneObject zoneobj6 =
+        new ZoneObject(7, "Stille lesesal", "Sone 7");
+
+      ZoneObject zoneobj7 =
+        new ZoneObject(8, "Stille PC-sal", "Sone 8");
+
+      ZoneObject zoneobj8 =
+        new ZoneObject(9, "PC-arbeidsplasser", "Sone 9");
+
+      ZoneObject zoneobj9 =
+        new ZoneObject(10, "Gruppearbeidsplasser", "Sone 10");
+
+      ZoneObject zoneobj10 =
+        new ZoneObject(11, "Enkelt arbeidsplasser", "Sone 11");
+
+      ZoneObject zoneobj11 =
+        new ZoneObject(12, "Grupperom", "Sone 12");
+
+      ZoneObject zoneobj12 =
+        new ZoneObject(13, "Sosial sone (sofa)", "Sone 13");
+
+      ZoneObject zoneobj13 =
+        new ZoneObject(14, "Fleksible plasser (Studieverkstedet og Vepsebolet)", "Sone 14");
+
+      
 
     ActivityObject actobj =
         new ActivityObject("ALLAP", "Alene med digitalt hjelpemiddel");
+
     ActivityObject actobj1 =
-        new ActivityObject("GRUDIG", "I gruppe med digitalt hjelpemiddel");
+        new ActivityObject("GRLAP", "Sitter eller står i gruppe med bærbar(e) datamaskin(er) eller nettbrett slått på");
+
     ActivityObject actobj2 =
-        new ActivityObject("ALPERS", "Alene kontakt med personalet");
+        new ActivityObject("ALUDIG", "Sitter eller står alene og arbeider uten digitale medier");
+
+    ActivityObject actobj3 =
+        new ActivityObject("GRUDIG", "Sitter eller står i gruppe og arbeider uten digitale medier");
+
+    ActivityObject actobj4 =
+        new ActivityObject("ALPERS", "Individuell kontakt med personalet");
+
+    ActivityObject actobj5 =
+        new ActivityObject("GRPERS", "Gruppevis kontakt med personalet");
+
+    ActivityObject actobj6 =
+        new ActivityObject("ALFYS", "Kikker/browser alene");
+
+    ActivityObject actobj7 =
+        new ActivityObject("GRFYS", "Kikker/browser i gruppe");
+
+    ActivityObject actobj8 =
+        new ActivityObject("ALPC", "Bruker stasjonær datamaskin eller søketerminal alene");
+
+    ActivityObject actobj9 =
+        new ActivityObject("GRPC", "Bruker stasjonær datamaskin eller søketerminal i gruppe");
+  
+    ActivityObject actobj10 =
+        new ActivityObject("KØ", "Venter i kø");
+    
+    ActivityObject actobj11 =
+        new ActivityObject("MOB", "Snakker i mobiltelefon");
+
+    ActivityObject actobj12 =
+        new ActivityObject("ALGÅ", "Står eller går alene");
+
+    ActivityObject actobj13 =
+        new ActivityObject("GRGÅ", "Står eller går i gruppe");
+
+     ActivityObject actobj14 =
+        new ActivityObject("ALSI", "Sitter alene");
+
+    ActivityObject actobj15 =
+        new ActivityObject("GRSI", "Sitter i gruppe");
+
+    ActivityObject actobj16 =
+        new ActivityObject("DIV", " Andre aktiviteter");
 
     final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
     List<ZoneObject> zoneList = [];
-    zoneList.addAll([zoneobj, zoneobj1, zoneobj2]);
+    zoneList.addAll([zoneobj, zoneobj1, zoneobj2, zoneobj3, zoneobj4, zoneobj5, zoneobj6, zoneobj7, zoneobj8, 
+                    zoneobj9, zoneobj10, zoneobj11, zoneobj12, zoneobj13]);
 
     List<ActivityObject> actList = [];
-    actList.addAll([actobj, actobj1, actobj2]);
+    actList.addAll([actobj, actobj1, actobj2, actobj3, actobj4, actobj5, actobj6, actobj7, actobj8, actobj9, actobj10, 
+                    actobj11, actobj12, actobj13, actobj14, actobj15, actobj16]);
 
-    List<String> observerList = ["Hans", "Zaka", "Mats", "Petrus"];
-    String title = "Tønsberg Folkebibiliotek TTT 2022";
+    List<String> observerList = ["Maria", "Hans", "Helene"];
+    String title = "Universitetsbiblioteket OsloMet P48 (test)";
 
     TttProjectInfo projectInfo =
         new TttProjectInfo(actList, zoneList, observerList, title);
@@ -78,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("TTT"),
+      appBar: AppBar(title: Text("Universitetsbiblioteket OsloMet P48 (test)"),
       centerTitle: true, 
       backgroundColor: TOPBAR_COLOR, 
       titleTextStyle: const TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_TITLE_FONTSIZE), 
