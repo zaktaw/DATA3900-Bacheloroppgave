@@ -7,12 +7,13 @@ class FirstPageview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SingleChildScrollView( 
+      child: Column(
       children: [
       Text(FIRST_PAGEVIEW_STRING_TITLE, textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
       Text(FIRST_PAGEVIEW_STRING), 
       Container(child: Image.asset("assets/images/mainmenu_example.gif"), decoration: BoxDecoration(border: Border.all(color: Colors.black)), height: MediaQuery.of(context).size.height * GIF_PAGEVIEW_MARGIN_FACTOR_HEIGHT, width: MediaQuery.of(context).size.height * GIF_PAGEVIEW_MARGIN_FACTOR_WIDTH),
       ],
-    );
+    ));
   }
 }
