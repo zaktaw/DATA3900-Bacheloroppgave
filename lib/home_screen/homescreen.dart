@@ -102,8 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
     List<ZoneObject> zoneList = [];
-    zoneList.addAll([zoneobj, zoneobj1, zoneobj2, zoneobj3, zoneobj4, zoneobj5, zoneobj6, zoneobj7, zoneobj8, 
-                    zoneobj9, zoneobj10, zoneobj11, zoneobj12, zoneobj13]);
+    zoneList.addAll([zoneobj, zoneobj1, zoneobj2]);
 
     List<ActivityObject> actList = [];
     actList.addAll([actobj, actobj1, actobj2, actobj3, actobj4, actobj5, actobj6, actobj7, actobj8, actobj9, actobj10, 
