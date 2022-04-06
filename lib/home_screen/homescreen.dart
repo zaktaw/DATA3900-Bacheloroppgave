@@ -49,41 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
     ZoneObject zoneobj2 =
         new ZoneObject(3, "Søkemaskiner", "Sone 3");
 
-    ZoneObject zoneobj3 =
-        new ZoneObject(4, "Kopimaskin", "Sone 4");
-
-    ZoneObject zoneobj4 =
-        new ZoneObject(5, "Bokskanner", "Sone 5");
-
-    ZoneObject zoneobj5 =
-        new ZoneObject(6, "Bokreoler", "Sone 6");
-
-     ZoneObject zoneobj6 =
-        new ZoneObject(7, "Stille lesesal", "Sone 7");
-
-      ZoneObject zoneobj7 =
-        new ZoneObject(8, "Stille PC-sal", "Sone 8");
-
-      ZoneObject zoneobj8 =
-        new ZoneObject(9, "PC-arbeidsplasser", "Sone 9");
-
-      ZoneObject zoneobj9 =
-        new ZoneObject(10, "Gruppearbeidsplasser", "Sone 10");
-
-      ZoneObject zoneobj10 =
-        new ZoneObject(11, "Enkelt arbeidsplasser", "Sone 11");
-
-      ZoneObject zoneobj11 =
-        new ZoneObject(12, "Grupperom", "Sone 12");
-
-      ZoneObject zoneobj12 =
-        new ZoneObject(13, "Sosial sone (sofa)", "Sone 13");
-
-      ZoneObject zoneobj13 =
-        new ZoneObject(14, "Fleksible plasser (Studieverkstedet og Vepsebolet)", "Sone 14");
-
-      
-
     ActivityObject actobj =
         new ActivityObject("ALLAP", "Alene med digitalt hjelpemiddel");
 
