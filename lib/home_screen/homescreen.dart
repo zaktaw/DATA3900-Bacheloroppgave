@@ -108,8 +108,8 @@ class _HomeScreenState extends State<HomeScreen> {
     actList.addAll([actobj, actobj1, actobj2, actobj3, actobj4, actobj5, actobj6, actobj7, actobj8, actobj9, actobj10, 
                     actobj11, actobj12, actobj13, actobj14, actobj15, actobj16]);
 
-    List<String> observerList = ["Maria", "Hans", "Helene"];
-    String title = "Universitetsbiblioteket OsloMet P48 (test)";
+    List<String> observerList = ["Line", "Hans", "Helene"];
+    String title = "Universitetsbiblioteket";
 
     TttProjectInfo projectInfo =
         new TttProjectInfo(actList, zoneList, observerList, title);
