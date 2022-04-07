@@ -4,14 +4,13 @@ import '../models/TttEntries.dart';
 
 class ActivityBottombar extends StatelessWidget {
   ActivityBottombar(
-      this.function, this.buttonText, this.entries, this.zoneCount, this.color,
-      {Key? key})
-      : super(key: key);
+      this.function, this.buttonText, this.entries, this.zoneCount, this.color, [this.colorAnimation]);
 
   late final VoidCallback function;
   final String buttonText;
   TttEntries entries;
   int zoneCount;
+  final Animation<dynamic>? colorAnimation;
 
   late Color color;
 

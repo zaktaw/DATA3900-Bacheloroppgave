@@ -13,7 +13,7 @@ import 'activities_list.dart';
 import '../models/TttEntries.dart';
 import 'package:hive/hive.dart';
 
-const String finish_zone = 'Fullfør sone';
+const String finish_zone = 'Neste sone';
 
 class Activity extends StatefulWidget {
   TttEntries entries;
@@ -103,6 +103,8 @@ class _ActivityState extends State<Activity>
   }
 
   void goToZones() {
+    entries.addZoneKey(zoneIndex);
+    tttEntriesBox.put('tttEntriesMap', entries);
     Navigator.of(context).pushNamed(
       '/zones',
       arguments: entries,
@@ -152,7 +154,7 @@ class _ActivityState extends State<Activity>
           ],
         )),
         bottomNavigationBar: ActivityBottombar(
-            nextZone, finish_zone, entries, -1, TEXT_COLOR_BLACK),
+            nextZone, finish_zone, entries, -1, TEXT_COLOR_BLACK, colorAnimation),
       ),
     );
   }
