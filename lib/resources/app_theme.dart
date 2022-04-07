@@ -143,6 +143,18 @@ final SHADOW_CONFIRM_DROPDOWN = [
   )
 ];
 
+BoxDecoration SHADOW_ACTIVITY_BOTTOMBAR(Color colorAnim){
+    return BoxDecoration(color: colorAnim,
+                    borderRadius: BorderRadius.all(Radius.circular(32)), 
+  boxShadow: [
+    BoxShadow(
+      color: Color.fromARGB(50, 0, 0, 0),
+      offset: Offset(0, 3),
+      blurRadius: 0.5,
+      spreadRadius: 0.2,
+    )
+]);}
+
 //toast
 
 const Color TOAST_BACKGROUND_COLOR = Color.fromARGB(255, 233, 240, 237);
