@@ -17,9 +17,9 @@ class HelpTTT extends StatelessWidget {
         child: ListView(
           children: [
             Text(HELP_TTT_TITLE, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Padding(padding: EdgeInsets.all(15), child: Text(HELP_TTT_CONTENT)),
+            Padding(padding: EdgeInsets.all(15), child: Text(HELP_TTT_CONTENT, style: const TextStyle(fontSize: 15))),
             Padding(padding: EdgeInsets.all(15), child: new InkWell(
-              child: new Text(HELP_TTT_LINK_TEXT, style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline)),
+              child: new Text(HELP_TTT_LINK_TEXT, style: TextStyle(fontSize:16, color: Colors.blue, decoration: TextDecoration.underline)),
               onTap: () => launch(HELP_TTT_LINK),
             )),
           ],

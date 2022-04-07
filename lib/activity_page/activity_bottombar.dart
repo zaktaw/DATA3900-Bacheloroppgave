@@ -27,7 +27,7 @@ class ActivityBottombar extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(buttonText,
-                  style: TextStyle(fontSize: ACTIVITY_BOTTOMBAR_FONTSIZE,
+                  style: TextStyle(fontSize: ACTIVITY_BOTTOMBAR_FONTSIZE, fontWeight: FontWeight.w500,
                       color: checkIfAllZonesAreCounted() ? TEXT_COLOR_BLACK : color)),
             ],
           ),
