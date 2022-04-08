@@ -43,41 +43,41 @@ class _HomeScreenState extends State<HomeScreen> {
 
     //MOCK Projectinfo init init
     ZoneObject zoneobj =
-        new ZoneObject(1, "Skranke", "Sone 1");
+        new ZoneObject(1, "Ungdomsrommet 2.Etg", "Eget rom med ungdomsbøker");
     ZoneObject zoneobj1 =
-        new ZoneObject(2, "Selvbetjening", "Sone 2, utlån og innlevering");
+        new ZoneObject(2, "Torget 2.Etg", "Mingleområde med sitteplasser");
     ZoneObject zoneobj2 =
-        new ZoneObject(3, "Søkemaskiner", "Sone 3");
+        new ZoneObject(3, "Fantasia 2.Etg", "eget rom for småbarn/barnehager (inneholder ikke bøker, men kan fungere som f.eks lunsjsted eller base for barnehager/grupper)");
 
     ZoneObject zoneobj3 =
-        new ZoneObject(4, "Kopimaskin", "Sone 4");
+        new ZoneObject(4, "Gresseplasser 2.Etg", "Området mellom bokhyllene der folk går og gresser/snuser etter bøker");
 
     ZoneObject zoneobj4 =
-        new ZoneObject(5, "Bokskanner", "Sone 5");
+        new ZoneObject(5, "Krimrommet 1.Etg", "Eget rom for krimbøker");
 
     ZoneObject zoneobj5 =
-        new ZoneObject(6, "Bokreoler", "Sone 6");
+        new ZoneObject(6, "Lesesal 1.Etg", "Lesesal i 1.etg");
 
      ZoneObject zoneobj6 =
-        new ZoneObject(7, "Stille lesesal", "Sone 7");
+        new ZoneObject(7, "Sitteplasser 1.Etg", "Sitteplasser i 1. etg, gjelder ikke sitteplasser i kafeen");
 
       ZoneObject zoneobj7 =
-        new ZoneObject(8, "Stille PC-sal", "Sone 8");
+        new ZoneObject(8, "Torget 1.Etg", "Mingelområde med inn- og utleveringsmulighteter");
 
       ZoneObject zoneobj8 =
-        new ZoneObject(9, "PC-arbeidsplasser", "Sone 9");
+        new ZoneObject(9, "Gresseplasser 1.Etg", "Området mellom bokhyllene der folk går og gresser/snuser etter bøker");
 
       ZoneObject zoneobj9 =
-        new ZoneObject(10, "Gruppearbeidsplasser", "Sone 10");
+        new ZoneObject(10, "Musikkrommmet U.Etg", "Eget rom for musikksamlinger");
 
       ZoneObject zoneobj10 =
-        new ZoneObject(11, "Enkelt arbeidsplasser", "Sone 11");
+        new ZoneObject(11, "Sitteplasser U.Etg", "Sitteplasser langs ytterveggene");
 
       ZoneObject zoneobj11 =
-        new ZoneObject(12, "Grupperom", "Sone 12");
+        new ZoneObject(12, "Torget U.Etg", "Sceneomåde i underetasjen, består for det meste av sitteplasser");
 
       ZoneObject zoneobj12 =
-        new ZoneObject(13, "Sosial sone (sofa)", "Sone 13");
+        new ZoneObject(13, "Gresseplasser U.Etg", "Området mellom bokhyllene der folk går og gresser/snuser etter bøker");
 
       ZoneObject zoneobj13 =
         new ZoneObject(14, "Fleksible plasser (Studieverkstedet og Vepsebolet)", "Sone 14");
@@ -138,14 +138,14 @@ class _HomeScreenState extends State<HomeScreen> {
     final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
     List<ZoneObject> zoneList = [];
     zoneList.addAll([zoneobj, zoneobj1, zoneobj2, zoneobj3, zoneobj4, zoneobj5, zoneobj6, zoneobj7, zoneobj8, 
-                    zoneobj9, zoneobj10, zoneobj11, zoneobj12, zoneobj13]);
+                    zoneobj9, zoneobj10, zoneobj11, zoneobj12]);
 
     List<ActivityObject> actList = [];
     actList.addAll([actobj, actobj1, actobj2, actobj3, actobj4, actobj5, actobj6, actobj7, actobj8, actobj9, actobj10, 
                     actobj11, actobj12, actobj13, actobj14, actobj15, actobj16]);
 
     List<String> observerList = ["Maria", "Hans", "Helene"];
-    String title = "Universitetsbiblioteket OsloMet P48 (test)";
+    String title = "ToF bibliotek (testprosjekt)";
 
     TttProjectInfo projectInfo =
         new TttProjectInfo(actList, zoneList, observerList, title);
