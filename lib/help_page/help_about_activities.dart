@@ -18,7 +18,7 @@ class HelpActivites extends StatelessWidget {
       activityListString += element.activity_name.toString() +
           ":  " +
           element.activity_info.toString() +
-          "\n";
+          "\n\n";
     });
     return activityListString;
   }
@@ -33,7 +33,7 @@ class HelpActivites extends StatelessWidget {
         child: ListView(
           children: [
             Text(HELP_ACTIVITES_TITLE, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Padding(padding: EdgeInsets.all(15), child: Text(showActivites())),
+            Padding(padding: EdgeInsets.all(15), child: Text(showActivites(), style: const TextStyle(fontSize: 16))),
           ],
         )
       );

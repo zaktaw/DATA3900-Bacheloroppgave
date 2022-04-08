@@ -69,10 +69,10 @@ const double HOMESCREEN_TITLE_FONTSIZE = 25;
 const double HOMESCREEN_BTN_FONTSIZE = 17;
 const double CONFIRM_PAGE_REWIEWLIST_FONTSIZE = 15;
 const double CONFIRM_PAGE_REWIEWLIST_HEADER_FONTSIZE = 22;
-const double ACTIVITY_TOP_TITLE_FONTSIZE = 20;
+const double ACTIVITY_TOP_TITLE_FONTSIZE = 23;
 const double ACTIVITY_MANUAL_INPUT_FONTSIZE = 18;
-const double ACTIVITY_BOTTOMBAR_FONTSIZE = 18;
-const double COUNT_BOTTOMBAR_FONTSIZE = 18;
+const double ACTIVITY_BOTTOMBAR_FONTSIZE = 22;
+const double COUNT_BOTTOMBAR_FONTSIZE = 22;
 
 //paddings
 
@@ -143,8 +143,20 @@ final SHADOW_CONFIRM_DROPDOWN = [
   )
 ];
 
+BoxDecoration SHADOW_ACTIVITY_BOTTOMBAR(Color colorAnim){
+    return BoxDecoration(color: colorAnim,
+                    borderRadius: BorderRadius.all(Radius.circular(32)), 
+  boxShadow: [
+    BoxShadow(
+      color: Color.fromARGB(50, 0, 0, 0),
+      offset: Offset(0, 3),
+      blurRadius: 0.5,
+      spreadRadius: 0.2,
+    )
+]);}
+
 //toast
 
 const Color TOAST_BACKGROUND_COLOR = Color.fromARGB(255, 233, 240, 237);
 const Color TOAST_TEXT_COLOR = Colors.black;
-const double TOAST_FONT_SIZE = 15;
+const double TOAST_FONT_SIZE = 20;

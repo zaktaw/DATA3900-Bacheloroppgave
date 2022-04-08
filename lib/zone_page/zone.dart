@@ -72,7 +72,7 @@ class _ZoneState extends State<Zone> {
         child: ZonesList(entries, zoneList),
       ),
       bottomNavigationBar: ActivityBottombar(
-          navigateToConfirmPage, zone_confirm, entries, zoneList.length, TEXT_COLOR_DISABLED),
+          navigateToConfirmPage, zone_confirm, entries, zoneList.length, TEXT_COLOR_DISABLED, null),
     );
   }
 }

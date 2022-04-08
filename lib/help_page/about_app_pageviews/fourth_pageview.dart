@@ -11,7 +11,7 @@ class FourthPageview extends StatelessWidget {
     Column(
         children: [
           Text(FOURTH_PAGEVIEW_STRING_TITLE, textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          Text(FOURTH_PAGEVIEW_STRING), 
+          Text(FOURTH_PAGEVIEW_STRING, style: const TextStyle(fontSize: 15)), 
           Container(child: Image.asset("assets/images/mainmenu_example.gif"), decoration: BoxDecoration(border: Border.all(color: Colors.black)), height: MediaQuery.of(context).size.height * GIF_PAGEVIEW_MARGIN_FACTOR_HEIGHT, width: MediaQuery.of(context).size.height * GIF_PAGEVIEW_MARGIN_FACTOR_WIDTH),
       ],
       )

@@ -54,7 +54,7 @@ class ZoneCard extends StatelessWidget {
                       msg: zone_name + ': ' + zone_info, // message
                       toastLength: Toast.LENGTH_SHORT, // length
                       gravity: ToastGravity.CENTER, // location
-                      timeInSecForIosWeb: 5, // duration,
+                      timeInSecForIosWeb: 8, // duration,
                       backgroundColor: TOAST_BACKGROUND_COLOR,
                       textColor: TOAST_TEXT_COLOR,
                       fontSize: TOAST_FONT_SIZE,

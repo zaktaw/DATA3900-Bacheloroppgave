@@ -34,7 +34,7 @@ class HelpZones extends StatelessWidget {
         child: ListView(
           children: [
             Text(HELP_ZONE_TITLE, textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Padding(padding: EdgeInsets.all(20), child: Text(showZones())),
+            Padding(padding: EdgeInsets.all(20), child: Text(showZones(), style: const TextStyle(fontSize: 15))),
           ],
         ),
       );

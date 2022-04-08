@@ -5,13 +5,13 @@ import '../models/TttEntries.dart';
 class ActivityBottombar extends StatelessWidget {
   ActivityBottombar(
       this.function, this.buttonText, this.entries, this.zoneCount, this.color,
-      {Key? key})
-      : super(key: key);
+      [this.colorAnimation]);
 
   late final VoidCallback function;
   final String buttonText;
   TttEntries entries;
   int zoneCount;
+  final Animation<dynamic>? colorAnimation;
 
   late Color color;
 
@@ -26,9 +26,17 @@ class ActivityBottombar extends StatelessWidget {
           padding: EdgeInsets.only(top: 8.0),
           child: Column(
             children: <Widget>[
-              Text(buttonText,
-                  style: TextStyle(fontSize: ACTIVITY_BOTTOMBAR_FONTSIZE,
-                      color: checkIfAllZonesAreCounted() ? TEXT_COLOR_BLACK : color)),
+              Container(
+                padding: EdgeInsets.fromLTRB(50, 5, 50, 5),
+                child: Text(buttonText,
+                    style: TextStyle(
+                        fontSize: ACTIVITY_BOTTOMBAR_FONTSIZE,
+                        fontWeight: FontWeight.w500,
+                        color: checkIfAllZonesAreCounted()
+                            ? TEXT_COLOR_BLACK
+                            : color)),
+                decoration: SHADOW_ACTIVITY_BOTTOMBAR(colorAnimation?.value),
+              ),
             ],
           ),
         ),
