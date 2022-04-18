@@ -20,5 +20,18 @@ class TttProjectInfo extends HiveObject {
   late String project_name;
 
   TttProjectInfo(
-      this.activities, this.zones, this.observers, this.project_name);
+      {required this.activities,
+      required this.zones,
+      required this.observers,
+      required this.project_name
+      });
+
+  factory TttProjectInfo.fromJson(Map<String, dynamic> json) {
+    return TttProjectInfo(
+      activities: json['activities'],
+      zones: json['zones'],
+      observers: json['observers'],
+      project_name: json['project_name'],
+    );
+  }
 }

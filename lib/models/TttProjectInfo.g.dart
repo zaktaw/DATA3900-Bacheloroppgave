@@ -17,10 +17,10 @@ class TttProjectInfoAdapter extends TypeAdapter<TttProjectInfo> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return TttProjectInfo(
-      (fields[0] as List).cast<ActivityObject>(),
-      (fields[1] as List).cast<ZoneObject>(),
-      (fields[2] as List).cast<String>(),
-      fields[3] as String,
+      activities: (fields[0] as List).cast<ActivityObject>(),
+      zones: (fields[1] as List).cast<ZoneObject>(),
+      observers: (fields[2] as List).cast<String>(),
+      project_name: fields[3] as String,
     );
   }
 
