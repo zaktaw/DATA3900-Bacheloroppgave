@@ -39,6 +39,7 @@ const Color DROPDOWN_COLOR = Colors.white;
 
 const double HOMESCREEN_COUNT_BTN_MARGIN = 70;
 const double HOMESCREEN_RESUME_COUNT_BTN_MARGIN = 20;
+const double HOMESCREEN_POP_BUTTON_MARGIN = 15;
 const double HOMESCREEN_SETTINGS_BTN_MARGIN = 90;
 const double HOMESCREEN_HELP_BTN_MARGIN = 20;
 
@@ -143,17 +144,19 @@ final SHADOW_CONFIRM_DROPDOWN = [
   )
 ];
 
-BoxDecoration SHADOW_ACTIVITY_BOTTOMBAR(Color colorAnim){
-    return BoxDecoration(color: colorAnim,
-                    borderRadius: BorderRadius.all(Radius.circular(32)), 
-  boxShadow: [
-    BoxShadow(
-      color: Color.fromARGB(50, 0, 0, 0),
-      offset: Offset(0, 3),
-      blurRadius: 0.5,
-      spreadRadius: 0.2,
-    )
-]);}
+BoxDecoration SHADOW_ACTIVITY_BOTTOMBAR(Color colorAnim) {
+  return BoxDecoration(
+      color: colorAnim,
+      borderRadius: BorderRadius.all(Radius.circular(32)),
+      boxShadow: [
+        BoxShadow(
+          color: Color.fromARGB(50, 0, 0, 0),
+          offset: Offset(0, 3),
+          blurRadius: 0.5,
+          spreadRadius: 0.2,
+        )
+      ]);
+}
 
 //toast
 

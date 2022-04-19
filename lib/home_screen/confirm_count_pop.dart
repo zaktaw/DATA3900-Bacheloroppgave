@@ -8,13 +8,14 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 
 //Koden er basert på kildekode fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
-const String pop_title = 'Informasjon om soner';
-const String pop_info = 'Hello';
+const String pop_title = 'Advarsel';
+const String pop_info = 'Er du sikker på at du vil starte en ny telling?\nDa kan du ikke gjenoppta en tidligere telling.';
 
 class ConfirmCountPop extends StatelessWidget {
-  ConfirmCountPop(this.activeTttEntries, {Key? key}) : super(key: key);
+  ConfirmCountPop(this.args, this.onPressed, {Key? key}) : super(key: key);
 
-  late TttEntries activeTttEntries;
+  final args;
+  Function onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -26,24 +27,40 @@ class ConfirmCountPop extends StatelessWidget {
           child: Material(
               color: BACKGROUND_COLOR,
               child: Container(
-                      decoration: SHADOW_HOMESCREEN_BTN,
-                      child: ElevatedButton(
-                          child: const Text(
-                            'Gjennopta telling',
-                            style: TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_BTN_FONTSIZE, fontWeight: FontWeight.bold),
-                          ),
-                          style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS))),
-                              backgroundColor: MaterialStateProperty.all(HOMESCREEN_BUTTONS_COLOR),
-                              padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
-                              fixedSize: MaterialStateProperty.all( 
-                                  Size((MediaQuery.of(context).size.width * HOMESCREEN_BTN_WIDTH_FACTOR), (MediaQuery.of(context).size.height * HOMESCREEN_BTN_HEIGHT_FACTOR)),
-                              )),
-                          onPressed: () {
-                            Navigator.of(context).push(HeroDialogRoute(builder: (context) {
-                              return _ConfirmCountPop(activeTttEntries, key: key);
-                            }));
-                         }))),
+                  decoration: SHADOW_HOMESCREEN_BTN,
+                  margin: const EdgeInsets.only(top: HOMESCREEN_COUNT_BTN_MARGIN),
+                  child: ElevatedButton(
+                      child: const Text(
+                        'Ny telling',
+                        style: TextStyle(
+                            color: TEXT_COLOR_BLACK,
+                            fontSize: HOMESCREEN_BTN_FONTSIZE,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          BOX_BORDER_RADIUS))),
+                          backgroundColor: MaterialStateProperty.all(
+                              HOMESCREEN_BUTTONS_COLOR),
+                          padding: MaterialStateProperty.all(
+                              const EdgeInsets.all(8)),
+                          fixedSize: MaterialStateProperty.all(
+                            Size(
+                                (MediaQuery.of(context).size.width *
+                                    HOMESCREEN_BTN_WIDTH_FACTOR),
+                                (MediaQuery.of(context).size.height *
+                                    HOMESCREEN_BTN_HEIGHT_FACTOR)),
+                          )),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(HeroDialogRoute(builder: (context) {
+                          return _ConfirmCountPop(args, onPressed,
+                              key: key);
+                        }));
+                      }))),
         ),
       ),
     );
@@ -53,9 +70,10 @@ class ConfirmCountPop extends StatelessWidget {
 const String _heroConfirmPop = 'confirm-count-pop';
 
 class _ConfirmCountPop extends StatelessWidget {
-  _ConfirmCountPop(this.activeTttEntries, {Key? key}) : super(key: key);
+  _ConfirmCountPop(this.args, this.onPressed, {Key? key}) : super(key: key);
 
-  late TttEntries activeTttEntries;
+  final args;
+  Function onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -88,18 +106,25 @@ class _ConfirmCountPop extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 15, color: Colors.white),
                     ),
-                    Row(
-                      children: [
-                        TextButton(onPressed: () {
-                          Navigator.of(context)
-                                .pushNamed('/zones', arguments: activeTttEntries);
-                        }, child: const Text('JA')),
-                        TextButton(onPressed: () {
-                          Navigator.of(context)
-                                .pushNamed('/');
-                        }, child: const Text('NEI'))
-                    ],)
-                  ],
+                    Container(
+                      margin: const EdgeInsets.only(top: HOMESCREEN_POP_BUTTON_MARGIN),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              onPressed();
+                              Navigator.of(context)
+                                  .pushNamed('/activity', arguments: args);
+                            },
+                            child: const Text('JA')),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed('/');
+                              },
+                              child: const Text('NEI'))],
+                    )
+                  )],
                 ),
               ),
             ),

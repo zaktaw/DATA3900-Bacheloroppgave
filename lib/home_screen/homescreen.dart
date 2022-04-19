@@ -14,6 +14,7 @@ import 'package:hive/hive.dart';
 
 
 const String new_count = 'Ny telling';
+const String continue_count = 'Gjenoppta telling';
 const String settings = 'Innstilinger';
 const String help = 'Hjelp';
 
@@ -170,10 +171,18 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Center(
                 child: Column(
       children: [
-        HomeScreenButton(
+        activeTtt
+          ? ConfirmCountPop([tttEntries, 0], newCount)
+          : HomeScreenButton(
             btnName: new_count, margin: HOMESCREEN_COUNT_BTN_MARGIN, route: "/activity", args: [tttEntries, 0], onPressed: newCount),
         activeTtt
-            ? ConfirmCountPop(activeTttEntries)
+            ? HomeScreenButton(
+                btnName: continue_count,
+                margin: HOMESCREEN_RESUME_COUNT_BTN_MARGIN,
+                route: '/zones',
+                args: activeTttEntries,
+                onPressed: () => {},
+              )
             : const SizedBox.shrink(),
         HomeScreenButton(
             btnName: settings, margin: HOMESCREEN_SETTINGS_BTN_MARGIN, route: "/settings", args: null, onPressed: () => {}),
