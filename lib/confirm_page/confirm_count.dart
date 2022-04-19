@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bacheloroppgave/confirm_page/confirm_bottombar.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
@@ -55,8 +57,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            child: Padding(
-                child: Text(
+              child: Padding(
+            child: Text(
               "Du har telt " +
                   numberOfZones.toString() +
                   " av " +
@@ -91,19 +93,17 @@ class _ConfirmCountState extends State<ConfirmCount> {
 
   bool sendTTT() {
     TttObject tttObject = TttObject(entries.tttEntries, observerName,
-        entries.timestamp, ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
+        entries.timestamp, projectInfo.activities, projectInfo.id);
     // kall på backend
     // if good return good
-    TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
-    print("1: Her er riktig print ellernoe sånt.. YES! ");
-    test.showTellinger();
-    print("Timestamp for tellinger:");
-    print(test.timestamp);
+
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
     // else return not good
     //Not good
 
-    //tttObject.showTellinger();
+    String json = jsonEncode(tttObject);
+    print("PRINT JSON");
+    print(json);
     return true;
   }
 

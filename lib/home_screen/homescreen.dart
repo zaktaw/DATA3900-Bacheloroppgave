@@ -56,7 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
           description: value.description,
           activities: value.activities,
           zones: value.zones,
-          observers: value.observers);
+          observers: value.observers,
+          id: value.id);
       tttProjectInfoBox.add(projectInfo);
     });
 

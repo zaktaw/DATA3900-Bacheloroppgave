@@ -22,12 +22,16 @@ class TttProjectInfo extends HiveObject {
   @HiveField(4)
   late String description;
 
+  @HiveField(5)
+  late int id;
+
   TttProjectInfo(
       {required this.activities,
       required this.zones,
       required this.observers,
       required this.project_name,
-      required this.description});
+      required this.description,
+      required this.id});
 
   factory TttProjectInfo.fromJson(Map<String, dynamic> json) {
 
@@ -43,9 +47,10 @@ class TttProjectInfo extends HiveObject {
     return TttProjectInfo(
       activities: listActivityObject,
       zones: listZoneObject,
-      observers: ['A', 'C'],
+      observers: ['A', 'C'], // replace with actual value from server
       project_name: json['name'],
       description: json['description'],
+      id: 1 // replace with actual value from server
     );
   }
 }
