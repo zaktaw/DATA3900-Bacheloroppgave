@@ -43,7 +43,7 @@ class TttProjectInfo extends HiveObject {
     return TttProjectInfo(
       activities: listActivityObject,
       zones: listZoneObject,
-      observers: ['A', 'B'],
+      observers: ['A', 'C'],
       project_name: json['name'],
       description: json['description'],
     );

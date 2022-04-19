@@ -12,7 +12,7 @@ class HttpRequests {
     final response = await http.get(Uri.parse(getTttProjectInfoUrl));
 
     if (response.statusCode == 200) {
-      return TttProjectInfo.fromJson(jsonDecode(response.body));
+      return TttProjectInfo.fromJson(jsonDecode(utf8.decode(response.bodyBytes))); //json.decode(utf8.decode(response.bodyBytes));
     } else {
       throw Exception('Failed to load tttProjectInfo');
     }
