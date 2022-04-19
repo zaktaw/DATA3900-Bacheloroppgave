@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_button.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
@@ -13,7 +14,6 @@ import 'package:hive/hive.dart';
 
 
 const String new_count = 'Ny telling';
-const String continue_count = 'Gjenoppta telling';
 const String settings = 'Innstilinger';
 const String help = 'Hjelp';
 
@@ -173,13 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
         HomeScreenButton(
             btnName: new_count, margin: HOMESCREEN_COUNT_BTN_MARGIN, route: "/activity", args: [tttEntries, 0], onPressed: newCount),
         activeTtt
-            ? HomeScreenButton(
-                btnName: continue_count,
-                margin: HOMESCREEN_RESUME_COUNT_BTN_MARGIN,
-                route: '/zones',
-                args: activeTttEntries,
-                onPressed: () => {},
-              )
+            ? ConfirmCountPop(activeTttEntries)
             : const SizedBox.shrink(),
         HomeScreenButton(
             btnName: settings, margin: HOMESCREEN_SETTINGS_BTN_MARGIN, route: "/settings", args: null, onPressed: () => {}),
