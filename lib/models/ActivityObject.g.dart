@@ -17,8 +17,8 @@ class ActivityObjectAdapter extends TypeAdapter<ActivityObject> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ActivityObject(
-      fields[0] as String,
-      fields[1] as String,
+      activity_name: fields[0] as String,
+      activity_info: fields[1] as String,
     );
   }
 

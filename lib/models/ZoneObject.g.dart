@@ -17,9 +17,9 @@ class ZoneObjectAdapter extends TypeAdapter<ZoneObject> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ZoneObject(
-      fields[0] as int,
-      fields[1] as String,
-      fields[2] as String,
+      order_number: fields[0] as int,
+      zone_name: fields[1] as String,
+      zone_info: fields[2] as String,
     );
   }
 

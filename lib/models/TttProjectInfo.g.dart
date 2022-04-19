@@ -21,13 +21,14 @@ class TttProjectInfoAdapter extends TypeAdapter<TttProjectInfo> {
       zones: (fields[1] as List).cast<ZoneObject>(),
       observers: (fields[2] as List).cast<String>(),
       project_name: fields[3] as String,
+      description: fields[4] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, TttProjectInfo obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.activities)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class TttProjectInfoAdapter extends TypeAdapter<TttProjectInfo> {
       ..writeByte(2)
       ..write(obj.observers)
       ..writeByte(3)
-      ..write(obj.project_name);
+      ..write(obj.project_name)
+      ..writeByte(4)
+      ..write(obj.description);
   }
 
   @override

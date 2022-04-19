@@ -4,7 +4,6 @@ part 'ZoneObject.g.dart';
 
 @HiveType(typeId: 4)
 class ZoneObject {
-
   @HiveField(0)
   late int order_number;
 
@@ -14,5 +13,12 @@ class ZoneObject {
   @HiveField(2)
   late String zone_info;
 
-  ZoneObject(this.order_number, this.zone_name, this.zone_info);
+  ZoneObject({required this.order_number, required this.zone_name, required this.zone_info});
+
+  factory ZoneObject.fromJson(Map<String, dynamic> json) {
+    return ZoneObject(
+        order_number: json['sequencenumber'],
+        zone_name: json['lettername'],
+        zone_info: json['description']);
+  }
 }
