@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late TttEntries activeTttEntries;
   late bool activeTtt;
   late Box tttEntriesBox;
+  late String projectName;
 
   late Future<TttProjectInfo> futureTttProjectInfo;
 
@@ -48,11 +49,20 @@ class _HomeScreenState extends State<HomeScreen> {
     // get request for tttProjectInfo
     futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
-      print("PRINT GET VALUE");
     futureTttProjectInfo.then((value) {
-      TttProjectInfo projectInfo = TttProjectInfo(project_name: value.project_name, description: value.description, activities: value.activities, zones: value.zones, observers: value.observers);
+      projectName = value.project_name;
+      TttProjectInfo projectInfo = TttProjectInfo(
+          project_name: value.project_name,
+          description: value.description,
+          activities: value.activities,
+          zones: value.zones,
+          observers: value.observers);
       tttProjectInfoBox.add(projectInfo);
     });
+
+    TttProjectInfo projectInfo =
+        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+    projectName = projectInfo.project_name;
   }
 
   void newCount() {
@@ -63,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Universitetsbiblioteket OsloMet P48 (test)"),
+          title: Text(projectName),
           centerTitle: true,
           backgroundColor: TOPBAR_COLOR,
           titleTextStyle: const TextStyle(
