@@ -11,6 +11,7 @@ import 'package:bacheloroppgave/zone_page/zone_card.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:hive/hive.dart';
+import 'dart:io';
 
 const String new_count = 'Ny telling';
 const String continue_count = 'Gjenoppta telling';
@@ -33,6 +34,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late Future<TttProjectInfo> futureTttProjectInfo;
 
+  Future<bool> checkDeviceInternetConnection() async {
+    try {
+      final result = await InternetAddress.lookup('example.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        print('connected');
+        return true;
+      }
+    } on SocketException catch (_) {
+      print('not connected');
+      return false;
+    }
+    return false;
+  }
+
   @override
   void initState() {
     tttEntries = TttEntries();
@@ -44,26 +59,36 @@ class _HomeScreenState extends State<HomeScreen> {
       activeTtt = false;
     }
 
-    final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
+    print("CHECKING DEVICE CONNECTION");
+    checkDeviceInternetConnection().then((connected) {
+      if (connected) {
+        final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
+        tttProjectInfoBox.clear();
 
-    // get request for tttProjectInfo
-    futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
+        // get request for tttProjectInfo
+        futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
-    futureTttProjectInfo.then((value) {
-      projectName = value.project_name;
-      TttProjectInfo projectInfo = TttProjectInfo(
-          project_name: value.project_name,
-          description: value.description,
-          activities: value.activities,
-          zones: value.zones,
-          observers: value.observers,
-          id: value.id);
-      tttProjectInfoBox.add(projectInfo);
+        futureTttProjectInfo.then((value) {
+          print("RECIEVED VALUE");
+          projectName = value.project_name;
+          TttProjectInfo projectInfo = TttProjectInfo(
+              project_name: value.project_name,
+              description: value.description,
+              activities: value.activities,
+              zones: value.zones,
+              observers: value.observers,
+              id: value.id);
+          tttProjectInfoBox.add(projectInfo);
+        });
+
+        // PROBLEM: infoBox is retrieved before async-call causing an index error
+        /* TttProjectInfo projectInfo =
+            TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+        projectName = projectInfo.project_name; */
+      } else {
+        // handle not connected to internet
+      }
     });
-
-    TttProjectInfo projectInfo =
-        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
-    projectName = projectInfo.project_name;
   }
 
   void newCount() {
@@ -74,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(projectName),
+          title: Text("projectName"),
           centerTitle: true,
           backgroundColor: TOPBAR_COLOR,
           titleTextStyle: const TextStyle(

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bacheloroppgave/confirm_page/confirm_bottombar.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
+import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
@@ -101,9 +102,16 @@ class _ConfirmCountState extends State<ConfirmCount> {
     // else return not good
     //Not good
 
-    String json = jsonEncode(tttObject);
-    print("PRINT JSON");
-    print(json);
+    String jsonBody = jsonEncode(tttObject);
+
+    print(jsonBody);
+
+    Future postRequest = HttpRequests.postTttObject(jsonBody);
+
+    
+
+    postRequest.then((value) => print("STATUS CODE: " + value.toString()));
+
     return true;
   }
 

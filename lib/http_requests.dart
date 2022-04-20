@@ -8,13 +8,36 @@ class HttpRequests {
   static String getTttProjectInfoUrl =
       'http://nvrtx.oslomet.no:8001/drf2/project/3';
 
-  static Future<TttProjectInfo> fetchTttProjectInfo() async {
-    final response = await http.get(Uri.parse(getTttProjectInfoUrl));
+  static String postTttObjectUrl =
+      "http://nvrtx.oslomet.no:8001/drf2/counting/";
 
+  static Future<TttProjectInfo> fetchTttProjectInfo() async {
+    print("Response!");
+    final response = await http.get(Uri.parse(getTttProjectInfoUrl));
+    print("RESPONSE;");
     if (response.statusCode == 200) {
-      return TttProjectInfo.fromJson(jsonDecode(utf8.decode(response.bodyBytes))); //json.decode(utf8.decode(response.bodyBytes));
+      return TttProjectInfo.fromJson(jsonDecode(utf8.decode(response
+          .bodyBytes))); // utf8.decode needed for printing norwegian characters æ, ø and å;
     } else {
+      print("FAILED TO LOAD PROJECTINFO");
       throw Exception('Failed to load tttProjectInfo');
     }
+  }
+
+  static Future<int> postTttObject(String jsonBody) async {
+    final headers = {'Content-Type': 'application/json'};
+    final encoding = Encoding.getByName('utf-8');
+
+    http.Response response = await http.post(
+      Uri.parse(postTttObjectUrl),
+      headers: headers,
+      body: jsonBody,
+      encoding: encoding,
+    );
+
+    int statusCode = response.statusCode;
+    String responseBody = response.body;
+
+    return statusCode;
   }
 }
