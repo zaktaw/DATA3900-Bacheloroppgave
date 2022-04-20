@@ -12,9 +12,9 @@ class HttpRequests {
       "http://nvrtx.oslomet.no:8001/drf2/counting/";
 
   static Future<TttProjectInfo> fetchTttProjectInfo() async {
-    print("Response!");
+  
     final response = await http.get(Uri.parse(getTttProjectInfoUrl));
-    print("RESPONSE;");
+    
     if (response.statusCode == 200) {
       return TttProjectInfo.fromJson(jsonDecode(utf8.decode(response
           .bodyBytes))); // utf8.decode needed for printing norwegian characters æ, ø and å;
