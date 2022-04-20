@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Universitetsbiblioteket OsloMet P48 (test)"),
+      appBar: AppBar(title: Text("ToF bibliotek (testprosjekt)"),
       centerTitle: true, 
       backgroundColor: TOPBAR_COLOR, 
       titleTextStyle: const TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_TITLE_FONTSIZE), 
