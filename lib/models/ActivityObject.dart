@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'ActivityObject.g.dart';
 
+// Model for TTT activity object
 @HiveType(typeId: 3)
 class ActivityObject {
 
