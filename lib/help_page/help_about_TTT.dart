@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+//Displays text about the app and launches webbrowser if link is pressed
 class HelpTTT extends StatelessWidget {
   const HelpTTT({ Key? key }) : super(key: key);
 
@@ -17,9 +18,9 @@ class HelpTTT extends StatelessWidget {
         child: ListView(
           children: [
             Text(HELP_TTT_TITLE, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Padding(padding: EdgeInsets.all(15), child: Text(HELP_TTT_CONTENT, style: const TextStyle(fontSize: 15))),
-            Padding(padding: EdgeInsets.all(15), child: new InkWell(
-              child: new Text(HELP_TTT_LINK_TEXT, style: TextStyle(fontSize:16, color: Colors.blue, decoration: TextDecoration.underline)),
+            Padding(padding: const EdgeInsets.all(15), child: Text(HELP_TTT_CONTENT, style: const TextStyle(fontSize: 15))),
+            Padding(padding: const EdgeInsets.all(15), child: InkWell(
+              child: Text(HELP_TTT_LINK_TEXT, style: const TextStyle(fontSize:16, color: Colors.blue, decoration: TextDecoration.underline)),
               onTap: () => launch(HELP_TTT_LINK),
             )),
           ],

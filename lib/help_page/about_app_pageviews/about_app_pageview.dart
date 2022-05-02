@@ -10,7 +10,7 @@ class AboutTheApp extends StatelessWidget {
   const AboutTheApp(this.pageController, {Key? key}) : super(key: key);
 
  
-
+  //Pageview for the different help-pages. Pageviews contains a gif (see assets/images) and text (see resources/app_string)
   @override
   Widget build(BuildContext context) {
     return PageView(

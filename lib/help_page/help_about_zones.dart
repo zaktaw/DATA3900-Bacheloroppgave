@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../local_storage_hive/TttProjectInfoBox.dart';
 import '../models/ZoneObject.dart';
 
+//Displays the zones that are present in the current project 
 class HelpZones extends StatelessWidget {
   late TttProjectInfo projectInfo;
 
@@ -13,6 +14,7 @@ class HelpZones extends StatelessWidget {
 
   late List<ZoneObject> zoneList = projectInfo.zones;
 
+//Generates list that is displayed
   String showZones() {
     String zoneListString = "";
     zoneList.forEach((element) {
@@ -33,8 +35,8 @@ class HelpZones extends StatelessWidget {
           borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS)),
         child: ListView(
           children: [
-            Text(HELP_ZONE_TITLE, textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Padding(padding: EdgeInsets.all(20), child: Text(showZones(), style: const TextStyle(fontSize: 15))),
+            Text(HELP_ZONE_TITLE, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Padding(padding: const EdgeInsets.all(20), child: Text(showZones(), style: const TextStyle(fontSize: 15))),
           ],
         ),
       );

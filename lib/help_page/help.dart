@@ -10,6 +10,7 @@ import 'package:hive/hive.dart';
 import '../local_storage_hive/TttProjectInfoBox.dart';
 import '../models/TttProjectInfo.dart';
 
+//Scaffold for the help-pages with bottom navbar
 class Help extends StatefulWidget {
   Help({Key? key}) : super(key: key);
 
@@ -61,7 +62,7 @@ class _HelpState extends State<Help> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: BOTTOMBAR_HELP_OUTLINE_COLOR,
-        fixedColor: Color.fromARGB(255, 220, 211, 211),
+        fixedColor: const Color.fromARGB(255, 220, 211, 211),
         unselectedItemColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

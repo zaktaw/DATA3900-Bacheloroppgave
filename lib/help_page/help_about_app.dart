@@ -3,6 +3,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
+//Container for the about_app_pageview with dot indicator
 class HelpApp extends StatefulWidget {
   const HelpApp({Key? key}) : super(key: key);
 

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../models/ActivityObject.dart';
 import '../models/TttProjectInfo.dart';
 
+//Displays the activites that are present in the current project 
 class HelpActivites extends StatelessWidget {
   late TttProjectInfo projectInfo;
 
@@ -12,6 +13,7 @@ class HelpActivites extends StatelessWidget {
 
   late List<ActivityObject> activityList = projectInfo.activities;
 
+  //Generates the list that is displayed
   String showActivites() {
     String activityListString = "";
     activityList.forEach((element) {
@@ -33,7 +35,7 @@ class HelpActivites extends StatelessWidget {
         child: ListView(
           children: [
             Text(HELP_ACTIVITES_TITLE, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            Padding(padding: EdgeInsets.all(15), child: Text(showActivites(), style: const TextStyle(fontSize: 16))),
+            Padding(padding: const EdgeInsets.all(15), child: Text(showActivites(), style: const TextStyle(fontSize: 16))),
           ],
         )
       );
