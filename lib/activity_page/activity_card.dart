@@ -8,17 +8,17 @@ import 'activity_pop_button.dart';
 
 const String _heroActivityPop = "activity-pop-hero";
 
+//Card with activityname, counter and info-pop-up widget
 class ActivityCard extends StatelessWidget {
+
   ActivityCard(
-      this.activity_name, this.activity_info, this.addTttEntry, this.zoneIndex, this.tellingActivity,
-      {Key? key})
-      : super(key: key) {
-      txt.text = tellingActivity;
+      this.activity_name, this.activity_info, this.addTttEntry, this.zoneIndex, this.valueFromPreviousCount,
+      {Key? key}) : super(key: key) {
+      txt.text = valueFromPreviousCount;
   }
 
-  late String tellingActivity;
+  late String valueFromPreviousCount;
   final void Function(int, String, int) addTttEntry;
-
   int zoneIndex;
   String activity_name;
   String activity_info;
@@ -69,23 +69,18 @@ class ActivityCard extends StatelessWidget {
               },
               icon: Icon(Icons.add_circle_outline)),
         )
-
-        /*Text('GRUDIG',
-            style: TextStyle(
-                fontSize: 20, color: Color.fromARGB(255, 114, 114, 182))),
-        IconButton(onPressed: null, icon: Icon(Icons.remove_circle_outline)),
-        TextField(),
-        IconButton(onPressed: null, icon: Icon(Icons.add_circle_outline))*/
       ]),
     ), decoration: SHADOW_ACT_CARD,);
   }
 
+  //Increment value (observations) by 1
   String increment(String value) {
     int intValue = int.parse(value);
     addTttEntry(zoneIndex, activity_name, (intValue + 1));
     return (intValue + 1).toString();
   }
 
+  //Decrement value (observations) by 1
   String decrement(String value) {
     int intValue = int.parse(value);
     if ((intValue - 1) >= 0) {
@@ -95,6 +90,7 @@ class ActivityCard extends StatelessWidget {
     return intValue.toString();
   }
 
+  //Set value (observations) manually (keyboard-input)
   String manualInput(String? value) { 
     String stringValue = value.toString();
     int intValue = int.parse(stringValue);

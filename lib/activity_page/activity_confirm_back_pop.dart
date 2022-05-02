@@ -1,21 +1,17 @@
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
-import 'package:bacheloroppgave/zone_page/zones_list.dart';
 import 'package:flutter/material.dart';
-import 'package:bacheloroppgave/hero_dialog_route.dart';
-
 import '../models/TttEntries.dart';
-import 'package:bacheloroppgave/resources/app_theme.dart';
-
 import '../zone_page/zone.dart';
 
-//Koden er basert på kildekode fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
+//Code based on sourcecode from: https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
 const String pop_title = 'Advarsel';
-const String pop_info = 'Vil du sende inn en tom zone?';
+const String pop_info = 'Vil du lagre en tom sone?';
 
 const String _heroConfirmPop = 'confirm-back-pop';
 
+//Pop-up conformation box to confirm if user wants to commit an empty zone when navigation from activity without input
 class PopActivityConfirmBackPop extends StatelessWidget {
   PopActivityConfirmBackPop(this.entries, this.zoneIndex, {Key? key})
       : super(key: key);
@@ -73,7 +69,6 @@ class PopActivityConfirmBackPop extends StatelessWidget {
                                 child: const Text('JA')),
                             TextButton(
                                 onPressed: () {
-                                  print("deez nutz");
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

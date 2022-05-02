@@ -86,13 +86,10 @@ class _ActivityState extends State<Activity>
 
   void incrementZoneIndex() {
     setState(() {
-      print("Update zoneindex");
       if (zoneIndex < zoneList.length - 1) {
         controller.forward();
         zoneIndex++;
-        print(zoneIndex);
       } else {
-        print("Route til soneoversikt");
         Navigator.of(context).pushNamed(
           '/zones',
           arguments: entries,
@@ -137,7 +134,7 @@ class _ActivityState extends State<Activity>
             colorAnimation,
             performedCount),
         body: Container(
-            decoration: new BoxDecoration(color: BACKGROUND_COLOR),
+            decoration: const BoxDecoration(color: BACKGROUND_COLOR),
             child: Column(
               children: [
                 ActivitiesList(zoneIndex, entries, activityList),
