@@ -94,7 +94,6 @@ class _ConfirmCountState extends State<ConfirmCount> {
     // kall på backend
     // if good return good
     TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
-    print("1: Her er riktig print ellernoe sånt.. YES! ");
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
     // else return not good
     //Not good
