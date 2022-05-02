@@ -6,6 +6,8 @@ import 'package:hive/hive.dart';
 
 part 'TttEntries.g.dart';
 
+// Model for TTT entries.
+// Used for storing and modifying the entries before they are sent to server.
 @HiveType(typeId: 1)
 class TttEntries extends HiveObject {
   @HiveField(0)
@@ -18,33 +20,17 @@ class TttEntries extends HiveObject {
     timestamp = DateTime.now();
   }
 
-  void addTelling(int zoneIndex, String activity) {
-    TttEntry tttEntry = TttEntry(activity, 1);
-  }
-
-  void showTellinger() {
-    tttEntries.forEach((key, value) {
-      if (value is List) {
-        List test = value;
-        print(key);
-        test.forEach((element) {
-          TttEntry test1 = element;
-          print(
-              "Act:" + test1.activity + "   Count: " + test1.count.toString());
-        });
-      }
-    });
-  }
-
+  // returns a list of counts for a given zone
+  // returns an empty list if no counts are stored
   List getTttEntries(int zone) {
-    return tttEntries[zone] ??
-        []; // return empty list if no tellinger is stored
+    return tttEntries[zone] ?? [];
   }
 
   int getNumberOfZones() {
     return tttEntries.length;
   }
 
+  // returns total number of counts stored for a given zone
   int getNumberOfCountsInZone(int index) {
     int numberOfEntries = 0;
     List counts = tttEntries[index];
@@ -55,6 +41,7 @@ class TttEntries extends HiveObject {
     return numberOfEntries;
   }
 
+  // returns true if a given zone has been stored in entries map
   bool checkTttEntryKey(int zone) {
     if (tttEntries.containsKey(zone)) {
       return true;

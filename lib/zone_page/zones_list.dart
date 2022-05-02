@@ -3,12 +3,8 @@ import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'zone_card.dart';
-import '../activity_page/activity_bottombar.dart';
-import 'zones_topbar.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
-const String zone_toast = "This is a toast!";
-
+//Generates list of zonecards for all zones in the project
 class ZonesList extends StatelessWidget {
   final TttEntries entries;
   final List<ZoneObject> zoneList;
