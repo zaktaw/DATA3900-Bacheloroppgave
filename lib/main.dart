@@ -16,11 +16,15 @@ import 'models/TttEntry.dart';
 
 import 'resources/app_theme.dart';
 
+//A method which makes an instance of the hive box which consists of TttEntries
+
 Future<Box> openEntriesBox(String boxName) async {
   if (!kIsWeb && !Hive.isBoxOpen(boxName)) Hive.init((await getApplicationDocumentsDirectory()).path);
 
   return await Hive.openBox<TttEntries>(boxName);
 }
+
+//A method which makes an instance of the hive box which consists of TttProjectInfo
 
 Future<Box> openProjectBox(String boxName) async {
   if (!kIsWeb && !Hive.isBoxOpen(boxName)) Hive.init((await getApplicationDocumentsDirectory()).path);
@@ -28,6 +32,7 @@ Future<Box> openProjectBox(String boxName) async {
   return await Hive.openBox<TttProjectInfo>(boxName);
 }
 
+//Starts the hive boxes
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(TttEntriesAdapter());
