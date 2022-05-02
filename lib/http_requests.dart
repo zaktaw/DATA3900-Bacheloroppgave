@@ -6,10 +6,10 @@ import 'package:http/http.dart' as http;
 
 class HttpRequests {
   static String getTttProjectInfoUrl =
-      'http://nvrtx.oslomet.no:8001/drf2/project/3';
+      'http://ltr-abi.no:8443/drf2/project/1';
 
   static String postTttObjectUrl =
-      "http://nvrtx.oslomet.no:8001/drf2/counting/";
+      "http://ltr-abi.no:8443/drf2/counting/";
 
   static Future<TttProjectInfo> fetchTttProjectInfo() async {
   
