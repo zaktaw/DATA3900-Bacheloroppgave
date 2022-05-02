@@ -6,8 +6,6 @@ import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
-import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
-import 'package:bacheloroppgave/zone_page/zone_card.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:hive/hive.dart';
@@ -31,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late bool activeTtt;
   late Box tttEntriesBox;
 
+  //Check if there is a active session or not. Used to control if option to resume session should be displayed
   @override
   void initState() {
     tttEntries = TttEntries();
@@ -148,11 +147,11 @@ class _HomeScreenState extends State<HomeScreen> {
     List<String> observerList = ["Maria", "Hans", "Helene"];
     String title = "ToF bibliotek";
 
-    TttProjectInfo projectInfo =
-        new TttProjectInfo(actList, zoneList, observerList, title);
+    TttProjectInfo projectInfo = TttProjectInfo(actList, zoneList, observerList, title);
     tttProjectInfoBox.add(projectInfo);
   }
 
+  //Remove session if a new session is started
   void newCount() {
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
   }
@@ -160,14 +159,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("OsloMet Universitetsbiblioteket"),
+      appBar: AppBar(title: const Text("OsloMet Universitetsbiblioteket"),
       centerTitle: true, 
       backgroundColor: TOPBAR_COLOR, 
       titleTextStyle: const TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_TITLE_FONTSIZE), 
       toolbarHeight: (MediaQuery.of(context).size.height * HOMESCREEN_TOPBAR_HEIGHT_FACTOR),
       automaticallyImplyLeading: false,),
         body: Container(  
-            decoration: new BoxDecoration(color: BACKGROUND_COLOR),
+            decoration: const BoxDecoration(color: BACKGROUND_COLOR),
             child: Center(
                 child: Column(
       children: [

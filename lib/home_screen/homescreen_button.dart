@@ -1,10 +1,9 @@
-import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
-import 'package:bacheloroppgave/zone_page/zone_card.dart';
 import 'package:flutter/material.dart';
 
 const double buttonWidth = 250;
 
+//Widget for buttons in homescreen with navigation based on args
 class HomeScreenButton extends StatefulWidget {
   HomeScreenButton({
     Key? key,

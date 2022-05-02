@@ -6,10 +6,12 @@ import '../models/TttEntries.dart';
 import 'homescreen_button.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 
-//Koden er basert på kildekode fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
+//Code based on sourcecode from:  https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
 const String pop_title = 'Advarsel';
 const String pop_info = 'Er du sikker på at du vil starte en ny telling?\nDa kan du ikke gjenoppta en tidligere telling.';
+
+//Generates a conformation pop-up if user tries to launch new session if theres a active session in the project
 
 class ConfirmCountPop extends StatelessWidget {
   ConfirmCountPop(this.args, this.onPressed, {Key? key}) : super(key: key);
