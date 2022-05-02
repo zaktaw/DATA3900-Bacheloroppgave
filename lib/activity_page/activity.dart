@@ -38,6 +38,11 @@ class _ActivityState extends State<Activity>
 
   final tttEntriesBox = TttEntriesBox.getTttEntries();
 
+  // check if uses har performed a count on activity page
+  bool performedCount() {
+    return entries.checkTttEntryKey(zoneIndex);
+  }
+
   @override
   void dispose() {
     Hive.box('tttEntries').close();
@@ -126,35 +131,36 @@ class _ActivityState extends State<Activity>
             zoneList[zoneIndex].zone_info,
             goToZones,
             activityList,
-            colorAnimation),
+            colorAnimation,
+            performedCount),
         body: Container(
             decoration: new BoxDecoration(color: BACKGROUND_COLOR),
             child: Column(
-          children: [
-            ActivitiesList(zoneIndex, entries, activityList),
-            Stack(
               children: [
-                LinearProgressIndicator(
-                  value: getNumberOfCompletedZones() / zoneList.length,
-                  minHeight: 20,
-                  backgroundColor: PROGRESSBAR_BAR_BACKGROUND_COLOR,
-                  color: PROGRESSBAR_BAR_COLOR,
-                ),
-                Center(
-                  child: Text(
-                    "Fullført " +
-                        getNumberOfCompletedZones().toString() +
-                        " / " +
-                        zoneList.length.toString(),
-                    textAlign: TextAlign.center,
-                  ),
+                ActivitiesList(zoneIndex, entries, activityList),
+                Stack(
+                  children: [
+                    LinearProgressIndicator(
+                      value: getNumberOfCompletedZones() / zoneList.length,
+                      minHeight: 20,
+                      backgroundColor: PROGRESSBAR_BAR_BACKGROUND_COLOR,
+                      color: PROGRESSBAR_BAR_COLOR,
+                    ),
+                    Center(
+                      child: Text(
+                        "Fullført " +
+                            getNumberOfCompletedZones().toString() +
+                            " / " +
+                            zoneList.length.toString(),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ],
                 )
               ],
-            )
-          ],
-        )),
-        bottomNavigationBar: ActivityBottombar(
-            nextZone, finish_zone, entries, -1, TEXT_COLOR_BLACK, colorAnimation),
+            )),
+        bottomNavigationBar: ActivityBottombar(nextZone, finish_zone, entries,
+            -1, TEXT_COLOR_BLACK, colorAnimation),
       ),
     );
   }
