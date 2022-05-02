@@ -54,7 +54,7 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () => performedCount()
               ? goToZones()
               : Navigator.of(context).push(HeroDialogRoute(builder: (context) {
-                  return ConfirmCountPop(null, goToZones);
+                  return PopConfirmCountPop(null, goToZones);
                 }))),
       backgroundColor: TOPBAR_COLOR,
       centerTitle: true,
