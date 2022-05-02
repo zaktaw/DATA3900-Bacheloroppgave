@@ -1,5 +1,6 @@
 import 'package:bacheloroppgave/models/TttEntry.dart';
 
+// Model for ttt object. This is the object that is sent to the server
 class TttObject {
   late Map counts;
   late String name;
@@ -10,6 +11,9 @@ class TttObject {
     counts.forEach((key, value) {
       List countsList = value as List;
 
+      // go through all activities and check if each activity is stored in the list of ttt entries
+      // if the activity is not included in the list, a new entry will be created for that activity with 0 counts
+      // this is done because all activities need to be included in the final ttt object
       activities.forEach((activity) {
         bool activityInCounts = false;
 
@@ -23,20 +27,6 @@ class TttObject {
           countsList.add(newCount);
         }
       });
-    });
-  }
-
-  void showTellinger() {
-    counts.forEach((key, value) {
-      if (value is List) {
-        List test = value;
-        print(key);
-        test.forEach((element) {
-          TttEntry test1 = element;
-          print(
-              "Act:" + test1.activity + "   Count: " + test1.count.toString());
-        });
-      }
     });
   }
 }

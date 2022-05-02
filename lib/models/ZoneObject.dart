@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'ZoneObject.g.dart';
 
+// Model for TTT zone object
 @HiveType(typeId: 4)
 class ZoneObject {
 
