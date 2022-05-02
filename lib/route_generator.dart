@@ -9,6 +9,7 @@ import 'package:bacheloroppgave/zone_page/zones_list.dart';
 
 const String error = "Error";
 
+//Class which generates route to the different pages in the application
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
