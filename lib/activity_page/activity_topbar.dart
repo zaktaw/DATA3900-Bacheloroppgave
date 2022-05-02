@@ -36,6 +36,7 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
   })  : preferredSize = Size.fromHeight(50.0),
         super(key: key);
 
+  //Creates infotext based on current zone
   String generateInfoText() {
     String infoText = "";
 

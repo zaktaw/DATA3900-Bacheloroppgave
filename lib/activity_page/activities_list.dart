@@ -11,18 +11,14 @@ class ActivitiesList extends StatelessWidget {
 
   ActivitiesList(this.zoneIndex, this.entries, this.activityList, {Key? key}) : super(key: key);
 
-
-
   String setValuesForPreviousCount(String activity) {
-    var retrievedTellinger = entries.getTttEntries(zoneIndex);
-
-    for (var element in retrievedTellinger) {
+    var retrievedCounts = entries.getTttEntries(zoneIndex);
+    for (var element in retrievedCounts) {
       TttEntry entry = element as TttEntry;
       if (entry.activity == activity) {
         return entry.count.toString();
       }
     }
-
     return '0';
   }
 

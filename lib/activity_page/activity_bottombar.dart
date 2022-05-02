@@ -2,7 +2,9 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import '../models/TttEntries.dart';
 
+//Bottombar for the activitypage with logic to change appearance of confirmbutton if all zones are counted 
 class ActivityBottombar extends StatelessWidget {
+  
   ActivityBottombar(
       this.function, this.buttonText, this.entries, this.zoneCount, this.color,
       [this.colorAnimation]);
@@ -12,7 +14,6 @@ class ActivityBottombar extends StatelessWidget {
   TttEntries entries;
   int zoneCount;
   final Animation<dynamic>? colorAnimation;
-
   late Color color;
 
   @override
@@ -23,11 +24,11 @@ class ActivityBottombar extends StatelessWidget {
       child: InkWell(
         onTap: function,
         child: Padding(
-          padding: EdgeInsets.only(top: 8.0),
+          padding: const EdgeInsets.only(top: 8.0),
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.fromLTRB(50, 5, 50, 5),
+                padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
                 child: Text(buttonText,
                     style: TextStyle(
                         fontSize: ACTIVITY_BOTTOMBAR_FONTSIZE,

@@ -2,7 +2,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
-//Koden er basert på kildekode fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
+//Code based on sourcecode from: https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
 class ActivitiesPopButton extends StatelessWidget {
   const ActivitiesPopButton(this.activities_info, this.activities, {Key? key}) : super(key: key);

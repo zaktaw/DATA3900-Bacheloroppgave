@@ -1,7 +1,6 @@
 import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
 import 'package:bacheloroppgave/help_page/help.dart';
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
-import 'package:bacheloroppgave/settings_page/settings.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/zone_page/zone.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +27,6 @@ class RouteGenerator {
           return MaterialPageRoute(builder: (_) => Zone(args));
         }
         break;
-
-      case '/settings':
-        return MaterialPageRoute(builder: (_) => Settings());
 
       case '/help':
         return MaterialPageRoute(builder: (_) => Help());
