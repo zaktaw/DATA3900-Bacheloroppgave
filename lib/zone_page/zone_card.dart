@@ -52,7 +52,7 @@ class ZoneCard extends StatelessWidget {
                   onTap: () => navigateToActivityPage(context),
                   onLongPress: () => Fluttertoast.showToast(
                       msg: zone_name + ': ' + zone_info, // message
-                      toastLength: Toast.LENGTH_SHORT, // length
+                      toastLength: Toast.LENGTH_LONG, // length
                       gravity: ToastGravity.CENTER, // location
                       timeInSecForIosWeb: 8, // duration,
                       backgroundColor: TOAST_BACKGROUND_COLOR,

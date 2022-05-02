@@ -1,6 +1,8 @@
+import 'package:bacheloroppgave/activity_page/activity_confirm_back_pop.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
+import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'activities_info_pop.dart';
@@ -18,8 +20,12 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
   final List<ActivityObject> activityList;
   final Animation<dynamic> colorAnimation;
   Function performedCount;
+  TttEntries entries;
+  int zoneIndex;
 
   ActivityTopbar(
+    this.zoneIndex,
+    this.entries,
     this.zoneName,
     this.zoneInfo,
     this.goToZones,
@@ -54,7 +60,7 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () => performedCount()
               ? goToZones()
               : Navigator.of(context).push(HeroDialogRoute(builder: (context) {
-                  return PopConfirmCountPop(null, goToZones);
+                  return PopActivityConfirmBackPop(entries, zoneIndex, key:key);
                 }))),
       backgroundColor: TOPBAR_COLOR,
       centerTitle: true,

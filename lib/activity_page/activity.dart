@@ -128,6 +128,8 @@ class _ActivityState extends State<Activity>
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: ActivityTopbar(
+            zoneIndex,
+            entries,
             zoneList[zoneIndex].zone_name,
             zoneList[zoneIndex].zone_info,
             goToZones,

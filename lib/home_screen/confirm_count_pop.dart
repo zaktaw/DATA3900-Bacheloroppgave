@@ -121,7 +121,7 @@ class _ConfirmCountPop extends StatelessWidget {
                             child: const Text('JA')),
                           TextButton(
                               onPressed: () {
-                                Navigator.of(context).pushNamed('/');
+                                Navigator.pop(context);
                               },
                               child: const Text('NEI'))],
                     )
