@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     actobj11, actobj12, actobj13, actobj14, actobj15, actobj16]);
 
     List<String> observerList = ["Maria", "Hans", "Helene"];
-    String title = "ToF bibliotek (testprosjekt)";
+    String title = "ToF bibliotek";
 
     TttProjectInfo projectInfo =
         new TttProjectInfo(actList, zoneList, observerList, title);
@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("ToF bibliotek (testprosjekt)"),
+      appBar: AppBar(title: Text("OsloMet Universitetsbiblioteket"),
       centerTitle: true, 
       backgroundColor: TOPBAR_COLOR, 
       titleTextStyle: const TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_TITLE_FONTSIZE), 
@@ -184,8 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => {},
               )
             : const SizedBox.shrink(),
-        HomeScreenButton(
-            btnName: settings, margin: HOMESCREEN_SETTINGS_BTN_MARGIN, route: "/settings", args: null, onPressed: () => {}),
+      
         HomeScreenButton(btnName: help, margin: HOMESCREEN_HELP_BTN_MARGIN, route: "/help", args: null, onPressed: () => {})
       ],
     ))));

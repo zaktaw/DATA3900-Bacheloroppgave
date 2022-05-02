@@ -120,6 +120,7 @@ class _ActivityState extends State<Activity>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: ActivityTopbar(
             zoneList[zoneIndex].zone_name,

@@ -34,7 +34,7 @@ class _HelpState extends State<Help> {
     projectInfo =
         TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
 
-  _helpOptions = <Widget>[
+    _helpOptions = <Widget>[
       const HelpTTT(),
       const HelpApp(),
       HelpZones(projectInfo),
@@ -53,12 +53,16 @@ class _HelpState extends State<Help> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SettingsHelpTopBar("Hjelp", '/', null),
-      body: Container(color: BACKGROUND_COLOR, child: Center(
-        child: _helpOptions.elementAt(_selectedIndex),
-      )),
+      body: Container(
+          color: BACKGROUND_COLOR,
+          child: Center(
+            child: _helpOptions.elementAt(_selectedIndex),
+          )),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: BOTTOMBAR_HELP_OUTLINE_COLOR,
+        fixedColor: Color.fromARGB(255, 220, 211, 211),
+        unselectedItemColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.find_in_page),
@@ -67,6 +71,7 @@ class _HelpState extends State<Help> {
           BottomNavigationBarItem(
             icon: Icon(Icons.phone_android),
             label: 'Applikasjonen',
+            backgroundColor: TEXT_COLOR_WHITE,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map_rounded),
@@ -78,7 +83,6 @@ class _HelpState extends State<Help> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: TEXT_COLOR_BLACK,
         onTap: _onItemTapped,
       ),
     );
