@@ -1,13 +1,14 @@
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class SettingsHelpTopBar extends StatelessWidget with PreferredSizeWidget {
+//Topbar with title and backbutton, used in confirm- and help-page
+class ConfirmAndHelpTopBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final String topbarTitle;
   final String route;
   final args;
 
-  SettingsHelpTopBar(
+  ConfirmAndHelpTopBar(
     this.topbarTitle,
     this.route, this.args, {
     Key? key,

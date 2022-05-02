@@ -3,10 +3,10 @@ import 'package:bacheloroppgave/help_page/help_about_activities.dart';
 import 'package:bacheloroppgave/help_page/help_about_app.dart';
 import 'package:bacheloroppgave/help_page/help_about_zones.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
-import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
+import '../confirm_and_help_topbar/confirm_and_help_topbar.dart';
 import '../local_storage_hive/TttProjectInfoBox.dart';
 import '../models/TttProjectInfo.dart';
 
@@ -53,7 +53,7 @@ class _HelpState extends State<Help> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SettingsHelpTopBar("Hjelp", '/', null),
+      appBar: ConfirmAndHelpTopBar("Hjelp", '/', null),
       body: Container(
           color: BACKGROUND_COLOR,
           child: Center(

@@ -5,10 +5,9 @@ import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
-import 'package:bacheloroppgave/settings_page/settings_help_topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-
+import '../confirm_and_help_topbar/confirm_and_help_topbar.dart';
 import '../local_storage_hive/TttProjectInfoBox.dart';
 import '../models/TttProjectInfo.dart';
 
@@ -49,7 +48,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BACKGROUND_COLOR,
-      appBar: SettingsHelpTopBar("Bekreft telling", '/zones', entries),
+      appBar: ConfirmAndHelpTopBar("Bekreft telling", '/zones', entries),
       body: Container(
           child: Column(
         children: [
