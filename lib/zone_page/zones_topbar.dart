@@ -3,8 +3,9 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'zones_info_pop.dart';
 
-const String name = 'Soner';
+const String title = 'Soner';
 
+//Topbar with infobutton for zone-page
 class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final List<ZoneObject> zoneList;
@@ -13,9 +14,9 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
       : preferredSize = const Size.fromHeight(50.0),
         super(key: key);
 
+//Generates infotext based on all zones in the project 
   String generateInfoText() {
     String infoText = "";
-
     zoneList.forEach((element) {
       infoText += element.zone_name;
       infoText += ": ";
@@ -34,7 +35,7 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () => Navigator.of(context).pushNamed('/')),
       backgroundColor: TOPBAR_COLOR,
       centerTitle: true,
-      title: const Text(name, style: TextStyle(color: TEXT_COLOR_BLACK)),
+      title: const Text(title, style: TextStyle(color: TEXT_COLOR_BLACK)),
       actions: <Widget>[ZonesInfoPop(generateInfoText())],
     );
   }

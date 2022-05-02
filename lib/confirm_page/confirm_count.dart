@@ -52,7 +52,6 @@ class _ConfirmCountState extends State<ConfirmCount> {
       appBar: SettingsHelpTopBar("Bekreft telling", '/zones', entries),
       body: Container(
           child: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             child: Padding(
@@ -96,9 +95,6 @@ class _ConfirmCountState extends State<ConfirmCount> {
     // if good return good
     TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
     print("1: Her er riktig print ellernoe sånt.. YES! ");
-    test.showTellinger();
-    print("Timestamp for tellinger:");
-    print(test.timestamp);
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
     // else return not good
     //Not good

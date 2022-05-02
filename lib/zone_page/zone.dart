@@ -15,6 +15,7 @@ import 'package:hive/hive.dart';
 const String zone_toast = 'Du må fullføre alle soner før du sender inn telling!';
 const String zone_confirm = 'Fullfør telling';
 
+//Container for zonepage
 class Zone extends StatefulWidget {
   late TttEntries entries;
 
@@ -38,9 +39,7 @@ class _ZoneState extends State<Zone> {
   void initState() {
     TttProjectInfo projectInfo =
         TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
-
     zoneList = projectInfo.zones;
-
     entries = widget.entries;
     super.initState();
   }

@@ -2,10 +2,11 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
-//Koden er basert på kildekode fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
+//Code based on sourcecode from: https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
 const String info_zones = 'Informasjon om soner';
 
+//Generates pop-up with zoneinfo
 class ZonesInfoPop extends StatelessWidget {
   const ZonesInfoPop(this.zones_info, {Key? key}) : super(key: key);
 
