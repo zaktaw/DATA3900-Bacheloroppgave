@@ -9,6 +9,7 @@ const String pick_name = "Velg navn";
 const String send_failed = 'Sending feilet';
 const String send_confirmed = 'Telling sendt';
 
+//Bottombar for confirm-page. Logic to prevent user from submitting session if observers is not selected
 class ConfirmBottombar extends StatefulWidget {
   Function getIsObserverSelected;
   Function sendTTT;

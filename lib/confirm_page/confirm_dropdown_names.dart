@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 const String pick_name = 'Velg navn';
 
+//Dropdown for selecting observername. Sets status of observerSelected used in confirm count 
 class DropdownNames extends StatefulWidget {
   Function setIsObserverSelected;
   Function setObserverName;
@@ -45,9 +46,9 @@ class _DropdownNamesState extends State<DropdownNames> {
             right: MediaQuery.of(context).size.width *
                 CONFIRM_PAGE_MARGIN_WIDTH_FACTOR),
         child: DropdownButton<String>(
-          underline: SizedBox(),
+          underline: const SizedBox(),
           isExpanded: true,
-          hint: Padding(
+          hint: const Padding(
             child: Text(pick_name),
             padding: EdgeInsets.only(left: 20),
           ),
@@ -57,7 +58,7 @@ class _DropdownNamesState extends State<DropdownNames> {
               value: value,
               child: Padding(
                 child: Text(value),
-                padding: EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 20),
               ),
             );
           }).toList(),
