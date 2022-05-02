@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// APP-THEME. Variables for design of UI (colors, paddings, margins, size etc.)
+
 // colors
 
 const Color BACKGROUND_TEXT_COLOR = Color.fromARGB(255, 255, 255, 255);

@@ -12,7 +12,6 @@ const String pop_title = 'Advarsel';
 const String pop_info = 'Er du sikker på at du vil starte en ny telling?\nDa kan du ikke gjenoppta en tidligere telling.';
 
 //Generates a conformation pop-up if user tries to launch new session if theres a active session in the project
-
 class ConfirmCountPop extends StatelessWidget {
   ConfirmCountPop(this.args, this.onPressed, {Key? key}) : super(key: key);
 
