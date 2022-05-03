@@ -121,9 +121,7 @@ class _ActivityState extends State<Activity>
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         appBar: ActivityTopbar(
             zoneIndex,
             entries,
@@ -161,7 +159,6 @@ class _ActivityState extends State<Activity>
             )),
         bottomNavigationBar: ActivityBottombar(nextZone, finish_zone, entries,
             -1, TEXT_COLOR_BLACK, colorAnimation),
-      ),
-    );
+      );
   }
 }
