@@ -21,7 +21,7 @@ class HelpZones extends StatelessWidget {
       zoneListString += element.zone_name.toString() +
           ":  " +
           element.zone_info.toString() +
-          "\n";
+          "\n\n";
     });
     return zoneListString;
   }
