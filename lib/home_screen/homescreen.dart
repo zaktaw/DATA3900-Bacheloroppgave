@@ -36,20 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late Future<TttProjectInfo> futureTttProjectInfo;
 
-  Future<bool> checkDeviceInternetConnection() async {
-    try {
-      final result = await InternetAddress.lookup('example.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        print('connected');
-        return true;
-      }
-    } on SocketException catch (_) {
-      print('not connected');
-      return false;
-    }
-    return false;
-  }
-
   @override
   void initState() {
     tttEntries = TttEntries();
@@ -65,23 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
     tttProjectInfoBox.clear();
 
     // get request for tttProjectInfo
-
-    Random random = new Random();
-    int randomNumber = random.nextInt(2);
-
-    String id;
-
-    if (randomNumber == 0) {
-      id = '1';
-    } else {
-      id = '4';
-    }
-
-    futureTttProjectInfo = HttpRequests.fetchTttProjectInfo(id);
+    futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
     futureTttProjectInfo.then((value) {
-      print("RECIEVED VALUE");
-      print(value.observers);
       projectName = value.project_name;
       TttProjectInfo projectInfo = TttProjectInfo(
           project_name: value.project_name,

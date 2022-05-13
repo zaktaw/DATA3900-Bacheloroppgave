@@ -97,12 +97,9 @@ class _ActivityState extends State<Activity>
   }
 
   void nextZone() {
-    //entries.addZoneKey(zoneIndex);
-    entries.addZoneKey(zoneList[zoneIndex].id);
+    entries.addZoneKey(zoneIndex);
     tttEntriesBox.put('tttEntriesMap', entries);
     incrementZoneIndex();
-    print("ZONE LIST LENGTH");
-    print(zoneList.length);
   }
 
   void goToZones() {

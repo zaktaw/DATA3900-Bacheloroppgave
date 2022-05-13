@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/ActivityZone.dart';
 import 'package:bacheloroppgave/models/TttEntry.dart';
+import 'package:bacheloroppgave/models/ZoneObject.dart';
 
 class TttObject {
   late Map counts;
@@ -11,9 +12,10 @@ class TttObject {
   late List<ActivityObject> activities;
   late int projectId;
   final List<ActivityZone> activityZones = [];
+  late List<ZoneObject> zoneObjects = [];
 
   TttObject(
-      this.counts, this.name, this.timestamp, this.activities, this.projectId) {
+      this.counts, this.name, this.timestamp, this.activities, this.projectId, this.zoneObjects) {
     counts.forEach((key, value) {
       List countsList = value as List;
       List<TttEntry> tttEntries = [];
@@ -36,7 +38,7 @@ class TttObject {
         }
       });
 
-      ActivityZone activityZone = ActivityZone(key.toString(), tttEntries);
+      ActivityZone activityZone = ActivityZone(zoneObjects[key].id.toString(), tttEntries);
       activityZones.add(activityZone);
     });
   }
@@ -45,22 +47,10 @@ class TttObject {
     return {
       "project_id": projectId,
       "observer_name": name,
-      "timestamp": timestamp.toString().substring(0,16), // remove seconds and milliseconds 
+      "timestamp": timestamp
+          .toString()
+          .substring(0, 16), // remove seconds and milliseconds
       "ActivityZones": activityZones
     };
-  }
-
-  void showTellinger() {
-    counts.forEach((key, value) {
-      if (value is List) {
-        List test = value;
-        print(key);
-        test.forEach((element) {
-          TttEntry test1 = element;
-          print(
-              "Act:" + test1.activity + "   Count: " + test1.count.toString());
-        });
-      }
-    });
   }
 }
