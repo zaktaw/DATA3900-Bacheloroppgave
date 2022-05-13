@@ -45,7 +45,7 @@ class TttObject {
     return {
       "project_id": projectId,
       "observer_name": name,
-      "timestamp": timestamp.toString(),
+      "timestamp": timestamp.toString().substring(0,16), // remove seconds and milliseconds 
       "ActivityZones": activityZones
     };
   }

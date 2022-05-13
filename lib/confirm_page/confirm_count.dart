@@ -104,11 +104,10 @@ class _ConfirmCountState extends State<ConfirmCount> {
 
     String jsonBody = jsonEncode(tttObject);
 
+    print("PRINTNIG JSON BODY");
     print(jsonBody);
 
     Future postRequest = HttpRequests.postTttObject(jsonBody);
-
-    
 
     postRequest.then((value) => print("STATUS CODE: " + value.toString()));
 

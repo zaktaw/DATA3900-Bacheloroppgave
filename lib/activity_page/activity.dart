@@ -97,9 +97,12 @@ class _ActivityState extends State<Activity>
   }
 
   void nextZone() {
-    entries.addZoneKey(zoneIndex);
+    //entries.addZoneKey(zoneIndex);
+    entries.addZoneKey(zoneList[zoneIndex].id);
     tttEntriesBox.put('tttEntriesMap', entries);
     incrementZoneIndex();
+    print("ZONE LIST LENGTH");
+    print(zoneList.length);
   }
 
   void goToZones() {
@@ -130,31 +133,31 @@ class _ActivityState extends State<Activity>
         body: Container(
             decoration: new BoxDecoration(color: BACKGROUND_COLOR),
             child: Column(
-          children: [
-            ActivitiesList(zoneIndex, entries, activityList),
-            Stack(
               children: [
-                LinearProgressIndicator(
-                  value: getNumberOfCompletedZones() / zoneList.length,
-                  minHeight: 20,
-                  backgroundColor: PROGRESSBAR_BAR_BACKGROUND_COLOR,
-                  color: PROGRESSBAR_BAR_COLOR,
-                ),
-                Center(
-                  child: Text(
-                    "Fullført " +
-                        getNumberOfCompletedZones().toString() +
-                        " / " +
-                        zoneList.length.toString(),
-                    textAlign: TextAlign.center,
-                  ),
+                ActivitiesList(zoneIndex, entries, activityList),
+                Stack(
+                  children: [
+                    LinearProgressIndicator(
+                      value: getNumberOfCompletedZones() / zoneList.length,
+                      minHeight: 20,
+                      backgroundColor: PROGRESSBAR_BAR_BACKGROUND_COLOR,
+                      color: PROGRESSBAR_BAR_COLOR,
+                    ),
+                    Center(
+                      child: Text(
+                        "Fullført " +
+                            getNumberOfCompletedZones().toString() +
+                            " / " +
+                            zoneList.length.toString(),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ],
                 )
               ],
-            )
-          ],
-        )),
-        bottomNavigationBar: ActivityBottombar(
-            nextZone, finish_zone, entries, -1, TEXT_COLOR_BLACK, colorAnimation),
+            )),
+        bottomNavigationBar: ActivityBottombar(nextZone, finish_zone, entries,
+            -1, TEXT_COLOR_BLACK, colorAnimation),
       ),
     );
   }

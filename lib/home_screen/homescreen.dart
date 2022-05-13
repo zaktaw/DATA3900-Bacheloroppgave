@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:hive/hive.dart';
 import 'dart:io';
+import 'dart:math';
 
 const String project_title_error = "Kunne ikke hente prosjekt-tittel";
 const String new_count = 'Ny telling';
@@ -64,10 +65,23 @@ class _HomeScreenState extends State<HomeScreen> {
     tttProjectInfoBox.clear();
 
     // get request for tttProjectInfo
-    futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
+
+    Random random = new Random();
+    int randomNumber = random.nextInt(2);
+
+    String id;
+
+    if (randomNumber == 0) {
+      id = '1';
+    } else {
+      id = '4';
+    }
+
+    futureTttProjectInfo = HttpRequests.fetchTttProjectInfo(id);
 
     futureTttProjectInfo.then((value) {
       print("RECIEVED VALUE");
+      print(value.observers);
       projectName = value.project_name;
       TttProjectInfo projectInfo = TttProjectInfo(
           project_name: value.project_name,

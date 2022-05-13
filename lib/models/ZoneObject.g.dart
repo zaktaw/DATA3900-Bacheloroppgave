@@ -20,19 +20,22 @@ class ZoneObjectAdapter extends TypeAdapter<ZoneObject> {
       order_number: fields[0] as int,
       zone_name: fields[1] as String,
       zone_info: fields[2] as String,
+      id: fields[3] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, ZoneObject obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.order_number)
       ..writeByte(1)
       ..write(obj.zone_name)
       ..writeByte(2)
-      ..write(obj.zone_info);
+      ..write(obj.zone_info)
+      ..writeByte(3)
+      ..write(obj.id);
   }
 
   @override
