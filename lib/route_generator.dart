@@ -1,6 +1,7 @@
 import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
 import 'package:bacheloroppgave/help_page/help.dart';
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
+import 'package:bacheloroppgave/home_screen/homescreen_demo.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/zone_page/zone.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,8 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        //return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => HomeScreenDemo());
 
       case '/activity':
         List<dynamic> argsList = args as List<dynamic>;
