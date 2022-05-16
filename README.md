@@ -7,8 +7,8 @@ To run this project you have to install flutter first (follow the guide on https
 Then you'll have to install an emulator if you dont have one already. We have used emulators through Android Studio during development, so this is what we recommend, because we know it works. 
 
 To install an Android Studio emulator you have to: 
-    - Install Android Studio. Follow this guide: https://developer.android.com/studio/install
-    - Create an emulator through Android Studio. Follow this guide: https://developer.android.com/studio/run/managing-avds
+    1. Install Android Studio. Follow this guide: https://developer.android.com/studio/install
+    2. Create an emulator through Android Studio. Follow this guide: https://developer.android.com/studio/run/managing-avds
       - We have used a Nexus 6 device with Android x86 API 27, so we recommend using this one.
 
 After you have installed flutter and have a working emulator, you have to run the command: "flutter pub get". Flutter will now install all dependencies used by the application.
