@@ -5,7 +5,6 @@ part 'ZoneObject.g.dart';
 // Model for TTT zone object
 @HiveType(typeId: 4)
 class ZoneObject {
-
   @HiveField(0)
   late int order_number;
 
@@ -15,5 +14,20 @@ class ZoneObject {
   @HiveField(2)
   late String zone_info;
 
-  ZoneObject(this.order_number, this.zone_name, this.zone_info);
+  @HiveField(3)
+  late int id;
+
+  ZoneObject(
+      {required this.order_number,
+      required this.zone_name,
+      required this.zone_info,
+      required this.id});
+
+  factory ZoneObject.fromJson(Map<String, dynamic> json) {
+    return ZoneObject(
+        id: json['id'],
+        order_number: json['sequencenumber'],
+        zone_name: json['lettername'],
+        zone_info: json['description']);
+  }
 }

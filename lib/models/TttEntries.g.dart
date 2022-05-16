@@ -17,15 +17,18 @@ class TttEntriesAdapter extends TypeAdapter<TttEntries> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return TttEntries()
-      ..tttEntries = (fields[0] as Map).cast<dynamic, dynamic>();
+      ..tttEntries = (fields[0] as Map).cast<dynamic, dynamic>()
+      ..timestamp = fields[1] as DateTime;
   }
 
   @override
   void write(BinaryWriter writer, TttEntries obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.tttEntries);
+      ..write(obj.tttEntries)
+      ..writeByte(1)
+      ..write(obj.timestamp);
   }
 
   @override

@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:bacheloroppgave/confirm_page/confirm_bottombar.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
+import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
@@ -53,8 +56,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
           child: Column(
         children: [
           Container(
-            child: Padding(
-                child: Text(
+              child: Padding(
+            child: Text(
               "Du har telt " +
                   numberOfZones.toString() +
                   " av " +
@@ -87,18 +90,19 @@ class _ConfirmCountState extends State<ConfirmCount> {
     return observerSelected;
   }
 
-  bool sendTTT() {
-    TttObject tttObject = TttObject(entries.tttEntries, observerName,
-        entries.timestamp, ['GRUDIG', 'ALPERS', 'ALLAP', 'DIV', 'ALLUDIG']);
-    // kall på backend
-    // if good return good
-    TttEntries test = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;
-    TttEntriesBox.getTttEntries().delete('tttEntriesMap');
-    // else return not good
-    //Not good
+  Future sendTTT() async {
+    TttObject tttObject = TttObject(
+        entries.tttEntries,
+        observerName,
+        entries.timestamp,
+        projectInfo.activities,
+        projectInfo.id,
+        projectInfo.zones);
+        
+    String jsonBody = jsonEncode(tttObject);
 
-    //tttObject.showTellinger();
-    return true;
+    Future postRequest = HttpRequests.postTttObject(jsonBody);
+    return postRequest;
   }
 
   void setObserverName(String selectedDropdownName) {

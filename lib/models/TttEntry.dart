@@ -5,7 +5,6 @@ part 'TttEntry.g.dart';
 // Model for ttt entry
 @HiveType(typeId: 0)
 class TttEntry {
-
   @HiveField(0)
   late String activity;
 
@@ -18,9 +17,11 @@ class TttEntry {
     return count;
   }
 
-   String toString() {
-    return activity + ", " + count.toString();
+  String toString() {
+    return "{code: " + activity + ", count: " + count.toString() + "}";
   }
 
- 
+  Map<String, dynamic> toJson() {
+    return {"code": activity, "count": count};
+  }
 }
