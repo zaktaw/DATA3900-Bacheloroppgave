@@ -70,7 +70,7 @@ class _ActivitiesPopCard extends StatelessWidget {
                       child: const Divider(color: TEXT_COLOR_BLACK, height: 5),
                     ),
                     Text(
-                      activities_info,
+                      "Du kan se informasjon om hver enkel aktivitet\nved å trykke på aktivitetsnavnet i listen.\n\n" + activities_info,
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),
                     )

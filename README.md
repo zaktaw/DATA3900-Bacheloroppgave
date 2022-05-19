@@ -15,6 +15,10 @@ After you have installed flutter and have a working emulator, you have to run th
 
 To run the program use the command: "flutter run --no-sound-null-safety". Then you have to choose whice device/program you want to run the application in. Choose the emulator that you created earlier. If the device does not show in the list of available devices, you'll probably have start the emulator before trying to run the program again.
 
+## What to do if the server doesn't work?
+
+If the server isn't working and you get an error code when running the program and starting a new count, go to /lib/route_generator.dart and comment/uncomment the lines as instructed in the comments in the file. Here you can choose between using the server or using a mock database that is stored in the local storage.
+
 ## Usages
 
 The appliaction's main purpose is to document the usage of libraries. Through the use of zones and activities librarians can count what users of a library does and where they do it.

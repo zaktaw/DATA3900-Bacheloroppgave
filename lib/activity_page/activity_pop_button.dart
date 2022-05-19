@@ -78,7 +78,8 @@ class _ActivityPopCard extends StatelessWidget {
                       height: 5
                     ),
                   ),
-                  AutoSizeText(activity_info,
+                  AutoSizeText(
+                  activity_info,
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   style: TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),)

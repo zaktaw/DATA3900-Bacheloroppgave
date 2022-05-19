@@ -70,7 +70,7 @@ class _ZonesInfoPop extends StatelessWidget {
                       child: const Divider(color: TEXT_COLOR_BLACK, height: 5),
                     ),
                     Text(
-                      zones_info,
+                      "Du kan se informasjon om hver enkel sone ved\nå holde inne på sonenavnet i listen.\n\n" + zones_info,
                       textAlign: TextAlign.center,
                       style: const TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),
                     )
