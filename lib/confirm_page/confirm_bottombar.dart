@@ -44,7 +44,7 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
             {
               response = widget.sendTTT(),
               response.then((value) async => {
-                    if (value == 200)
+                    if (value == 200) // POST request is successful
                       {
                         TttEntriesBox.getTttEntries().delete('tttEntriesMap'),
                         Fluttertoast.showToast(

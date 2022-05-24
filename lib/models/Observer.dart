@@ -1,3 +1,4 @@
+// Model for observer. This is the person performing the TTT
 class Observer {
   late final String observerName;
 
