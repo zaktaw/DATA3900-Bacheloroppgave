@@ -8,7 +8,7 @@ import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:http/http.dart' as http;
 
 class HttpRequests {
-  static String getTttProjectInfoUrl = 'https://ltr-abi.no:8443/drf2/project/4';
+  static String getTttProjectInfoUrl = 'https://ltr-abi.no:8443/drf2/project/5';
 
   static String postTttObjectUrl = "https://ltr-abi.no:8443/drf2/counting/";
 
