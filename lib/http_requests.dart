@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
+import 'package:bacheloroppgave/models/UserToken.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -16,6 +17,11 @@ class HttpRequests {
 
   // GET-method for retrieving TTT project info
   static Future<TttProjectInfo> fetchTttProjectInfo() async {
+    // user token test
+    final userToken = await UserToken.getUserToken();
+    print("PRINTING USER TOKEN");
+    print(userToken);
+
     final response = await http.get(
       Uri.parse(getTttProjectInfoUrl),
       headers: {
@@ -47,7 +53,7 @@ class HttpRequests {
     );
 
     int statusCode = response.statusCode;
-    
+
     return statusCode;
   }
 }

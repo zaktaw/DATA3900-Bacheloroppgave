@@ -5,6 +5,7 @@ import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
+import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ const String new_count = 'Ny telling';
 const String continue_count = 'Gjenoppta telling';
 const String settings = 'Innstilinger';
 const String help = 'Hjelp';
+const String TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
 
 //Displays homescreen with logic for starting and/or resuming counting sessions
 class HomeScreen extends StatefulWidget {
@@ -48,8 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
       activeTtt = false;
     }
 
+    // save user token
+    UserToken.setUserToken(TOKEN);
+
     final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
-    
+
     tttProjectInfoBox.clear();
 
     // get request for tttProjectInfo
