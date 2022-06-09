@@ -17,10 +17,9 @@ class HttpRequests {
 
   // GET-method for retrieving TTT project info
   static Future<TttProjectInfo> fetchTttProjectInfo() async {
-    // user token test
-    final userToken = await UserToken.getUserToken();
-    print("PRINTING USER TOKEN");
-    print(userToken);
+    // TODO: replace token with userToken when implemented in backend
+    //final userToken = await UserToken.getUserToken();
+
 
     final response = await http.get(
       Uri.parse(getTttProjectInfoUrl),

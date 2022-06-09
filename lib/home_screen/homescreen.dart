@@ -5,6 +5,8 @@ import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
+import 'package:bacheloroppgave/models/User.dart';
+import 'package:bacheloroppgave/models/UserBox.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
@@ -49,6 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       activeTtt = false;
     }
+
+    // save user object
+    final User user = User(1, 'Hans', TOKEN);
+    final userHiveBox = UserBox.getUser();
+    userHiveBox.add(user);
 
     // save user token
     UserToken.setUserToken(TOKEN);

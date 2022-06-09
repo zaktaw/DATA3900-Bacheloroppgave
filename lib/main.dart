@@ -2,6 +2,7 @@
 
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
+import 'package:bacheloroppgave/models/User.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,8 @@ import 'resources/app_theme.dart';
 //A method which makes an instance of the hive box which consists of TttEntries
 
 Future<Box> openEntriesBox(String boxName) async {
-  if (!kIsWeb && !Hive.isBoxOpen(boxName)) Hive.init((await getApplicationDocumentsDirectory()).path);
+  if (!kIsWeb && !Hive.isBoxOpen(boxName))
+    Hive.init((await getApplicationDocumentsDirectory()).path);
 
   return await Hive.openBox<TttEntries>(boxName);
 }
@@ -27,9 +29,17 @@ Future<Box> openEntriesBox(String boxName) async {
 //A method which makes an instance of the hive box which consists of TttProjectInfo
 
 Future<Box> openProjectBox(String boxName) async {
-  if (!kIsWeb && !Hive.isBoxOpen(boxName)) Hive.init((await getApplicationDocumentsDirectory()).path);
+  if (!kIsWeb && !Hive.isBoxOpen(boxName))
+    Hive.init((await getApplicationDocumentsDirectory()).path);
 
   return await Hive.openBox<TttProjectInfo>(boxName);
+}
+
+Future<Box> openUserBox(String boxName) async {
+  if (!kIsWeb && !Hive.isBoxOpen(boxName))
+    Hive.init((await getApplicationDocumentsDirectory()).path);
+
+  return await Hive.openBox<User>(boxName);
 }
 
 //Starts the hive boxes
@@ -40,14 +50,13 @@ Future<void> main() async {
   Hive.registerAdapter(TttProjectInfoAdapter());
   Hive.registerAdapter(ZoneObjectAdapter());
   Hive.registerAdapter(ActivityObjectAdapter());
+  Hive.registerAdapter(UserAdapter());
   await openEntriesBox('tttEntries');
   await openProjectBox('tttProjectInfo');
-
-   
+  await openUserBox('user');
 
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

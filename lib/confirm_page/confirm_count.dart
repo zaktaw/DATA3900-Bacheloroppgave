@@ -7,6 +7,8 @@ import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
+import 'package:bacheloroppgave/models/User.dart';
+import 'package:bacheloroppgave/models/UserBox.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -29,6 +31,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   late TttEntries entries;
   late int numberOfZones;
   late TttProjectInfo projectInfo;
+  late User user;
   bool observerSelected = false;
   String observerName = '';
 
@@ -44,6 +47,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
     projectInfo =
         TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
     numberOfZones = projectInfo.zones.length;
+    user = UserBox.getUser().getAt(0) as User;
     super.initState();
   }
 
@@ -93,12 +97,12 @@ class _ConfirmCountState extends State<ConfirmCount> {
   Future sendTTT() async {
     TttObject tttObject = TttObject(
         entries.tttEntries,
-        observerName,
+        user.name,
         entries.timestamp,
         projectInfo.activities,
         projectInfo.id,
         projectInfo.zones);
-        
+
     String jsonBody = jsonEncode(tttObject);
 
     Future postRequest = HttpRequests.postTttObject(jsonBody);
