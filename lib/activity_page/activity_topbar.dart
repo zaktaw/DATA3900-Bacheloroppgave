@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:bacheloroppgave/activity_page/activity_confirm_back_pop.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
@@ -37,17 +39,26 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
         super(key: key);
 
   //Creates infotext based on current zone
-  String generateInfoText() {
-    String infoText = "";
+  Table generateInfoText() {
+    final rows = <TableRow>[];
+    for(var element in activityList){
+      rows.add(TableRow(children: <Widget> [
+        Container(
+          padding: EdgeInsets.all(3.0),
+          child:Text(element.activity_name, textAlign: TextAlign.center,)),
+        Container(
+          padding: EdgeInsets.all(3.0),
+          child: Text(element.activity_info))
+      ]));
+    }
 
-    activityList.forEach((element) {
-      infoText += element.activity_name;
-      infoText += ": ";
-      infoText += element.activity_info;
-      infoText += "\n";
-    });
-
-    return infoText;
+    return Table(border: TableBorder.all(),
+    columnWidths: const <int, TableColumnWidth>{
+      0: FlexColumnWidth(0.2),
+      1: FlexColumnWidth(0.8)
+    },
+    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+    children: rows);
   }
 
   @override
@@ -61,7 +72,8 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () => performedCount()
               ? goToZones()
               : Navigator.of(context).push(HeroDialogRoute(builder: (context) {
-                  return PopActivityConfirmBackPop(entries, zoneIndex, key:key);
+                  return PopActivityConfirmBackPop(entries, zoneIndex,
+                      key: key);
                 }))),
       backgroundColor: TOPBAR_COLOR,
       centerTitle: true,

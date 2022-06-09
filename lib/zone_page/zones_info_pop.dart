@@ -10,7 +10,7 @@ const String info_zones = 'Informasjon om soner';
 class ZonesInfoPop extends StatelessWidget {
   const ZonesInfoPop(this.zones_info, {Key? key}) : super(key: key);
 
-  final String zones_info;
+  final Table zones_info;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ const String _heroZonesPop = 'hero-zones-pop';
 class _ZonesInfoPop extends StatelessWidget {
   _ZonesInfoPop(this.zones_info, {Key? key}) : super(key: key);
 
-  final String zones_info;
+  final Table zones_info;
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +69,12 @@ class _ZonesInfoPop extends StatelessWidget {
                           top: 5, bottom: 10, left: 20, right: 20),
                       child: const Divider(color: TEXT_COLOR_BLACK, height: 5),
                     ),
-                    Text(
-                      "Du kan se informasjon om hver enkel sone ved\nå holde inne på sonenavnet i listen.\n\n" + zones_info,
+                    const Text(
+                      "Du kan se informasjon om hver enkel sone ved\nå holde inne på sonenavnet i listen.\n",
                       textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),
-                    )
+                      style: TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),
+                    ),
+                    zones_info
                   ],
                 ),
               ),

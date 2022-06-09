@@ -15,16 +15,26 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
         super(key: key);
 
 //Generates infotext based on all zones in the project 
-  String generateInfoText() {
-    String infoText = "";
-    zoneList.forEach((element) {
-      infoText += element.zone_name;
-      infoText += ": ";
-      infoText += element.zone_info;
-      infoText += "\n";
-    });
+  Table generateInfoText() {
+    final rows = <TableRow>[];
+    for(var element in zoneList){
+      rows.add(TableRow(children: <Widget> [
+        Container(
+          padding: EdgeInsets.all(3.0),
+          child:Text(element.zone_name, textAlign: TextAlign.center,)),
+        Container(
+          padding: EdgeInsets.all(3.0),
+          child: Text(element.zone_info))
+      ]));
+    }
 
-    return infoText;
+    return Table(border: TableBorder.all(),
+    columnWidths: const <int, TableColumnWidth>{
+      0: FlexColumnWidth(0.4),
+      1: FlexColumnWidth(0.6)
+    },
+    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+    children: rows);
   }
 
   @override

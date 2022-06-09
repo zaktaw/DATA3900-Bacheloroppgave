@@ -100,12 +100,14 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Center(
                 child: Column(
               children: [
-                HomeScreenButton(
-                    btnName: new_count,
-                    margin: HOMESCREEN_COUNT_BTN_MARGIN,
-                    route: "/activity",
-                    args: [tttEntries, 0],
-                    onPressed: newCount),
+                activeTtt
+                    ? ConfirmCountPop([tttEntries, 0], newCount)
+                    : HomeScreenButton(
+                        btnName: new_count,
+                        margin: HOMESCREEN_COUNT_BTN_MARGIN,
+                        route: "/activity",
+                        args: [tttEntries, 0],
+                        onPressed: newCount),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
