@@ -10,11 +10,32 @@ class LoginLandingPage extends StatefulWidget {
 }
 
 class _LoginLandingPageState extends State<LoginLandingPage> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-    TextEditingController usernameController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    
-    
+  bool checkMissingInputUsernameFlag = false;
+  bool checkMissingInputPasswordFlag = false;
+
+  void checkMissingInputUsername() {
+    setState(() {
+      if (usernameController.text.isEmpty) {
+        checkMissingInputUsernameFlag = true;
+      } else {
+        checkMissingInputUsernameFlag = false;
+      }
+    });
+  }
+
+  void checkMissingInputPassword() {
+    setState(() {
+      if (passwordController.text.isEmpty) {
+        checkMissingInputPasswordFlag = true;
+      } else {
+        checkMissingInputPasswordFlag = false;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,52 +61,82 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
                 )),
             Container(
               padding: const EdgeInsets.all(10),
-               margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * LOGIN_ELEMENTS_MARGIN_FACTOR, right: MediaQuery.of(context).size.width * LOGIN_ELEMENTS_MARGIN_FACTOR),
+              margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width *
+                      LOGIN_ELEMENTS_MARGIN_FACTOR,
+                  right: MediaQuery.of(context).size.width *
+                      LOGIN_ELEMENTS_MARGIN_FACTOR),
               child: TextField(
                 controller: usernameController,
-              decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-                   enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: LOGIN_BORDER_FOCUS_COLOR),
-            ),
-                  labelText: 'Brukernavn',
-                  labelStyle: TextStyle(color: Colors.black),
-                  errorText: false ? 'hei' : null
-                ),
+                decoration: InputDecoration(
+                    focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: LOGIN_BORDER_FOCUS_COLOR),
+                    ),
+                    errorBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                    focusedErrorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: LOGIN_BORDER_FOCUS_COLOR),
+                    ),
+                    labelText: 'Brukernavn',
+                    labelStyle: const TextStyle(color: Colors.black),
+                    errorText: checkMissingInputUsernameFlag
+                        ? 'Fyll inn brukernavn'
+                        : null),
               ),
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
-              margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * LOGIN_ELEMENTS_MARGIN_FACTOR, right: MediaQuery.of(context).size.width * LOGIN_ELEMENTS_MARGIN_FACTOR),
+              margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width *
+                      LOGIN_ELEMENTS_MARGIN_FACTOR,
+                  right: MediaQuery.of(context).size.width *
+                      LOGIN_ELEMENTS_MARGIN_FACTOR),
               child: TextField(
                 obscureText: true,
                 controller: passwordController,
-                decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-                   enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: LOGIN_BORDER_FOCUS_COLOR),
-            ),
-                  labelText: 'Passord',
-                  labelStyle: TextStyle(color: Colors.black),
-                  errorText: false ? 'hei' : null
-                ),
+                decoration: InputDecoration(
+                    focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                    enabledBorder: const OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: LOGIN_BORDER_FOCUS_COLOR)),
+                    errorBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black)),
+                    focusedErrorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: LOGIN_BORDER_FOCUS_COLOR),
+                    ),
+                    labelText: 'Passord',
+                    labelStyle: const TextStyle(color: Colors.black),
+                    errorText: checkMissingInputPasswordFlag
+                        ? 'Fyll inn passord'
+                        : null),
               ),
             ),
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                 margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * LOGIN_ELEMENTS_MARGIN_FACTOR, right: MediaQuery.of(context).size.width * LOGIN_ELEMENTS_MARGIN_FACTOR),
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width *
+                        LOGIN_ELEMENTS_MARGIN_FACTOR,
+                    right: MediaQuery.of(context).size.width *
+                        LOGIN_ELEMENTS_MARGIN_FACTOR),
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: LOGIN_BTN_COLOR,
-                    onPrimary: TEXT_COLOR_BLACK,
-                  ),
-                  child: const Text('Logg inn'),
-                  onPressed: () {
-                    print(usernameController.text);
-                    print(passwordController.text);
-                  },
-                )),
+                    style: ElevatedButton.styleFrom(
+                      primary: LOGIN_BTN_COLOR,
+                      onPrimary: TEXT_COLOR_BLACK,
+                    ),
+                    child: const Text('Logg inn'),
+                    onPressed: () {
+                      checkMissingInputUsername();
+                      checkMissingInputPassword();
+                      if (!checkMissingInputPasswordFlag &&
+                          !checkMissingInputUsernameFlag) {
+                        print(usernameController.text);
+                        print(passwordController.text);
+                      }
+                    })),
           ],
         ));
   }
