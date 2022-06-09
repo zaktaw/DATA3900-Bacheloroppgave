@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/activity_page/activity.dart';
 import 'package:bacheloroppgave/zone_page/zones_list.dart';
 
+import 'login_page/login.dart';
+
 const String error = "Error";
 
 //Class which generates route to the different pages in the application
@@ -36,7 +38,11 @@ class RouteGenerator {
         if (args is TttEntries) {
           return MaterialPageRoute(builder: (_) => ConfirmCount(args));
         }
-    }
+        break;
+
+        case '/login':
+          return MaterialPageRoute(builder: (_) => LoginLandingPage());
+        }
 
     return _errorRoute();
   }
