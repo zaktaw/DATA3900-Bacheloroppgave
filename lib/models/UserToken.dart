@@ -10,4 +10,7 @@ class UserToken {
 
   static Future<String?> getUserToken() async =>
       await _storage.read(key: _keyUserToken);
+
+  static Future<bool> containsToken() async =>
+      await _storage.containsKey(key: _keyUserToken);
 }

@@ -15,10 +15,12 @@ import 'package:path_provider/path_provider.dart';
 import 'models/TttEntries.dart';
 import 'models/TttEntry.dart';
 
+import 'models/UserToken.dart';
 import 'resources/app_theme.dart';
 
-//A method which makes an instance of the hive box which consists of TttEntries
+String initialRoute = '';
 
+//A method which makes an instance of the hive box which consists of TttEntries
 Future<Box> openEntriesBox(String boxName) async {
   if (!kIsWeb && !Hive.isBoxOpen(boxName))
     Hive.init((await getApplicationDocumentsDirectory()).path);
@@ -27,7 +29,6 @@ Future<Box> openEntriesBox(String boxName) async {
 }
 
 //A method which makes an instance of the hive box which consists of TttProjectInfo
-
 Future<Box> openProjectBox(String boxName) async {
   if (!kIsWeb && !Hive.isBoxOpen(boxName))
     Hive.init((await getApplicationDocumentsDirectory()).path);
@@ -55,6 +56,13 @@ Future<void> main() async {
   await openProjectBox('tttProjectInfo');
   await openUserBox('user');
 
+  final userHasToken = await UserToken.containsToken();
+
+  if (userHasToken)
+    initialRoute = '/';
+  else
+    initialRoute = '/login';
+
   runApp(const MyApp());
 }
 
@@ -66,7 +74,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: initialRoute,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
