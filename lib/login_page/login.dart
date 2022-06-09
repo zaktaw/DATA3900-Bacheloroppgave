@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 //Displays homescreen with logic for starting and/or resuming counting sessions
 class LoginLandingPage extends StatefulWidget {
@@ -15,6 +19,25 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
 
   bool checkMissingInputUsernameFlag = false;
   bool checkMissingInputPasswordFlag = false;
+
+  String response = "";
+
+  Future login() async {
+
+    ///TODO: Format body
+    String jsonBody =
+        jsonEncode(usernameController.text + " " + passwordController.text);
+      Future postRequest = HttpRequests.postLogin(jsonBody);
+      postRequest.then((value) {
+      if (value == 200) {
+        Navigator.of(context).pushNamed('/');
+      } else {
+        setState(() {
+          response = "Noe gikk galt";
+        });
+      }
+    });
+  }
 
   void checkMissingInputUsername() {
     setState(() {
@@ -115,6 +138,15 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
               ),
             ),
             Container(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
+              margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width *
+                      LOGIN_ELEMENTS_MARGIN_FACTOR,
+                  right: MediaQuery.of(context).size.width *
+                      LOGIN_ELEMENTS_MARGIN_FACTOR),
+              child: Text(response),
+            ),
+            Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 margin: EdgeInsets.only(
@@ -128,13 +160,12 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
                       onPrimary: TEXT_COLOR_BLACK,
                     ),
                     child: const Text('Logg inn'),
-                    onPressed: () {
+                    onPressed: () async {
                       checkMissingInputUsername();
                       checkMissingInputPassword();
                       if (!checkMissingInputPasswordFlag &&
                           !checkMissingInputUsernameFlag) {
-                        print(usernameController.text);
-                        print(passwordController.text);
+                        login();
                       }
                     })),
           ],
