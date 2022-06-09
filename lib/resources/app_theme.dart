@@ -37,6 +37,8 @@ const Color CARD_ACT_BTN_BORDER_COLOR = Color.fromARGB(255, 156, 184, 171);
 
 const Color DROPDOWN_COLOR = Colors.white;
 
+const Color LOGIN_BTN_COLOR = Color.fromARGB(255, 145, 158, 154);
+const Color LOGIN_BORDER_FOCUS_COLOR = Color.fromARGB(255, 145, 158, 154);
 //margins
 
 const double HOMESCREEN_COUNT_BTN_MARGIN = 90;
@@ -53,6 +55,8 @@ const double PAGEVIEW_MARGIN_FACTOR_HEIGHT = 0.75;
 
 const double GIF_PAGEVIEW_MARGIN_FACTOR_WIDTH = 0.275;
 const double GIF_PAGEVIEW_MARGIN_FACTOR_HEIGHT = 0.37;
+
+const double LOGIN_ELEMENTS_MARGIN_FACTOR = 0.17;
 
 //size
 
