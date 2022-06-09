@@ -6,7 +6,6 @@ import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
-import 'package:bacheloroppgave/confirm_page/confirm_dropdown_names.dart';
 import 'package:bacheloroppgave/models/User.dart';
 import 'package:bacheloroppgave/models/UserBox.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
@@ -32,8 +31,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   late int numberOfZones;
   late TttProjectInfo projectInfo;
   late User user;
-  bool observerSelected = false;
-  String observerName = '';
+  final String NAME_TEXT = "Telling utført av: ";
 
   @override
   void dispose() {
@@ -78,20 +76,11 @@ class _ConfirmCountState extends State<ConfirmCount> {
                     CONFIRM_PAGE_HEADER_PADDING_BOTTOM_FACTOR),
           )),
           ConfirmReviewList(entries, projectInfo.zones),
-          DropdownNames(
-              setIsObserverSelected, setObserverName, projectInfo.observers),
+          Text(NAME_TEXT + user.name),
         ],
       )),
-      bottomNavigationBar: ConfirmBottombar(getIsObserverSelected, sendTTT),
+      bottomNavigationBar: ConfirmBottombar(sendTTT),
     );
-  }
-
-  void setIsObserverSelected() {
-    observerSelected = true;
-  }
-
-  bool getIsObserverSelected() {
-    return observerSelected;
   }
 
   Future sendTTT() async {
@@ -107,9 +96,5 @@ class _ConfirmCountState extends State<ConfirmCount> {
 
     Future postRequest = HttpRequests.postTttObject(jsonBody);
     return postRequest;
-  }
-
-  void setObserverName(String selectedDropdownName) {
-    observerName = selectedDropdownName;
   }
 }

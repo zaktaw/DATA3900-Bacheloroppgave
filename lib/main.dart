@@ -56,8 +56,8 @@ Future<void> main() async {
   await openProjectBox('tttProjectInfo');
   await openUserBox('user');
 
-  final userHasToken = await UserToken.containsToken();
-
+  //final userHasToken = await UserToken.containsToken();
+  final bool userHasToken = true;
   if (userHasToken)
     initialRoute = '/';
   else
