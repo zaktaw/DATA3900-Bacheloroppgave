@@ -67,7 +67,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
           children: <Widget>[
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.all(50),
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 50),
                 child: const Text(
                   'Tverrgående trafikktelling',
                   style: TextStyle(
