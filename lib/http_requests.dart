@@ -13,13 +13,14 @@ class HttpRequests {
 
   static String postTttObjectUrl = "https://ltr-abi.no:8443/drf2/counting/";
 
+  static String postLoginUrl = "https://ltr-abi.no:8443/drf2/";
+
   static String token = "Token 768fac501b086edd2deaddebd1984c14ca9c5b72";
 
   // GET-method for retrieving TTT project info
   static Future<TttProjectInfo> fetchTttProjectInfo() async {
     // TODO: replace token with userToken when implemented in backend
     //final userToken = await UserToken.getUserToken();
-
 
     final response = await http.get(
       Uri.parse(getTttProjectInfoUrl),
@@ -52,6 +53,26 @@ class HttpRequests {
     );
 
     int statusCode = response.statusCode;
+  
+    return statusCode;
+  }
+
+  // POST-method for login *NOT IMPLEMENTED IN BACKEND*
+  static Future<int> postLogin(String jsonBody) async {
+    final headers = {
+      'Content-Type': 'application/json',
+    };
+    final encoding = Encoding.getByName('utf-8');
+
+    http.Response response = await http.post(
+      Uri.parse(postLoginUrl),
+      headers: headers,
+      body: jsonBody,
+      encoding: encoding,
+    );
+
+    //int statusCode = response.statusCode;
+    int statusCode = 200;
 
     return statusCode;
   }
