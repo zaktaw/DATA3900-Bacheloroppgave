@@ -144,7 +144,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
                       LOGIN_ELEMENTS_MARGIN_FACTOR,
                   right: MediaQuery.of(context).size.width *
                       LOGIN_ELEMENTS_MARGIN_FACTOR),
-              child: Text(response),
+              child: Text(response, style: const TextStyle(color: Colors.red)),
             ),
             Container(
                 height: 50,
