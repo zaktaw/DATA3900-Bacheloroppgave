@@ -29,7 +29,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
         jsonEncode(usernameController.text + " " + passwordController.text);
       Future postRequest = HttpRequests.postLogin(jsonBody);
       postRequest.then((value) {
-      if (value == 200) {
+      if (value == 2020) {
         Navigator.of(context).pushNamed('/');
       } else {
         setState(() {
@@ -138,7 +138,8 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
+              height: 30,
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
               margin: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width *
                       LOGIN_ELEMENTS_MARGIN_FACTOR,
