@@ -29,7 +29,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
         jsonEncode(usernameController.text + " " + passwordController.text);
       Future postRequest = HttpRequests.postLogin(jsonBody);
       postRequest.then((value) {
-      if (value == 2020) {
+      if (value == 200) {
         Navigator.of(context).pushNamed('/');
       } else {
         setState(() {
