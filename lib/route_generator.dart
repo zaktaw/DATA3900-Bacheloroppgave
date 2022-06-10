@@ -3,6 +3,7 @@ import 'package:bacheloroppgave/help_page/help.dart';
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_demo.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
+import 'package:bacheloroppgave/settings_page/settings.dart';
 import 'package:bacheloroppgave/zone_page/zone.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/activity_page/activity.dart';
@@ -40,6 +41,9 @@ class RouteGenerator {
 
       case '/help':
         return MaterialPageRoute(builder: (_) => Help());
+
+      case '/settings':
+      return MaterialPageRoute(builder: (_) => Settings());
 
       case '/bekreft':
         if (args is TttEntries) {
