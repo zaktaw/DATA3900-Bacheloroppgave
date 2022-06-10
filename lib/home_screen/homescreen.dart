@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_button.dart';
 import 'package:bacheloroppgave/http_requests.dart';
@@ -10,11 +12,14 @@ import 'package:bacheloroppgave/models/UserBox.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:hive/hive.dart';
 import 'dart:io';
 import 'dart:math';
+
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 const String project_title_error = "Kunne ikke hente prosjekt-tittel";
 const String new_count = 'Ny telling';
@@ -36,13 +41,20 @@ class _HomeScreenState extends State<HomeScreen> {
   late TttEntries activeTttEntries;
   late bool activeTtt;
   late Box tttEntriesBox;
-  late String projectName;
+  String projectName = "";
+  late StreamSubscription subscription;
 
-  late Future<TttProjectInfo> futureTttProjectInfo;
-
-  //Check if there is a active session or not. Used to control if option to resume session should be displayed
   @override
   void initState() {
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      getProjectInfo();
+    });
+
+    getProjectInfo();
+
+    //Check if there is a active session or not. Used to control if option to resume session should be displayed
     tttEntries = TttEntries();
     tttEntriesBox = TttEntriesBox.getTttEntries();
     if (tttEntriesBox.containsKey('tttEntriesMap')) {
@@ -59,25 +71,43 @@ class _HomeScreenState extends State<HomeScreen> {
 
     // save user token
     UserToken.setUserToken(TOKEN);
+  }
 
-    final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
+  @override
+  dispose() {
+    super.dispose();
 
-    tttProjectInfoBox.clear();
+    subscription.cancel();
+  }
 
-    // get request for tttProjectInfo
-    futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
+  getProjectInfo() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
 
-    futureTttProjectInfo.then((value) {
-      projectName = value.project_name;
-      TttProjectInfo projectInfo = TttProjectInfo(
-          project_name: value.project_name,
-          description: value.description,
-          activities: value.activities,
-          zones: value.zones,
-          observers: value.observers,
-          id: value.id);
-      tttProjectInfoBox.add(projectInfo);
-    });
+      tttProjectInfoBox.clear();
+
+      // get request for tttProjectInfo
+      Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
+
+      futureTttProjectInfo.then((value) {
+        setState(() {
+          projectName = value.project_name;
+        });
+        TttProjectInfo projectInfo = TttProjectInfo(
+            project_name: value.project_name,
+            description: value.description,
+            activities: value.activities,
+            zones: value.zones,
+            observers: value.observers,
+            id: value.id);
+        tttProjectInfoBox.add(projectInfo);
+      });
+    } else {
+      setState(() {
+        projectName = "Ingen internettkobling";
+      });
+    }
   }
 
   //Remove session if a new session is started
@@ -89,16 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: FutureBuilder<TttProjectInfo>(
-              future: futureTttProjectInfo,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data!.project_name);
-                } else if (snapshot.hasError) {
-                  return Text(project_title_error);
-                }
-                return const CircularProgressIndicator();
-              }),
+          title: Text(projectName),
           centerTitle: true,
           backgroundColor: TOPBAR_COLOR,
           titleTextStyle: const TextStyle(
