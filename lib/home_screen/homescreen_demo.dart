@@ -82,7 +82,8 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                         margin: HOMESCREEN_COUNT_BTN_MARGIN,
                         route: "/activity",
                         args: [tttEntries, 0],
-                        onPressed: newCount),
+                        onPressed: newCount,
+                        routeEnabled: true,),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
@@ -90,6 +91,7 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                         route: '/zones',
                         args: activeTttEntries,
                         onPressed: () => {},
+                        routeEnabled: true
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
@@ -97,7 +99,8 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                     margin: HOMESCREEN_HELP_BTN_MARGIN,
                     route: "/help",
                     args: null,
-                    onPressed: () => {})
+                    onPressed: () => {},
+                    routeEnabled: true)
               ],
             ))));
   }

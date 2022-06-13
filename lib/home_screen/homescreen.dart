@@ -37,6 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
   late bool activeTtt;
   late Box tttEntriesBox;
   late String projectName;
+  late List activities;
+  late List zones;
 
   late Future<TttProjectInfo> futureTttProjectInfo;
 
@@ -117,7 +119,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     margin: HOMESCREEN_COUNT_BTN_MARGIN,
                     route: "/activity",
                     args: [tttEntries, 0],
-                    onPressed: newCount),
+                    onPressed: newCount,
+                    routeEnabled: TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
@@ -125,6 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         route: '/zones',
                         args: activeTttEntries,
                         onPressed: () => {},
+                        routeEnabled: TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
@@ -132,7 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     margin: HOMESCREEN_HELP_BTN_MARGIN,
                     route: "/help",
                     args: null,
-                    onPressed: () => {}),
+                    onPressed: () => {},
+                    routeEnabled: true,),
               ],
             ))));
   }

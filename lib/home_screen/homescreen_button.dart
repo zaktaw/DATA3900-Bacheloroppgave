@@ -12,6 +12,7 @@ class HomeScreenButton extends StatefulWidget {
     required this.margin,
     required this.args,
     required this.onPressed,
+    required this.routeEnabled
   }) : super(key: key);
 
   final String btnName;
@@ -19,6 +20,7 @@ class HomeScreenButton extends StatefulWidget {
   final double margin;
   final args;
   Function onPressed;
+  final bool routeEnabled;
 
   @override
   _HomeScreenButtonState createState() => _HomeScreenButtonState();
@@ -28,24 +30,39 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: SHADOW_HOMESCREEN_BTN,
+        decoration: SHADOW_HOMESCREEN_BTN,
         margin: EdgeInsets.only(top: widget.margin),
         child: ElevatedButton(
             child: Text(
               widget.btnName,
-              style: const TextStyle(color: TEXT_COLOR_BLACK, fontSize: HOMESCREEN_BTN_FONTSIZE, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: TEXT_COLOR_BLACK,
+                  fontSize: HOMESCREEN_BTN_FONTSIZE,
+                  fontWeight: FontWeight.bold),
             ),
             style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(BOX_BORDER_RADIUS))),
-                backgroundColor: MaterialStateProperty.all(HOMESCREEN_BUTTONS_COLOR),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(BOX_BORDER_RADIUS))),
+                backgroundColor:
+                    MaterialStateProperty.all(HOMESCREEN_BUTTONS_COLOR),
                 padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
-                fixedSize: MaterialStateProperty.all( 
-                    Size((MediaQuery.of(context).size.width * HOMESCREEN_BTN_WIDTH_FACTOR), (MediaQuery.of(context).size.height * HOMESCREEN_BTN_HEIGHT_FACTOR)),
+                fixedSize: MaterialStateProperty.all(
+                  Size(
+                      (MediaQuery.of(context).size.width *
+                          HOMESCREEN_BTN_WIDTH_FACTOR),
+                      (MediaQuery.of(context).size.height *
+                          HOMESCREEN_BTN_HEIGHT_FACTOR)),
                 )),
             onPressed: () {
               widget.onPressed();
-              Navigator.of(context)
-                  .pushNamed(widget.route, arguments: widget.args);
+              if (widget.routeEnabled) {
+                Navigator.of(context)
+                    .pushNamed(widget.route, arguments: widget.args);
+              } else {
+                print("Du kommer ikke inn");
+              }
             }));
   }
 }
