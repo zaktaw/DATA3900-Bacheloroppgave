@@ -123,6 +123,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     route: "/help",
                     args: null,
                     onPressed: () => {}),
+                HomeScreenButton(
+                    btnName: settings, 
+                    route: "/settings", 
+                    margin: HOMESCREEN_SETTINGS_BTN_MARGIN, 
+                    args: null, 
+                    onPressed: ()=>{})
               ],
             ))));
   }
