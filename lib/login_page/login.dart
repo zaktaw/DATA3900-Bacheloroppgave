@@ -5,7 +5,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-//Displays homescreen with logic for starting and/or resuming counting sessions
+
 class LoginLandingPage extends StatefulWidget {
   const LoginLandingPage({Key? key}) : super(key: key);
 
@@ -67,7 +67,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
           children: <Widget>[
             Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.all(50),
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 50),
                 child: const Text(
                   'Tverrgående trafikktelling',
                   style: TextStyle(
@@ -138,7 +138,8 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
+              height: 30,
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
               margin: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width *
                       LOGIN_ELEMENTS_MARGIN_FACTOR,
