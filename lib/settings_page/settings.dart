@@ -9,7 +9,11 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SettingsTopbar("Instillinger", "/", null),
-      body: SettingsItem(),
+      body: Column(
+        children:[
+          SettingsItem("toggle", ()=>{}),
+          SettingsItem("dropdown", ()=>{})
+      ])
     );
   }
 }
