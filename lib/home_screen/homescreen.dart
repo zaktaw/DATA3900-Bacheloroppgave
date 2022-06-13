@@ -141,7 +141,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     route: "/activity",
                     args: [tttEntries, 0],
                     onPressed: newCount,
-                    routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty), //TttProjectInfoBox.getTttProjectInfo().isNotEmpty || TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty),
+                    routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,
+                    ),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
@@ -149,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         route: '/zones',
                         args: activeTttEntries,
                         onPressed: () => {},
-                        routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty,//TttProjectInfoBox.getTttProjectInfo().isNotEmpty || TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,
+                        routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty,
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
@@ -160,7 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () => {},
                     routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty
                     && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty
-                    && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,),
+                    && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,
+                    ),
               ],
             ))));
   }

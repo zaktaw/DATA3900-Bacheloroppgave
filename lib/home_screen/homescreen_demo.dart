@@ -52,8 +52,9 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
   }
 
-  String getProjectName(){
-    TttProjectInfo info = TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+  String getProjectName() {
+    TttProjectInfo info =
+        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
     return info.project_name.toString();
   }
 
@@ -83,7 +84,8 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                         route: "/activity",
                         args: [tttEntries, 0],
                         onPressed: newCount,
-                        routeEnabled: true,),
+                        routeEnabled: true,
+                      ),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
@@ -91,16 +93,17 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                         route: '/zones',
                         args: activeTttEntries,
                         onPressed: () => {},
-                        routeEnabled: true
+                        routeEnabled: true,
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
-                    btnName: help,
-                    margin: HOMESCREEN_HELP_BTN_MARGIN,
-                    route: "/help",
-                    args: null,
-                    onPressed: () => {},
-                    routeEnabled: true)
+                  btnName: help,
+                  margin: HOMESCREEN_HELP_BTN_MARGIN,
+                  route: "/help",
+                  args: null,
+                  onPressed: () => {},
+                  routeEnabled: true,
+                )
               ],
             ))));
   }

@@ -1,5 +1,6 @@
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 const double buttonWidth = 250;
 
@@ -12,7 +13,7 @@ class HomeScreenButton extends StatefulWidget {
     required this.margin,
     required this.args,
     required this.onPressed,
-    required this.routeEnabled
+    required this.routeEnabled,
   }) : super(key: key);
 
   final String btnName;
@@ -61,7 +62,15 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
                 Navigator.of(context)
                     .pushNamed(widget.route, arguments: widget.args);
               } else {
-                print("Du kommer ikke inn");
+                Fluttertoast.showToast(
+                      msg: "Kunne ikke hente prosjektinfo", // message
+                      toastLength: Toast.LENGTH_SHORT, // length
+                      gravity: ToastGravity.CENTER, // location
+                      timeInSecForIosWeb: 4, // duration,
+                      backgroundColor: TOAST_BACKGROUND_COLOR,
+                      textColor: TOAST_TEXT_COLOR,
+                      fontSize: TOAST_FONT_SIZE,
+                    );
               }
             }));
   }
