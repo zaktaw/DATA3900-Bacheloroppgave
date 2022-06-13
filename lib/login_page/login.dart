@@ -5,7 +5,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-//Displays homescreen with logic for starting and/or resuming counting sessions
+
 class LoginLandingPage extends StatefulWidget {
   const LoginLandingPage({Key? key}) : super(key: key);
 
