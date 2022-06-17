@@ -26,7 +26,6 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
   Future checkConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
-      print("Halllllo");
       checkInternetConnectionFlag = false;
     }
   }
