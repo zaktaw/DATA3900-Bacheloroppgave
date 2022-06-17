@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -18,8 +19,17 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
 
   bool checkMissingInputUsernameFlag = false;
   bool checkMissingInputPasswordFlag = false;
+  bool checkInternetConnectionFlag = true;
 
   String response = "";
+
+  Future checkConnection() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      print("Halllllo");
+      checkInternetConnectionFlag = false;
+    }
+  }
 
   Future login() async {
     ///TODO: Format body add internet-check
@@ -168,10 +178,12 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
                     ),
                     child: const Text('Logg inn'),
                     onPressed: () async {
+                      checkConnection();
                       checkMissingInputUsername();
                       checkMissingInputPassword();
                       if (!checkMissingInputPasswordFlag &&
-                          !checkMissingInputUsernameFlag) {
+                          !checkMissingInputUsernameFlag &&
+                          checkInternetConnectionFlag) {
                         login();
                       }
                     })),
