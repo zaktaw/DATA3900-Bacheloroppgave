@@ -58,7 +58,7 @@ class HttpRequests {
   }
 
   // POST-method for login *NOT IMPLEMENTED IN BACKEND*
-  static Future<int> postLogin(String jsonBody) async {
+  static Future<http.Response> postLogin(String jsonBody) async {
     final headers = {
       'Content-Type': 'application/json',
     };
@@ -72,8 +72,7 @@ class HttpRequests {
     );
 
     //int statusCode = response.statusCode;
-    int statusCode = 200;
 
-    return statusCode;
+    return response;
   }
 }

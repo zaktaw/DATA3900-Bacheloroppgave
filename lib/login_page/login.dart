@@ -5,7 +5,6 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-
 class LoginLandingPage extends StatefulWidget {
   const LoginLandingPage({Key? key}) : super(key: key);
 
@@ -23,14 +22,21 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
   String response = "";
 
   Future login() async {
-
-    ///TODO: Format body
+    ///TODO: Format body add internet-check
     String jsonBody =
         jsonEncode(usernameController.text + " " + passwordController.text);
-      Future postRequest = HttpRequests.postLogin(jsonBody);
-      postRequest.then((value) {
-      if (value == 200) {
+    Future postRequest = HttpRequests.postLogin(jsonBody);
+    postRequest.then((value) {
+      if (value.statusCode == 200) {
+        //hent ut brukerinfo og legg i hiveboks for user
         Navigator.of(context).pushNamed('/');
+      }
+
+      /// Invalid credentials
+      else if (value.statusCode == 403) {
+        setState(() {
+          response = "Ugyldig brukernavn eller passord";
+        });
       } else {
         setState(() {
           response = "Noe gikk galt";
