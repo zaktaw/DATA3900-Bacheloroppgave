@@ -116,6 +116,13 @@ class _HomeScreenState extends State<HomeScreen> {
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
   }
 
+  bool hasInfo() {
+    return TttProjectInfoBox.getTttProjectInfo().isNotEmpty && 
+    TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty
+    && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty
+    && UserBox.getUser().isNotEmpty && UserBox.getUser().getAt(0)!.name.isNotEmpty;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         route: "/activity",
                         args: [tttEntries, 0],
                         onPressed: newCount,
-                        routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty),
+                        routeEnabled: hasInfo()),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
@@ -150,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         route: '/zones',
                         args: activeTttEntries,
                         onPressed: () => {},
-                        routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty,
+                        routeEnabled: hasInfo(),
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
@@ -159,9 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     route: "/help",
                     args: null,
                     onPressed: () => {},
-                    routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty
-                    && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty
-                    && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,
+                    routeEnabled: hasInfo(),
                     ),
                     
                 HomeScreenButton(
