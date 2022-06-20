@@ -8,7 +8,7 @@ class ActivitiesPopButton extends StatelessWidget {
   const ActivitiesPopButton(this.activities_info, this.activities, {Key? key}) : super(key: key);
 
   final String activities;
-  final String activities_info;
+  final Table activities_info;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _ActivitiesPopCard extends StatelessWidget {
       : super(key: key);
 
   final String activities;
-  final String activities_info;
+  final Table activities_info;
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +69,12 @@ class _ActivitiesPopCard extends StatelessWidget {
                           top: 5, bottom: 10, left: 20, right: 20),
                       child: const Divider(color: TEXT_COLOR_BLACK, height: 5),
                     ),
-                    Text(
-                      "Du kan se informasjon om hver enkel aktivitet\nved å trykke på aktivitetsnavnet i listen.\n\n" + activities_info,
+                    const Text(
+                      "Du kan også se informasjon om hver enkel aktivitet\nved å trykke på aktivitetsnavnet i listen.\n",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 15, color: TEXT_COLOR_BLACK),
-                    )
+                    ),
+                    activities_info
                   ],
                 ),
               ),

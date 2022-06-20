@@ -97,13 +97,20 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
-                  btnName: help,
-                  margin: HOMESCREEN_HELP_BTN_MARGIN,
-                  route: "/help",
-                  args: null,
-                  onPressed: () => {},
-                  routeEnabled: true,
-                )
+                    btnName: help,
+                    margin: HOMESCREEN_HELP_BTN_MARGIN,
+                    route: "/help",
+                    args: null,
+                    onPressed: () => {},
+                    routeEnabled: true),
+                
+                HomeScreenButton(
+                    btnName: settings, 
+                    route: "/settings", 
+                    margin: HOMESCREEN_SETTINGS_BTN_MARGIN, 
+                    args: null, 
+                    onPressed: ()=>{},
+                    routeEnabled: true)
               ],
             ))));
   }

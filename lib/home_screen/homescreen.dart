@@ -19,7 +19,6 @@ import 'package:hive/hive.dart';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 const String project_title_error = "Kunne ikke hente prosjekt-tittel";
 const String new_count = 'Ny telling';
@@ -135,14 +134,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Center(
                 child: Column(
               children: [
-                HomeScreenButton(
-                    btnName: new_count,
-                    margin: HOMESCREEN_COUNT_BTN_MARGIN,
-                    route: "/activity",
-                    args: [tttEntries, 0],
-                    onPressed: newCount,
-                    routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,
-                    ),
+                activeTtt
+                    ? ConfirmCountPop([tttEntries, 0], newCount)
+                    : HomeScreenButton(
+                        btnName: new_count,
+                        margin: HOMESCREEN_COUNT_BTN_MARGIN,
+                        route: "/activity",
+                        args: [tttEntries, 0],
+                        onPressed: newCount,
+                        routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
@@ -163,6 +163,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty
                     && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,
                     ),
+                    
+                HomeScreenButton(
+                    btnName: settings, 
+                    route: "/settings", 
+                    margin: HOMESCREEN_SETTINGS_BTN_MARGIN, 
+                    args: null, 
+                    onPressed: ()=>{},
+                    routeEnabled: true,)
               ],
             ))));
   }
