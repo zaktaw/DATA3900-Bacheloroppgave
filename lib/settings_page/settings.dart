@@ -11,8 +11,8 @@ class Settings extends StatelessWidget {
       appBar: SettingsTopbar("Instillinger", "/", null),
       body: Column(
         children:[
-          SettingsItem("toggle", ()=>{}),
-          SettingsItem("dropdown", ()=>{})
+          SettingsItem("toggle"),
+          SettingsItem("logoutbutton")
       ])
     );
   }
