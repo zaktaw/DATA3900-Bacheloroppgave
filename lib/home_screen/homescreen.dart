@@ -4,11 +4,12 @@ import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_button.dart';
 import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
+import 'package:bacheloroppgave/local_storage_hive/UnsentTttEntriesBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/User.dart';
-import 'package:bacheloroppgave/models/UserBox.dart';
+import 'package:bacheloroppgave/local_storage_hive/UserBox.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
@@ -18,7 +19,6 @@ import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:hive/hive.dart';
 import 'dart:io';
 import 'dart:math';
-
 
 const String project_title_error = "Kunne ikke hente prosjekt-tittel";
 const String new_count = 'Ny telling';
@@ -64,6 +64,12 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       activeTtt = false;
     }
+
+    print("UNSENT TTT-ENTRIES");
+    final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
+    unsentTttEntriesBox.keys.forEach((element) {
+      print(element);
+    });
 
     // save user object
     final User user = User(1, 'Hans', TOKEN);
@@ -117,10 +123,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   bool hasInfo() {
-    return TttProjectInfoBox.getTttProjectInfo().isNotEmpty && 
-    TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty
-    && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty
-    && UserBox.getUser().isNotEmpty && UserBox.getUser().getAt(0)!.name.isNotEmpty;
+    return TttProjectInfoBox.getTttProjectInfo().isNotEmpty &&
+        TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty &&
+        TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty &&
+        UserBox.getUser().isNotEmpty &&
+        UserBox.getUser().getAt(0)!.name.isNotEmpty;
   }
 
   @override
@@ -161,21 +168,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
-                    btnName: help,
-                    margin: HOMESCREEN_HELP_BTN_MARGIN,
-                    route: "/help",
-                    args: null,
-                    onPressed: () => {},
-                    routeEnabled: hasInfo(),
-                    ),
-                    
+                  btnName: help,
+                  margin: HOMESCREEN_HELP_BTN_MARGIN,
+                  route: "/help",
+                  args: null,
+                  onPressed: () => {},
+                  routeEnabled: hasInfo(),
+                ),
                 HomeScreenButton(
-                    btnName: settings, 
-                    route: "/settings", 
-                    margin: HOMESCREEN_SETTINGS_BTN_MARGIN, 
-                    args: null, 
-                    onPressed: ()=>{},
-                    routeEnabled: true,)
+                  btnName: settings,
+                  route: "/settings",
+                  margin: HOMESCREEN_SETTINGS_BTN_MARGIN,
+                  args: null,
+                  onPressed: () => {},
+                  routeEnabled: true,
+                )
               ],
             ))));
   }

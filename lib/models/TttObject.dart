@@ -4,15 +4,26 @@ import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/ActivityZone.dart';
 import 'package:bacheloroppgave/models/TttEntry.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
+import 'package:hive/hive.dart';
+
+part 'TttObject.g.dart';
 
 // Model for ttt object. This is the object that is sent to the server
+@HiveType(typeId: 6)
 class TttObject {
+  @HiveField(0)
   late Map counts;
+  @HiveField(1)
   late String name;
+  @HiveField(2)
   late DateTime timestamp;
+  @HiveField(3)
   late List<ActivityObject> activities;
+  @HiveField(4)
   late int projectId;
+  @HiveField(5)
   final List<ActivityZone> activityZones = [];
+  @HiveField(6)
   late List<ZoneObject> zoneObjects = [];
 
   TttObject(

@@ -4,11 +4,13 @@ import 'package:bacheloroppgave/confirm_page/confirm_bottombar.dart';
 import 'package:bacheloroppgave/confirm_page/confirm_count_reviewlist.dart';
 import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
+import 'package:bacheloroppgave/local_storage_hive/UnsentTttEntriesBox.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/User.dart';
-import 'package:bacheloroppgave/models/UserBox.dart';
+import 'package:bacheloroppgave/local_storage_hive/UserBox.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import '../confirm_and_help_topbar/confirm_and_help_topbar.dart';
@@ -32,6 +34,9 @@ class _ConfirmCountState extends State<ConfirmCount> {
   late TttProjectInfo projectInfo;
   late User user;
   final String NAME_TEXT = "Telling utført av: ";
+  final String SENT_OK = "Telling sendt";
+  final String SENT_FAIL = "Sending feilet";
+  final String SENT_FAIL_NO_INTERNET = "Sending feilet. Mangler internett.";
 
   @override
   void dispose() {
@@ -83,7 +88,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
     );
   }
 
-  Future sendTTT() async {
+  Future<String> sendTTT() async {
     TttObject tttObject = TttObject(
         entries.tttEntries,
         user.name,
@@ -92,9 +97,23 @@ class _ConfirmCountState extends State<ConfirmCount> {
         projectInfo.id,
         projectInfo.zones);
 
-    String jsonBody = jsonEncode(tttObject);
+    final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      String jsonBody = jsonEncode(tttObject);
 
-    Future postRequest = HttpRequests.postTttObject(jsonBody);
-    return postRequest;
+      int statusCode = await HttpRequests.postTttObject(jsonBody);
+
+      if (statusCode == 20) {
+        TttEntriesBox.getTttEntries().delete('tttEntriesMap');
+        return SENT_OK;
+      } else {
+        unsentTttEntriesBox.add(tttObject);
+        return SENT_FAIL;
+      }
+    } else {
+      unsentTttEntriesBox.add(tttObject);
+      return SENT_FAIL_NO_INTERNET;
+    }
   }
 }
