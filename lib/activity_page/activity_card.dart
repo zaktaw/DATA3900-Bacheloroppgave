@@ -8,7 +8,7 @@ import 'activity_pop_button.dart';
 
 const String _heroActivityPop = "activity-pop-hero";
 
-//Card with activityname, counter and info-pop-up widget
+/// Card with activityname, counter and info-pop-up widget
 class ActivityCard extends StatelessWidget {
 
   ActivityCard(
@@ -23,6 +23,32 @@ class ActivityCard extends StatelessWidget {
   String activity_name;
   String activity_info;
   var txt = TextEditingController(text: "");
+
+
+  /// Increment value (observations) by 1
+  String increment(String value) {
+    int intValue = int.parse(value);
+    addTttEntry(zoneIndex, activity_name, (intValue + 1));
+    return (intValue + 1).toString();
+  }
+
+  /// Decrement value (observations) by 1
+  String decrement(String value) {
+    int intValue = int.parse(value);
+    if ((intValue - 1) >= 0) {
+      addTttEntry(zoneIndex, activity_name, (intValue - 1));
+      return (intValue - 1).toString();
+    }
+    return intValue.toString();
+  }
+
+  /// Set value (observations) manually (keyboard-input)
+  String manualInput(String? value) { 
+    String stringValue = value.toString();
+    int intValue = int.parse(stringValue);
+    addTttEntry(zoneIndex, activity_name, intValue);
+    return stringValue;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,30 +97,5 @@ class ActivityCard extends StatelessWidget {
         )
       ]),
     ), decoration: SHADOW_ACT_CARD,);
-  }
-
-  //Increment value (observations) by 1
-  String increment(String value) {
-    int intValue = int.parse(value);
-    addTttEntry(zoneIndex, activity_name, (intValue + 1));
-    return (intValue + 1).toString();
-  }
-
-  //Decrement value (observations) by 1
-  String decrement(String value) {
-    int intValue = int.parse(value);
-    if ((intValue - 1) >= 0) {
-      addTttEntry(zoneIndex, activity_name, (intValue - 1));
-      return (intValue - 1).toString();
-    }
-    return intValue.toString();
-  }
-
-  //Set value (observations) manually (keyboard-input)
-  String manualInput(String? value) { 
-    String stringValue = value.toString();
-    int intValue = int.parse(stringValue);
-    addTttEntry(zoneIndex, activity_name, intValue);
-    return stringValue;
   }
 }

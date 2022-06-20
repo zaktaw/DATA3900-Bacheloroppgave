@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-//Displays text about the app and launches webbrowser if link is pressed
+/// Displays text about the app and launches webbrowser if link is pressed
 class HelpTTT extends StatelessWidget {
   const HelpTTT({ Key? key }) : super(key: key);
 

@@ -11,6 +11,8 @@ class ActivitiesList extends StatelessWidget {
 
   ActivitiesList(this.zoneIndex, this.entries, this.activityList, {Key? key}) : super(key: key);
 
+/// Sets stored value (no. counts) for for given activity in current zone, value set to '0' if the activity has no value in entries
+/// Get entries for current index and checks if activity is in entries, set value in ActivityCard to stored value if found, set to '0' if not 
   String setValuesForPreviousCount(String activity) {
     var retrievedCounts = entries.getTttEntries(zoneIndex);
     for (var element in retrievedCounts) {

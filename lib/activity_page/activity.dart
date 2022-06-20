@@ -60,7 +60,7 @@ class _ActivityState extends State<Activity>
     activityList = projectInfo.activities;
     zoneList = projectInfo.zones;
 
-    // animation controller
+    /// Animation controller
     controller = AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 100),
@@ -69,12 +69,12 @@ class _ActivityState extends State<Activity>
         ColorTween(begin: ANIMATION_BEGIN_COLOR, end: ANIMATION_END_COLOR)
             .animate(controller);
 
-    // reset state for widgets after animation is completed
+    /// Reset state for widgets after animation is completed
     controller.addListener(() {
       setState(() {});
     });
 
-    // this is needed for reversing the animation after it is completed
+    // This is needed for reversing the animation after it is completed
     controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         controller.reverse();
@@ -84,6 +84,8 @@ class _ActivityState extends State<Activity>
     super.initState();
   }
 
+  /// Go to next zone when bottombar is pressed.
+  /// If pressed on last zone in project, navigate to zonelist
   void incrementZoneIndex() {
     setState(() {
       if (zoneIndex < zoneList.length - 1) {
@@ -98,12 +100,14 @@ class _ActivityState extends State<Activity>
     });
   }
 
+/// Updates values in entries when navigating to next zone
   void nextZone() {
     entries.addZoneKey(zoneIndex);
     tttEntriesBox.put('tttEntriesMap', entries);
     incrementZoneIndex();
   }
 
+/// Updates values in entries and navigate to zonelist when backbutton in appBar is pressed 
   void goToZones() {
     entries.addZoneKey(zoneIndex);
     tttEntriesBox.put('tttEntriesMap', entries);
@@ -113,6 +117,7 @@ class _ActivityState extends State<Activity>
     );
   }
 
+/// Used to show no. of counted zones in progressbar 
   int getNumberOfCompletedZones() {
     if (TttEntriesBox.getTttEntries().isEmpty) return 0;
     TttEntries entries = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;

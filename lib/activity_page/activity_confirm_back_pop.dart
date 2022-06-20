@@ -11,7 +11,7 @@ const String pop_info = 'Vil du lagre en tom sone?';
 
 const String _heroConfirmPop = 'confirm-back-pop';
 
-//Pop-up conformation box to confirm if user wants to commit an empty zone when navigation from activity without input
+/// Pop-up conformation box to confirm if user wants to commit an empty zone when navigation from activity without input
 class PopActivityConfirmBackPop extends StatelessWidget {
   PopActivityConfirmBackPop(this.entries, this.zoneIndex, {Key? key})
       : super(key: key);
