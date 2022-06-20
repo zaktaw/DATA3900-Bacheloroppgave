@@ -1,8 +1,13 @@
+import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:flutter/material.dart';
 
 class SettingsItem extends StatelessWidget {
   String type;
   //Function function;
+
+  void logout(BuildContext context) {
+    UserToken.removeToken().whenComplete(() => Navigator.of(context).pushNamed('/login'));    
+  }
 
   SettingsItem(this.type, /*this.function,*/ {Key? key}) : super(key: key);
 
@@ -14,7 +19,7 @@ class SettingsItem extends StatelessWidget {
                 icon: Icon(Icons.logout),
                 label: Text("Logg ut"),
                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color.fromARGB(167, 255, 43, 43))),
-                onPressed: ()=>{}
+                onPressed: () => logout(context)
                 );
 
       case "dropdown":

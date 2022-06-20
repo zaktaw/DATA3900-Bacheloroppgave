@@ -13,4 +13,7 @@ class UserToken {
 
   static Future<bool> containsToken() async =>
       await _storage.containsKey(key: _keyUserToken);
+
+  static Future removeToken() async =>
+      await _storage.delete(key: _keyUserToken);
 }
