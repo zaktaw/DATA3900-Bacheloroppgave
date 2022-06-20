@@ -6,7 +6,7 @@ import 'package:bacheloroppgave/hero_dialog_route.dart';
 
 const String info_zones = 'Informasjon om soner';
 
-//Generates pop-up with zoneinfo
+///Generates pop-up with zoneinfo
 class ZonesInfoPop extends StatelessWidget {
   const ZonesInfoPop(this.zones_info, {Key? key}) : super(key: key);
 

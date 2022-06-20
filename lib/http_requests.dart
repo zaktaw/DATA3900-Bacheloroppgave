@@ -17,7 +17,7 @@ class HttpRequests {
 
   static String token = "Token 768fac501b086edd2deaddebd1984c14ca9c5b72";
 
-  // GET-method for retrieving TTT project info
+  /// GET-method for retrieving TTT project info
   static Future<TttProjectInfo> fetchTttProjectInfo() async {
     // TODO: replace token with userToken when implemented in backend
     //final userToken = await UserToken.getUserToken();
@@ -37,7 +37,7 @@ class HttpRequests {
     }
   }
 
-  // POST-method for submitting TTT objects to server
+  /// POST-method for submitting TTT objects to server
   static Future<int> postTttObject(String jsonBody) async {
     final headers = {
       'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ class HttpRequests {
     return statusCode;
   }
 
-  // POST-method for login *NOT IMPLEMENTED IN BACKEND*
+  /// POST-method for login *NOT IMPLEMENTED IN BACKEND*
   static Future<http.Response> postLogin(String jsonBody) async {
     final headers = {
       'Content-Type': 'application/json',

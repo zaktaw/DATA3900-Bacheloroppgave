@@ -13,7 +13,7 @@ import 'login_page/login.dart';
 
 const String error = "Error";
 
-//Class which generates route to the different pages in the application
+///Class which generates route to the different pages in the application
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -21,13 +21,12 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
 
-        /*CHANGE BETWEEN SERVER OR A MOCK DB BY COMMENTING OUT EITHER
-        LINE 25 or LINE 28*/
+        ///CHANGE BETWEEN SERVER OR A MOCK DB BY COMMENTING OUT EITHER LINE 25 or LINE 28
 
-        //SERVER:
-        //return MaterialPageRoute(builder: (_) => HomeScreen());
+        ///SERVER:
+        ///return MaterialPageRoute(builder: (_) => HomeScreen());
         
-        //MOCK DB
+        ///MOCK DB
         return MaterialPageRoute(builder: (_) => HomeScreenDemo());
 
       case '/activity':

@@ -15,7 +15,7 @@ import 'package:hive/hive.dart';
 const String zone_toast = 'Du må fullføre alle soner før du sender inn telling!';
 const String zone_confirm = 'Fullfør telling';
 
-//Container for zonepage
+///Container for zonepage
 class Zone extends StatefulWidget {
   late TttEntries entries;
 
@@ -44,6 +44,7 @@ class _ZoneState extends State<Zone> {
     super.initState();
   }
 
+  ///Method that enables the user to navigate to the confirm page if all zones are counted
   void navigateToConfirmPage() {
     if (entries.getNumberOfZones() == zoneList.length) {
       Navigator.of(context).pushNamed(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../resources/app_theme.dart';
 
+
+///The topbar on the settings-page
 class SettingsTopbar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final String topbarTitle;

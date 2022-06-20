@@ -4,7 +4,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'zone_card.dart';
 
-//Generates list of zonecards for all zones in the project
+///Generates list of zonecards for all zones in the project
 class ZonesList extends StatelessWidget {
   final TttEntries entries;
   final List<ZoneObject> zoneList;

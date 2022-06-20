@@ -13,7 +13,10 @@ class SettingsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///Switch that changes the component depending on the argument when calling the constructor
     switch (type) {
+
+      ///Returns a red logout button
       case "logoutbutton":
         return ElevatedButton.icon(
                 icon: Icon(Icons.logout),
@@ -21,23 +24,24 @@ class SettingsItem extends StatelessWidget {
                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color.fromARGB(167, 255, 43, 43))),
                 onPressed: () => logout(context)
                 );
-
+      
       case "dropdown":
         //List<DropdownMenuItem<String>> items = ["1", "3", "4" ,"5"];
         return Container(
           child: Card(
               child: Row(
-            children: <Widget>[
+            children: const <Widget>[
               Expanded(flex: 4, child: Text("Here 3")),
-              /*Expanded(flex: 6, child: DropdownButton(
-                value: "Startvalue",
-                icon: Icon(Icons.keyboard_arrow_down), 
-                items: items,
-                onChanged: ()=>{}))*/
+              ///Expanded(flex: 6, child: DropdownButton(
+              ///value: "Startvalue",
+              ///icon: Icon(Icons.keyboard_arrow_down), 
+              ///items: items,
+              ///onChanged: ()=>{}))
             ],
           )),
         );
-
+      
+      //Unused
       case "toggle":
         return Container(
           child: Card(

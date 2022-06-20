@@ -5,7 +5,7 @@ import 'zones_info_pop.dart';
 
 const String title = 'Soner';
 
-//Topbar with infobutton for zone-page
+///Topbar with infobutton for zone-page
 class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final List<ZoneObject> zoneList;
@@ -14,7 +14,8 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
       : preferredSize = const Size.fromHeight(50.0),
         super(key: key);
 
-//Generates infotext based on all zones in the project 
+///Generates infotext based on all zones in the project,
+///this is used by the component zones_info_pop
   Table generateInfoText() {
     final rows = <TableRow>[];
     for(var element in zoneList){

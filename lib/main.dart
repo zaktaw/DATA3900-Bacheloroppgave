@@ -20,7 +20,7 @@ import 'resources/app_theme.dart';
 
 String initialRoute = '';
 
-//A method which makes an instance of the hive box which consists of TttEntries
+///A method which makes an instance of the hive box which consists of TttEntries
 Future<Box> openEntriesBox(String boxName) async {
   if (!kIsWeb && !Hive.isBoxOpen(boxName))
     Hive.init((await getApplicationDocumentsDirectory()).path);
@@ -28,7 +28,7 @@ Future<Box> openEntriesBox(String boxName) async {
   return await Hive.openBox<TttEntries>(boxName);
 }
 
-//A method which makes an instance of the hive box which consists of TttProjectInfo
+///A method which makes an instance of the hive box which consists of TttProjectInfo
 Future<Box> openProjectBox(String boxName) async {
   if (!kIsWeb && !Hive.isBoxOpen(boxName))
     Hive.init((await getApplicationDocumentsDirectory()).path);
@@ -43,7 +43,7 @@ Future<Box> openUserBox(String boxName) async {
   return await Hive.openBox<User>(boxName);
 }
 
-//Starts the hive boxes
+///Starts the hive boxes
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(TttEntriesAdapter());
@@ -56,7 +56,7 @@ Future<void> main() async {
   await openProjectBox('tttProjectInfo');
   await openUserBox('user');
 
-  //final userHasToken = await UserToken.containsToken();
+  ///final userHasToken = await UserToken.containsToken();
   final bool userHasToken = true;
   if (userHasToken)
     initialRoute = '/';
@@ -69,7 +69,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  /// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

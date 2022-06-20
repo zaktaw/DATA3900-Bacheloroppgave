@@ -16,6 +16,7 @@ class ZoneCard extends StatelessWidget {
   int zone_index;
   TttEntries entries;
 
+  ///Method that sends the user to the activity page when called
   void navigateToActivityPage(BuildContext context) {
     Navigator.of(context)
         .pushNamed('/activity', arguments: [entries, zone_index]);
