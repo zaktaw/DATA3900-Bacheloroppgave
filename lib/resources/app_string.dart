@@ -25,7 +25,7 @@ String THIRD_PAGEVIEW_STRING =
 
 String FOURTH_PAGEVIEW_STRING_TITLE = "\nBekreft telling";
 String FOURTH_PAGEVIEW_STRING =
-    "\nPå denne siden kan du se igjennom antallet du har lagt inn i tellingen. Bekreft med ditt navn og send inn tellingen når du er klar\n";
+    "\nPå denne siden kan du se igjennom antallet du har lagt inn i tellingen. Send inn tellingen når du er klar\n";
 
 // About TTT
 
