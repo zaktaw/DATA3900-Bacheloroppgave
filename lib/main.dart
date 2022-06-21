@@ -61,7 +61,7 @@ Future getProjectInfo() async {
           zones: value.zones,
           observers: value.observers,
           id: value.id);
-      //tttProjectInfoBox.clear();
+      tttProjectInfoBox.clear();
       //tttProjectInfoBox.add(projectInfo);
       tttProjectInfoBox.put(projectInfoKey, projectInfo);
       //.whenComplete(() => {Navigator.of(context).pushNamed('/')});

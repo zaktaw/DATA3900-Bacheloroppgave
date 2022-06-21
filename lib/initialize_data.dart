@@ -1,5 +1,6 @@
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
 import 'package:bacheloroppgave/resources/Keys.dart';
+import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -19,6 +20,11 @@ class InitializeData extends StatefulWidget {
 class _InitializeDataState extends State<InitializeData> {
   bool loaded = false;
 
+  @override
+  void initState() {
+    getProjectInfo();
+  }
+
   void getProjectInfo() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
@@ -26,33 +32,30 @@ class _InitializeDataState extends State<InitializeData> {
 
       // get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
-
-      futureTttProjectInfo.then((value) {
-        TttProjectInfo projectInfo = TttProjectInfo(
-            project_name: value.project_name,
-            description: value.description,
-            activities: value.activities,
-            zones: value.zones,
-            observers: value.observers,
-            id: value.id);
-        //tttProjectInfoBox.clear();
-        //tttProjectInfoBox.add(projectInfo);
-        tttProjectInfoBox
-            .put(projectInfoKey, projectInfo)
-            .whenComplete(() => {
-              print("CO")
-              setState(() => loaded = true)
-              });
-      });
+      futureTttProjectInfo
+          .then((value) => {if (value) setState(() => loaded = true)});
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (loaded)
-      return HomeScreen();
-    else {
-      return Text("HELLO!");
+    if (loaded) {
+      return const HomeScreen();
+    } else {
+      return Scaffold(
+          backgroundColor: BACKGROUND_COLOR,
+          body: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircularProgressIndicator(color: TOPBAR_COLOR),
+              Text("Laster..",
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: TEXT_COLOR_BLACK)),
+            ],
+          )));
     }
   }
 }

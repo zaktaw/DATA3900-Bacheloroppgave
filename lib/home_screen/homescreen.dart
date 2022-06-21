@@ -62,12 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
           as String;
     }
 
-     print("PROJECTS:");
+    print("PROJECTS:");
     final projectInfos = TttProjectInfoBox.getTttProjectInfo();
     projectInfos.values.forEach((element) {
       print(element.project_name);
     });
-
 
     //Check if there is a active session or not. Used to control if option to resume session should be displayed
     tttEntries = TttEntries();
