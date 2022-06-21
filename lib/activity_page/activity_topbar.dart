@@ -38,7 +38,7 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
   })  : preferredSize = Size.fromHeight(50.0),
         super(key: key);
 
-  //Creates infotext based on current zone
+  /// Generates table with infotext for activities. Activityname and infotext from activityList
   Table generateInfoText() {
     final rows = <TableRow>[];
     for(var element in activityList){

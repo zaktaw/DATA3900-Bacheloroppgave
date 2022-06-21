@@ -43,7 +43,8 @@ class _HelpState extends State<Help> {
     ];
     super.initState();
   }
-
+  
+/// Controller for bottombar, set index to option selected in bottombar 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

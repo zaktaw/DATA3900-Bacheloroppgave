@@ -38,7 +38,6 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
       color: BOTTOMBAR_COLOR,
       child: InkWell(
         onTap: () async => {
-          
           response = widget.sendTTT(),
           response.then((value) async => {
                 if (value == 200) // POST request is successful

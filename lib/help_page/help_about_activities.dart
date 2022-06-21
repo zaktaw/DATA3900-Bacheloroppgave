@@ -13,7 +13,7 @@ class HelpActivites extends StatelessWidget {
 
   late List<ActivityObject> activityList = projectInfo.activities;
 
-  //Generates the list that is displayed
+  /// Generates the list that is displayed
   String showActivites() {
     String activityListString = "";
     activityList.forEach((element) {

@@ -49,6 +49,21 @@ class _ConfirmCountState extends State<ConfirmCount> {
     super.initState();
   }
 
+/// Send tttObject (count) to server, return status-code from server
+    Future sendTTT() async {
+    TttObject tttObject = TttObject(
+        entries.tttEntries,
+        user.name,
+        entries.timestamp,
+        projectInfo.activities,
+        projectInfo.id,
+        projectInfo.zones);
+
+    String jsonBody = jsonEncode(tttObject);
+    Future postRequest = HttpRequests.postTttObject(jsonBody);
+    return postRequest;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,20 +96,5 @@ class _ConfirmCountState extends State<ConfirmCount> {
       )),
       bottomNavigationBar: ConfirmBottombar(sendTTT),
     );
-  }
-
-  Future sendTTT() async {
-    TttObject tttObject = TttObject(
-        entries.tttEntries,
-        user.name,
-        entries.timestamp,
-        projectInfo.activities,
-        projectInfo.id,
-        projectInfo.zones);
-
-    String jsonBody = jsonEncode(tttObject);
-
-    Future postRequest = HttpRequests.postTttObject(jsonBody);
-    return postRequest;
   }
 }

@@ -2,7 +2,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import '../models/TttEntries.dart';
 
-//Bottombar for the activitypage with logic to change appearance of confirmbutton if all zones are counted 
+/// Bottombar for the activitypage with logic to change appearance of confirmbutton if all zones are counted 
 class ActivityBottombar extends StatelessWidget {
   
   ActivityBottombar(
@@ -15,6 +15,17 @@ class ActivityBottombar extends StatelessWidget {
   int zoneCount;
   final Animation<dynamic>? colorAnimation;
   late Color color;
+
+
+  /// Check if all zones are counted, compare no. of zones counted to number of zones in project
+  /// if return true, the bottombar is enabled and user can route to confirmpage 
+  /// if return false, bottom bar is "disabled" and shows error message to user when pressed
+  bool checkIfAllZonesAreCounted() {
+    if (entries.tttEntries.length == zoneCount) {
+      return true;
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +56,4 @@ class ActivityBottombar extends StatelessWidget {
     );
   }
 
-  /*zoneCount == -1 means that the activitybar is used in an activity-page,
-  and we want to return false every time.
-  if all zones are counted return true, else return false
-  if this method returns true, the bottombar in zones will change to green text*/
-  bool checkIfAllZonesAreCounted() {
-    if (entries.tttEntries.length == zoneCount) {
-      return true;
-    }
-    return false;
-  }
 }

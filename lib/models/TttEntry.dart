@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'TttEntry.g.dart';
 
-// Model for ttt entry
+/// Model for ttt entry
 @HiveType(typeId: 0)
 class TttEntry {
   @HiveField(0)
