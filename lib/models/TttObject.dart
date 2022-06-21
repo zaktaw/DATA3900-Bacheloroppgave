@@ -5,7 +5,7 @@ import 'package:bacheloroppgave/models/ActivityZone.dart';
 import 'package:bacheloroppgave/models/TttEntry.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 
-// Model for ttt object. This is the object that is sent to the server
+/// Model for ttt object. This is the object that is sent to the server
 class TttObject {
   late Map counts;
   late String name;
@@ -21,20 +21,24 @@ class TttObject {
       List countsList = value as List;
       List<TttEntry> tttEntries = [];
 
-      // go through all activities and check if each activity is stored in the list of ttt entries
-      // if the activity is not included in the list, a new entry will be created for that activity with 0 counts
-      // this is done because all activities need to be included in the final ttt object
+      /// go through all activities and check if each activity is stored in the list of ttt entries 
+      /// if the activity is not included in the list, a new entry will be created for that activity with 0 counts
+      /// this is done because all activities need to be included in the final ttt object
       activities.forEach((activity) {
         bool activityInCounts = false;
 
-        countsList.forEach((count) {
-          TttEntry telling = count as TttEntry;
-          if (telling.activity == activity.activity_name) {
+      /// Check if activity is in list, add to tttEntries if present in list
+        countsList.forEach((object) {
+          TttEntry count = object as TttEntry;
+          if (count.activity == activity.activity_name) {
             activityInCounts = true;
-            tttEntries.add(count);
+            tttEntries.add(object);
           }
         });
 
+        /// Add counts to tttEntries with default value '0' if activity is not in list
+        /// e.g. activity has not been counted by user, but is appended to list to ensure that 
+        /// complete object is sent to backend
         if (!activityInCounts) {
           TttEntry newCount = new TttEntry(activity.activity_name, 0);
           countsList.add(newCount);
@@ -53,7 +57,7 @@ class TttObject {
       "observer_name": name,
       "timestamp": timestamp
           .toString()
-          .substring(0, 16), // remove seconds and milliseconds
+          .substring(0, 16), // remove seconds and milliseconds from timestamp
       "ActivityZones": activityZones
     };
   }

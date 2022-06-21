@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 const double buttonWidth = 250;
 
-//Widget for buttons in homescreen with navigation based on args
+/// Widget for buttons in homescreen with navigation based on args
 class HomeScreenButton extends StatefulWidget {
   HomeScreenButton({
     Key? key,

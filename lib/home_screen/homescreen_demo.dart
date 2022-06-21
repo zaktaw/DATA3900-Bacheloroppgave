@@ -103,13 +103,12 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                     args: null,
                     onPressed: () => {},
                     routeEnabled: true),
-                
                 HomeScreenButton(
-                    btnName: settings, 
-                    route: "/settings", 
-                    margin: HOMESCREEN_SETTINGS_BTN_MARGIN, 
-                    args: null, 
-                    onPressed: ()=>{},
+                    btnName: settings,
+                    route: "/settings",
+                    margin: HOMESCREEN_SETTINGS_BTN_MARGIN,
+                    args: null,
+                    onPressed: () => {},
                     routeEnabled: true)
               ],
             ))));

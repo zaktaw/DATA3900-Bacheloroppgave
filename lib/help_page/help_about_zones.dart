@@ -14,7 +14,7 @@ class HelpZones extends StatelessWidget {
 
   late List<ZoneObject> zoneList = projectInfo.zones;
 
-//Generates list that is displayed
+/// Generates list that is displayed
   String showZones() {
     String zoneListString = "";
     zoneList.forEach((element) {

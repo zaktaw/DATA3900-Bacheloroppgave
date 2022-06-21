@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     getProjectInfo();
 
-    //Check if there is a active session or not. Used to control if option to resume session should be displayed
+    /// Check if there is a active session or not. Used to control if option to resume session should be displayed
     tttEntries = TttEntries();
     tttEntriesBox = TttEntriesBox.getTttEntries();
     if (tttEntriesBox.containsKey('tttEntriesMap')) {
@@ -65,12 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
       activeTtt = false;
     }
 
-    // save user object
+    /// save user object
     final User user = User(1, 'Hans', TOKEN);
     final userHiveBox = UserBox.getUser();
     userHiveBox.add(user);
 
-    // save user token
+    /// save user token
     UserToken.setUserToken(TOKEN);
   }
 
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       tttProjectInfoBox.clear();
 
-      // get request for tttProjectInfo
+      /// get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
       futureTttProjectInfo.then((value) {
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  //Remove session if a new session is started
+  /// Remove session if a new session is started
   void newCount() {
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
   }

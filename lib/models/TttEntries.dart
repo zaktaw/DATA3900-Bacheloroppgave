@@ -49,8 +49,9 @@ class TttEntries extends HiveObject {
     return false;
   }
 
+  /// Check if zone exists. Set new value for count of actitivty if in the list. If not, create new entry for count/activity
+  /// Added new zone with data from count to the list. Occurs the first time a count is reported in the zone.
   void addTttEntry(int zoneIndex, String activity, int count) {
-    // Check if zone exsists. Set new value for count of actitivty if in the list. If not, create new entry for count/activity
     bool zoneFound = tttEntries.containsKey(zoneIndex);
     if (zoneFound) {
       List entries = tttEntries[zoneIndex];
@@ -64,7 +65,6 @@ class TttEntries extends HiveObject {
       var newEntry = TttEntry(activity, count);
       entries.add(newEntry);
 
-      //Added new zone with data from count to the list. Occurs the first time a count is reported in the zone.
     } else {
       List newZone = [];
       newZone.add(TttEntry(activity, count));
