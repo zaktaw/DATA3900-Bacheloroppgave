@@ -31,7 +31,7 @@ class RouteGenerator {
         //MOCK DB
         //return MaterialPageRoute(builder: (_) => HomeScreenDemo());
 
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => InitializeData());
         
 
       case '/homescreen':

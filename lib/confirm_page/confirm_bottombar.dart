@@ -50,7 +50,7 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                 ),
                 //Give the user time to see confirmation message before redirecting to homescreen
                 await Future.delayed(const Duration(seconds: 2)),
-                (Navigator.of(context).pushNamed('/'))
+                (Navigator.of(context).pushNamed('/homescreen'))
               }),
         },
         child: Padding(

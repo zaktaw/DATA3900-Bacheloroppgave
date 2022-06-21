@@ -21,25 +21,24 @@ class _InitializeDataState extends State<InitializeData> {
   bool loaded = false;
 
   @override
-  void initState() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult != ConnectivityResult.none) {
-      getProjectInfo();
-      HttpRequests.sendUnsentTttObjects();
-    } else {
-      setState(() {
-        loaded = true;
-      });
-    }
+  void initState() {
+    getProjectInfo();
+    HttpRequests.sendUnsentTttObjects();
   }
 
   void getProjectInfo() async {
-    final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult != ConnectivityResult.none) {
+      final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
 
-    // get request for tttProjectInfo
-    Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
-    futureTttProjectInfo
-        .then((value) => {if (value) setState(() => loaded = true)}); // TODO: håndtere hvis value ikke er true
+      // get request for tttProjectInfo
+      Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
+      futureTttProjectInfo.then((value) => {
+            if (value) setState(() => loaded = true)
+          }); // TODO: håndtere hvis value ikke er true
+    } else {
+      setState() => loaded = true;
+    }
   }
 
   @override
