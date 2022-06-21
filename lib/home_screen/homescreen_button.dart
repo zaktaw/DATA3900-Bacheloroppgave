@@ -1,6 +1,9 @@
+import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../local_storage_hive/UserBox.dart';
 
 const double buttonWidth = 250;
 
@@ -13,7 +16,7 @@ class HomeScreenButton extends StatefulWidget {
     required this.margin,
     required this.args,
     required this.onPressed,
-    required this.routeEnabled,
+    required this.hasInfo,
   }) : super(key: key);
 
   final String btnName;
@@ -21,7 +24,7 @@ class HomeScreenButton extends StatefulWidget {
   final double margin;
   final args;
   Function onPressed;
-  final bool routeEnabled;
+  final Function hasInfo;
 
   @override
   _HomeScreenButtonState createState() => _HomeScreenButtonState();
@@ -57,20 +60,31 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
                           HOMESCREEN_BTN_HEIGHT_FACTOR)),
                 )),
             onPressed: () {
+              print("HALLA");
               widget.onPressed();
-              if (widget.routeEnabled) {
+              if (TttProjectInfoBox.getTttProjectInfo().isNotEmpty &&
+                  TttProjectInfoBox.getTttProjectInfo()
+                      .getAt(0)!
+                      .activities
+                      .isNotEmpty &&
+                  TttProjectInfoBox.getTttProjectInfo()
+                      .getAt(0)!
+                      .zones
+                      .isNotEmpty &&
+                  UserBox.getUser().isNotEmpty &&
+                  UserBox.getUser().getAt(0)!.name.isNotEmpty) {
                 Navigator.of(context)
                     .pushNamed(widget.route, arguments: widget.args);
               } else {
                 Fluttertoast.showToast(
-                      msg: "Kunne ikke hente prosjektinfo", // message
-                      toastLength: Toast.LENGTH_SHORT, // length
-                      gravity: ToastGravity.CENTER, // location
-                      timeInSecForIosWeb: 4, // duration,
-                      backgroundColor: TOAST_BACKGROUND_COLOR,
-                      textColor: TOAST_TEXT_COLOR,
-                      fontSize: TOAST_FONT_SIZE,
-                    );
+                  msg: "Kunne ikke hente prosjektinfo", // message
+                  toastLength: Toast.LENGTH_SHORT, // length
+                  gravity: ToastGravity.CENTER, // location
+                  timeInSecForIosWeb: 4, // duration,
+                  backgroundColor: TOAST_BACKGROUND_COLOR,
+                  textColor: TOAST_TEXT_COLOR,
+                  fontSize: TOAST_FONT_SIZE,
+                );
               }
             }));
   }

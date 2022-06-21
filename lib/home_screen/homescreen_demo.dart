@@ -1,4 +1,4 @@
-import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
+/* import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_button.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
@@ -115,3 +115,4 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
             ))));
   }
 }
+ */

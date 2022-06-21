@@ -50,10 +50,24 @@ class _HomeScreenState extends State<HomeScreen> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      getProjectInfo();
+      //getProjectInfo();
     });
 
-    getProjectInfo();
+    if (TttProjectInfoBox.getTttProjectInfo().isNotEmpty) {
+      print(TttProjectInfoBox.getTttProjectInfo()
+          .getAt(0)
+          ?.activities[0]
+          .activity_name);
+      projectName = TttProjectInfoBox.getTttProjectInfo().getAt(0)?.project_name
+          as String;
+    }
+
+     print("PROJECTS:");
+    final projectInfos = TttProjectInfoBox.getTttProjectInfo();
+    projectInfos.values.forEach((element) {
+      print(element.project_name);
+    });
+
 
     //Check if there is a active session or not. Used to control if option to resume session should be displayed
     tttEntries = TttEntries();
@@ -88,11 +102,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   getProjectInfo() async {
+    print("GETTNIG PROJECT INFO");
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
-
-      tttProjectInfoBox.clear();
 
       // get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
@@ -108,6 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
             zones: value.zones,
             observers: value.observers,
             id: value.id);
+        tttProjectInfoBox.clear();
         tttProjectInfoBox.add(projectInfo);
       });
     } else {
@@ -123,11 +137,20 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   bool hasInfo() {
-    return TttProjectInfoBox.getTttProjectInfo().isNotEmpty &&
+/*     print("1" + TttProjectInfoBox.getTttProjectInfo().isNotEmpty.toString());
+    print(
+        "2" + TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty.toString());
+    print(TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty);
+    print(UserBox.getUser().isNotEmpty);
+    print(UserBox.getUser().getAt(0)!.name.isNotEmpty); */
+    /* return TttProjectInfoBox.getTttProjectInfo().isNotEmpty &&
         TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty &&
         TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty &&
         UserBox.getUser().isNotEmpty &&
-        UserBox.getUser().getAt(0)!.name.isNotEmpty;
+        UserBox.getUser().getAt(0)!.name.isNotEmpty; */
+    //print("PROSJEKT-NAVN");
+    //print(TttProjectInfoBox.getTttProjectInfo().getAt(0)?.project_name);
+    return false;
   }
 
   @override
@@ -156,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         route: "/activity",
                         args: [tttEntries, 0],
                         onPressed: newCount,
-                        routeEnabled: hasInfo()),
+                        hasInfo: hasInfo),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
@@ -164,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         route: '/zones',
                         args: activeTttEntries,
                         onPressed: () => {},
-                        routeEnabled: hasInfo(),
+                        hasInfo: hasInfo,
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
@@ -173,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   route: "/help",
                   args: null,
                   onPressed: () => {},
-                  routeEnabled: hasInfo(),
+                  hasInfo: hasInfo,
                 ),
                 HomeScreenButton(
                   btnName: settings,
@@ -181,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   margin: HOMESCREEN_SETTINGS_BTN_MARGIN,
                   args: null,
                   onPressed: () => {},
-                  routeEnabled: true,
+                  hasInfo: () => true,
                 )
               ],
             ))));

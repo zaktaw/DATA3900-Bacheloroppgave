@@ -2,6 +2,7 @@ import 'package:bacheloroppgave/confirm_page/confirm_count.dart';
 import 'package:bacheloroppgave/help_page/help.dart';
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_demo.dart';
+import 'package:bacheloroppgave/initializeData.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/settings_page/settings.dart';
 import 'package:bacheloroppgave/zone_page/zone.dart';
@@ -25,10 +26,17 @@ class RouteGenerator {
         LINE 25 or LINE 28*/
 
         //SERVER:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        //return MaterialPageRoute(builder: (_) => HomeScreen());
         
         //MOCK DB
         //return MaterialPageRoute(builder: (_) => HomeScreenDemo());
+
+        return MaterialPageRoute(builder: (_) => InitializeData());
+        
+
+      case '/homescreen':
+        return MaterialPageRoute(builder: (_) => HomeScreen());
+
 
       case '/activity':
         List<dynamic> argsList = args as List<dynamic>;
