@@ -9,6 +9,7 @@ const String send_count = 'Send inn telling';
 const String pick_name = "Velg navn";
 const String send_failed = 'Sending feilet';
 const String send_confirmed = 'Telling sendt';
+const String sending = 'Sender telling...';
 
 //Bottombar for confirm-page. Logic to prevent user from submitting session if observers is not selected
 class ConfirmBottombar extends StatefulWidget {
@@ -38,7 +39,15 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
       color: BOTTOMBAR_COLOR,
       child: InkWell(
         onTap: () async => {
-          
+          Fluttertoast.showToast(
+                      msg: sending, // message
+                      toastLength: Toast.LENGTH_SHORT, // length
+                      gravity: ToastGravity.CENTER, // location
+                      timeInSecForIosWeb: 1, // duration,
+                      backgroundColor: TOAST_BACKGROUND_COLOR,
+                      textColor: TOAST_TEXT_COLOR,
+                      fontSize: TOAST_FONT_SIZE,
+                    ),
           response = widget.sendTTT(),
           response.then((value) async => {
                 if (value == 200) // POST request is successful
