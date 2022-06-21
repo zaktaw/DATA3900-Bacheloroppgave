@@ -97,6 +97,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
         projectInfo.id,
         projectInfo.zones);
 
+    TttEntriesBox.getTttEntries().delete('tttEntriesMap');
+
     final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
@@ -104,8 +106,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
 
       int statusCode = await HttpRequests.postTttObject(jsonBody);
 
-      if (statusCode == 20) {
-        TttEntriesBox.getTttEntries().delete('tttEntriesMap');
+      if (statusCode == 200) {
         return SENT_OK;
       } else {
         unsentTttEntriesBox.add(tttObject);

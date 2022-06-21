@@ -50,7 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      //getProjectInfo();
+      print("Internet changed");
+      if (result != ConnectivityResult.none) {
+        print("Internet changed to internet");
+
+        HttpRequests.sendUnsentTttObjects();
+      }
     });
 
     if (TttProjectInfoBox.getTttProjectInfo().isNotEmpty) {
@@ -62,12 +67,11 @@ class _HomeScreenState extends State<HomeScreen> {
           as String;
     }
 
-     print("PROJECTS:");
+    print("PROJECTS:");
     final projectInfos = TttProjectInfoBox.getTttProjectInfo();
     projectInfos.values.forEach((element) {
       print(element.project_name);
     });
-
 
     //Check if there is a active session or not. Used to control if option to resume session should be displayed
     tttEntries = TttEntries();
@@ -84,6 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
     unsentTttEntriesBox.keys.forEach((element) {
       print(element);
     });
+
+    //HttpRequests.sendUnsentTttObjects();
 
     // save user object
     final User user = User(1, 'Hans', TOKEN);
