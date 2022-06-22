@@ -60,19 +60,8 @@ class _HomeScreenButtonState extends State<HomeScreenButton> {
                           HOMESCREEN_BTN_HEIGHT_FACTOR)),
                 )),
             onPressed: () {
-              print("HALLA");
               widget.onPressed();
-              if (TttProjectInfoBox.getTttProjectInfo().isNotEmpty &&
-                  TttProjectInfoBox.getTttProjectInfo()
-                      .getAt(0)!
-                      .activities
-                      .isNotEmpty &&
-                  TttProjectInfoBox.getTttProjectInfo()
-                      .getAt(0)!
-                      .zones
-                      .isNotEmpty &&
-                  UserBox.getUser().isNotEmpty &&
-                  UserBox.getUser().getAt(0)!.name.isNotEmpty) {
+              if (widget.hasInfo()) {
                 Navigator.of(context)
                     .pushNamed(widget.route, arguments: widget.args);
               } else {

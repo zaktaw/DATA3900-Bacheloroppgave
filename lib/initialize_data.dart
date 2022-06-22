@@ -27,8 +27,10 @@ class _InitializeDataState extends State<InitializeData> {
   }
 
   void getProjectInfo() async {
+    print("Sjekker nettkobling");
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
+      print("Har nett");
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
 
       // get request for tttProjectInfo
@@ -37,7 +39,8 @@ class _InitializeDataState extends State<InitializeData> {
             if (value) setState(() => loaded = true)
           }); // TODO: håndtere hvis value ikke er true
     } else {
-      setState() => loaded = true;
+      print("Har ikke nett");
+      setState(() => loaded = true);
     }
   }
 

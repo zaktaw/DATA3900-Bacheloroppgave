@@ -13,6 +13,7 @@ import 'package:bacheloroppgave/local_storage_hive/UserBox.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late Box tttEntriesBox;
   late List activities;
   late List zones;
-  String projectName = "";
+  String projectName = "Kunne ikke hente prosjektinfo";
   late StreamSubscription subscription;
 
   @override
@@ -50,27 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      print("Internet changed");
       if (result != ConnectivityResult.none) {
-        print("Internet changed to internet");
-
         HttpRequests.sendUnsentTttObjects();
+        getProjectInfo();
       }
-    });
-
-    if (TttProjectInfoBox.getTttProjectInfo().isNotEmpty) {
-      print(TttProjectInfoBox.getTttProjectInfo()
-          .getAt(0)
-          ?.activities[0]
-          .activity_name);
-      projectName = TttProjectInfoBox.getTttProjectInfo().getAt(0)?.project_name
-          as String;
-    }
-
-    print("PROJECTS:");
-    final projectInfos = TttProjectInfoBox.getTttProjectInfo();
-    projectInfos.values.forEach((element) {
-      print(element.project_name);
     });
 
     //Check if there is a active session or not. Used to control if option to resume session should be displayed
@@ -83,13 +67,15 @@ class _HomeScreenState extends State<HomeScreen> {
       activeTtt = false;
     }
 
-    print("UNSENT TTT-ENTRIES");
-    final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
-    unsentTttEntriesBox.keys.forEach((element) {
-      print(element);
-    });
-
-    //HttpRequests.sendUnsentTttObjects();
+    print("Sjekk prosjektinfo");
+    if (TttProjectInfoBox.getTttProjectInfo().isNotEmpty) {
+      setState(() {
+        print("Setting state");
+        projectName = TttProjectInfoBox.getTttProjectInfo()
+            .get(projectInfoKey)!
+            .project_name;
+      });
+    }
 
     // save user object
     final User user = User(1, 'Hans', TOKEN);
@@ -116,20 +102,17 @@ class _HomeScreenState extends State<HomeScreen> {
       // get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
-      futureTttProjectInfo.then((value) {
-        setState(() {
-          projectName = value.project_name;
-        });
-        TttProjectInfo projectInfo = TttProjectInfo(
-            project_name: value.project_name,
-            description: value.description,
-            activities: value.activities,
-            zones: value.zones,
-            observers: value.observers,
-            id: value.id);
-        tttProjectInfoBox.clear();
-        tttProjectInfoBox.add(projectInfo);
+      futureTttProjectInfo.then((ok) => {
+        if (ok) {
+          setState(() => {
+            projectName = TttProjectInfoBox.getTttProjectInfo()
+            .get(projectInfoKey)!
+            .project_name
+          })
+        }
       });
+      
+    
     } else {
       setState(() {
         projectName = "Ingen internettkobling";
@@ -143,20 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   bool hasInfo() {
-/*     print("1" + TttProjectInfoBox.getTttProjectInfo().isNotEmpty.toString());
-    print(
-        "2" + TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty.toString());
-    print(TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty);
-    print(UserBox.getUser().isNotEmpty);
-    print(UserBox.getUser().getAt(0)!.name.isNotEmpty); */
-    /* return TttProjectInfoBox.getTttProjectInfo().isNotEmpty &&
-        TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty &&
-        TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty &&
-        UserBox.getUser().isNotEmpty &&
-        UserBox.getUser().getAt(0)!.name.isNotEmpty; */
-    //print("PROSJEKT-NAVN");
-    //print(TttProjectInfoBox.getTttProjectInfo().getAt(0)?.project_name);
-    return false;
+    return TttProjectInfoBox.getTttProjectInfo().isNotEmpty;
   }
 
   @override
