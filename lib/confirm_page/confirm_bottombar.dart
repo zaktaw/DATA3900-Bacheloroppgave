@@ -10,6 +10,7 @@ const String pick_name = "Velg navn";
 const String send_failed = 'Sending feilet';
 const String send_confirmed = 'Telling sendt';
 const String sending = 'Sender telling...';
+bool enabled = true;
 
 //Bottombar for confirm-page. Logic to prevent user from submitting session if observers is not selected
 class ConfirmBottombar extends StatefulWidget {
@@ -38,15 +39,17 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
       color: BOTTOMBAR_COLOR,
       child: InkWell(
         onTap: () async => {
-          Fluttertoast.showToast(
-                      msg: sending, // message
-                      toastLength: Toast.LENGTH_SHORT, // length
-                      gravity: ToastGravity.CENTER, // location
-                      timeInSecForIosWeb: 1, // duration,
-                      backgroundColor: TOAST_BACKGROUND_COLOR,
-                      textColor: TOAST_TEXT_COLOR,
-                      fontSize: TOAST_FONT_SIZE,
-                    ),
+          if (enabled) {
+            enabled = false,
+            Fluttertoast.showToast(
+            msg: sending, // message
+            toastLength: Toast.LENGTH_SHORT, // length
+            gravity: ToastGravity.CENTER, // location
+            timeInSecForIosWeb: 1, // duration,
+            backgroundColor: TOAST_BACKGROUND_COLOR,
+            textColor: TOAST_TEXT_COLOR,
+            fontSize: TOAST_FONT_SIZE,
+          ),
           response = widget.sendTTT(),
           response.then((value) async => {
                 Fluttertoast.showToast(
@@ -62,6 +65,8 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                 await Future.delayed(const Duration(seconds: 2)),
                 (Navigator.of(context).pushNamed('/homescreen'))
               }),
+          }
+          
         },
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
