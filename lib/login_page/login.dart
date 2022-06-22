@@ -19,18 +19,20 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
 
   bool checkMissingInputUsernameFlag = false;
   bool checkMissingInputPasswordFlag = false;
-  bool checkInternetConnectionFlag = true;
+  bool checkInternetConnectionFlag = false;
 
   String response = "";
 
   Future checkConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
-      checkInternetConnectionFlag = false;
+      checkInternetConnectionFlag = true;
+      }
     }
-  }
+
 
   Future login() async {
+    if(checkInternetConnectionFlag) {
     ///TODO: Format body add internet-check
     String jsonBody =
         jsonEncode(usernameController.text + " " + passwordController.text);
@@ -38,7 +40,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
     postRequest.then((value) {
       if (value.statusCode == 200) {
         //hent ut brukerinfo og legg i hiveboks for user
-        Navigator.of(context).pushNamed('/');
+        Navigator.of(context).pushNamed('/initdata');
       }
 
       /// Invalid credentials
@@ -52,6 +54,11 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
         });
       }
     });
+    } else {
+        setState(() {
+          response = "Kan ikke logge inn - ingen internett-tilkobling";
+        });
+    }
   }
 
   void checkMissingInputUsername() {
@@ -153,7 +160,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
               ),
             ),
             Container(
-              height: 30,
+              height: 50,
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
               margin: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width *
@@ -181,8 +188,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
                       checkMissingInputUsername();
                       checkMissingInputPassword();
                       if (!checkMissingInputPasswordFlag &&
-                          !checkMissingInputUsernameFlag &&
-                          checkInternetConnectionFlag) {
+                          !checkMissingInputUsernameFlag) {
                         login();
                       }
                     })),

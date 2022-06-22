@@ -69,7 +69,6 @@ Future getProjectInfo() async {
   }
 }
 
-void redirect(BuildContext context) {}
 
 ///Starts the hive boxes
 Future<void> main() async {
@@ -88,11 +87,12 @@ Future<void> main() async {
   await openBox('unsentTttEntries');
 
   ///final userHasToken = await UserToken.containsToken();
-  final bool userHasToken = true;
+  final bool userHasToken = false;
   if (userHasToken) {
     //await getProjectInfo();
     // await sendUnsentTTTs
-    initialRoute = '/';
+    print('hei');
+    initialRoute = '/initdata';
   } else
     initialRoute = '/login';
 
