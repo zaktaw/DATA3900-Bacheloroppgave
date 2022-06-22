@@ -5,8 +5,12 @@ import 'dart:io';
 
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';
+import 'package:bacheloroppgave/resources/keys.dart';
 
 import 'package:http/http.dart' as http;
+
+import 'local_storage_hive/UnsentTttEntriesBox.dart';
+import 'local_storage_hive/TttProjectInfoBox.dart';
 
 class HttpRequests {
   static String getTttProjectInfoUrl = 'https://ltr-abi.no:8443/drf2/project/5';
@@ -17,11 +21,10 @@ class HttpRequests {
 
   static String token = "Token 768fac501b086edd2deaddebd1984c14ca9c5b72";
 
-  /// GET-method for retrieving TTT project info
-  static Future<TttProjectInfo> fetchTttProjectInfo() async {
+  // GET-method for retrieving TTT project info
+  static Future<bool> fetchTttProjectInfo() async {
     // TODO: replace token with userToken when implemented in backend
     //final userToken = await UserToken.getUserToken();
-
     final response = await http.get(
       Uri.parse(getTttProjectInfoUrl),
       headers: {
@@ -30,10 +33,14 @@ class HttpRequests {
     );
 
     if (response.statusCode == 200) {
-      return TttProjectInfo.fromJson(jsonDecode(utf8.decode(response
-          .bodyBytes))); // utf8.decode needed for printing norwegian characters æ, ø and å;
+      TttProjectInfo tttProjectInfo = TttProjectInfo.fromJson(jsonDecode(
+          utf8.decode(response
+              .bodyBytes))); // utf8.decode needed for printing norwegian characters æ, ø and å;
+      final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
+      tttProjectInfoBox.put(projectInfoKey, tttProjectInfo);
+      return true;
     } else {
-      throw Exception('Failed to load tttProjectInfo');
+      return false;
     }
   }
 
@@ -53,7 +60,7 @@ class HttpRequests {
     );
 
     int statusCode = response.statusCode;
-  
+
     return statusCode;
   }
 
@@ -74,5 +81,23 @@ class HttpRequests {
     //int statusCode = response.statusCode;
 
     return response;
+  }
+
+  // TODO:
+  // Legg til tilbakemelding til bruker når objekter er sendt / ikke blir sendt
+  // Håndtere situasjon der app ikke får kontakt med server
+  static Future sendUnsentTttObjects() async {
+
+    final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
+
+    if (unsentTttEntriesBox.isNotEmpty) {
+      for (final key in unsentTttEntriesBox.keys) {
+        final tttObject = unsentTttEntriesBox.get(key);
+        String jsonBody = jsonEncode(tttObject);
+        postTttObject(jsonBody);
+      }
+
+      unsentTttEntriesBox.clear();
+    }
   }
 }

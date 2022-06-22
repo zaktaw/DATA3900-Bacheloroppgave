@@ -4,21 +4,22 @@ import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_button.dart';
 import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
+import 'package:bacheloroppgave/local_storage_hive/UnsentTttEntriesBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/User.dart';
-import 'package:bacheloroppgave/models/UserBox.dart';
+import 'package:bacheloroppgave/local_storage_hive/UserBox.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:hive/hive.dart';
 import 'dart:io';
 import 'dart:math';
-
 
 const String project_title_error = "Kunne ikke hente prosjekt-tittel";
 const String new_count = 'Ny telling';
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late Box tttEntriesBox;
   late List activities;
   late List zones;
-  String projectName = "";
+  String projectName = "Kunne ikke hente prosjektinfo";
   late StreamSubscription subscription;
 
   @override
@@ -50,12 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      getProjectInfo();
+      if (result != ConnectivityResult.none) {
+        HttpRequests.sendUnsentTttObjects();
+        getProjectInfo();
+      }
     });
 
-    getProjectInfo();
-
-    /// Check if there is a active session or not. Used to control if option to resume session should be displayed
+    //Check if there is a active session or not. Used to control if option to resume session should be displayed
     tttEntries = TttEntries();
     tttEntriesBox = TttEntriesBox.getTttEntries();
     if (tttEntriesBox.containsKey('tttEntriesMap')) {
@@ -65,7 +67,17 @@ class _HomeScreenState extends State<HomeScreen> {
       activeTtt = false;
     }
 
-    /// save user object
+    print("Sjekk prosjektinfo");
+    if (TttProjectInfoBox.getTttProjectInfo().isNotEmpty) {
+      setState(() {
+        print("Setting state");
+        projectName = TttProjectInfoBox.getTttProjectInfo()
+            .get(projectInfoKey)!
+            .project_name;
+      });
+    }
+
+    // save user object
     final User user = User(1, 'Hans', TOKEN);
     final userHiveBox = UserBox.getUser();
     userHiveBox.add(user);
@@ -82,28 +94,25 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   getProjectInfo() async {
+    print("GETTNIG PROJECT INFO");
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
 
-      tttProjectInfoBox.clear();
-
-      /// get request for tttProjectInfo
+      // get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
-      futureTttProjectInfo.then((value) {
-        setState(() {
-          projectName = value.project_name;
-        });
-        TttProjectInfo projectInfo = TttProjectInfo(
-            project_name: value.project_name,
-            description: value.description,
-            activities: value.activities,
-            zones: value.zones,
-            observers: value.observers,
-            id: value.id);
-        tttProjectInfoBox.add(projectInfo);
+      futureTttProjectInfo.then((ok) => {
+        if (ok) {
+          setState(() => {
+            projectName = TttProjectInfoBox.getTttProjectInfo()
+            .get(projectInfoKey)!
+            .project_name
+          })
+        }
       });
+      
+    
     } else {
       setState(() {
         projectName = "Ingen internettkobling";
@@ -114,6 +123,10 @@ class _HomeScreenState extends State<HomeScreen> {
   /// Remove session if a new session is started
   void newCount() {
     TttEntriesBox.getTttEntries().delete('tttEntriesMap');
+  }
+
+  bool hasInfo() {
+    return TttProjectInfoBox.getTttProjectInfo().isNotEmpty;
   }
 
   @override
@@ -142,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         route: "/activity",
                         args: [tttEntries, 0],
                         onPressed: newCount,
-                        routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty),
+                        hasInfo: hasInfo),
                 activeTtt
                     ? HomeScreenButton(
                         btnName: continue_count,
@@ -150,27 +163,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         route: '/zones',
                         args: activeTttEntries,
                         onPressed: () => {},
-                        routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty,
+                        hasInfo: hasInfo,
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
-                    btnName: help,
-                    margin: HOMESCREEN_HELP_BTN_MARGIN,
-                    route: "/help",
-                    args: null,
-                    onPressed: () => {},
-                    routeEnabled: TttProjectInfoBox.getTttProjectInfo().isNotEmpty
-                    && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.zones.isNotEmpty
-                    && TttProjectInfoBox.getTttProjectInfo().getAt(0)!.activities.isNotEmpty,
-                    ),
-                    
+                  btnName: help,
+                  margin: HOMESCREEN_HELP_BTN_MARGIN,
+                  route: "/help",
+                  args: null,
+                  onPressed: () => {},
+                  hasInfo: hasInfo,
+                ),
                 HomeScreenButton(
-                    btnName: settings, 
-                    route: "/settings", 
-                    margin: HOMESCREEN_SETTINGS_BTN_MARGIN, 
-                    args: null, 
-                    onPressed: ()=>{},
-                    routeEnabled: true,)
+                  btnName: settings,
+                  route: "/settings",
+                  margin: HOMESCREEN_SETTINGS_BTN_MARGIN,
+                  args: null,
+                  onPressed: () => {},
+                  hasInfo: () => true,
+                )
               ],
             ))));
   }

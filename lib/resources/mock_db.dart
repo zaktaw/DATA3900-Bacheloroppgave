@@ -195,7 +195,7 @@ TttProjectInfo getMockDb() {
   ]);
 
   List<String> observerList = ["Maria", "Hans", "Helene"];
-  String title = "OsloMet sitt bibliotek";
+  String title = "OsloMet";
   String description = "En beskrivelse av mock-prosjektet :)";
 
   TttProjectInfo projectInfo = TttProjectInfo(

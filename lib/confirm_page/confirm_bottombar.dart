@@ -15,8 +15,7 @@ const String sending = 'Sender telling...';
 class ConfirmBottombar extends StatefulWidget {
   Function sendTTT;
 
-  ConfirmBottombar(this.sendTTT, {Key? key})
-      : super(key: key) {
+  ConfirmBottombar(this.sendTTT, {Key? key}) : super(key: key) {
     sendTTT = this.sendTTT;
   }
 
@@ -50,36 +49,19 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                     ),
           response = widget.sendTTT(),
           response.then((value) async => {
-                if (value == 200) // POST request is successful
-                  {
-                    TttEntriesBox.getTttEntries().delete('tttEntriesMap'),
-                    Fluttertoast.showToast(
-                      msg: send_confirmed, // message
-                      toastLength: Toast.LENGTH_SHORT, // length
-                      gravity: ToastGravity.CENTER, // location
-                      timeInSecForIosWeb: 4, // duration,
-                      backgroundColor: TOAST_BACKGROUND_COLOR,
-                      textColor: TOAST_TEXT_COLOR,
-                      fontSize: TOAST_FONT_SIZE,
-                    ),
-                    //Give the user time to see confirmation message before redirecting to homescreen
-                    await Future.delayed(const Duration(seconds: 2)),
-                    (Navigator.of(context).pushNamed('/'))
-                  }
-                else
-                  {
-                    Fluttertoast.showToast(
-                      msg: send_failed, // message
-                      toastLength: Toast.LENGTH_SHORT, // length
-                      gravity: ToastGravity.CENTER, // location
-                      timeInSecForIosWeb: 4, // duration,
-                      backgroundColor: TOAST_BACKGROUND_COLOR,
-                      textColor: TOAST_TEXT_COLOR,
-                      fontSize: TOAST_FONT_SIZE,
-                    ),
-                  }
+                Fluttertoast.showToast(
+                  msg: value, // message
+                  toastLength: Toast.LENGTH_SHORT, // length
+                  gravity: ToastGravity.CENTER, // location
+                  timeInSecForIosWeb: 4, // duration,
+                  backgroundColor: TOAST_BACKGROUND_COLOR,
+                  textColor: TOAST_TEXT_COLOR,
+                  fontSize: TOAST_FONT_SIZE,
+                ),
+                //Give the user time to see confirmation message before redirecting to homescreen
+                await Future.delayed(const Duration(seconds: 2)),
+                (Navigator.of(context).pushNamed('/homescreen'))
               }),
-            
         },
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
