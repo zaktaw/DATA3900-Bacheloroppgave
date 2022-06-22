@@ -24,10 +24,10 @@ class RouteGenerator {
         ///CHANGE BETWEEN SERVER OR A MOCK DB BY COMMENTING OUT EITHER LINE 25 or LINE 28
 
         ///SERVER:
-        ///return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
         
         ///MOCK DB
-        return MaterialPageRoute(builder: (_) => HomeScreenDemo());
+        ///return MaterialPageRoute(builder: (_) => HomeScreenDemo());
 
       case '/activity':
         List<dynamic> argsList = args as List<dynamic>;

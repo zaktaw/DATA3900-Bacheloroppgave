@@ -91,7 +91,22 @@ class _ConfirmCountState extends State<ConfirmCount> {
                     CONFIRM_PAGE_HEADER_PADDING_BOTTOM_FACTOR),
           )),
           ConfirmReviewList(entries, projectInfo.zones),
-          Text(NAME_TEXT + user.name),
+          Container(
+              child: Padding(
+            child: Text(NAME_TEXT + user.name,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: CONFIRM_PAGE_REWIEWLIST_FONTSIZE),
+            ),
+            padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height *
+                    CONFIRM_PAGE_FOOTER_PADDING_TOP_FACTOR,
+                bottom: MediaQuery.of(context).size.height *
+                    CONFIRM_PAGE_HEADER_PADDING_BOTTOM_FACTOR),
+          ))
+          
+          
+          ///Text(NAME_TEXT + user.name),
         ],
       )),
       bottomNavigationBar: ConfirmBottombar(sendTTT),
