@@ -1,5 +1,4 @@
 import 'ActivityObject.dart';
-import 'Observer.dart';
 import 'ZoneObject.dart';
 
 import 'package:hive/hive.dart';
@@ -15,9 +14,6 @@ class TttProjectInfo extends HiveObject {
   @HiveField(1)
   late List<ZoneObject> zones;
 
-  @HiveField(2)
-  late List<String> observers;
-
   @HiveField(3)
   late String project_name;
 
@@ -30,7 +26,6 @@ class TttProjectInfo extends HiveObject {
   TttProjectInfo(
       {required this.activities,
       required this.zones,
-      required this.observers,
       required this.project_name,
       required this.description,
       required this.id});
@@ -44,16 +39,11 @@ class TttProjectInfo extends HiveObject {
 
     list = json['zones'] as List;
     List<ZoneObject> listZoneObject =
-        list.map((i) => ZoneObject.fromJson(i)).toList();
-
-    list = json['observers'] as List;
-    List<String> listObserver =
-        list.map((i) => Observer.fromJson(i).observerName).toList();
+        list.map((i) => ZoneObject.fromJson(i)).toList();    
 
     return TttProjectInfo(
       activities: listActivityObject,
       zones: listZoneObject,
-      observers: listObserver,
       project_name: json['name'],
       description: json['description'],
       id: json['id']
