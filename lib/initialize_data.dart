@@ -5,6 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'http_requests.dart';
 import 'local_storage_hive/TttProjectInfoBox.dart';
@@ -19,6 +20,9 @@ class InitializeData extends StatefulWidget {
 
 class _InitializeDataState extends State<InitializeData> {
   bool loaded = false;
+  String msg_no_internet = "Kunne ikke oppdatere prosjekt, manglende internett";
+  String msg_no_server =
+      "Kunne ikke oppdatere prosjekt, ingen kontakt med server";
 
   @override
   void initState() {
@@ -34,10 +38,34 @@ class _InitializeDataState extends State<InitializeData> {
       // get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
       futureTttProjectInfo.then((value) => {
-            if (value) setState(() => loaded = true)
-          }); // TODO: håndtere hvis value ikke er true
+            if (value) {
+              setState(() => loaded = true)
+            }
+            else
+              {
+                setState(() => loaded = true),
+                Fluttertoast.showToast(
+                  msg: msg_no_server, // message
+                  toastLength: Toast.LENGTH_SHORT, // length
+                  gravity: ToastGravity.CENTER, // location
+                  timeInSecForIosWeb: 3, // duration
+                  backgroundColor: TOAST_BACKGROUND_COLOR,
+                  textColor: TOAST_TEXT_COLOR,
+                  fontSize: TOAST_FONT_SIZE,
+                ),
+              }
+          });
     } else {
-      setState() => loaded = true;
+      setState(() => loaded = true);
+      Fluttertoast.showToast(
+        msg: msg_no_internet, // message
+        toastLength: Toast.LENGTH_SHORT, // length
+        gravity: ToastGravity.CENTER, // location
+        timeInSecForIosWeb: 3, // duration
+        backgroundColor: TOAST_BACKGROUND_COLOR,
+        textColor: TOAST_TEXT_COLOR,
+        fontSize: TOAST_FONT_SIZE,
+      );
     }
   }
 

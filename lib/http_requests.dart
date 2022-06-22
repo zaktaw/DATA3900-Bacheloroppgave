@@ -25,7 +25,6 @@ class HttpRequests {
   static Future<bool> fetchTttProjectInfo() async {
     // TODO: replace token with userToken when implemented in backend
     //final userToken = await UserToken.getUserToken();
-
     final response = await http.get(
       Uri.parse(getTttProjectInfoUrl),
       headers: {
