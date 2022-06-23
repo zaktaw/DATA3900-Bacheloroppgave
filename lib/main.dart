@@ -44,33 +44,6 @@ Future<Box?> openBox(String boxName) async {
   return null;
 }
 
-Future getProjectInfo() async {
-  print("HER I MAIN");
-  var connectivityResult = await (Connectivity().checkConnectivity());
-  if (connectivityResult != ConnectivityResult.none) {
-    final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
-
-    // get request for tttProjectInfo
-    Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
-
-    futureTttProjectInfo.then((value) {
-      TttProjectInfo projectInfo = TttProjectInfo(
-          project_name: value.project_name,
-          description: value.description,
-          activities: value.activities,
-          zones: value.zones,
-          observers: value.observers,
-          id: value.id);
-      tttProjectInfoBox.clear();
-      //tttProjectInfoBox.add(projectInfo);
-      tttProjectInfoBox.put(projectInfoKey, projectInfo);
-      //.whenComplete(() => {Navigator.of(context).pushNamed('/')});
-    });
-  }
-}
-
-void redirect(BuildContext context) {}
-
 ///Starts the hive boxes
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -90,8 +63,6 @@ Future<void> main() async {
   ///final userHasToken = await UserToken.containsToken();
   final bool userHasToken = true;
   if (userHasToken) {
-    //await getProjectInfo();
-    // await sendUnsentTTTs
     initialRoute = '/';
   } else
     initialRoute = '/login';

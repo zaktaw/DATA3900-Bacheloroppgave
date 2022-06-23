@@ -194,14 +194,12 @@ TttProjectInfo getMockDb() {
     actobj16
   ]);
 
-  List<String> observerList = ["Maria", "Hans", "Helene"];
   String title = "OsloMet";
   String description = "En beskrivelse av mock-prosjektet :)";
 
   TttProjectInfo projectInfo = TttProjectInfo(
       activities: actList,
       zones: zoneList,
-      observers: observerList,
       project_name: title,
       description: description,
       id: 12345);

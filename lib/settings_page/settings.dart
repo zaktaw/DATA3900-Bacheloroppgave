@@ -12,7 +12,9 @@ class Settings extends StatelessWidget {
       body: Column(
         children:[
           SettingsItem("toggle"),
-          SettingsItem("logoutbutton")
+          SettingsItem("logoutbutton"),
+          SettingsItem("getprojectbutton"),
+          SettingsItem("sendtttobjectsbutton")
       ])
     );
   }
