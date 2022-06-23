@@ -1,3 +1,5 @@
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/UnsentTttEntriesBox.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';
@@ -7,13 +9,20 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../resources/app_theme.dart';
 
-class SettingsItem extends StatelessWidget {
+class SettingsItem extends StatefulWidget {
   String type;
   //Function function;
   int numberOfUnsentTttEntries = 0;
 
-  //initState()
-  //
+  SettingsItem(this.type, /*this.function,*/ {Key? key}) : super(key: key);
+
+  @override
+  State<SettingsItem> createState() => _SettingsItemState();
+}
+
+class _SettingsItemState extends State<SettingsItem> {
+  @override
+  void initState() {}
 
   void logout(BuildContext context) {
     UserToken.removeToken()
@@ -82,12 +91,10 @@ class SettingsItem extends StatelessWidget {
     }
   }
 
-  SettingsItem(this.type, /*this.function,*/ {Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     ///Switch that changes the component depending on the argument when calling the constructor
-    switch (type) {
+    switch (widget.type) {
 
       ///Returns a red logout button
       case "logoutbutton":
@@ -148,6 +155,6 @@ class SettingsItem extends StatelessWidget {
         );
     }
 
-    return Text("Det er ingen instillingtype med navn: " + type);
+    return Text("Det er ingen instillingtype med navn: " + widget.type);
   }
 }
