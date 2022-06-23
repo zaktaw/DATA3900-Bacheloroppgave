@@ -12,7 +12,6 @@ import '../resources/app_theme.dart';
 class SettingsItem extends StatefulWidget {
   String type;
   //Function function;
-  int numberOfUnsentTttEntries = 0;
 
   SettingsItem(this.type, /*this.function,*/ {Key? key}) : super(key: key);
 
@@ -21,8 +20,18 @@ class SettingsItem extends StatefulWidget {
 }
 
 class _SettingsItemState extends State<SettingsItem> {
+
+  int numberOfUnsentTttEntries = 0;
+
   @override
-  void initState() {}
+  void initState() {
+    final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
+    if (unsentTttEntriesBox.isNotEmpty) {
+      setState(() {
+        numberOfUnsentTttEntries = unsentTttEntriesBox.length;
+      });
+    }
+  }
 
   void logout(BuildContext context) {
     UserToken.removeToken()
@@ -118,7 +127,7 @@ class _SettingsItemState extends State<SettingsItem> {
       case "sendtttobjectsbutton":
         return ElevatedButton.icon(
             icon: Icon(Icons.upload),
-            label: Text("Send usendte tellinger"),
+            label: Text("Send usendte tellinger (" + (numberOfUnsentTttEntries.toString()) + ")"),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
                     Color.fromARGB(167, 198, 193, 193))),
