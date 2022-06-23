@@ -20,7 +20,6 @@ class SettingsItem extends StatefulWidget {
 }
 
 class _SettingsItemState extends State<SettingsItem> {
-
   int numberOfUnsentTttEntries = 0;
 
   @override
@@ -85,7 +84,9 @@ class _SettingsItemState extends State<SettingsItem> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       HttpRequests.sendUnsentTttObjects();
-      setState() {}
+      setState(() => {
+        numberOfUnsentTttEntries = 0
+      });
     } else {
       Fluttertoast.showToast(
         msg:
@@ -127,7 +128,9 @@ class _SettingsItemState extends State<SettingsItem> {
       case "sendtttobjectsbutton":
         return ElevatedButton.icon(
             icon: Icon(Icons.upload),
-            label: Text("Send usendte tellinger (" + (numberOfUnsentTttEntries.toString()) + ")"),
+            label: Text("Send usendte tellinger (" +
+                (numberOfUnsentTttEntries.toString()) +
+                ")"),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
                     Color.fromARGB(167, 198, 193, 193))),

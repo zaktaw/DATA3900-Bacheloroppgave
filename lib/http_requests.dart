@@ -87,7 +87,6 @@ class HttpRequests {
   // Legg til tilbakemelding til bruker når objekter er sendt / ikke blir sendt
   // Håndtere situasjon der app ikke får kontakt med server
   static Future sendUnsentTttObjects() async {
-
     final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
 
     if (unsentTttEntriesBox.isNotEmpty) {
