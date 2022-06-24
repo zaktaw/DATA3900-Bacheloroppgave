@@ -58,66 +58,68 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
-      child: Card(
-        color: CARD_BACKGROUND_COLOR,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        child: Container(
-        child: Column(children: [
-        Row(children: <Widget>[ 
-            Expanded(
-                flex: 5,
-                child:
-                    ActivityPopButton(activity_name, activity_info, key: key)),
-            Expanded(
-              flex: 2,
-              child: IconButton(
-                  iconSize: MediaQuery.of(context).size.width *
-                      ACTIVITY_INC_DEC_BUTTONS_FACTOR,
-                  color: BUTTON_COLOR,
-                  onPressed: () {
-                    txt.text = decrement(txt.text);
-                  },
-                  icon: Icon(Icons.remove_circle_outline)),
-            ),
-            Expanded(
-              flex: 1,
-              child: TextFormField(
-                decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 2)),
-                controller: txt,
-                onChanged: (Text) => {
-                  if (txt.text.isNotEmpty) {manualInput(txt.text)}
-                },
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: ACTIVITY_MANUAL_INPUT_FONTSIZE),
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: IconButton(
-                  iconSize: MediaQuery.of(context).size.width *
-                      ACTIVITY_INC_DEC_BUTTONS_FACTOR,
-                  color: BUTTON_COLOR,
-                  onPressed: () {
-                    txt.text = increment(txt.text);
-                  },
-                  icon: Icon(Icons.add_circle_outline)),
-            )]),
-          checkActivitySetting() ?
-          Row(
-          children: <Widget>[
-              Flexible(child: Text(activity_info))],
-          )
-  :const SizedBox.shrink()]),
-      ),
-       ),
-    decoration: SHADOW_ACT_CARD);
+        margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        child: Card(
+          color: CARD_BACKGROUND_COLOR,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child: Container(
+            child: Column(children: [
+              Row(children: <Widget>[
+                Expanded(
+                    flex: 5,
+                    child: ActivityPopButton(activity_name, activity_info,
+                        key: key)),
+                Expanded(
+                  flex: 2,
+                  child: IconButton(
+                      iconSize: MediaQuery.of(context).size.width *
+                          ACTIVITY_INC_DEC_BUTTONS_FACTOR,
+                      color: BUTTON_COLOR,
+                      onPressed: () {
+                        txt.text = decrement(txt.text);
+                      },
+                      icon: Icon(Icons.remove_circle_outline)),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        contentPadding: EdgeInsets.symmetric(horizontal: 2)),
+                    controller: txt,
+                    onChanged: (Text) => {
+                      if (txt.text.isNotEmpty) {manualInput(txt.text)}
+                    },
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: ACTIVITY_MANUAL_INPUT_FONTSIZE),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: IconButton(
+                      iconSize: MediaQuery.of(context).size.width *
+                          ACTIVITY_INC_DEC_BUTTONS_FACTOR,
+                      color: BUTTON_COLOR,
+                      onPressed: () {
+                        txt.text = increment(txt.text);
+                      },
+                      icon: Icon(Icons.add_circle_outline)),
+                )
+              ]),
+              checkActivitySetting()
+                  ? Row(
+                      children: <Widget>[Flexible(child: Text(activity_info))],
+                    )
+                  : const SizedBox.shrink()
+            ]),
+          ),
+        ),
+        decoration: SHADOW_ACT_CARD);
   }
 }
