@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       if (result != ConnectivityResult.none) {
-        HttpRequests.sendUnsentTttObjects();
+        //HttpRequests.sendUnsentTttObjects();
         getProjectInfo();
       }
     });

@@ -83,7 +83,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
           ConfirmReviewList(entries, projectInfo.zones),
           Container(
               child: Padding(
-            child: Text(NAME_TEXT + user.name,
+            child: Text(
+              NAME_TEXT + user.name,
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: CONFIRM_PAGE_REWIEWLIST_FONTSIZE),
@@ -94,8 +95,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
                 bottom: MediaQuery.of(context).size.height *
                     CONFIRM_PAGE_HEADER_PADDING_BOTTOM_FACTOR),
           ))
-          
-          
+
           ///Text(NAME_TEXT + user.name),
         ],
       )),
@@ -120,7 +120,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
       String jsonBody = jsonEncode(tttObject);
 
       int statusCode = await HttpRequests.postTttObject(jsonBody);
-   
+      print("STATUS CODE:");
+      print(statusCode);
       if (statusCode == 200) {
         return SENT_OK;
       } else {

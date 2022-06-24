@@ -83,10 +83,9 @@ class _SettingsItemState extends State<SettingsItem> {
   void sendUnsentTttObjects() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
-      HttpRequests.sendUnsentTttObjects();
-      setState(() => {
-        numberOfUnsentTttEntries = 0
-      });
+      HttpRequests.sendUnsentTttObjects().then((length) => {setState(() => {
+        numberOfUnsentTttEntries = length
+        })});
     } else {
       Fluttertoast.showToast(
         msg:

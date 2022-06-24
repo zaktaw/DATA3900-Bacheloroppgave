@@ -39,7 +39,7 @@ class HttpRequests {
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
       tttProjectInfoBox.put(projectInfoKey, tttProjectInfo);
     }
-    return true
+    return true;
   }
 
   /// POST-method for submitting TTT objects to server
@@ -77,7 +77,7 @@ class HttpRequests {
     );
 
     //int statusCode = response.statusCode;
-    
+
     return response;
   }
 
@@ -85,16 +85,23 @@ class HttpRequests {
   // Legg til tilbakemelding til bruker når objekter er sendt / ikke blir sendt
   // Håndtere situasjon der app ikke får kontakt med server
   static Future sendUnsentTttObjects() async {
+    print("Sender objekter");
     final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
 
     if (unsentTttEntriesBox.isNotEmpty) {
       for (final key in unsentTttEntriesBox.keys) {
         final tttObject = unsentTttEntriesBox.get(key);
         String jsonBody = jsonEncode(tttObject);
-        postTttObject(jsonBody);
+        postTttObject(jsonBody).then((statusCode) => {
+              if (statusCode == 200)
+                {
+                  unsentTttEntriesBox.delete(key),
+                  print("Slettet objekt med nøkkel " + key.toString())
+                }
+            });
       }
-
-      unsentTttEntriesBox.clear();
+      print("RETURNING");
+      return unsentTttEntriesBox.length;
     }
   }
 }
