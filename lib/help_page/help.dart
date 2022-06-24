@@ -55,7 +55,7 @@ class _HelpState extends State<Help> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ConfirmAndHelpTopBar("Hjelp", '/', null),
+      appBar: ConfirmAndHelpTopBar("Hjelp", '/homescreen', null),
       body: Container(
           color: BACKGROUND_COLOR,
           child: Center(

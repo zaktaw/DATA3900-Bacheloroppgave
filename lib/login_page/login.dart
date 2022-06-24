@@ -6,6 +6,10 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+import '../local_storage_hive/UserBox.dart';
+import '../models/User.dart';
+import '../models/UserToken.dart';
+
 class LoginLandingPage extends StatefulWidget {
   const LoginLandingPage({Key? key}) : super(key: key);
 
@@ -22,11 +26,17 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
   bool checkInternetConnectionFlag = true;
 
   String response = "";
+  String TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
 
   Future checkConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
-      checkInternetConnectionFlag = false;
+      checkInternetConnectionFlag = true;
+    } else {
+        checkInternetConnectionFlag = false;
+        setState(() {
+          response = "Ingen internett-tilkobling";
+        });
     }
   }
 
@@ -36,13 +46,30 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
         jsonEncode(usernameController.text + " " + passwordController.text);
     Future postRequest = HttpRequests.postLogin(jsonBody);
     postRequest.then((value) {
-      if (value.statusCode == 200) {
-        //hent ut brukerinfo og legg i hiveboks for user
-        Navigator.of(context).pushNamed('/');
-      }
+      value = 200;
+      //bytte til value.statusCode
+      if (value == 200) {
+        // save user object
+/*  
+    User user = User.fromJson(jsonDecode(
+          utf8.decode(value
+              .bodyBytes))); 
+        */
 
+    
+    final userHiveBox = UserBox.getUser();
+    //userHiveBox.add(user);
+    final User userTEST = User(id: 1, name: 'Hans', token: TOKEN);
+    userHiveBox.add(userTEST);
+
+    /// save user token
+    ///  UserToken.setUserToken(user.token);
+    UserToken.setUserToken(TOKEN);
+        Navigator.of(context).pushNamed('/initdata');
+      }
+       //bytte til value.statusCode
       /// Invalid credentials
-      else if (value.statusCode == 403) {
+      else if (value == 403) {
         setState(() {
           response = "Ugyldig brukernavn eller passord";
         });

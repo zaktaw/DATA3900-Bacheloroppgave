@@ -76,14 +76,6 @@ class _HomeScreenState extends State<HomeScreen> {
             .project_name;
       });
     }
-
-    // save user object
-    final User user = User(1, 'Hans', TOKEN);
-    final userHiveBox = UserBox.getUser();
-    userHiveBox.add(user);
-
-    /// save user token
-    UserToken.setUserToken(TOKEN);
   }
 
   @override

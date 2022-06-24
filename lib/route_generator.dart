@@ -20,7 +20,7 @@ class RouteGenerator {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case '/':
+      case '/initdata':
 
         ///CHANGE BETWEEN SERVER OR A MOCK DB BY COMMENTING OUT EITHER LINE 25 or LINE 28
 

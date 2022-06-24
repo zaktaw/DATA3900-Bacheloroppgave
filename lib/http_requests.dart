@@ -38,10 +38,8 @@ class HttpRequests {
               .bodyBytes))); // utf8.decode needed for printing norwegian characters æ, ø and å;
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
       tttProjectInfoBox.put(projectInfoKey, tttProjectInfo);
-      return true;
-    } else {
-      return false;
     }
+    return true
   }
 
   /// POST-method for submitting TTT objects to server
@@ -79,7 +77,7 @@ class HttpRequests {
     );
 
     //int statusCode = response.statusCode;
-
+    
     return response;
   }
 

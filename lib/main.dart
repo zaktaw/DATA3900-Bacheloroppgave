@@ -60,10 +60,10 @@ Future<void> main() async {
   await openBox('user');
   await openBox('unsentTttEntries');
 
-  ///final userHasToken = await UserToken.containsToken();
-  final bool userHasToken = true;
+  final userHasToken = await UserToken.containsToken();
+  ///final bool userHasToken = false;
   if (userHasToken) {
-    initialRoute = '/';
+    initialRoute = '/initdata';
   } else
     initialRoute = '/login';
 
