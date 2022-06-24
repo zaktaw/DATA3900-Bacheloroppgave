@@ -38,7 +38,7 @@ class _InitializeDataState extends State<InitializeData> {
       futureTttProjectInfo.then((ok) => {
           setState(() => loaded = true)
           });
-          
+
     } else {
       Fluttertoast.showToast(
         msg: msg_no_internet, // message
