@@ -63,12 +63,13 @@ class TttObject {
   }
 
   Map<String, dynamic> toJson() {
+    print(timestamp);
     return {
       "project_id": projectId,
       "observer_name": name,
       "timestamp": timestamp
           .toString()
-          .substring(0, 16), // remove seconds and milliseconds from timestamp
+          .substring(0, 18), // remove seconds and milliseconds from timestamp
       "ActivityZones": activityZones
     };
   }

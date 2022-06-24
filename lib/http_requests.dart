@@ -39,7 +39,7 @@ class HttpRequests {
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
       tttProjectInfoBox.put(projectInfoKey, tttProjectInfo);
     }
-    return true
+    return true;
   }
 
   /// POST-method for submitting TTT objects to server

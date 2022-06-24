@@ -36,9 +36,9 @@ class _InitializeDataState extends State<InitializeData> {
       // get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
       futureTttProjectInfo.then((ok) => {
-          setState(() => loaded = true);
+          setState(() => loaded = true)
           });
-          
+
     } else {
       Fluttertoast.showToast(
         msg: msg_no_internet, // message
