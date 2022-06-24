@@ -43,7 +43,7 @@ class ZonesTopbar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: BUTTON_COLOR),
-          onPressed: () => Navigator.of(context).pushNamed('/')),
+          onPressed: () => Navigator.of(context).pushNamed('/homescreen')),
       backgroundColor: TOPBAR_COLOR,
       centerTitle: true,
       title: const Text(title, style: TextStyle(color: TEXT_COLOR_BLACK)),

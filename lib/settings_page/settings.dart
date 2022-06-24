@@ -8,10 +8,10 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SettingsTopbar("Instillinger", "/", null),
+      appBar: SettingsTopbar("Instillinger", "/homescreen", null),
       body: Column(
         children:[
-          SettingsItem("toggle"),
+          SettingsItem("toggleactivityinfo"),
           SettingsItem("logoutbutton"),
           SettingsItem("getprojectbutton"),
           SettingsItem("sendtttobjectsbutton")

@@ -1,3 +1,4 @@
+import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:bacheloroppgave/http_requests.dart';
@@ -7,6 +8,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../local_storage_hive/SettingsBox.dart';
 import '../resources/app_theme.dart';
 
 class SettingsItem extends StatefulWidget {
@@ -23,6 +25,9 @@ class SettingsItem extends StatefulWidget {
 class _SettingsItemState extends State<SettingsItem> {
   @override
   void initState() {}
+
+  late bool isSwitched =
+      SettingsBox.getSettingsBox().get(activityInfoSettingKey)!;
 
   void logout(BuildContext context) {
     UserToken.removeToken()
@@ -150,6 +155,27 @@ class _SettingsItemState extends State<SettingsItem> {
               Expanded(flex: 3, child: Text("Here 3")),
               Expanded(flex: 3, child: Text("Here 2")),
               Expanded(flex: 4, child: Text("Here 1"))
+            ],
+          )),
+        );
+
+      case "toggleactivityinfo":
+        return Container(
+          child: Card(
+              child: Row(
+            children: <Widget>[
+              Expanded(flex: 7, child: Text("Aktivitetsinformasjon under aktiviteter")),
+              Expanded(
+              flex: 3,
+              child: Switch(
+                  value: isSwitched,
+                  onChanged: (value) {
+                    setState(() {
+                      isSwitched = value;
+                      SettingsBox.getSettingsBox()
+                          .put(activityInfoSettingKey, isSwitched);
+                    });
+                  }))
             ],
           )),
         );
