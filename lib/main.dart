@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
+import 'package:bacheloroppgave/local_storage_hive/SettingsBox.dart';
 import 'package:bacheloroppgave/local_storage_hive/UnsentTttEntriesBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
@@ -40,6 +41,8 @@ Future<Box?> openBox(String boxName) async {
       return await Hive.openBox<User>(boxName);
     case 'unsentTttEntries':
       return await Hive.openBox<TttObject>(boxName);
+    case 'settingsBox':
+      return await Hive.openBox<bool>(boxName);
   }
   return null;
 }
@@ -59,13 +62,19 @@ Future<void> main() async {
   await openBox('tttProjectInfo');
   await openBox('user');
   await openBox('unsentTttEntries');
+  await openBox('settingsBox');
+
+  if (SettingsBox.getSettingsBox().isEmpty) {
+    SettingsBox.getSettingsBox().put(activityInfoSettingKey, false);
+  }
 
   final userHasToken = await UserToken.containsToken();
   ///final bool userHasToken = false;
   if (userHasToken) {
     initialRoute = '/initdata';
-  } else
+  } else {
     initialRoute = '/login';
+  }
 
   runApp(const MyApp());
 }
