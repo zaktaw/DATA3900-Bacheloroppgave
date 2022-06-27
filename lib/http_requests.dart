@@ -19,7 +19,7 @@ class HttpRequests {
 
   static String postLoginUrl = "https://ltr-abi.no:8443/drf2/";
 
-  static String token = "Token 768fac501b086edd2deaddebd1984c14ca9c5b72";
+  static String token = "Token 504503a0095d620206be8ef7f1fbe3c9fee32b91";
 
   // GET-method for retrieving TTT project info
   static Future<bool> fetchTttProjectInfo() async {
@@ -50,6 +50,8 @@ class HttpRequests {
     };
     final encoding = Encoding.getByName('utf-8');
 
+    print("TOKEN");
+    print(token);
     http.Response response = await http.post(
       Uri.parse(postTttObjectUrl),
       headers: headers,
@@ -58,6 +60,8 @@ class HttpRequests {
     );
 
     int statusCode = response.statusCode;
+    print("STATUS CODE");
+    print(statusCode);
 
     return statusCode;
   }
@@ -92,8 +96,8 @@ class HttpRequests {
       for (final key in unsentTttEntriesBox.keys) {
         final tttObject = unsentTttEntriesBox.get(key);
         String jsonBody = jsonEncode(tttObject);
-        postTttObject(jsonBody).then((statusCode) => {
-          print("STATUSCODE: " + statusCode.toString()),
+        await postTttObject(jsonBody).then((statusCode) => {
+              print("STATUSCODE: " + statusCode.toString()),
               if (statusCode == 200)
                 {
                   unsentTttEntriesBox.delete(key),
