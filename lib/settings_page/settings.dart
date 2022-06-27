@@ -14,9 +14,7 @@ import '../resources/app_theme.dart';
 
 class Settings extends StatefulWidget {
 
-  //Function function;
-
-  Settings({Key? key}) : super(key: key);
+  const Settings({Key? key}) : super(key: key);
 
   @override
   State<Settings> createState() => _SettingsState();
@@ -27,6 +25,7 @@ class _SettingsState extends State<Settings> {
 
   @override
   void initState() {
+
     final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
     if (unsentTttEntriesBox.isNotEmpty) {
       setState(() {
@@ -35,7 +34,7 @@ class _SettingsState extends State<Settings> {
     }
   }
 
-  late bool isSwitched =
+  late bool toggleMoreInfoInActivity =
       SettingsBox.getSettingsBox().get(activityInfoSettingKey)!;
 
   void logout(BuildContext context) {
@@ -50,7 +49,7 @@ class _SettingsState extends State<Settings> {
             if (ok)
               {
                 Fluttertoast.showToast(
-                  msg: "Prosjekt hentet", // message
+                  msg: "Prosjekt oppdatert", // message
                   toastLength: Toast.LENGTH_SHORT, // length
                   gravity: ToastGravity.CENTER, // location
                   timeInSecForIosWeb: 4, // duration,
@@ -90,6 +89,8 @@ class _SettingsState extends State<Settings> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       HttpRequests.sendUnsentTttObjects().then((length) => {
+        if(UnsentTttEntriesBox.getTttEntries().isNotEmpty) 
+      
             setState(() => {numberOfUnsentTttEntries = length})
           });
     } else {
@@ -126,61 +127,62 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SettingsTopbar("Innstillinger", '/homescreen', null),
-      body: Column(
-        children:[
-     ElevatedButton.icon(
-            icon: Icon(Icons.logout),
-            label: Text("Logg ut"),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                    Color.fromARGB(167, 255, 43, 43))),
-            onPressed: () => logout(context)),
+        appBar: SettingsTopbar("Innstillinger", '/homescreen', null),
+        body: Column(
+          children: [
+            ElevatedButton.icon(
+                icon: const Icon(Icons.download),
+                label: const Text("Oppdater prosjekt"),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(167, 198, 193, 193))),
+                onPressed: () => getProject()),
+                
+            ElevatedButton.icon(
+                icon: const Icon(Icons.upload),
+                label: Text("Send usendte tellinger (" +
+                    (numberOfUnsentTttEntries.toString()) +
+                    ")"),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(167, 198, 193, 193))),
+                onPressed: () => sendUnsentTttObjects()),
+            ElevatedButton.icon(
+                icon: Icon(Icons.delete),
+                label: const Text("Slett usendte tellinger"),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(167, 116, 31, 31))),
+                onPressed: () => deleteTttObjects()),
 
-      ElevatedButton.icon(
-            icon: Icon(Icons.download),
-            label: Text("Hent prosjekt"),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                    Color.fromARGB(167, 198, 193, 193))),
-            onPressed: () => getProject()),
+            Card(
+                child: Row(
+              children: <Widget>[
+                const Expanded(
+                    flex: 7,
+                    child: Text("Aktivitetsinformasjon under aktiviteter")),
+                Expanded(
+                    flex: 3,
+                    child: Switch(
+                        value: toggleMoreInfoInActivity,
+                        onChanged: (value) {
+                          setState(() {
+                            toggleMoreInfoInActivity = value;
+                            SettingsBox.getSettingsBox()
+                                .put(activityInfoSettingKey, toggleMoreInfoInActivity);
+                          });
+                        }))])),
 
-      ElevatedButton.icon(
-            icon: Icon(Icons.upload),
-            label: Text("Send usendte tellinger (" +
-                (numberOfUnsentTttEntries.toString()) +
-                ")"),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                    Color.fromARGB(167, 198, 193, 193))),
-            onPressed: () => sendUnsentTttObjects()),
-
-      ElevatedButton.icon(
-            icon: Icon(Icons.delete),
-            label: Text("Slett usendte tellinger"),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                    Color.fromARGB(167, 116, 31, 31))),
-            onPressed: () => deleteTttObjects()),
-
-      Card(
-          child: Row(
-        children: <Widget>[
-          Expanded(
-              flex: 7,
-              child: Text("Aktivitetsinformasjon under aktiviteter")),
-          Expanded(
-              flex: 3,
-              child: Switch(
-                  value: isSwitched,
-                  onChanged: (value) {
-                    setState(() {
-                      isSwitched = value;
-                      SettingsBox.getSettingsBox()
-                          .put(activityInfoSettingKey, isSwitched);
-                    });
-                  }))
-        ],))],
-      ));
-    }
+                ElevatedButton.icon(
+                    icon: Icon(Icons.logout),
+                    label: const Text("Logg ut"),
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            Color.fromARGB(167, 255, 43, 43))),
+                    onPressed: () => logout(context)),
+              
+  
+          ],
+        ));
   }
+}
