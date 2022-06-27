@@ -93,6 +93,7 @@ class HttpRequests {
         final tttObject = unsentTttEntriesBox.get(key);
         String jsonBody = jsonEncode(tttObject);
         postTttObject(jsonBody).then((statusCode) => {
+          print("STATUSCODE: " + statusCode.toString()),
               if (statusCode == 200)
                 {
                   unsentTttEntriesBox.delete(key),

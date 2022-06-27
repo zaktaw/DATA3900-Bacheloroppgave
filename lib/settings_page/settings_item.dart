@@ -22,7 +22,7 @@ class SettingsItem extends StatefulWidget {
 }
 
 class _SettingsItemState extends State<SettingsItem> {
-  int numberOfUnsentTttEntries = 0;
+  int numberOfUnsentTttEntries = 5;
 
   @override
   void initState() {
@@ -88,9 +88,9 @@ class _SettingsItemState extends State<SettingsItem> {
   void sendUnsentTttObjects() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
-      HttpRequests.sendUnsentTttObjects().then((length) => {setState(() => {
-        numberOfUnsentTttEntries = length
-        })});
+      HttpRequests.sendUnsentTttObjects().then((length) => {
+            setState(() => {numberOfUnsentTttEntries = length})
+          });
     } else {
       Fluttertoast.showToast(
         msg:
@@ -103,6 +103,13 @@ class _SettingsItemState extends State<SettingsItem> {
         fontSize: TOAST_FONT_SIZE,
       );
     }
+  }
+
+  deleteTttObjects() {
+    UnsentTttEntriesBox.getTttEntries().clear();
+    setState(() {
+      numberOfUnsentTttEntries = 0;
+    });
   }
 
   @override
@@ -140,6 +147,15 @@ class _SettingsItemState extends State<SettingsItem> {
                     Color.fromARGB(167, 198, 193, 193))),
             onPressed: () => sendUnsentTttObjects());
 
+      case "deletetttobjectsbutton":
+        return ElevatedButton.icon(
+            icon: Icon(Icons.delete),
+            label: Text("Slett usendte tellinger"),
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                    Color.fromARGB(167, 116, 31, 31))),
+            onPressed: () => deleteTttObjects());
+
       case "dropdown":
         //List<DropdownMenuItem<String>> items = ["1", "3", "4" ,"5"];
         return Container(
@@ -175,18 +191,20 @@ class _SettingsItemState extends State<SettingsItem> {
           child: Card(
               child: Row(
             children: <Widget>[
-              Expanded(flex: 7, child: Text("Aktivitetsinformasjon under aktiviteter")),
               Expanded(
-              flex: 3,
-              child: Switch(
-                  value: isSwitched,
-                  onChanged: (value) {
-                    setState(() {
-                      isSwitched = value;
-                      SettingsBox.getSettingsBox()
-                          .put(activityInfoSettingKey, isSwitched);
-                    });
-                  }))
+                  flex: 7,
+                  child: Text("Aktivitetsinformasjon under aktiviteter")),
+              Expanded(
+                  flex: 3,
+                  child: Switch(
+                      value: isSwitched,
+                      onChanged: (value) {
+                        setState(() {
+                          isSwitched = value;
+                          SettingsBox.getSettingsBox()
+                              .put(activityInfoSettingKey, isSwitched);
+                        });
+                      }))
             ],
           )),
         );

@@ -14,7 +14,8 @@ class Settings extends StatelessWidget {
           SettingsItem("toggleactivityinfo"),
           SettingsItem("logoutbutton"),
           SettingsItem("getprojectbutton"),
-          SettingsItem("sendtttobjectsbutton")
+          SettingsItem("sendtttobjectsbutton"),
+          SettingsItem("deletetttobjectsbutton")
       ])
     );
   }

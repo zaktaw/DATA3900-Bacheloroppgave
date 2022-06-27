@@ -119,9 +119,8 @@ class _ConfirmCountState extends State<ConfirmCount> {
     if (connectivityResult != ConnectivityResult.none) {
       String jsonBody = jsonEncode(tttObject);
 
-      int statusCode = await HttpRequests.postTttObject(jsonBody);
-      print("STATUS CODE:");
-      print(statusCode);
+      //int statusCode = await HttpRequests.postTttObject(jsonBody);
+      int statusCode = 666;
       if (statusCode == 200) {
         return SENT_OK;
       } else {
