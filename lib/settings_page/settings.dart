@@ -8,12 +8,13 @@ import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart';
+import 'package:settings_ui/settings_ui.dart';
 
 import '../local_storage_hive/SettingsBox.dart';
 import '../resources/app_theme.dart';
 
 class Settings extends StatefulWidget {
-
   const Settings({Key? key}) : super(key: key);
 
   @override
@@ -25,7 +26,6 @@ class _SettingsState extends State<Settings> {
 
   @override
   void initState() {
-
     final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
     if (unsentTttEntriesBox.isNotEmpty) {
       setState(() {
@@ -89,9 +89,8 @@ class _SettingsState extends State<Settings> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       HttpRequests.sendUnsentTttObjects().then((length) => {
-        if(UnsentTttEntriesBox.getTttEntries().isNotEmpty) 
-      
-            setState(() => {numberOfUnsentTttEntries = length})
+            if (UnsentTttEntriesBox.getTttEntries().isNotEmpty)
+              setState(() => {numberOfUnsentTttEntries = length})
           });
     } else {
       Fluttertoast.showToast(
@@ -118,61 +117,70 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: SettingsTopbar("Innstillinger", '/homescreen', null),
-        body: Column(
-          children: [
-            ElevatedButton.icon(
-                icon: const Icon(Icons.download),
-                label: const Text("Oppdater prosjekt"),
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                        Color.fromARGB(167, 198, 193, 193))),
-                onPressed: () => getProject()),
-                
-            ElevatedButton.icon(
-                icon: const Icon(Icons.upload),
-                label: Text("Send usendte tellinger (" +
-                    (numberOfUnsentTttEntries.toString()) +
-                    ")"),
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                        Color.fromARGB(167, 198, 193, 193))),
-                onPressed: () => sendUnsentTttObjects()),
-            ElevatedButton.icon(
-                icon: Icon(Icons.delete),
-                label: const Text("Slett usendte tellinger"),
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                        Color.fromARGB(167, 116, 31, 31))),
-                onPressed: () => deleteTttObjects()),
-
-            Card(
-                child: Row(
-              children: <Widget>[
-                const Expanded(
-                    flex: 7,
-                    child: Text("Aktivitetsinformasjon under aktiviteter")),
-                Expanded(
-                    flex: 3,
-                    child: Switch(
-                        value: toggleMoreInfoInActivity,
-                        onChanged: (value) {
-                          setState(() {
-                            toggleMoreInfoInActivity = value;
-                            SettingsBox.getSettingsBox()
-                                .put(activityInfoSettingKey, toggleMoreInfoInActivity);
-                          });
-                        }))])),
-
-                ElevatedButton.icon(
-                    icon: Icon(Icons.logout),
-                    label: const Text("Logg ut"),
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(167, 255, 43, 43))),
-                    onPressed: () => logout(context)),
-              
-  
-          ],
-        ));
+        body: SettingsList(sections: [
+              SettingsSection(
+                title: const Text(
+                  'Hjelp',
+                  style: TextStyle(color: TEXT_COLOR_BLACK),
+                ),
+                tiles: <SettingsTile>[
+                  SettingsTile.switchTile(
+                    initialValue: toggleMoreInfoInActivity,
+                    activeSwitchColor: Color.fromARGB(255, 37, 103, 39),
+                    leading: Icon(Icons.info),
+                    title:
+                        const Text('Vis utvidet forklaring av aktivitetskoder'),
+                    onToggle: (value) {
+                      setState(() {
+                        toggleMoreInfoInActivity = value;
+                        SettingsBox.getSettingsBox().put(
+                            activityInfoSettingKey, toggleMoreInfoInActivity);
+                      });
+                    },
+                  ),
+                ],
+              ),
+              SettingsSection(
+                title: const Text(
+                  "Tellinger",
+                  style: TextStyle(color: TEXT_COLOR_BLACK),
+                ),
+                tiles: <SettingsTile>[
+                  SettingsTile(
+                    title: const Text("Oppdater telle-prosjekt"),
+                    leading: const Icon(Icons.download),
+                    onPressed: (context) => getProject(),
+                  ),
+                  SettingsTile(
+                    title: Text("Send usendte tellinger (" +
+                        (numberOfUnsentTttEntries.toString()) +
+                        ")"),
+                    leading: const Icon(Icons.upload),
+                    onPressed: (context) => sendUnsentTttObjects(),
+                  ),
+                  SettingsTile(
+                    title: const Text("Slett usendte tellinger"),
+                    leading: const Icon(Icons.delete),
+                    onPressed: (context) => deleteTttObjects(),
+                  ),
+                ],
+              ),
+              SettingsSection(
+                title: const Text(
+                  "Bruker",
+                  style: TextStyle(color: TEXT_COLOR_BLACK),
+                ),
+                tiles: <SettingsTile>[
+                  SettingsTile(
+                    title: const Text(
+                      "Logg ut",
+                      style: TextStyle(color: Color.fromARGB(255, 170, 51, 51)),
+                    ),
+                    leading: const Icon(Icons.logout),
+                    onPressed: (context) => logout(context),
+                  ),
+                ],
+              )
+            ]));
   }
 }

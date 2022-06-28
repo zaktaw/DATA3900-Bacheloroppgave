@@ -39,6 +39,7 @@ const Color DROPDOWN_COLOR = Colors.white;
 
 const Color LOGIN_BTN_COLOR = Color.fromARGB(255, 145, 158, 154);
 const Color LOGIN_BORDER_FOCUS_COLOR = Color.fromARGB(255, 145, 158, 154);
+
 //margins
 
 const double HOMESCREEN_COUNT_BTN_MARGIN = 90;
@@ -66,6 +67,8 @@ const double HOMESCREEN_BTN_HEIGHT_FACTOR = 0.1;
 const double HOMESCREEN_TOPBAR_HEIGHT_FACTOR = 0.1;
 
 const double ACTIVITY_INC_DEC_BUTTONS_FACTOR = 0.07;
+
+
 
 const double HELP_DOTS_HEIGHT = 0.03;
 const double HELP_DOTS_WIDTH = 0.3;
