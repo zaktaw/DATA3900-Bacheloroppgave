@@ -101,7 +101,6 @@ class _SettingsState extends State<Settings> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       HttpRequests.sendUnsentTttObjects().then((length) => {
-            if (UnsentTttEntriesBox.getTttEntries().isNotEmpty)
               setState(() => {numberOfUnsentTttEntries = length})
           });
     } else {

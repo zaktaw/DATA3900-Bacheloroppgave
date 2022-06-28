@@ -115,6 +115,8 @@ class HttpRequests {
       }
 
       return unsentTttEntriesBox.length;
+      
     }
+    return 0;
   }
 }

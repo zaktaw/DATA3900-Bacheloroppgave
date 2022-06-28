@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   getProjectInfo() async {
-    print("GETTNIG PROJECT INFO");
+   
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
