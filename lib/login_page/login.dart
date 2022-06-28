@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -26,50 +27,44 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
   bool checkInternetConnectionFlag = true;
 
   String response = "";
-  String TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
 
   Future checkConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       checkInternetConnectionFlag = true;
     } else {
-        checkInternetConnectionFlag = false;
-        setState(() {
-          response = "Ingen internett-tilkobling";
-        });
+      checkInternetConnectionFlag = false;
+      setState(() {
+        response = "Ingen internett-tilkobling";
+      });
     }
   }
 
   Future login() async {
-    ///TODO: Format body add internet-check
-    String jsonBody =
-        jsonEncode(usernameController.text + " " + passwordController.text);
-    Future postRequest = HttpRequests.postLogin(jsonBody);
-    postRequest.then((value) {
-      value = 200;
-      //bytte til value.statusCode
-      if (value == 200) {
+    ///TODO: add internet-check
+    String username = usernameController.text;
+    String password = passwordController.text;
+
+    Future postRequest = HttpRequests.postLogin(username, password);
+
+    postRequest.then((value) async {
+      
+      if (value.statusCode == 200) {
         // save user object
-/*  
-    User user = User.fromJson(jsonDecode(
-          utf8.decode(value
-              .bodyBytes))); 
-        */
 
-    
-    final userHiveBox = UserBox.getUser();
-    //userHiveBox.add(user);
-    final User userTEST = User(name: 'Hans', token: TOKEN);
-    userHiveBox.add(userTEST);
+        User user = User.fromJson(jsonDecode(utf8.decode(value.bodyBytes)), username);
 
-    /// save user token
-    ///  UserToken.setUserToken(user.token);
-    UserToken.setUserToken(TOKEN);
-        Navigator.of(context).pushNamed('/initdata');
+       
+
+        final userHiveBox = UserBox.getUser();
+        userHiveBox.put(userKey, user);
+
+        /// save user token
+        UserToken.setUserToken(user.token.toString()).then((value) => Navigator.of(context).pushNamed('/initdata'));
       }
-       //bytte til value.statusCode
+    
       /// Invalid credentials
-      else if (value == 403) {
+      else if (value.statusCode == 400) {
         setState(() {
           response = "Ugyldig brukernavn eller passord";
         });

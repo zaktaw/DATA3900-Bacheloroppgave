@@ -40,8 +40,7 @@ class _InitializeDataState extends State<InitializeData> {
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
       futureTttProjectInfo.then((statusCode) => {
-            print("STATUS CODE"),
-            print(statusCode),
+        
             if (statusCode == 401)
               {setState(() => {
 

@@ -10,6 +10,7 @@ import 'package:bacheloroppgave/models/TttEntries.dart';
 import 'package:bacheloroppgave/models/User.dart';
 import 'package:bacheloroppgave/local_storage_hive/UserBox.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -51,7 +52,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
     projectInfo =
         TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
     numberOfZones = projectInfo.zones.length;
-    user = UserBox.getUser().getAt(0) as User;
+    user = UserBox.getUser().get(userKey) as User;
     super.initState();
   }
 
@@ -85,7 +86,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
           Container(
               child: Padding(
             child: Text(
-              NAME_TEXT + user.name,
+              NAME_TEXT + user.username,
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: CONFIRM_PAGE_REWIEWLIST_FONTSIZE),
@@ -107,7 +108,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   Future<String> sendTTT() async {
     TttObject tttObject = TttObject(
         entries.tttEntries,
-        user.name,
+        user.username,
         entries.timestamp,
         projectInfo.activities,
         projectInfo.id,

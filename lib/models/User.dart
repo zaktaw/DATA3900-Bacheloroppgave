@@ -6,19 +6,19 @@ part 'User.g.dart';
 class User {
 
   @HiveField(1)
-  late String name;
+  late String username;
 
   late String? token;
 
   User({
-    required this.name, 
+    required this.username, 
     this.token
     });
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  factory User.fromJson(Map<String, dynamic> json,  username) {
 
     return User(
-      name: json['name'],
+      username: username,
       token: json['token']
     );
   }

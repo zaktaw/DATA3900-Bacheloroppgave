@@ -17,18 +17,22 @@ class HttpRequests {
 
   static String postTttObjectUrl = "https://ltr-abi.no:8443/drf2/counting/";
 
-  static String postLoginUrl = "https://ltr-abi.no:8443/drf2/";
+  static String postLoginUrl = "https://ltr-abi.no:8443/drf2/api-token-auth/";
 
   static String token = "Token 504503a0095d620206be8ef7f1fbe3c9fee32b91";
 
   // GET-method for retrieving TTT project info
   static Future<int> fetchTttProjectInfo() async {
     // TODO: replace token with userToken when implemented in backend
-    //final userToken = await UserToken.getUserToken();
+    final userToken = await UserToken.getUserToken();
+
+    print("FETCHPROJECT PRINTING TOKEN;");
+    print(userToken);
+
     final response = await http.get(
       Uri.parse(getTttProjectInfoUrl),
       headers: {
-        'Authorization': token,
+        'Authorization': "Token " + userToken.toString(),
       },
     );
 
@@ -44,9 +48,11 @@ class HttpRequests {
 
   /// POST-method for submitting TTT objects to server
   static Future<int> postTttObject(String jsonBody) async {
+    final userToken = await UserToken.getUserToken();
+
     final headers = {
       'Content-Type': 'application/json',
-      'Authorization': token,
+      'Authorization': "Token " + userToken.toString(),
     };
     final encoding = Encoding.getByName('utf-8');
 
@@ -62,21 +68,30 @@ class HttpRequests {
     return statusCode;
   }
 
-  /// POST-method for login *NOT IMPLEMENTED IN BACKEND*
-  static Future<http.Response> postLogin(String jsonBody) async {
+  /// POST-method for login
+  static Future<http.Response> postLogin(
+      String username, String password) async {
     final headers = {
       'Content-Type': 'application/json',
     };
     final encoding = Encoding.getByName('utf-8');
 
+    final userCredentials =
+        jsonEncode({"username": username, "password": password}); //a1l2f3xx
+
     http.Response response = await http.post(
       Uri.parse(postLoginUrl),
       headers: headers,
-      body: jsonBody,
+      body: userCredentials,
       encoding: encoding,
     );
 
     //int statusCode = response.statusCode;
+    print("STATUS CODE");
+    print(response.statusCode);
+
+    print("RESPONSE");
+    print(response);
 
     return response;
   }
@@ -85,7 +100,6 @@ class HttpRequests {
   // Legg til tilbakemelding til bruker når objekter er sendt / ikke blir sendt
   // Håndtere situasjon der app ikke får kontakt med server
   static Future sendUnsentTttObjects() async {
-
     final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
 
     if (unsentTttEntriesBox.isNotEmpty) {
@@ -93,14 +107,13 @@ class HttpRequests {
         final tttObject = unsentTttEntriesBox.get(key);
         String jsonBody = jsonEncode(tttObject);
         await postTttObject(jsonBody).then((statusCode) => {
-
               if (statusCode == 200)
                 {
                   unsentTttEntriesBox.delete(key),
                 }
             });
       }
-      
+
       return unsentTttEntriesBox.length;
     }
   }
