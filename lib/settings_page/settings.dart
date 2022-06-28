@@ -111,6 +111,16 @@ class _SettingsState extends State<Settings> {
     setState(() {
       numberOfUnsentTttEntries = 0;
     });
+    Fluttertoast.showToast(
+        msg:
+            "Tellinger slettet", // message
+        toastLength: Toast.LENGTH_SHORT, // length
+        gravity: ToastGravity.CENTER, // location
+        timeInSecForIosWeb: 4, // duration,
+        backgroundColor: TOAST_BACKGROUND_COLOR,
+        textColor: TOAST_TEXT_COLOR,
+        fontSize: TOAST_FONT_SIZE,
+      );
   }
 
   @override
