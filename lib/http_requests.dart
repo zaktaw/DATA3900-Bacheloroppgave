@@ -64,7 +64,6 @@ class HttpRequests {
     );
 
     int statusCode = response.statusCode;
-
     return statusCode;
   }
 
