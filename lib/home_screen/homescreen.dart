@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       if (result != ConnectivityResult.none) {
-        //HttpRequests.sendUnsentTttObjects();
+        HttpRequests.sendUnsentTttObjects();
         getProjectInfo();
       }
     });
@@ -94,8 +94,8 @@ class _HomeScreenState extends State<HomeScreen> {
       // get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
-      futureTttProjectInfo.then((ok) => {
-        if (ok) {
+      futureTttProjectInfo.then((statusCode) => {
+        if (statusCode == 200) {
           setState(() => {
             projectName = TttProjectInfoBox.getTttProjectInfo()
             .get(projectInfoKey)!

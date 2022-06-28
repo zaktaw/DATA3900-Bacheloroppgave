@@ -37,6 +37,7 @@ class _ConfirmCountState extends State<ConfirmCount> {
   final String SENT_OK = "Telling sendt";
   final String SENT_FAIL = "Sending feilet";
   final String SENT_FAIL_NO_INTERNET = "Sending feilet. Mangler internett.";
+  final String SENT_FAIL_UNATHORIZED = "Sending feilet, ikke autorisert";
 
   @override
   void dispose() {
@@ -120,9 +121,12 @@ class _ConfirmCountState extends State<ConfirmCount> {
       String jsonBody = jsonEncode(tttObject);
 
       int statusCode = await HttpRequests.postTttObject(jsonBody);
-      //int statusCode =;
+  
       if (statusCode == 200) {
         return SENT_OK;
+      } else if (statusCode == 401) {
+        unsentTttEntriesBox.add(tttObject);
+        return SENT_FAIL_UNATHORIZED;
       } else {
         unsentTttEntriesBox.add(tttObject);
         return SENT_FAIL;

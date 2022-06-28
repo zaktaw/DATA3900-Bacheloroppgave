@@ -22,7 +22,7 @@ class HttpRequests {
   static String token = "Token 504503a0095d620206be8ef7f1fbe3c9fee32b91";
 
   // GET-method for retrieving TTT project info
-  static Future<bool> fetchTttProjectInfo() async {
+  static Future<int> fetchTttProjectInfo() async {
     // TODO: replace token with userToken when implemented in backend
     //final userToken = await UserToken.getUserToken();
     final response = await http.get(
@@ -39,7 +39,7 @@ class HttpRequests {
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();
       tttProjectInfoBox.put(projectInfoKey, tttProjectInfo);
     }
-    return true;
+    return response.statusCode;
   }
 
   /// POST-method for submitting TTT objects to server
@@ -50,8 +50,6 @@ class HttpRequests {
     };
     final encoding = Encoding.getByName('utf-8');
 
-    print("TOKEN");
-    print(token);
     http.Response response = await http.post(
       Uri.parse(postTttObjectUrl),
       headers: headers,
@@ -60,8 +58,6 @@ class HttpRequests {
     );
 
     int statusCode = response.statusCode;
-    print("STATUS CODE");
-    print(statusCode);
 
     return statusCode;
   }
@@ -89,7 +85,7 @@ class HttpRequests {
   // Legg til tilbakemelding til bruker når objekter er sendt / ikke blir sendt
   // Håndtere situasjon der app ikke får kontakt med server
   static Future sendUnsentTttObjects() async {
-    print("Sender objekter");
+
     final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
 
     if (unsentTttEntriesBox.isNotEmpty) {
@@ -97,15 +93,14 @@ class HttpRequests {
         final tttObject = unsentTttEntriesBox.get(key);
         String jsonBody = jsonEncode(tttObject);
         await postTttObject(jsonBody).then((statusCode) => {
-              print("STATUSCODE: " + statusCode.toString()),
+
               if (statusCode == 200)
                 {
                   unsentTttEntriesBox.delete(key),
-                  print("Slettet objekt med nøkkel " + key.toString())
                 }
             });
       }
-      print("RETURNING");
+      
       return unsentTttEntriesBox.length;
     }
   }

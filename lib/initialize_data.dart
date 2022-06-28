@@ -1,4 +1,5 @@
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
+import 'package:bacheloroppgave/login_page/login.dart';
 import 'package:bacheloroppgave/resources/Keys.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -20,7 +21,9 @@ class InitializeData extends StatefulWidget {
 
 class _InitializeDataState extends State<InitializeData> {
   bool loaded = false;
+  late bool authenticated = true;
   String msg_no_internet = "Kunne ikke oppdatere prosjekt, mangler internett";
+  String msg_no_token = "Kunne ikke logge inn, ikke autorisert";
 
   @override
   void initState() {
@@ -35,10 +38,33 @@ class _InitializeDataState extends State<InitializeData> {
 
       // get request for tttProjectInfo
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
-      futureTttProjectInfo.then((ok) => {
-          setState(() => loaded = true)
-          });
 
+      futureTttProjectInfo.then((statusCode) => {
+            print("STATUS CODE"),
+            print(statusCode),
+            if (statusCode == 401)
+              {setState(() => {
+
+                authenticated = false,
+                Fluttertoast.showToast
+                (
+        msg: msg_no_token, // message
+        toastLength: Toast.LENGTH_SHORT, // length
+        gravity: ToastGravity.CENTER, // location
+        timeInSecForIosWeb: 3, // duration
+        backgroundColor: TOAST_BACKGROUND_COLOR,
+        textColor: TOAST_TEXT_COLOR,
+        fontSize: TOAST_FONT_SIZE,
+                ) 
+              })}
+            else
+              {
+                setState(() => {
+                      loaded = true,
+                      authenticated = true,
+                    })
+              }
+          });
     } else {
       Fluttertoast.showToast(
         msg: msg_no_internet, // message
@@ -49,11 +75,14 @@ class _InitializeDataState extends State<InitializeData> {
         textColor: TOAST_TEXT_COLOR,
         fontSize: TOAST_FONT_SIZE,
       );
-    } 
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!authenticated) {
+      return const LoginLandingPage();
+    }
     if (loaded) {
       return const HomeScreen();
     } else {

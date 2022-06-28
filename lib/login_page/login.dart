@@ -59,7 +59,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
     
     final userHiveBox = UserBox.getUser();
     //userHiveBox.add(user);
-    final User userTEST = User(id: 1, name: 'Hans', token: TOKEN);
+    final User userTEST = User(name: 'Hans', token: TOKEN);
     userHiveBox.add(userTEST);
 
     /// save user token

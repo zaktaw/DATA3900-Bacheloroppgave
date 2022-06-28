@@ -10,6 +10,8 @@ const String pick_name = "Velg navn";
 const String send_failed = 'Sending feilet';
 const String send_confirmed = 'Telling sendt';
 const String sending = 'Sender telling...';
+final String SENT_FAIL_UNATHORIZED = "Sending feilet, ugyldig token";
+
 
 //Bottombar for confirm-page. Logic to prevent user from submitting session if observers is not selected
 class ConfirmBottombar extends StatefulWidget {
@@ -61,9 +63,16 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                   textColor: TOAST_TEXT_COLOR,
                   fontSize: TOAST_FONT_SIZE,
                 ),
+
                 //Give the user time to see confirmation message before redirecting to homescreen
                 await Future.delayed(const Duration(seconds: 2)),
-                (Navigator.of(context).pushNamed('/homescreen'))
+
+                if (value == SENT_FAIL_UNATHORIZED) {
+                  (Navigator.of(context).pushNamed('/login'))
+                }
+                else {
+                  (Navigator.of(context).pushNamed('/homescreen'))
+                }                
               }),
           }
           

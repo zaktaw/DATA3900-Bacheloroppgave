@@ -45,8 +45,8 @@ class _SettingsState extends State<Settings> {
   void getProject() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
-      HttpRequests.fetchTttProjectInfo().then((ok) => {
-            if (ok)
+      HttpRequests.fetchTttProjectInfo().then((statusCode) => {
+            if (statusCode == 200)
               {
                 Fluttertoast.showToast(
                   msg: "Prosjekt oppdatert", // message
@@ -86,6 +86,18 @@ class _SettingsState extends State<Settings> {
   }
 
   void sendUnsentTttObjects() async {
+
+    Fluttertoast.showToast(
+        msg:
+            "Sender tellinger", // message
+        toastLength: Toast.LENGTH_SHORT, // length
+        gravity: ToastGravity.CENTER, // location
+        timeInSecForIosWeb: 4, // duration,
+        backgroundColor: TOAST_BACKGROUND_COLOR,
+        textColor: TOAST_TEXT_COLOR,
+        fontSize: TOAST_FONT_SIZE,
+      );
+
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       HttpRequests.sendUnsentTttObjects().then((length) => {

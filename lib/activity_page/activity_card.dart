@@ -114,7 +114,16 @@ class ActivityCard extends StatelessWidget {
               ]),
               checkActivitySetting()
                   ? Row(
-                      children: <Widget>[Flexible(child: Text(activity_info))],
+                      children: <Widget>[
+                        Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.all(12),
+                          child: Text(
+                            activity_info,
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ))
+                      ],
                     )
                   : const SizedBox.shrink()
             ]),
