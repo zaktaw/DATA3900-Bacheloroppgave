@@ -1,7 +1,6 @@
 // ignore_for_file: uri_does_not_exist
 
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';

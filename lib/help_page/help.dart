@@ -2,7 +2,6 @@ import 'package:bacheloroppgave/help_page/help_about_TTT.dart';
 import 'package:bacheloroppgave/help_page/help_about_activities.dart';
 import 'package:bacheloroppgave/help_page/help_about_app.dart';
 import 'package:bacheloroppgave/help_page/help_about_zones.dart';
-import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';

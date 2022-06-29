@@ -1,14 +1,11 @@
 import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:bacheloroppgave/settings_page/settings_topbar.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/UnsentTttEntriesBox.dart';
 import 'package:bacheloroppgave/models/UserToken.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:http/http.dart';
 import 'package:settings_ui/settings_ui.dart';
 
 import '../local_storage_hive/SettingsBox.dart';

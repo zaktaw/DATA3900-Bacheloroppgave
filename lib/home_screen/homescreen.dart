@@ -4,22 +4,13 @@ import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_button.dart';
 import 'package:bacheloroppgave/http_requests.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
-import 'package:bacheloroppgave/local_storage_hive/UnsentTttEntriesBox.dart';
-import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttEntries.dart';
-import 'package:bacheloroppgave/models/TttProjectInfo.dart';
-import 'package:bacheloroppgave/models/User.dart';
-import 'package:bacheloroppgave/local_storage_hive/UserBox.dart';
-import 'package:bacheloroppgave/models/UserToken.dart';
-import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 import 'package:hive/hive.dart';
-import 'dart:io';
-import 'dart:math';
 
 const String project_title_error = "Kunne ikke hente prosjekt-tittel";
 const String new_count = 'Ny telling';
@@ -67,10 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
       activeTtt = false;
     }
 
-    print("Sjekk prosjektinfo");
     if (TttProjectInfoBox.getTttProjectInfo().isNotEmpty) {
       setState(() {
-        print("Setting state");
         projectName = TttProjectInfoBox.getTttProjectInfo()
             .get(projectInfoKey)!
             .project_name;
@@ -86,7 +75,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   getProjectInfo() async {
-    print("GETTNIG PROJECT INFO");
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
       final tttProjectInfoBox = TttProjectInfoBox.getTttProjectInfo();

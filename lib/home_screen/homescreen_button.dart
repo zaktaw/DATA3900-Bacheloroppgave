@@ -1,9 +1,7 @@
-import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../local_storage_hive/UserBox.dart';
 
 const double buttonWidth = 250;
 

@@ -1,5 +1,4 @@
 import 'package:bacheloroppgave/resources/app_string.dart';
-import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class FirstPageview extends StatelessWidget {

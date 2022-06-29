@@ -5,7 +5,6 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 import '../local_storage_hive/UserBox.dart';
 import '../models/User.dart';

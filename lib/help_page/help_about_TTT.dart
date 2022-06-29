@@ -1,7 +1,6 @@
 import 'package:bacheloroppgave/resources/app_string.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Displays text about the app and launches webbrowser if link is pressed

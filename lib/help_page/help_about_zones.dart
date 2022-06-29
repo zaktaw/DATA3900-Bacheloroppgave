@@ -2,8 +2,6 @@ import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/resources/app_string.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
-
-import '../local_storage_hive/TttProjectInfoBox.dart';
 import '../models/ZoneObject.dart';
 
 //Displays the zones that are present in the current project 
