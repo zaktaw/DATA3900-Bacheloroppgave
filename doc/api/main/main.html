@@ -57,9 +57,6 @@
 
     </section>
     
-<section class="desc markdown">
-  <p>Starts the hive boxes</p>
-</section>
 
 
     
@@ -81,12 +78,13 @@
   await openBox(&#39;unsentTttEntries&#39;);
   await openBox(&#39;settingsBox&#39;);
 
+  &#47;&#47; disable showing descriptions of activites in activity cards by default
   if (SettingsBox.getSettingsBox().isEmpty) {
     SettingsBox.getSettingsBox().put(activityInfoSettingKey, false);
   }
 
   final userHasToken = await UserToken.containsToken();
-  &#47;&#47;&#47;final bool userHasToken = false;
+
   if (userHasToken) {
     initialRoute = &#39;&#47;initdata&#39;;
   } else {

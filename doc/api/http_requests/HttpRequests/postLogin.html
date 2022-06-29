@@ -77,7 +77,7 @@
   final encoding = Encoding.getByName(&#39;utf-8&#39;);
 
   final userCredentials =
-      jsonEncode({&quot;username&quot;: username, &quot;password&quot;: password}); &#47;&#47;a1l2f3xx
+      jsonEncode({&quot;username&quot;: username, &quot;password&quot;: password});
 
   http.Response response = await http.post(
     Uri.parse(postLoginUrl),
@@ -85,13 +85,6 @@
     body: userCredentials,
     encoding: encoding,
   );
-
-  &#47;&#47;int statusCode = response.statusCode;
-  print(&quot;STATUS CODE&quot;);
-  print(response.statusCode);
-
-  print(&quot;RESPONSE&quot;);
-  print(response);
 
   return response;
 }</code></pre>

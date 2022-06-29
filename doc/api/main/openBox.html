@@ -58,12 +58,17 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Opens a Hive box</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;Box?&gt; openBox(String boxName) async {
+
+  &#47;&#47; get storage location for Hive on user&#39;s phone
   if (!kIsWeb &amp;&amp; !Hive.isBoxOpen(boxName))
     Hive.init((await getApplicationDocumentsDirectory()).path);
 

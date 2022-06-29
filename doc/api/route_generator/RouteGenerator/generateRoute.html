@@ -71,20 +71,16 @@
   switch (settings.name) {
     case &#39;&#47;initdata&#39;:
 
-      &#47;&#47;&#47;CHANGE BETWEEN SERVER OR A MOCK DB BY COMMENTING OUT EITHER LINE 25 or LINE 28
+      &#47;&#47;Application can use a mock database instead of an actual database by commenting line 26 and uncommenting line 29
 
-      &#47;&#47;&#47;SERVER:
-      &#47;&#47;&#47;return MaterialPageRoute(builder: (_) =&gt; HomeScreen());
+      &#47;&#47;ACTUAL DATABASE
+      return MaterialPageRoute(builder: (_) =&gt; InitializeData());
 
       &#47;&#47;MOCK DB
       &#47;&#47;return MaterialPageRoute(builder: (_) =&gt; HomeScreenDemo());
 
-      return MaterialPageRoute(builder: (_) =&gt; InitializeData());
-
-
     case &#39;&#47;homescreen&#39;:
       return MaterialPageRoute(builder: (_) =&gt; HomeScreen());
-
 
     case &#39;&#47;activity&#39;:
       List&lt;dynamic&gt; argsList = args as List&lt;dynamic&gt;;

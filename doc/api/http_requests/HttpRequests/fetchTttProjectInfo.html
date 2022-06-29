@@ -59,17 +59,17 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>GET-method for retrieving TTT project info</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static Future&lt;int&gt; fetchTttProjectInfo() async {
-  &#47;&#47; TODO: replace token with userToken when implemented in backend
-  final userToken = await UserToken.getUserToken();
 
-  print(&quot;FETCHPROJECT PRINTING TOKEN;&quot;);
-  print(userToken);
+  final userToken = await UserToken.getUserToken();
 
   final response = await http.get(
     Uri.parse(getProjectInfoUrl),
@@ -79,6 +79,7 @@
   );
 
   if (response.statusCode == 200) {
+    &#47;&#47;save project info in Hive box
     TttProjectInfo tttProjectInfo = TttProjectInfo.fromJson(jsonDecode(
         utf8.decode(response
             .bodyBytes))); &#47;&#47; utf8.decode needed for printing norwegian characters æ, ø and å;

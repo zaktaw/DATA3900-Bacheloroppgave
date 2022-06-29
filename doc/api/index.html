@@ -47,7 +47,7 @@
   <h1 id="data3900-bacheloroppgave">DATA3900-Bacheloroppgave</h1>
 <h2 id="installation-process">Installation process</h2>
 <p>To run this project you have to install flutter first (follow the guide on <a href="https://docs.flutter.dev/get-started/install)">https://docs.flutter.dev/get-started/install)</a>.</p>
-<p>Then you'll have to install an emulator if you dont have one already. We have used emulators through Android Studio during development, so this is what we recommend, because we know it works.</p>
+<p>Then you'll have to install an emulator if you dont have one already. The app can't be launched in a web browser due to restrictions regarding http requests! We have used emulators through Android Studio during development, so this is what we recommend, because we know it works.</p>
 <p>To install an Android Studio emulator you have to:</p>
 <ol>
 <li>Install Android Studio. Follow this guide: <a href="https://developer.android.com/studio/install">https://developer.android.com/studio/install</a></li>
@@ -58,7 +58,7 @@
 </li>
 </ol>
 <p>After you have installed flutter and have a working emulator, you have to run the command: "flutter pub get". Flutter will now install all dependencies used by the application.</p>
-<p>To run the program use the command: "flutter run --no-sound-null-safety". Then you have to choose whice device/program you want to run the application in. Choose the emulator that you created earlier. If the device does not show in the list of available devices, you'll probably have start the emulator before trying to run the program again.</p>
+<p>To run the program use the command: "flutter run --no-sound-null-safety" (Note: it's not possible to run the app without --no-sound-null-safety due to the url-launcher package). Then you have to choose which device/program you want to run the application in. Choose the emulator that you created earlier. If the device does not show in the list of available devices, you'll probably have start the emulator before trying to run the program again.</p>
 <h2 id="what-to-do-if-the-server-doesnt-work">What to do if the server doesn't work?</h2>
 <p>If the server isn't working and you get an error code when running the program and starting a new count, go to /lib/route_generator.dart and comment/uncomment the lines as instructed in the comments in the file. Here you can choose between using the server or using a mock database that is stored in the local storage.</p>
 <h2 id="usages">Usages</h2>
