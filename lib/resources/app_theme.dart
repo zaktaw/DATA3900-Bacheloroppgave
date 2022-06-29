@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// APP-THEME. Variables for design of UI (colors, paddings, margins, size etc.)
+/// APP-THEME. Variables for design of UI (colors, paddings, margins, size etc.)
 
 // colors
 

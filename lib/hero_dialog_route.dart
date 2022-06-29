@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-//Kode hentet fra https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
+//Code retrieved from https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
+///Needed for creating popups
 class HeroDialogRoute<T> extends PageRoute<T> {
   HeroDialogRoute({
     required WidgetBuilder builder,

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../models/TttEntries.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-//Card with zonenameand info-pop-up widget (longpress), used in zonelist 
+///Card with zone-name and info-pop-up widget (longpress), used in zonelist 
 class ZoneCard extends StatelessWidget {
   ZoneCard(this.zone_name, this.zone_info, this.zone_index, this.entries,
       {Key? key})
@@ -64,7 +64,7 @@ class ZoneCard extends StatelessWidget {
       ),
     ));
   }
-  //Check if zone is counted, used to set textcolor
+  ///Check if zone is counted, used to set textcolor
   bool checkIfCounted(int index) {
     if (TttEntriesBox.getTttEntries().isEmpty) return false;
     TttEntries entries = TttEntriesBox.getTttEntries().getAt(0) as TttEntries;

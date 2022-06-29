@@ -3,6 +3,7 @@ import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:bacheloroppgave/zone_page/zones_list.dart';
 import 'package:bacheloroppgave/zone_page/zones_topbar.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class _ZoneState extends State<Zone> {
   @override
   void initState() {
     TttProjectInfo projectInfo =
-        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+        TttProjectInfoBox.getTttProjectInfo().get(projectInfoKey) as TttProjectInfo;
     zoneList = projectInfo.zones;
     entries = widget.entries;
     super.initState();

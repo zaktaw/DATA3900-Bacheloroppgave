@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'User.g.dart';
 
+///Model for user object retrieved from server
 @HiveType(typeId: 5)
 class User {
 

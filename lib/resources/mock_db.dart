@@ -5,9 +5,9 @@ import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 
 
-
+///Initialize mock database
 TttProjectInfo getMockDb() {
-  //MOCK Projectinfo init init
+
   ZoneObject zoneobj = new ZoneObject(
       order_number: 1,
       zone_name: "Ungdomsrommet 2.Etg",

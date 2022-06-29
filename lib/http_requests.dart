@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'local_storage_hive/UnsentTttEntriesBox.dart';
 import 'local_storage_hive/TttProjectInfoBox.dart';
 
+///All requests needed for communicating for server
 class HttpRequests {
 
   static String getProjectInfoUrl =
@@ -22,13 +23,10 @@ class HttpRequests {
 
   static String token = "Token 504503a0095d620206be8ef7f1fbe3c9fee32b91";
 
-  // GET-method for retrieving TTT project info
+  ///GET-method for retrieving TTT project info
   static Future<int> fetchTttProjectInfo() async {
-    // TODO: replace token with userToken when implemented in backend
-    final userToken = await UserToken.getUserToken();
 
-    print("FETCHPROJECT PRINTING TOKEN;");
-    print(userToken);
+    final userToken = await UserToken.getUserToken();
 
     final response = await http.get(
       Uri.parse(getProjectInfoUrl),
@@ -38,6 +36,7 @@ class HttpRequests {
     );
 
     if (response.statusCode == 200) {
+      //save project info in Hive box
       TttProjectInfo tttProjectInfo = TttProjectInfo.fromJson(jsonDecode(
           utf8.decode(response
               .bodyBytes))); // utf8.decode needed for printing norwegian characters æ, ø and å;
@@ -77,7 +76,7 @@ class HttpRequests {
     final encoding = Encoding.getByName('utf-8');
 
     final userCredentials =
-        jsonEncode({"username": username, "password": password}); //a1l2f3xx
+        jsonEncode({"username": username, "password": password});
 
     http.Response response = await http.post(
       Uri.parse(postLoginUrl),
@@ -86,19 +85,10 @@ class HttpRequests {
       encoding: encoding,
     );
 
-    //int statusCode = response.statusCode;
-    print("STATUS CODE");
-    print(response.statusCode);
-
-    print("RESPONSE");
-    print(response);
-
     return response;
   }
 
-  // TODO:
-  // Legg til tilbakemelding til bruker når objekter er sendt / ikke blir sendt
-  // Håndtere situasjon der app ikke får kontakt med server
+  ///Send all TTT objects that failed to be sent to server
   static Future sendUnsentTttObjects() async {
     final unsentTttEntriesBox = UnsentTttEntriesBox.getTttEntries();
 

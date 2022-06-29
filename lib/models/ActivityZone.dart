@@ -4,7 +4,7 @@ import 'TttEntry.dart';
 
 part 'ActivityZone.g.dart';
 
-// Model for ActivityZone. This is the TTT entries that are part of the TttObject
+/// Model for ActivityZone. This is the TTT entries that are part of the TttObject
 @HiveType(typeId: 7)
 class ActivityZone {
   @HiveField(0)

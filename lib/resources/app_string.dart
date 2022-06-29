@@ -1,5 +1,5 @@
 
-//Help
+/// String variables used in the app
 
 //Zones
 String HELP_ZONE_TITLE = "\nSoner";

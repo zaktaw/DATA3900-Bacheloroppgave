@@ -1,4 +1,4 @@
-/* import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
+import 'package:bacheloroppgave/home_screen/confirm_count_pop.dart';
 import 'package:bacheloroppgave/home_screen/homescreen_button.dart';
 import 'package:bacheloroppgave/local_storage_hive/TttProjectInfoBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
@@ -59,6 +59,10 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
     return info.project_name.toString();
   }
 
+  bool hasInfo() {
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +89,7 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                         route: "/activity",
                         args: [tttEntries, 0],
                         onPressed: newCount,
-                        routeEnabled: true,
+                        hasInfo: hasInfo,
                       ),
                 activeTtt
                     ? HomeScreenButton(
@@ -94,7 +98,7 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                         route: '/zones',
                         args: activeTttEntries,
                         onPressed: () => {},
-                        routeEnabled: true,
+                        hasInfo: hasInfo,
                       )
                     : const SizedBox.shrink(),
                 HomeScreenButton(
@@ -103,16 +107,15 @@ class _HomeScreenDemoState extends State<HomeScreenDemo> {
                     route: "/help",
                     args: null,
                     onPressed: () => {},
-                    routeEnabled: true),
+                    hasInfo: hasInfo),
                 HomeScreenButton(
                     btnName: settings,
                     route: "/settings",
                     margin: HOMESCREEN_SETTINGS_BTN_MARGIN,
                     args: null,
                     onPressed: () => {},
-                    routeEnabled: true)
+                    hasInfo: hasInfo)
               ],
             ))));
   }
 }
- */

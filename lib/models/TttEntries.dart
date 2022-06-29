@@ -4,8 +4,8 @@ import 'package:hive/hive.dart';
 
 part 'TttEntries.g.dart';
 
-// Model for TTT entries.
-// Used for storing and modifying the entries before they are sent to server.
+/// Model for TTT entries.
+/// Used for storing and modifying the entries before they are sent to server.
 @HiveType(typeId: 1)
 class TttEntries extends HiveObject {
   @HiveField(0)
@@ -18,8 +18,8 @@ class TttEntries extends HiveObject {
     timestamp = DateTime.now();
   }
 
-  // returns a list of counts for a given zone
-  // returns an empty list if no counts are stored
+  /// returns a list of counts for a given zone
+  /// returns an empty list if no counts are stored
   List getTttEntries(int zone) {
     return tttEntries[zone] ?? [];
   }
@@ -28,7 +28,7 @@ class TttEntries extends HiveObject {
     return tttEntries.length;
   }
 
-  // returns total number of counts stored for a given zone
+  /// returns total number of counts stored for a given zone
   int getNumberOfCountsInZone(int index) {
     int numberOfEntries = 0;
     List counts = tttEntries[index];
@@ -39,7 +39,7 @@ class TttEntries extends HiveObject {
     return numberOfEntries;
   }
 
-  // returns true if a given zone has been stored in entries map
+  /// returns true if a given zone has been stored in entries map
   bool checkTttEntryKey(int zone) {
     if (tttEntries.containsKey(zone)) {
       return true;
@@ -70,7 +70,7 @@ class TttEntries extends HiveObject {
     }
   }
 
-  // adds current zone index as key in the map when going to the next zone page, even if no counts was registered
+  /// adds current zone index as key in the map when going to the next zone page, even if no counts was registered
   void addZoneKey(int zoneIndex) {
     bool zoneFound = tttEntries.containsKey(zoneIndex);
     if (!zoneFound) tttEntries[zoneIndex] = [];
