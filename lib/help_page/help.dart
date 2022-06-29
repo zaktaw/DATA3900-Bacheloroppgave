@@ -3,6 +3,7 @@ import 'package:bacheloroppgave/help_page/help_about_activities.dart';
 import 'package:bacheloroppgave/help_page/help_about_app.dart';
 import 'package:bacheloroppgave/help_page/help_about_zones.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
+import 'package:bacheloroppgave/resources/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -10,7 +11,7 @@ import '../confirm_and_help_topbar/confirm_and_help_topbar.dart';
 import '../local_storage_hive/TttProjectInfoBox.dart';
 import '../models/TttProjectInfo.dart';
 
-//Scaffold for the help-pages with bottom navbar
+/// Main widget for help. Contains all help-widgets 
 class Help extends StatefulWidget {
   Help({Key? key}) : super(key: key);
 
@@ -33,7 +34,7 @@ class _HelpState extends State<Help> {
   @override
   void initState() {
     projectInfo =
-        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+        TttProjectInfoBox.getTttProjectInfo().get(projectInfoKey) as TttProjectInfo;
 
     _helpOptions = <Widget>[
       const HelpTTT(),

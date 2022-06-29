@@ -5,8 +5,8 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
+/// Contains pop-up for displaying information about current zone when title in activity is pressed
 /// Code based on sourcecode from: https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
-
 class ZoneInActivitiesPopButton extends StatelessWidget {
   const ZoneInActivitiesPopButton(this.zone_info, this.zone, this.colorAnimation, {Key? key})
       : super(key: key);

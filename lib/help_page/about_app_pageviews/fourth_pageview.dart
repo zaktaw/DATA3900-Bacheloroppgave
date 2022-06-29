@@ -1,6 +1,8 @@
 import 'package:bacheloroppgave/resources/app_string.dart';
 import 'package:flutter/material.dart';
 
+/// Page for info about confirm-page 
+/// Contains ref to text and a gif
 class FourthPageview extends StatelessWidget {
   const FourthPageview({Key? key}) : super(key: key);
 

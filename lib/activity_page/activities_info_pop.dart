@@ -2,6 +2,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
+/// Widget for displaying info pop-up from activites screen. 
 /// Code based on sourcecode from: https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
 class ActivitiesPopButton extends StatelessWidget {
@@ -63,7 +64,7 @@ class _ActivitiesPopCard extends StatelessWidget {
                   children: [
                     Text(activities,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: TEXT_COLOR_BLACK)),
+                        style: const TextStyle(fontSize: 20, color: TEXT_COLOR_BLACK)),
                     Container(
                       margin: const EdgeInsets.only(
                           top: 5, bottom: 10, left: 20, right: 20),

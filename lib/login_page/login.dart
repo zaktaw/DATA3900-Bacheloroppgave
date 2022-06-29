@@ -10,6 +10,9 @@ import '../local_storage_hive/UserBox.dart';
 import '../models/User.dart';
 import '../models/UserToken.dart';
 
+
+/// Landing page if user is not logged in (no token in storage). Contains textfields and button for logging. 
+/// Validate login and redirect, displays error messages for different scenarioes (no internet, invalid credentials)
 class LoginLandingPage extends StatefulWidget {
   const LoginLandingPage({Key? key}) : super(key: key);
 
@@ -39,8 +42,9 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
     }
   }
 
+/// Called onclick of login-button if user has internet connection and input in textfields
+/// Post username and password to server redirect to /initdata if autorized. Display error message if not.
   Future login() async {
-    ///TODO: add internet-check
     String username = usernameController.text;
     String password = passwordController.text;
 
@@ -49,8 +53,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
     postRequest.then((value) async {
       
       if (value.statusCode == 200) {
-        // save user object
-
+        /// save user object
         User user = User.fromJson(jsonDecode(utf8.decode(value.bodyBytes)), username);
 
        
@@ -75,6 +78,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
     });
   }
 
+/// Check input in username textfield. No validation, only requires "some" input
   void checkMissingInputUsername() {
     setState(() {
       if (usernameController.text.isEmpty) {
@@ -85,6 +89,7 @@ class _LoginLandingPageState extends State<LoginLandingPage> {
     });
   }
 
+/// Check input in password textfield. No validation, only requires "some" input
   void checkMissingInputPassword() {
     setState(() {
       if (passwordController.text.isEmpty) {

@@ -16,7 +16,8 @@ const String continue_count = 'Gjenoppta telling';
 const String settings = 'Innstilinger';
 const String help = 'Hjelp';
 
-//Displays homescreen with logic for starting and/or resuming counting sessions
+/// Displays homescreen with logic for starting and/or resuming counting sessions
+/// Use with mock-database, see routegenerator
 class HomeScreenDemo extends StatefulWidget {
   const HomeScreenDemo({Key? key}) : super(key: key);
 

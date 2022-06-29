@@ -15,6 +15,8 @@ import 'package:hive/hive.dart';
 
 const String finish_zone = 'Neste sone';
 
+/// Main widget for activity. Contains all custom widgets for activities. Keeps track of current and counted zones
+/// Controls animation when navigating to next zone
 class Activity extends StatefulWidget {
   TttEntries entries;
   int zoneIndex;

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+/// Widget for displaying info pop-up when activity-code is pressed 
 /// Code based on sourcecode from: https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
-
 class ActivityPopButton extends StatelessWidget {
   const ActivityPopButton(this.activity_name, this.activity_info, {Key? key}) : super(key: key);
 

@@ -2,7 +2,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
-/// Code based on sourcecode from:  https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
+// Code based on sourcecode from:  https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
 const String pop_title = 'Advarsel';
 const String pop_info = 'Er du sikker på at du vil starte en ny telling?\nDa kan du ikke gjenoppta en tidligere telling.';

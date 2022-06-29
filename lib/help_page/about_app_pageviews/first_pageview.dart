@@ -1,6 +1,8 @@
 import 'package:bacheloroppgave/resources/app_string.dart';
 import 'package:flutter/material.dart';
 
+/// Page for info about homepage 
+/// Contains ref to text and a gif
 class FirstPageview extends StatelessWidget {
   const FirstPageview({Key? key}) : super(key: key);
 

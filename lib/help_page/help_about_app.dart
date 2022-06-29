@@ -15,6 +15,7 @@ class _HelpAppState extends State<HelpApp> {
   PageController pageController = PageController();
   double currentPage = 0;
 
+/// Set controller to trac current page on load
   @override
   void initState() {
     pageController.addListener(() {

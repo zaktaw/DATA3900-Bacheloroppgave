@@ -1,6 +1,8 @@
 import 'package:bacheloroppgave/resources/app_string.dart';
 import 'package:flutter/material.dart';
 
+/// Page for info about count page 
+/// Contains ref to text and a gif
 class SecondPageview extends StatelessWidget {
   const SecondPageview({Key? key}) : super(key: key);
 

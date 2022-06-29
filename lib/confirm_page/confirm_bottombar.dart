@@ -13,7 +13,9 @@ const String sending = 'Sender telling...';
 final String SENT_FAIL_UNATHORIZED = "Sending feilet, ugyldig token";
 
 
-//Bottombar for confirm-page. Logic to prevent user from submitting session if observers is not selected
+/// Bottombar for confirm-page. Triggers post-request for posting count to server. 
+/// Navigates to homescreen when count is sent or stored in local storage (Hive). Checks if user is autorized when request is sent
+/// Redirects to login if user is not autorized (eg. expired token)
 class ConfirmBottombar extends StatefulWidget {
   Function sendTTT;
 
@@ -64,12 +66,13 @@ class _ConfirmBottombarState extends State<ConfirmBottombar> {
                   fontSize: TOAST_FONT_SIZE,
                 ),
 
-                //Give the user time to see confirmation message before redirecting to homescreen
+                /// Give the user time to see confirmation message before redirecting to homescreen
                 await Future.delayed(const Duration(seconds: 2)),
-
+                /// Redirect to log-in if unathorized
                 if (value == SENT_FAIL_UNATHORIZED) {
                   (Navigator.of(context).pushNamed('/login'))
                 }
+                /// Redirct to homescreen, count is posted to server or stored in Hive if unsuccesful
                 else {
                   (Navigator.of(context).pushNamed('/homescreen'))
                 }                

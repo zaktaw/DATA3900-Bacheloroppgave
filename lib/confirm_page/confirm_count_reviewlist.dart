@@ -4,10 +4,10 @@ import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
-//Shown if app fails to fetch data from session 
+/// Shown if app fails to fetch data from session 
 const String error_list = "Feil i listen, prøv igjen senere";
 
-//Generates list of all observations registred in session 
+/// Generates list of all observations registred in session 
 class ConfirmReviewList extends StatelessWidget {
   late TttEntries entries;
   late List<ZoneObject> zoneList;
@@ -31,7 +31,7 @@ class ConfirmReviewList extends StatelessWidget {
                     MediaQuery.of(context).size.width
                     , bottom: MediaQuery.of(context).size.height * CONFIRM_PAGE_DROPDOWN_MARGIN_FACTOR)
                   ,
-                  //Build list of observations of any zones are counted. Display fallback if not 
+                  /// Build list of observations of any zones are counted. Display fallback if not 
             child: entries.getNumberOfZones() != 0
                 ? ListView.builder(
                     itemCount: zoneList.length,

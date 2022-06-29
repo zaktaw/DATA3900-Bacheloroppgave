@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import '../models/TttEntries.dart';
 import '../zone_page/zone.dart';
 
-//Code based on sourcecode from: https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
-
 const String pop_title = 'Advarsel';
 const String pop_info = 'Vil du lagre en tom sone?';
 
 const String _heroConfirmPop = 'confirm-back-pop';
 
 /// Pop-up conformation box to confirm if user wants to commit an empty zone when navigation from activity without input
+/// Code based on sourcecode from: https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 class PopActivityConfirmBackPop extends StatelessWidget {
   PopActivityConfirmBackPop(this.entries, this.zoneIndex, {Key? key})
       : super(key: key);
@@ -28,7 +27,7 @@ class PopActivityConfirmBackPop extends StatelessWidget {
         child: Hero(
           tag: _heroConfirmPop,
           child: Material(
-            color: Color.fromARGB(255, 82, 82, 82),
+            color: const Color.fromARGB(255, 82, 82, 82),
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),

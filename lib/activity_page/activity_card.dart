@@ -8,10 +8,13 @@ import 'package:flutter/services.dart';
 
 import 'activity_pop_button.dart';
 
+
+
 const String _heroActivityPop = "activity-pop-hero";
 
-/// Card with activityname, counter and info-pop-up widget
+/// Custom card-widget with information for each activitycode in the project. Contains activityname, counter and info-pop-up widget
 class ActivityCard extends StatelessWidget {
+
   ActivityCard(this.activity_name, this.activity_info, this.addTttEntry,
       this.zoneIndex, this.valueFromPreviousCount,
       {Key? key})
@@ -26,6 +29,7 @@ class ActivityCard extends StatelessWidget {
   String activity_info;
   var txt = TextEditingController(text: "");
 
+/// Check if long description is enabled. If true, description is displayed in the card
   bool checkActivitySetting() {
     return SettingsBox.getSettingsBox().get(activityInfoSettingKey) as bool;
   }

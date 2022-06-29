@@ -4,6 +4,8 @@ import 'activity_card.dart';
 import '../models/TttEntry.dart';
 import '../models/TttEntries.dart';
 
+
+/// Class for list in activity. List contains ActivityCard-widgets  
 class ActivitiesList extends StatelessWidget {
   final int zoneIndex;
   TttEntries entries;
