@@ -31,7 +31,7 @@ class HttpRequests {
     print(userToken);
 
     final response = await http.get(
-      Uri.parse(getProjectByToken),
+      Uri.parse(getProjectInfoUrl),
       headers: {
         'Authorization': "Token " + userToken.toString(),
       },
