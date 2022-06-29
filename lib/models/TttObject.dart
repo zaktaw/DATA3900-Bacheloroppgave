@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/ActivityZone.dart';
 import 'package:bacheloroppgave/models/TttEntry.dart';

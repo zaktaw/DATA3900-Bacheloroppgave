@@ -1,14 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:bacheloroppgave/local_storage_hive/SettingsBox.dart';
-import 'package:bacheloroppgave/local_storage_hive/UnsentTttEntriesBox.dart';
 import 'package:bacheloroppgave/models/ActivityObject.dart';
 import 'package:bacheloroppgave/models/TttObject.dart';
 import 'package:bacheloroppgave/models/TttProjectInfo.dart';
 import 'package:bacheloroppgave/models/User.dart';
 import 'package:bacheloroppgave/models/ZoneObject.dart';
 import 'package:bacheloroppgave/resources/keys.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/route_generator.dart';
@@ -17,14 +15,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:path_provider/path_provider.dart';
 
-import 'http_requests.dart';
-import 'local_storage_hive/TttProjectInfoBox.dart';
 import 'models/ActivityZone.dart';
 import 'models/TttEntries.dart';
 import 'models/TttEntry.dart';
 
 import 'models/UserToken.dart';
-import 'resources/app_theme.dart';
 
 String initialRoute = '';
 

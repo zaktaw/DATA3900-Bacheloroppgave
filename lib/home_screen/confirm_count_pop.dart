@@ -2,10 +2,6 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/hero_dialog_route.dart';
 
-import '../models/TttEntries.dart';
-import 'homescreen_button.dart';
-import 'package:bacheloroppgave/resources/app_theme.dart';
-
 /// Code based on sourcecode from:  https://github.com/funwithflutter/flutter_ui_tips/tree/master/tip_003_popup_card
 
 const String pop_title = 'Advarsel';

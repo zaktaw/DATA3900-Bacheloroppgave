@@ -1,6 +1,4 @@
 import 'package:bacheloroppgave/models/TttEntry.dart';
-import '../zone_page/zones_list.dart';
-import 'package:bacheloroppgave/local_storage_hive/TttEntriesBox.dart';
 
 import 'package:hive/hive.dart';
 

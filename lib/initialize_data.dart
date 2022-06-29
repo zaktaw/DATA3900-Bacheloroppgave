@@ -1,16 +1,12 @@
 import 'package:bacheloroppgave/home_screen/homescreen.dart';
 import 'package:bacheloroppgave/login_page/login.dart';
-import 'package:bacheloroppgave/resources/Keys.dart';
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'http_requests.dart';
 import 'local_storage_hive/TttProjectInfoBox.dart';
-import 'models/TttProjectInfo.dart';
 
 class InitializeData extends StatefulWidget {
   InitializeData({Key? key}) : super(key: key);
