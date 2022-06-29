@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the getMockDb function from the mock_db library, for the Dart programming language.">
+  <title>getMockDb function - mock_db library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">bacheloroppgave</a></li>
+    <li><a href="../resources_mock_db/resources_mock_db-library.html">mock_db</a></li>
+    <li class="self-crumb">getMockDb function</li>
+  </ol>
+  <div class="self-name">getMockDb</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-function">getMockDb</span> function 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+ 
+</h1></div>
+
+    <section class="multi-line-signature">
+        
+
+<span class="returntype"><a href="../models_TttProjectInfo/TttProjectInfo-class.html">TttProjectInfo</a></span>
+<span class="name ">getMockDb</span>(<wbr>)
+
+    </section>
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">TttProjectInfo getMockDb() {
+  &#47;&#47;MOCK Projectinfo init init
+  ZoneObject zoneobj = new ZoneObject(
+      order_number: 1,
+      zone_name: &quot;Ungdomsrommet 2.Etg&quot;,
+      zone_info: &quot;Eget rom med ungdomsbøker&quot;,
+      id: 1);
+  ZoneObject zoneobj1 = new ZoneObject(
+      order_number: 2,
+      zone_name: &quot;Torget 2.Etg&quot;,
+      zone_info: &quot;Mingleområde med sitteplasser&quot;,
+      id: 2);
+  ZoneObject zoneobj2 = new ZoneObject(
+      order_number: 3,
+      zone_name: &quot;Fantasia 2.Etg&quot;,
+      zone_info:
+          &quot;eget rom for småbarn&#47;barnehager (inneholder ikke bøker, men kan fungere som f.eks lunsjsted eller base for barnehager&#47;grupper)&quot;,
+      id: 3);
+
+  ZoneObject zoneobj3 = new ZoneObject(
+      order_number: 4,
+      zone_name: &quot;Gresseplasser 2.Etg&quot;,
+      zone_info:
+          &quot;Området mellom bokhyllene der folk går og gresser&#47;snuser etter bøker&quot;,
+      id: 4);
+
+  ZoneObject zoneobj4 = new ZoneObject(
+      order_number: 5,
+      zone_name: &quot;Krimrommet 1.Etg&quot;,
+      zone_info: &quot;Eget rom for krimbøker&quot;,
+      id: 5);
+
+  ZoneObject zoneobj5 = new ZoneObject(
+      order_number: 6,
+      zone_name: &quot;Lesesal 1.Etg&quot;,
+      zone_info: &quot;Lesesal i 1.etg&quot;,
+      id: 6);
+
+  ZoneObject zoneobj6 = new ZoneObject(
+      order_number: 7,
+      zone_name: &quot;Sitteplasser 1.Etg&quot;,
+      zone_info: &quot;Sitteplasser i 1. etg, gjelder ikke sitteplasser i kafeen&quot;,
+      id: 7);
+
+  ZoneObject zoneobj7 = new ZoneObject(
+      order_number: 8,
+      zone_name: &quot;Torget 1.Etg&quot;,
+      zone_info: &quot;Mingelområde med inn- og utleveringsmulighteter&quot;,
+      id: 8);
+
+  ZoneObject zoneobj8 = new ZoneObject(
+      order_number: 9,
+      zone_name: &quot;Gresseplasser 1.Etg&quot;,
+      zone_info:
+          &quot;Området mellom bokhyllene der folk går og gresser&#47;snuser etter bøker&quot;,
+      id: 9);
+
+  ZoneObject zoneobj9 = new ZoneObject(
+      order_number: 10,
+      zone_name: &quot;Musikkrommmet U.Etg&quot;,
+      zone_info: &quot;Eget rom for musikksamlinger&quot;,
+      id: 10);
+
+  ZoneObject zoneobj10 = new ZoneObject(
+      order_number: 11,
+      zone_name: &quot;Sitteplasser U.Etg&quot;,
+      zone_info: &quot;Sitteplasser langs ytterveggene&quot;,
+      id: 11);
+
+  ZoneObject zoneobj11 = new ZoneObject(
+      order_number: 12,
+      zone_name: &quot;Torget U.Etg&quot;,
+      zone_info:
+          &quot;Sceneomåde i underetasjen, består for det meste av sitteplasser&quot;,
+      id: 12);
+
+  ZoneObject zoneobj12 = new ZoneObject(
+      order_number: 13,
+      zone_name: &quot;Gresseplasser U.Etg&quot;,
+      zone_info:
+          &quot;Området mellom bokhyllene der folk går og gresser&#47;snuser etter bøker&quot;,
+      id: 13);
+
+  ZoneObject zoneobj13 = new ZoneObject(
+      order_number: 14,
+      zone_name: &quot;Fleksible plasser (Studieverkstedet og Vepsebolet)&quot;,
+      zone_info: &quot;Sone 14&quot;,
+      id: 14);
+
+  ActivityObject actobj = new ActivityObject(
+      activity_name: &quot;ALLAP&quot;, activity_info: &quot;Alene med digitalt hjelpemiddel&quot;);
+
+  ActivityObject actobj1 = new ActivityObject(
+      activity_name: &quot;GRLAP&quot;,
+      activity_info:
+          &quot;Sitter eller står i gruppe med bærbar(e) datamaskin(er) eller nettbrett slått på&quot;);
+
+  ActivityObject actobj2 = new ActivityObject(
+      activity_name: &quot;ALUDIG&quot;,
+      activity_info:
+          &quot;Sitter eller står alene og arbeider uten digitale medier&quot;);
+
+  ActivityObject actobj3 = new ActivityObject(
+      activity_name: &quot;GRUDIG&quot;,
+      activity_info:
+          &quot;Sitter eller står i gruppe og arbeider uten digitale medier&quot;);
+
+  ActivityObject actobj4 = new ActivityObject(
+      activity_name: &quot;ALPERS&quot;,
+      activity_info: &quot;Individuell kontakt med personalet&quot;);
+
+  ActivityObject actobj5 = new ActivityObject(
+      activity_name: &quot;GRPERS&quot;,
+      activity_info: &quot;Gruppevis kontakt med personalet&quot;);
+
+  ActivityObject actobj6 = new ActivityObject(
+      activity_name: &quot;ALFYS&quot;, activity_info: &quot;Kikker&#47;browser alene&quot;);
+
+  ActivityObject actobj7 = new ActivityObject(
+      activity_name: &quot;GRFYS&quot;, activity_info: &quot;Kikker&#47;browser i gruppe&quot;);
+
+  ActivityObject actobj8 = new ActivityObject(
+      activity_name: &quot;ALPC&quot;,
+      activity_info: &quot;Bruker stasjonær datamaskin eller søketerminal alene&quot;);
+
+  ActivityObject actobj9 = new ActivityObject(
+      activity_name: &quot;GRPC&quot;,
+      activity_info: &quot;Bruker stasjonær datamaskin eller søketerminal i gruppe&quot;);
+
+  ActivityObject actobj10 =
+      new ActivityObject(activity_name: &quot;KØ&quot;, activity_info: &quot;Venter i kø&quot;);
+
+  ActivityObject actobj11 = new ActivityObject(
+      activity_name: &quot;MOB&quot;, activity_info: &quot;Snakker i mobiltelefon&quot;);
+
+  ActivityObject actobj12 = new ActivityObject(
+      activity_name: &quot;ALGÅ&quot;, activity_info: &quot;Står eller går alene&quot;);
+
+  ActivityObject actobj13 = new ActivityObject(
+      activity_name: &quot;GRGÅ&quot;, activity_info: &quot;Står eller går i gruppe&quot;);
+
+  ActivityObject actobj14 =
+      new ActivityObject(activity_name: &quot;ALSI&quot;, activity_info: &quot;Sitter alene&quot;);
+
+  ActivityObject actobj15 = new ActivityObject(
+      activity_name: &quot;GRSI&quot;, activity_info: &quot;Sitter i gruppe&quot;);
+
+  ActivityObject actobj16 = new ActivityObject(
+      activity_name: &quot;DIV&quot;, activity_info: &quot; Andre aktiviteter&quot;);
+
+  List&lt;ZoneObject&gt; zoneList = [];
+  zoneList.addAll([
+    zoneobj,
+    zoneobj1,
+    zoneobj2,
+    zoneobj3,
+    zoneobj4,
+    zoneobj5,
+    zoneobj6,
+    zoneobj7,
+    zoneobj8,
+    zoneobj9,
+    zoneobj10,
+    zoneobj11,
+    zoneobj12
+  ]);
+
+  List&lt;ActivityObject&gt; actList = [];
+  actList.addAll([
+    actobj,
+    actobj1,
+    actobj2,
+    actobj3,
+    actobj4,
+    actobj5,
+    actobj6,
+    actobj7,
+    actobj8,
+    actobj9,
+    actobj10,
+    actobj11,
+    actobj12,
+    actobj13,
+    actobj14,
+    actobj15,
+    actobj16
+  ]);
+
+  String title = &quot;OsloMet&quot;;
+  String description = &quot;En beskrivelse av mock-prosjektet :)&quot;;
+
+  TttProjectInfo projectInfo = TttProjectInfo(
+      activities: actList,
+      zones: zoneList,
+      project_name: title,
+      description: description,
+      id: 12345);
+
+  return projectInfo;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../index.html">bacheloroppgave</a></li>
+  <li><a href="../resources_mock_db/resources_mock_db-library.html">mock_db</a></li>
+  <li class="self-crumb">getMockDb function</li>
+</ol>
+
+
+    <h5>mock_db library</h5>
+    <ol>
+
+
+
+
+
+  <li class="section-title"><a href="../resources_mock_db/resources_mock_db-library.html#functions">Functions</a></li>
+  <li><a href="../resources_mock_db/getMockDb.html">getMockDb</a></li>
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-left-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    bacheloroppgave
+      1.0.0+1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+
