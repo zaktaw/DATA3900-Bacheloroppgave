@@ -24,7 +24,7 @@ class _InitializeDataState extends State<InitializeData> {
   @override
   void initState() {
     getProjectInfo();
-    //HttpRequests.sendUnsentTttObjects();
+    HttpRequests.sendUnsentTttObjects();
   }
 
   void getProjectInfo() async {

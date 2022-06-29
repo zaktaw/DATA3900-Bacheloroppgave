@@ -12,7 +12,9 @@ import 'local_storage_hive/UnsentTttEntriesBox.dart';
 import 'local_storage_hive/TttProjectInfoBox.dart';
 
 class HttpRequests {
-  static String getTttProjectInfoUrl = 'https://ltr-abi.no:8443/drf2/project/5';
+
+  static String getProjectInfoUrl =
+      'https://ltr-abi.no:8443/drf2/project_by_token';
 
   static String postTttObjectUrl = "https://ltr-abi.no:8443/drf2/counting/";
 
@@ -29,7 +31,7 @@ class HttpRequests {
     print(userToken);
 
     final response = await http.get(
-      Uri.parse(getTttProjectInfoUrl),
+      Uri.parse(getProjectInfoUrl),
       headers: {
         'Authorization': "Token " + userToken.toString(),
       },
@@ -113,7 +115,6 @@ class HttpRequests {
       }
 
       return unsentTttEntriesBox.length;
-      
     }
     return 0;
   }
