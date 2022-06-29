@@ -1,7 +1,7 @@
 import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 
-//Topbar with title and backbutton, used in confirm- and help-page
+/// Topbar with title and backbutton, used in confirm- and help-page
 class ConfirmAndHelpTopBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final String topbarTitle;

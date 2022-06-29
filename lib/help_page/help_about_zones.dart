@@ -4,7 +4,7 @@ import 'package:bacheloroppgave/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import '../models/ZoneObject.dart';
 
-//Displays the zones that are present in the current project 
+/// Displays the zones that are present in the current project 
 class HelpZones extends StatelessWidget {
   late TttProjectInfo projectInfo;
 

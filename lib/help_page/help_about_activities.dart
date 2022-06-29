@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../models/ActivityObject.dart';
 import '../models/TttProjectInfo.dart';
 
-//Displays the activites that are present in the current project 
+/// Displays the activites that are present in the current project 
 class HelpActivites extends StatelessWidget {
   late TttProjectInfo projectInfo;
 

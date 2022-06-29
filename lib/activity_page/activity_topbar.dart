@@ -11,9 +11,14 @@ import 'activities_info_pop.dart';
 import 'zone_info_in_activities.dart';
 import 'package:bacheloroppgave/activity_page/activities_info_pop.dart';
 
+
+
+
 const String _heroActivitiesPop = 'hero-activities-pop';
 const String info_act = 'Informasjon om aktiviteter';
 
+/// Topbar for activity-screen. Contains backbutton for navgation, click-able title with information about current zone
+/// and info button. 
 class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final String zoneName;
@@ -44,10 +49,10 @@ class ActivityTopbar extends StatelessWidget with PreferredSizeWidget {
     for(var element in activityList){
       rows.add(TableRow(children: <Widget> [
         Container(
-          padding: EdgeInsets.all(3.0),
+          padding: const EdgeInsets.all(3.0),
           child:Text(element.activity_name, textAlign: TextAlign.center,)),
         Container(
-          padding: EdgeInsets.all(3.0),
+          padding: const EdgeInsets.all(3.0),
           child: Text(element.activity_info))
       ]));
     }

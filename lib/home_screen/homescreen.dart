@@ -19,7 +19,7 @@ const String settings = 'Innstilinger';
 const String help = 'Hjelp';
 const String TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9';
 
-//Displays homescreen with logic for starting and/or resuming counting sessions
+/// Displays homescreen with logic for starting and/or resumeing counting sessions
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 

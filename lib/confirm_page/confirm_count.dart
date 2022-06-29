@@ -18,6 +18,8 @@ import '../confirm_and_help_topbar/confirm_and_help_topbar.dart';
 import '../local_storage_hive/TttProjectInfoBox.dart';
 import '../models/TttProjectInfo.dart';
 
+/// Main widget for Confirm-page. 
+/// Contains all widgets related to confirm and logic for sending or storeing counts
 class ConfirmCount extends StatefulWidget {
   late TttEntries entries;
 
@@ -46,11 +48,12 @@ class _ConfirmCountState extends State<ConfirmCount> {
     super.dispose();
   }
 
+/// Get project, entries (all observations registred in session) and user on load
   @override
   void initState() {
     entries = widget.entries;
     projectInfo =
-        TttProjectInfoBox.getTttProjectInfo().getAt(0) as TttProjectInfo;
+        TttProjectInfoBox.getTttProjectInfo().get(projectInfoKey) as TttProjectInfo;
     numberOfZones = projectInfo.zones.length;
     user = UserBox.getUser().get(userKey) as User;
     super.initState();
@@ -97,14 +100,14 @@ class _ConfirmCountState extends State<ConfirmCount> {
                 bottom: MediaQuery.of(context).size.height *
                     CONFIRM_PAGE_HEADER_PADDING_BOTTOM_FACTOR),
           ))
-
-          ///Text(NAME_TEXT + user.name),
         ],
       )),
       bottomNavigationBar: ConfirmBottombar(sendTTT),
     );
   }
 
+/// Stage tttObject and post to server. Delete from Hivebox for current session
+/// Store in unsentTttEntriesBox if post-request is denied 
   Future<String> sendTTT() async {
     TttObject tttObject = TttObject(
         entries.tttEntries,
