@@ -7,7 +7,7 @@ import 'package:bacheloroppgave/settings_page/settings.dart';
 import 'package:bacheloroppgave/zone_page/zone.dart';
 import 'package:flutter/material.dart';
 import 'package:bacheloroppgave/activity_page/activity.dart';
-
+import 'home_screen/homescreen_demo.dart';
 import 'login_page/login.dart';
 
 const String error = "Error";
@@ -20,20 +20,16 @@ class RouteGenerator {
     switch (settings.name) {
       case '/initdata':
 
-        ///CHANGE BETWEEN SERVER OR A MOCK DB BY COMMENTING OUT EITHER LINE 25 or LINE 28
+        //Application can use a mock database instead of an actual database by commenting line 26 and uncommenting line 29
 
-        ///SERVER:
-        ///return MaterialPageRoute(builder: (_) => HomeScreen());
-        
+        //ACTUAL DATABASE
+        return MaterialPageRoute(builder: (_) => InitializeData());
+
         //MOCK DB
         //return MaterialPageRoute(builder: (_) => HomeScreenDemo());
 
-        return MaterialPageRoute(builder: (_) => InitializeData());
-        
-
       case '/homescreen':
         return MaterialPageRoute(builder: (_) => HomeScreen());
-
 
       case '/activity':
         List<dynamic> argsList = args as List<dynamic>;

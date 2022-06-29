@@ -1,5 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+///Storage for user token
+///FlutterSecureStorage will safely store the token on user's device
 class UserToken {
   static final _storage = FlutterSecureStorage();
 

@@ -11,6 +11,7 @@ import 'package:settings_ui/settings_ui.dart';
 import '../local_storage_hive/SettingsBox.dart';
 import '../resources/app_theme.dart';
 
+///Class that contains functions and widgets for app settings
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
 

@@ -23,7 +23,10 @@ import 'models/UserToken.dart';
 
 String initialRoute = '';
 
+///Opens a Hive box
 Future<Box?> openBox(String boxName) async {
+
+  // get storage location for Hive on user's phone
   if (!kIsWeb && !Hive.isBoxOpen(boxName))
     Hive.init((await getApplicationDocumentsDirectory()).path);
 
@@ -42,7 +45,6 @@ Future<Box?> openBox(String boxName) async {
   return null;
 }
 
-///Starts the hive boxes
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(TttEntriesAdapter());
@@ -59,12 +61,13 @@ Future<void> main() async {
   await openBox('unsentTttEntries');
   await openBox('settingsBox');
 
+  // disable showing descriptions of activites in activity cards by default
   if (SettingsBox.getSettingsBox().isEmpty) {
     SettingsBox.getSettingsBox().put(activityInfoSettingKey, false);
   }
 
   final userHasToken = await UserToken.containsToken();
-  ///final bool userHasToken = false;
+
   if (userHasToken) {
     initialRoute = '/initdata';
   } else {

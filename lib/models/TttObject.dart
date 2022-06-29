@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 
 part 'TttObject.g.dart';
 
-// Model for ttt object. This is the object that is sent to the server
+/// Model for ttt object. This is the object that is sent to the server
 @HiveType(typeId: 6)
 class TttObject {
   @HiveField(0)
@@ -61,7 +61,6 @@ class TttObject {
   }
 
   Map<String, dynamic> toJson() {
-    print(timestamp);
     return {
       "project_id": projectId,
       "observer_name": name,

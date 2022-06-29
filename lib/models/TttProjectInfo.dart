@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 
 part 'TttProjectInfo.g.dart';
 
-// Model for ttt project info. This info is retrieved from server and used througout the app.
+/// Model for ttt project info. This info is retrieved from server and used througout the app.
 @HiveType(typeId: 2)
 class TttProjectInfo extends HiveObject {
   @HiveField(0)

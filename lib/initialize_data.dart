@@ -8,6 +8,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'http_requests.dart';
 import 'local_storage_hive/TttProjectInfoBox.dart';
 
+///Performs all operations that are needed when app launches.
+///These operations are getting project info and sending unsent ttt objects
+///When these operations are finished, the app will navigate to the home screen
 class InitializeData extends StatefulWidget {
   InitializeData({Key? key}) : super(key: key);
 
@@ -18,7 +21,6 @@ class InitializeData extends StatefulWidget {
 class _InitializeDataState extends State<InitializeData> {
   bool loaded = false;
   late bool authenticated = true;
-  String msg_no_internet = "Kunne ikke oppdatere prosjekt, mangler internett";
   String msg_no_token = "Kunne ikke logge inn, ikke autorisert";
 
   @override
@@ -27,6 +29,7 @@ class _InitializeDataState extends State<InitializeData> {
     HttpRequests.sendUnsentTttObjects();
   }
 
+  ///Method for retrieving project info from server
   void getProjectInfo() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult != ConnectivityResult.none) {
@@ -36,22 +39,21 @@ class _InitializeDataState extends State<InitializeData> {
       Future futureTttProjectInfo = HttpRequests.fetchTttProjectInfo();
 
       futureTttProjectInfo.then((statusCode) => {
-        
             if (statusCode == 401)
-              {setState(() => {
-
-                authenticated = false,
-                Fluttertoast.showToast
-                (
-        msg: msg_no_token, // message
-        toastLength: Toast.LENGTH_SHORT, // length
-        gravity: ToastGravity.CENTER, // location
-        timeInSecForIosWeb: 3, // duration
-        backgroundColor: TOAST_BACKGROUND_COLOR,
-        textColor: TOAST_TEXT_COLOR,
-        fontSize: TOAST_FONT_SIZE,
-                ) 
-              })}
+              {
+                setState(() => {
+                      authenticated = false,
+                      Fluttertoast.showToast(
+                        msg: msg_no_token, // message
+                        toastLength: Toast.LENGTH_SHORT, // length
+                        gravity: ToastGravity.CENTER, // location
+                        timeInSecForIosWeb: 3, // duration
+                        backgroundColor: TOAST_BACKGROUND_COLOR,
+                        textColor: TOAST_TEXT_COLOR,
+                        fontSize: TOAST_FONT_SIZE,
+                      )
+                    })
+              }
             else
               {
                 setState(() => {
@@ -61,15 +63,9 @@ class _InitializeDataState extends State<InitializeData> {
               }
           });
     } else {
-      Fluttertoast.showToast(
-        msg: msg_no_internet, // message
-        toastLength: Toast.LENGTH_SHORT, // length
-        gravity: ToastGravity.CENTER, // location
-        timeInSecForIosWeb: 3, // duration
-        backgroundColor: TOAST_BACKGROUND_COLOR,
-        textColor: TOAST_TEXT_COLOR,
-        fontSize: TOAST_FONT_SIZE,
-      );
+      setState(() {
+        loaded = true;
+      });
     }
   }
 
